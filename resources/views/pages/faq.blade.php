@@ -1,4 +1,7 @@
-﻿
+﻿@php
+    $faqs = Helper::findCustomData('Faq');
+$popularPosts =Helper::recentPosts(3);
+@endphp
 		<!-- Content Start -->
 		<div id="contentWrapper">
 			<div class="page-title title-1">
@@ -20,252 +23,19 @@
 					<div class="row">
 						<div class="cell-9">
 							<h3 class="block-head">Sıkça Sorulan Sorular</h3>
-							<p class="hint">Here you can write a small description for this block and tell us more about
-								it.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet purus
-								quis metus
-								imperdiet fermentum. Suspendisse hendrerit id lacus id lobortis. Vestibulum quam elit,
-								dapibus ac
-								augue ut, porttitor viverra dui.
-								Pellentesque imperdiet purus quis metus imperdiet fermentum. Suspendisse hendrerit id
-								lacus id
-								lobortis. Vestibulum quam elit, apibus ac augue ut, porttitor viverra dui. Lorem ipsum
-								dolor sit
-								amet, consectetur adipiscing elit.
+							<p class="hint">{{__('sss.title')}}</p>
+							<p>{{__('sss.description')}}
 							</p>
 
 							<ul id="accordion" class="accordion">
+                                @forelse($faqs as $key => $faq)
 								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">How Can i register in the site
-												?</span></a></h3>
-									<div class="accordion-panel active">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget lacus
-										sit amet
-										neque posuere aliquet. In interdum nisl sapien, vel dignissim nulla porta at.
-										Sed
-										accumsan nunc vitae mollis consequat. Morbi velit risus, ultrices vitae sodales
-										ac,
-										aliquam id eros.
-										Vivamus sit amet odio pellentesque odio faucibus tristique. Morbi amet dapibus
-										dolor diam
-										viverra mi. Aenean porttitor.
-										Vivamus sit amet odio pellentesque odio faucibus tristique. Morbi amet dapibus
-										dolor diam
-										viverra mi. Aenean porttitor, lectus at dapibus egestas.
+									<h3 class="skew-25"><a href="#"><span class="skew25">{{$faq['question']}}</span></a></h3>
+									<div class="accordion-panel active">{{$faq['answer']}}
 									</div>
 								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">Do i have to register in your
-												site
-												?</span></a></h3>
-									<div class="accordion-panel">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet
-										purus
-										quis metus imperdiet fermentum. Suspendisse hendrerit id lacus id lobortis.
-										Vestibulum
-										quam elit, dapibus ac augue ut, porttitor viverra dui.
-										Pellentesque imperdiet purus quis metus imperdiet fermentum. Suspendisse
-										hendrerit id
-										lacus id lobortis. Vestibulum quam elit, apibus ac augue ut, porttitor viverra
-										dui. Lorem
-										ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">What are the steps for
-												registeration in
-												the site ?</span></a></h3>
-									<div class="accordion-panel">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet
-										purus
-										quis metus imperdiet fermentum. Suspendisse hendrerit id lacus id lobortis.
-										Vestibulum
-										quam elit, dapibus ac augue ut, porttitor viverra dui.
-										Pellentesque imperdiet purus quis metus imperdiet fermentum. Suspendisse
-										hendrerit id
-										lacus id lobortis. Vestibulum quam elit, apibus ac augue ut, porttitor viverra
-										dui. Lorem
-										ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">is there any way to buy from
-												the site
-												?</span></a></h3>
-									<div class="accordion-panel">
-										Pellentesque imperdiet purus quis metus imperdiet dui. Lorem ipsum dolor sit
-										amet,
-										consectetur adipiscing Pellentesque imperdiet purus quis metus imperdiet dui.
-										Lorem ipsum
-										dolor sit amet, consectetur adipiscing Pellentesque imperdiet purus quis metus
-										imperdiet
-										dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">What are the paymeny methods
-												can i use
-												in the site ?</span></a></h3>
-									<div class="accordion-panel">
-										Pellentesque imperdiet purus quis metus imperdiet dui. Lorem ipsum dolor sit
-										amet,
-										consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">How Can i register in the site
-												?</span></a></h3>
-									<div class="accordion-panel active">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget lacus
-										sit amet
-										neque posuere aliquet. In interdum nisl sapien, vel dignissim nulla porta at.
-										Sed
-										accumsan nunc vitae mollis consequat. Morbi velit risus, ultrices vitae sodales
-										ac,
-										aliquam id eros.
-										Vivamus sit amet odio pellentesque odio faucibus tristique. Morbi amet dapibus
-										dolor diam
-										viverra mi. Aenean porttitor.
-										Vivamus sit amet odio pellentesque odio faucibus tristique. Morbi amet dapibus
-										dolor diam
-										viverra mi. Aenean porttitor, lectus at dapibus egestas.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">Do i have to register in your
-												site
-												?</span></a></h3>
-									<div class="accordion-panel">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet
-										purus
-										quis metus imperdiet fermentum. Suspendisse hendrerit id lacus id lobortis.
-										Vestibulum
-										quam elit, dapibus ac augue ut, porttitor viverra dui.
-										Pellentesque imperdiet purus quis metus imperdiet fermentum. Suspendisse
-										hendrerit id
-										lacus id lobortis. Vestibulum quam elit, apibus ac augue ut, porttitor viverra
-										dui. Lorem
-										ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">What are the steps for
-												registeration in
-												the site ?</span></a></h3>
-									<div class="accordion-panel">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet
-										purus
-										quis metus imperdiet fermentum. Suspendisse hendrerit id lacus id lobortis.
-										Vestibulum
-										quam elit, dapibus ac augue ut, porttitor viverra dui.
-										Pellentesque imperdiet purus quis metus imperdiet fermentum. Suspendisse
-										hendrerit id
-										lacus id lobortis. Vestibulum quam elit, apibus ac augue ut, porttitor viverra
-										dui. Lorem
-										ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">is there any way to buy from
-												the site
-												?</span></a></h3>
-									<div class="accordion-panel">
-										Pellentesque imperdiet purus quis metus imperdiet dui. Lorem ipsum dolor sit
-										amet,
-										consectetur adipiscing Pellentesque imperdiet purus quis metus imperdiet dui.
-										Lorem ipsum
-										dolor sit amet, consectetur adipiscing Pellentesque imperdiet purus quis metus
-										imperdiet
-										dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">What are the paymeny methods
-												can i use
-												in the site ?</span></a></h3>
-									<div class="accordion-panel">
-										Pellentesque imperdiet purus quis metus imperdiet dui. Lorem ipsum dolor sit
-										amet,
-										consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">How Can i register in the site
-												?</span></a></h3>
-									<div class="accordion-panel active">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget lacus
-										sit amet
-										neque posuere aliquet. In interdum nisl sapien, vel dignissim nulla porta at.
-										Sed
-										accumsan nunc vitae mollis consequat. Morbi velit risus, ultrices vitae sodales
-										ac,
-										aliquam id eros.
-										Vivamus sit amet odio pellentesque odio faucibus tristique. Morbi amet dapibus
-										dolor diam
-										viverra mi. Aenean porttitor.
-										Vivamus sit amet odio pellentesque odio faucibus tristique. Morbi amet dapibus
-										dolor diam
-										viverra mi. Aenean porttitor, lectus at dapibus egestas.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">Do i have to register in your
-												site
-												?</span></a></h3>
-									<div class="accordion-panel">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet
-										purus
-										quis metus imperdiet fermentum. Suspendisse hendrerit id lacus id lobortis.
-										Vestibulum
-										quam elit, dapibus ac augue ut, porttitor viverra dui.
-										Pellentesque imperdiet purus quis metus imperdiet fermentum. Suspendisse
-										hendrerit id
-										lacus id lobortis. Vestibulum quam elit, apibus ac augue ut, porttitor viverra
-										dui. Lorem
-										ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">What are the steps for
-												registeration in
-												the site ?</span></a></h3>
-									<div class="accordion-panel">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet
-										purus
-										quis metus imperdiet fermentum. Suspendisse hendrerit id lacus id lobortis.
-										Vestibulum
-										quam elit, dapibus ac augue ut, porttitor viverra dui.
-										Pellentesque imperdiet purus quis metus imperdiet fermentum. Suspendisse
-										hendrerit id
-										lacus id lobortis. Vestibulum quam elit, apibus ac augue ut, porttitor viverra
-										dui. Lorem
-										ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">is there any way to buy from
-												the site
-												?</span></a></h3>
-									<div class="accordion-panel">
-										Pellentesque imperdiet purus quis metus imperdiet dui. Lorem ipsum dolor sit
-										amet,
-										consectetur adipiscing Pellentesque imperdiet purus quis metus imperdiet dui.
-										Lorem ipsum
-										dolor sit amet, consectetur adipiscing Pellentesque imperdiet purus quis metus
-										imperdiet
-										dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3 class="skew-25"><a href="#"><span class="skew25">What are the paymeny methods
-												can i use
-												in the site ?</span></a></h3>
-									<div class="accordion-panel">
-										Pellentesque imperdiet purus quis metus imperdiet dui. Lorem ipsum dolor sit
-										amet,
-										consectetur adipiscing elit.
-									</div>
-								</li>
+                                    @empty
+                                @endforelse
 							</ul>
 						</div>
 						<aside class="cell-3 right-sidebar">
@@ -285,55 +55,26 @@
 									<h3 class="widget-head">Popüler Gönderiler</h3>
 									<div class="widget-content">
 										<ul>
+                                            @forelse($popularPosts as $post)
+                                                @php($dateFull = Helper::getDateForHuman($post->created_at))
 											<li>
 												<div class="post-img">
-													<img src="{{asset('theme/images/blog/masonry/3.jpg')}}" alt="">
+                                                    <a href="{{route('post.find',$post->slug)}}">
+													<img src="{{$post->thumbnail}}" alt=""></a>
 												</div>
 												<div class="widget-post-info">
 													<h4>
-														<a href="../components/detail_components/blog-single.blade.php">
-															Gagiad E-ihracat’ı değerlendirdi
+														<a href="{{route('post.find',$post->slug)}}">
+															{{$post->title}}
 														</a>
 													</h4>
 													<div class="meta">
-														<span><i class="fa fa-clock-o"></i>10 Haziran 2020</span>
+														<span><i class="fa fa-clock-o"></i>{{$dateFull}}</span>
 													</div>
 												</div>
 											</li>
-
-											<li>
-												<div class="post-img">
-													<img src="{{asset('theme/images/blog/masonry/1.jpg')}}" alt="">
-												</div>
-												<div class="widget-post-info">
-													<h4>
-														<a href="../components/detail_components/blog-single.blade.php">
-															MOBİL : "İhracatta 'dijital devrim' başlıyor"
-														</a>
-													</h4>
-													<div class="meta">
-														<span><i class="fa fa-clock-o"></i>10 Haziran 2020</span>
-													</div>
-												</div>
-											</li>
-
-											<li>
-												<div class="post-img">
-													<img src="{{asset('theme/images/blog/masonry/2.jpg')}}" alt="">
-												</div>
-												<div class="widget-post-info">
-													<h4>
-														<a href="../components/detail_components/blog-single.blade.php">
-															"Yeni düzende
-															e-ihracat’a ayak uyduramayan
-															kaybolur"
-														</a>
-													</h4>
-													<div class="meta">
-														<span><i class="fa fa-clock-o"></i>10 Haziran 2020</span>
-													</div>
-												</div>
-											</li>
+                                                @empty
+                                                @endforelse
 										</ul>
 									</div>
 								</li>
