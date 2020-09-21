@@ -107,7 +107,7 @@ export default {
     },
     canSee() {
       //console.log('meun',this.group)
-      let userInfo = JSON.parse(localStorage.getItem("userInfo"))
+      let userInfo = this.$store.state.user.currentUser
       this.$acl.check(userInfo.role)
       return this.to ? this.$acl.check(this.$router.match(this.group.url).meta.rule) : true
     },

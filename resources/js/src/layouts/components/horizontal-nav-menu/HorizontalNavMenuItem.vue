@@ -56,7 +56,7 @@ export default {
       return this.iconSmall ? 'w-3 h-3 mr-3' : 'w-5 h-5 mr-3'
     },
     canSee() {
-      let userInfo = JSON.parse(localStorage.getItem("userInfo"))
+      let userInfo = this.$store.state.user.currentUser
       this.$acl.check(userInfo.role)
       return this.to ? this.$acl.check(this.$router.match(this.to).meta.rule) : true
     },

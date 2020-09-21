@@ -1371,7 +1371,7 @@ __webpack_require__.r(__webpack_exports__);
       return this.iconSmall ? 'w-3 h-3 mr-3' : 'w-5 h-5 mr-3';
     },
     canSee: function canSee() {
-      var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      var userInfo = this.$store.state.user.currentUser;
       this.$acl.check(userInfo.role);
       return this.to ? this.$acl.check(this.$router.match(this.to).meta.rule) : true;
     },
@@ -2815,7 +2815,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     canSee: function canSee() {
       //console.log('meun',this.group)
-      var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+      var userInfo = this.$store.state.user.currentUser;
       this.$acl.check(userInfo.role);
       return this.to ? this.$acl.check(this.$router.match(this.group.url).meta.rule) : true;
     },
@@ -3047,7 +3047,7 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     canSee: function canSee() {
       //console.log('meun',this.to)
-      var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+      var userInfo = this.$store.state.user.currentUser;
       this.$acl.check(userInfo.role);
       return this.to ? this.$acl.check(this.$router.match(this.to).meta.rule) : true;
     },
@@ -6636,26 +6636,8 @@ var render = function() {
                     },
                     [
                       _c("logo", {
-                        staticClass: "w-10 mr-4 fill-current text-primary"
-                      }),
-                      _vm._v(" "),
-                      _vm.title
-                        ? _c(
-                            "span",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.isMouseEnter || !_vm.reduce,
-                                  expression: "isMouseEnter || !reduce"
-                                }
-                              ],
-                              staticClass: "vx-logo-text text-primary"
-                            },
-                            [_vm._v(_vm._s(_vm.title))]
-                          )
-                        : _vm._e()
+                        staticClass: "w-80 mr-4 fill-current text-primary"
+                      })
                     ],
                     1
                   ),
