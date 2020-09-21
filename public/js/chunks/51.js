@@ -780,7 +780,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _General_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./General.vue */ "./resources/js/src/views/pages/admin/site-settings/component/General.vue");
 /* harmony import */ var _Video_Gallery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Video-Gallery */ "./resources/js/src/views/pages/admin/site-settings/component/Video-Gallery.vue");
 /* harmony import */ var _HomePage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HomePage */ "./resources/js/src/views/pages/admin/site-settings/component/HomePage.vue");
-/* harmony import */ var _AboutUs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AboutUs */ "./resources/js/src/views/pages/admin/site-settings/component/AboutUs.vue");
+/* harmony import */ var _AboutUs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AboutUs */ "./resources/js/src/views/pages/admin/site-settings/component/AboutUs.vue");
 /* harmony import */ var _Bayiler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Bayiler */ "./resources/js/src/views/pages/admin/site-settings/component/Bayiler.vue");
 //
 //
@@ -818,7 +818,7 @@ __webpack_require__.r(__webpack_exports__);
     VideoGallery: _Video_Gallery__WEBPACK_IMPORTED_MODULE_1__["default"],
     General: _General_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     HomePage: _HomePage__WEBPACK_IMPORTED_MODULE_2__["default"],
-    AboutUs: _AboutUs__WEBPACK_IMPORTED_MODULE_5__["default"],
+    AboutUs: _AboutUs__WEBPACK_IMPORTED_MODULE_3__["default"],
     Bayiler: _Bayiler__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   data: function data() {
