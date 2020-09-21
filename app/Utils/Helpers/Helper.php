@@ -325,6 +325,7 @@ class Helper
 
         $data = Custom::where('type', $type)->first();
 
+
         return $data ;
     }
 
@@ -440,6 +441,7 @@ class Helper
         }
         return $data[3];
     }
+
     public static function getAllBlogs(){
         return Post::where('type','post')->get();
     }
