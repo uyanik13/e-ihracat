@@ -18,108 +18,108 @@ use PhpParser\Node\Expr\Isset_;
 class Helper
 {
 
-  public function __construct()
-  {
-    $this->Helper = Helper::class;
-    $this->user = Auth::user();
+    public function __construct()
+    {
+        $this->Helper = Helper::class;
+        $this->user = Auth::user();
 
-  }
-
-
-  public static function PostImageHelper($url, $image, $path)
-  {
-
-    if (strlen($image) < 255) {
-      return $image;
     }
 
 
-    $extension = explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];   // .jpg .png .pdf
+    public static function PostImageHelper($url, $image, $path)
+    {
 
-    $replace = substr($image, 0, strpos($image, ',') + 1);
-
-
-    $imageConvert = str_replace($replace, '', $image);
-
-    $imageConvert = str_replace(' ', '+', $imageConvert);
-
-    $imageName = $url . '_' . time() . '.' . $extension;
-
-    Storage::disk('public')->put('/images/' . $path . '/' . $imageName, base64_decode($imageConvert));
+        if (strlen($image) < 255) {
+            return $image;
+        }
 
 
-    $imageUrl =  env('APP_URL') .'/images/' . $path . '/' . $imageName;
+        $extension = explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];   // .jpg .png .pdf
+
+        $replace = substr($image, 0, strpos($image, ',') + 1);
+
+
+        $imageConvert = str_replace($replace, '', $image);
+
+        $imageConvert = str_replace(' ', '+', $imageConvert);
+
+        $imageName = $url . '_' . time() . '.' . $extension;
+
+        Storage::disk('public')->put('/images/' . $path . '/' . $imageName, base64_decode($imageConvert));
+
+
+        $imageUrl =  env('APP_URL') .'/images/' . $path . '/' . $imageName;
 
 
 
-    return $imageUrl;
+        return $imageUrl;
 
-  }
-
-  public static function PostVideoHelper($url, $video, $path)
-  {
-
-    if (strlen($video) < 255) {
-      return $video;
     }
-    $extension = explode('/', explode(':', substr($video, 0, strpos($video, ';')))[1])[1];   // .jpg .png .pdf
+
+    public static function PostVideoHelper($url, $video, $path)
+    {
+
+        if (strlen($video) < 255) {
+            return $video;
+        }
+        $extension = explode('/', explode(':', substr($video, 0, strpos($video, ';')))[1])[1];   // .jpg .png .pdf
 
 
-    $replace = substr($video, 0, strpos($video, ',') + 1);
+        $replace = substr($video, 0, strpos($video, ',') + 1);
 
 
-    $imageConvert = str_replace($replace, '', $video);
+        $imageConvert = str_replace($replace, '', $video);
 
-    $imageConvert = str_replace(' ', '+', $imageConvert);
+        $imageConvert = str_replace(' ', '+', $imageConvert);
 
-    $imageName = $url . '_' . time() . '.' . $extension;
+        $imageName = $url . '_' . time() . '.' . $extension;
 
-    Storage::disk('public')->put('/images/' . $path . '/' . $imageName, base64_decode($imageConvert));
+        Storage::disk('public')->put('/images/' . $path . '/' . $imageName, base64_decode($imageConvert));
 
-    $imageUrl = env('APP_URL') . '/storage/app/public/images/' . $path . '/' . $imageName;
-
-
-    return $imageUrl;
-
-  }
-
-  public static function MakeUrl($string)
-  {
-
-    //Türkçeye özgü harfleri değiştirme
-    $string = str_replace('ü', 'u', $string);
-    $string = str_replace('Ü', 'U', $string);
-
-    $string = str_replace('ğ', 'g', $string);
-    $string = str_replace('Ğ', 'G', $string);
-
-    $string = str_replace('ş', 's', $string);
-    $string = str_replace('Ş', 'S', $string);
-
-    $string = str_replace('ç', 'c', $string);
-    $string = str_replace('Ç', 'C', $string);
-
-    $string = str_replace('ö', 'o', $string);
-    $string = str_replace('Ö', 'O', $string);
-
-    $string = str_replace('ı', 'i', $string);
-    $string = str_replace('İ', 'I', $string);
-
-    $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', strtolower($string));
+        $imageUrl = env('APP_URL') . '/storage/app/public/images/' . $path . '/' . $imageName;
 
 
-    return $slug;
-  }
+        return $imageUrl;
 
-
-  public static function namedSettings($settings)
-  {
-    $named_settings = [];
-    foreach ($settings as $setting) {
-      $named_settings[$setting->name] = $setting;
     }
-    return $named_settings;
-  }
+
+    public static function MakeUrl($string)
+    {
+
+        //Türkçeye özgü harfleri değiştirme
+        $string = str_replace('ü', 'u', $string);
+        $string = str_replace('Ü', 'U', $string);
+
+        $string = str_replace('ğ', 'g', $string);
+        $string = str_replace('Ğ', 'G', $string);
+
+        $string = str_replace('ş', 's', $string);
+        $string = str_replace('Ş', 'S', $string);
+
+        $string = str_replace('ç', 'c', $string);
+        $string = str_replace('Ç', 'C', $string);
+
+        $string = str_replace('ö', 'o', $string);
+        $string = str_replace('Ö', 'O', $string);
+
+        $string = str_replace('ı', 'i', $string);
+        $string = str_replace('İ', 'I', $string);
+
+        $slug = preg_replace('/[^A-Za-z0-9-]+/', '-', strtolower($string));
+
+
+        return $slug;
+    }
+
+
+    public static function namedSettings($settings)
+    {
+        $named_settings = [];
+        foreach ($settings as $setting) {
+            $named_settings[$setting->name] = $setting;
+        }
+        return $named_settings;
+    }
 
 
     public static function findProduct ($id) {
@@ -166,8 +166,8 @@ class Helper
         return Carbon::parse($date)->age;;
     }
     public static function wishlist($user){
-      $data = Basket::where('type','wish')->where('user_id',$user)->get();
-      return $data;
+        $data = Basket::where('type','wish')->where('user_id',$user)->get();
+        return $data;
     }
 
 
@@ -175,7 +175,7 @@ class Helper
         $now = Carbon::now();
         $difference = $created_at->diff($now)->days;
         return $difference;
-      }
+    }
 
 
     //CREATE ONCE A MONTH CRONJOB FOR DELETE
@@ -184,25 +184,25 @@ class Helper
     //     return  $SearchHistory ;
     // }
     public static function total_amount_for_payment($user){
-      $data= Basket::where('user_id',$user->id)->where('type','product')->where('sold',false)->get();
-      $total = 0;
-      foreach ($data as $item){
-          if (isset($item->discounted_price)){
-              $total+= $item->discounted_price*$item->quantity;
-          }else{
-              $total+= $item->price*$item->quantity;
-          }
-      }
-      return $total;
+        $data= Basket::where('user_id',$user->id)->where('type','product')->where('sold',false)->get();
+        $total = 0;
+        foreach ($data as $item){
+            if (isset($item->discounted_price)){
+                $total+= $item->discounted_price*$item->quantity;
+            }else{
+                $total+= $item->price*$item->quantity;
+            }
+        }
+        return $total;
     }
     public static function related_post($post_id){
-      $current_post = Post::find($post_id);
-       $data =  Post::where('type','post')->where('title','LIKE','%'.$current_post->title[0].'%')->where('content','like','%'.$current_post->title[0].'%')->orWhere('type','post')->limit(3)->get();
-       return $data;
+        $current_post = Post::find($post_id);
+        $data =  Post::where('type','post')->where('title','LIKE','%'.$current_post->title[0].'%')->where('content','like','%'.$current_post->title[0].'%')->orWhere('type','post')->limit(3)->get();
+        return $data;
     }
     public static function all_posts(){
-      $data = Post::where('type','post')->get();
-      return $data;
+        $data = Post::where('type','post')->get();
+        return $data;
     }
 
 
@@ -229,7 +229,7 @@ class Helper
     public static function relatedProducts ($id) {
 
         $related_products = Post::where('title','LIKE','%'.strtok($id).'%')->where('type','product')
-        ->orWhere('content','LIKE','%'.strtok($id).'%')->where('type','product')->limit(5)->get();
+            ->orWhere('content','LIKE','%'.strtok($id).'%')->where('type','product')->limit(5)->get();
 
         return $related_products ;
     }
@@ -254,10 +254,10 @@ class Helper
     public static function jsonToArray ($data) {
         $newData =  json_decode($data, true);
         return  $newData ;
-      }
+    }
 
 
-      public static function guestBasketControl($id,$qty){
+    public static function guestBasketControl($id,$qty){
         $qty = $qty === null ? 1 : $qty;
         $product = Post::find($id);
 
@@ -273,11 +273,11 @@ class Helper
 
             $cart = [
                 $id => collect([
-                            "id"=>$product->id,
-                            "quantity" => $qty,
-                            "price" => $price,
-                            "post"=>$product,
-                        ])
+                    "id"=>$product->id,
+                    "quantity" => $qty,
+                    "price" => $price,
+                    "post"=>$product,
+                ])
             ];
             return $cart;
         }
@@ -293,20 +293,20 @@ class Helper
             $price = $product->price;
         }
         $cart[$id] = collect([
-                        "id"=>$product->id,
-                        "quantity" => $qty,
-                        "price" => $price,
-                        "post"=>$product,
-                         ]);
+            "id"=>$product->id,
+            "quantity" => $qty,
+            "price" => $price,
+            "post"=>$product,
+        ]);
 
         return  $cart ;
-      }
+    }
 
-      public static function userBasketControl ($user,$id,$qty) {
+    public static function userBasketControl ($user,$id,$qty) {
         $qty = $qty === null ? 1 : $qty;
         $is_exist = Basket::where('user_id',$user->id)
-        ->where('post_id',$id)
-        ->where('sold',false)->where('type','product')->first();
+            ->where('post_id',$id)
+            ->where('sold',false)->where('type','product')->first();
         if($is_exist){
             $is_exist->quantity = $is_exist->quantity + $qty;
             $is_exist->save();
@@ -317,17 +317,9 @@ class Helper
             $data->post_id = $id;
             $data->save();
             return $data;
-      }
+        }
     }
 
-
-    public static function findCustomData ($type) {
-
-        $data = Custom::where('type', $type)->first();
-
-
-        return $data ;
-    }
 
     /*public static function isNewProduct($productId){
       $data = Post::find($productId);
@@ -341,7 +333,7 @@ class Helper
         if($user){
             $sessionCart = session()->get('cart');
             $dbCart = Basket::where('user_id',$user->id)
-            ->where('sold',false)->where('type','product')->get();
+                ->where('sold',false)->where('type','product')->get();
             $cart = $dbCart ? $dbCart : $sessionCart;
         }else{
             $cart = session()->get('cart');
@@ -370,16 +362,16 @@ class Helper
 
         }else{
             $cart = session()->get('cart');
-           if($cart){
-            foreach ($cart as $key => $product) {
-                if(isset($product['post']->discounted_price)){
-                    $price = $product['post']->discounted_price;
-                }else{
-                    $price = $product['post']->price;
+            if($cart){
+                foreach ($cart as $key => $product) {
+                    if(isset($product['post']->discounted_price)){
+                        $price = $product['post']->discounted_price;
+                    }else{
+                        $price = $product['post']->price;
+                    }
+                    $totalAmount += $price * $product['quantity'];
                 }
-                $totalAmount += $price * $product['quantity'];
             }
-           }
         }
 
 
@@ -405,20 +397,20 @@ class Helper
     }
 
     public static function singleCategory($category_id){
-      return Post::where('category_id', $category_id)->limit(16)->get();
+        return Post::where('category_id', $category_id)->limit(16)->get();
     }
 
     public static function randomProducts(){
-      return Post::where('type','product')->inRandomOrder()->get();
+        return Post::where('type','product')->inRandomOrder()->get();
     }
     public static function urlToCategory($itemId){
         return Category::where('slug',$itemId)->first();
     }
     public static function getGallery(){
-      return Gallery::paginate(8);
+        return Gallery::paginate(8);
     }
     public static function indirimliUrunler(){
-      return Post::where('type','product')->whereNotNull('discounted_price')->get();
+        return Post::where('type','product')->whereNotNull('discounted_price')->get();
     }
 
     public static function isNewProduct($productId){
@@ -432,7 +424,7 @@ class Helper
         return  Custom::all();
     }
     public static function recentPosts($limit){
-        return Post::wherE('type','post')->orderBy('created_at','desc')->limit($limit)->get();
+        return Post::where('type','post')->orderBy('created_at','desc')->limit($limit)->get();
     }
     public static  function getCurrentUrl() {
         $data =  (explode('/', url()->current()));
@@ -441,18 +433,31 @@ class Helper
         }
         return $data[3];
     }
-
     public static function getAllBlogs(){
         return Post::where('type','post')->get();
     }
+    public static function  getDateForHuman ($postDate,$makeArray = 0) {
+        $dateFull = Carbon::parse($postDate)->format('d F Y');
+        if ($makeArray){
+            $dateArray = explode(" ",$dateFull);
+            return $dateArray;
+        }
+        return $dateFull;
+    }
+    public static function getComments($postId){
+//        dd($postId->comments);
+    }
+    public static function findCustomData ($type) {
+
+        $dataUsingOnBlade = '';
+        $data = Custom::where('type', $type)->first();
+
+        if($data === null){
+            return false;
+        }else{
+            $dataUsingOnBlade =  json_decode($data->JsonData, true);
+            $dataUsingOnBlade = $dataUsingOnBlade[$type];
+        }
+        return $dataUsingOnBlade ;
+    }
 }
-
-
-
-
-
-
-
-
-
-

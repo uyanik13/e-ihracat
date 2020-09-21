@@ -49,9 +49,9 @@
 <body>
 @php($urlOfThis = \App\utils\Helpers\Helper::getCurrentUrl())
 <!-- site preloader start -->
-<div class="page-loader">
-    <div class="loader-in"></div>
-</div>
+{{--<div class="page-loader">--}}
+{{--    <div class="loader-in"></div>--}}
+{{--</div>--}}
 <!-- site preloader end -->
 
 <div class="pageWrapper">
@@ -163,7 +163,7 @@
                                         <li><a href="/export-radar">İhracat Radarı</a></li>
                                         <li><a href="#">Devlet Teşvikleri</a></li>
                                         <li><a href="#">Döviz Radarı</a></li>
-                                        <li><a href="faq.html">S.S.S</a></li>
+                                        <li><a href="faq">S.S.S</a></li>
                                     </ul>
                                 </li>
 

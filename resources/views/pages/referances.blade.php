@@ -1,4 +1,6 @@
-﻿@php($referances = \App\utils\Helpers\Helper::getReferances())
+﻿@php
+    $referances = Helper::findCustomData('References');
+@endphp
 		<!-- Content Start -->
 		<div id="contentWrapper">
 			<div class="page-title title-1">
@@ -22,7 +24,7 @@
 							<div class="clearfix"></div>
 							<div class="grid-list">
 								<div class="row">
-                                    @forelse(json_decode($referances[0]->JsonData, true)['brandLogos'] as $key => $referance)
+                                    @forelse($referances as $key => $referance)
 									<div class="cell-2 fx shop-item" data-animate="fadeInUp">
 										<div class="item-box">
 											<h3 class="item-title"><a href="{{$referance['url']}}">{{$referance['name']}} </a>

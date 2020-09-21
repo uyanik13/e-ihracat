@@ -95338,7 +95338,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/dashboard',
       name: 'dashboard',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(6), __webpack_require__.e(5), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, /*! ./views/DashboardAnalytics.vue */ "./resources/js/src/views/DashboardAnalytics.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(4), __webpack_require__.e(13), __webpack_require__.e(5), __webpack_require__.e(22)]).then(__webpack_require__.bind(null, /*! ./views/DashboardAnalytics.vue */ "./resources/js/src/views/DashboardAnalytics.vue"));
       },
       meta: {
         rule: 'user'
@@ -95471,7 +95471,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/components',
       name: 'components',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(2), __webpack_require__.e(6), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/site-settings/component/component-settings.vue */ "./resources/js/src/views/pages/admin/site-settings/component/component-settings.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(1), __webpack_require__.e(2), __webpack_require__.e(13), __webpack_require__.e(50)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/site-settings/component/component-settings.vue */ "./resources/js/src/views/pages/admin/site-settings/component/component-settings.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -100674,9 +100674,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuesax__WEBPACK_IMPORTED_MODULE_1
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\ugur_\Desktop\PROJECTS\e-ihracat\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Users\ugur_\Desktop\PROJECTS\e-ihracat\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Users\ugur_\Desktop\PROJECTS\e-ihracat\resources\assets\css\main.css */"./resources/assets/css/main.css");
+__webpack_require__(/*! C:\Users\Recep\Desktop\projects\e-ihracat\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\Recep\Desktop\projects\e-ihracat\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\Recep\Desktop\projects\e-ihracat\resources\assets\css\main.css */"./resources/assets/css/main.css");
 
 
 /***/ })

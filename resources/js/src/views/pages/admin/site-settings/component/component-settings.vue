@@ -7,50 +7,43 @@
         <general />
       </div>
     </vs-tab>
+
     <vs-tab icon-pack="feather" icon="flag" :label="!isSmallerScreen ? $t('HomePage') : ''">
       <div class="tab-change-pwd md:ml-4 md:mt-10 mt-4 ml-0">
         <HomePage />
       </div>
     </vs-tab>
-    <!-- <vs-tab icon-pack="feather" icon="flag" :label="!isSmallerScreen ? 'Bayiler' : ''">
-      <div class="tab-change-pwd md:ml-4 md:mt-10 mt-4 ml-0">
-        <Bayiler />
-      </div>
-    </vs-tab>
-    <vs-tab icon-pack="feather" icon="flag" :label="!isSmallerScreen ? 'Video Galeri' : ''">
-      <div class="tab-change-pwd md:ml-4 md:mt-10 mt-4 ml-0">
-        <VideoGallery />
-      </div>
-    </vs-tab> -->
-    <!--    <vs-tab icon-pack="feather" icon="icon-info" :label="!isSmallerScreen ? 'Info' : ''">-->
-    <!--      <div class="tab-info md:ml-4 md:mt-0 mt-4 ml-0">-->
-    <!--        <user-settings-info />-->
-    <!--      </div>-->
-    <!--    </vs-tab>-->
-    <!--    <vs-tab icon-pack="feather" icon="icon-github" :label="!isSmallerScreen ? 'Social Links' : ''">-->
-    <!--      <div class="tab-social-links md:ml-4 md:mt-0 mt-4 ml-0">-->
-    <!--        <user-settings-social-links />-->
-    <!--      </div>-->
-    <!--    </vs-tab>-->
-    <!--    <vs-tab icon-pack="feather" icon="icon-link-2" :label="!isSmallerScreen ? 'Connections' : ''">-->
-    <!--      <div class="tab-text md:ml-4 md:mt-0 mt-4 ml-0">-->
-    <!--        <user-settings-connections />-->
-    <!--      </div>-->
-    <!--    </vs-tab>-->
-    <!--    <vs-tab icon-pack="feather" icon="icon-bell" :label="!isSmallerScreen ? 'Notifications' : ''">-->
-    <!--      <div class="tab-text md:ml-4 md:mt-0 mt-4 ml-0">-->
-    <!--        <user-settings-notifications />-->
-    <!--      </div>-->
-    <!--    </vs-tab>-->
+
+      <vs-tab icon-pack="feather" icon="flag" :label="!isSmallerScreen ? $t('AboutUs') : ''">
+          <div class="tab-change-pwd md:ml-4 md:mt-10 mt-4 ml-0">
+              <AboutUs />
+          </div>
+      </vs-tab>
+
+      <vs-tab icon-pack="feather" icon="flag" :label="!isSmallerScreen ? $t('Referances') : ''">
+          <div class="tab-change-pwd md:ml-4 md:mt-10 mt-4 ml-0">
+              <Referances />
+          </div>
+      </vs-tab>
+
+      <vs-tab icon-pack="feather" icon="flag" :label="!isSmallerScreen ? $t('Faq') : ''">
+          <div class="tab-change-pwd md:ml-4 md:mt-10 mt-4 ml-0">
+              <Faq />
+          </div>
+      </vs-tab>
+
   </vs-tabs>
+
 </template>
 
 <script>
 import General from "./General.vue"
 import VideoGallery from "./Video-Gallery"
+import AboutUs from "./AboutUs"
 import HomePage from "./HomePage"
 import Bayiler from "./Bayiler"
-
+import Referances from "./Referances"
+import Faq from "./Faq"
 
 export default {
   components: {
@@ -58,6 +51,9 @@ export default {
     General,
     HomePage,
     Bayiler,
+      AboutUs,
+      Referances,
+      Faq,
   },
   data() {
     return {

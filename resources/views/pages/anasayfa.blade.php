@@ -1,7 +1,6 @@
 ﻿@php
 $posts = Helper::getAllBlogs();
 $HomeUnderMenuSlider = Helper::findCustomData('HomeUnderMenuSlider');
-dd();
 @endphp
     <!-- Header End -->
 

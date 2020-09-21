@@ -95,62 +95,17 @@
 							</p>
 							<h3 class="block-head">Hizmetlerimize Göz Atın</h3>
 							<ul id="accordion" class="accordion">
-								<li>
-									<h3><a href="#"><span><i class="fa fa-flag"></i>PAZAR YERİ ENTEGRASONU</span></a>
-									</h3>
-									<div class="accordion-panel active">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet
-										purus quis metus
-										imperdiet fermentum. Suspendisse hendrerit id lacus id lobortis. Vestibulum quam
-										elit, dapibus ac
-										augue ut, porttitor viverra dui. Pellentesque imperdiet purus quis metus
-										imperdiet fermentum.
-										Suspendisse hendrerit id lacus id lobortis.
-									</div>
-								</li>
-								<li>
-									<h3><a href="#"><span><i class="fa fa-flag"></i>GLOBAL PAZARLAMA</span></a></h3>
-									<div class="accordion-panel">
-										Dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet purus quis
-										metus imperdiet
-										fermentum. Suspendisse hendrerit id lacus id lobortis. Vestibulum quam elit,
-										dapibus ac augue ut,
-										porttitor viverra dui. Pellentesque imperdiet purus quis metus imperdiet
-										fermentum. Suspendisse
-										hendrerit id lacus id lobortis. Vestibulum quam elit, apibus ac augue ut,
-										porttitor viverra dui.
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3><a href="#"><span><i class="fa fa-flag"></i>ONLİNE PAZARYERLERİ</span></a></h3>
-									<div class="accordion-panel">
-										Pellentesque imperdiet purus quis metus imperdiet fermentum. Suspendisse
-										hendrerit id lacus id
-										lobortis. Vestibulum quam elit, apibus ac augue ut, porttitor viverra dui. Lorem
-										ipsum dolor sit
-										amet, consectetur adipiscing elit. Pellentesque imperdiet purus quis metus
-										imperdiet fermentum.
-										Suspendisse hendrerit id lacus id lobortis. Vestibulum quam elit, apibus ac
-										augue ut, porttitor
-										viverra dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
-								</li>
-								<li>
-									<h3><a href="#"><span><i class="fa fa-flag"></i>HUKUK & LOJİSTİK
-												FAALİYETLERİ</span></a></h3>
-									<div class="accordion-panel">
-										Pellentesque imperdiet purus quis metus imperdiet fermentum. Suspendisse
-										hendrerit id lacus id
-										lobortis. Vestibulum quam elit, apibus ac augue ut, porttitor viverra dui. Lorem
-										ipsum dolor sit
-										amet, consectetur adipiscing elit. Pellentesque imperdiet purus quis metus
-										imperdiet fermentum.
-										Suspendisse hendrerit id lacus id lobortis. Vestibulum quam elit, apibus ac
-										augue ut, porttitor
-										viverra dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-									</div>
-								</li>
+{{--                                @foreach ($findServiceswithoutId as $service)--}}
+{{--                                    <li>--}}
+{{--                                        <h3><a href="#"><span><i class="fa fa-flag"></i>{{$service->title}}</span></a>--}}
+{{--                                        </h3>--}}
+{{--                                        <div class="accordion-panel active">--}}
+{{--                                            @php--}}
+{{--                                                echo substr($service->content,0,150);--}}
+{{--                                            @endphp--}}
+{{--                                        </div>--}}
+{{--                                    </li>--}}
+{{--                                @endforeach--}}
 							</ul>
 							<hr class="hr-style4">
 							<div class="clearfix"></div>
