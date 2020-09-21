@@ -124,18 +124,27 @@ class ApiPostController extends ApiController
       }
 
 
+      $allFiles = $request->session()->get('userAdditionalFiles');
+      $options = $request->options;
+      $options['gallery'] = $allFiles;
 
 
-        $postData->fill($request->all());
-        if($postData->isClean()){
-           return response()->json(['error'=> 'Please Change At Least One Data']);
-        }
 
-        $allFiles = $request->session()->get('userAdditionalFiles');
-        $options = $request->options;
-        $options['gallery'] = $allFiles;
-        $postData->options = json_encode($options);
-        $postData->save();
+      $thumbnail = $request->thumbnail == $postData->thumbnail ? $request->thumbnail : Helper::PostImageHelper(Str::slug(request('title')), $request->thumbnail, 'post');
+
+      $postData->title = $postData->title === request('title') ? $postData->title : request('title');
+      $postData->content = $postData->content === $request->input('content') ? $postData->content : $request->input('content');
+      $postData->seo_title = $postData->seo_title === request('seo_title') ? $postData->title : request('seo_title');
+      $postData->price = $postData->price === request('price') ? $postData->price : request('price');
+      $postData->discounted_price = $postData->discounted_price === request('discounted_price') ? $postData->discounted_price : request('discounted_price');
+      $postData->quantity = $postData->quantity === request('quantity') ? $postData->quantity : request('quantity');
+      $postData->seo_description = $postData->title === request('seo_description') ? $postData->title : request('seo_description');
+      $postData->category_id = $postData->category_id === request('category_id') ? $postData->category_id : request('category_id');
+      $postData->status = $postData->status === request('status') ? $postData->status : request('status');
+      $postData->options = $postData->options === json_encode($options) ? $postData->options : json_encode($options);
+      $postData->thumbnail = $thumbnail;
+      $postData->save();
+
 
         $postData->save();
         $request->session()->forget('userAdditionalFiles');

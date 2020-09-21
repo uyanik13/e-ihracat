@@ -119,6 +119,13 @@ export default [
         i18n: 'Posts'
       },
       {
+        url:'/panel/services',
+        slug: '/panel/services',
+        name: 'services',
+        icon: 'FileTextIcon',
+        i18n: 'services'
+      },
+      {
         url:'/panel/categories',
         slug: '/panel/categories',
         name: 'Categories',
@@ -134,29 +141,29 @@ export default [
       }
     ]
   },
-  {
-    url:'/panel/e-commerce',
-    name: 'eCommerce',
-    icon: 'ShoppingCartIcon',
-    i18n: 'ECommerce',
-    submenu:[
-      {
-        url:'/panel/products',
-        slug: '/panel/products',
-        name: 'products',
-        icon: 'FileTextIcon',
-        i18n: 'Products'
-      },
-      {
-        url: '/panel/orders',
-        slug: '/panel/orders',
-        name: 'Orders',
-        icon: 'PackageIcon',
-        i18n: 'Orders'
-      }
+//   {
+//     url:'/panel/e-commerce',
+//     name: 'eCommerce',
+//     icon: 'ShoppingCartIcon',
+//     i18n: 'ECommerce',
+//     submenu:[
+//       {
+//         url:'/panel/products',
+//         slug: '/panel/products',
+//         name: 'products',
+//         icon: 'FileTextIcon',
+//         i18n: 'Products'
+//       },
+//       {
+//         url: '/panel/orders',
+//         slug: '/panel/orders',
+//         name: 'Orders',
+//         icon: 'PackageIcon',
+//         i18n: 'Orders'
+//       }
 
-    ]
-  }
+//     ]
+//   }
 
 
 ]

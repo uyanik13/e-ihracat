@@ -131,6 +131,19 @@ class Helper
         $services = Post::where('user_id', $id)->where('type','service')->get();
         return $services;
     }
+
+    public static function findServiceswithoutId () {
+        $services = Post::where('type','service')->get();
+        return $services;
+    }
+
+    public static function htmlEntityWithSubStr ($str, int $first, int $last) {
+        $string = htmlspecialchars($str);
+        $string2 = htmlspecialchars($string);
+        $sub =   mb_substr($string, $first, $last);
+        return $string2;
+    }
+
     public static function findPosts ($id) {
         $posts = Post::where('user_id', $id)->where('type','post')->get();
         return $posts;
@@ -323,11 +336,19 @@ class Helper
 
     public static function findCustomData ($type) {
 
+        $dataUsingOnBlade = '';
         $data = Custom::where('type', $type)->first();
 
-
-        return $data ;
+        if($data === null){
+            return null;
+        }else{
+            $dataUsingOnBlade =  json_decode($data->JsonData, true);
+            $dataUsingOnBlade = $dataUsingOnBlade[$type];
+        }
+        return $dataUsingOnBlade ;
     }
+
+
 
     /*public static function isNewProduct($productId){
       $data = Post::find($productId);
@@ -444,6 +465,17 @@ class Helper
 
     public static function getAllBlogs(){
         return Post::where('type','post')->get();
+    }
+
+
+    public static function  getDateForHuman ($postId,$makeArray = 0) {
+        $data = Post::find($postId);
+        $dateFull = Carbon::parse($data->created_at)->format('d F Y');
+        if ($makeArray){
+            $dateArray = explode(" ",$dateFull);
+            return $dateArray;
+        }
+        return $dateFull;
     }
 }
 

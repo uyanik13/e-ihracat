@@ -98,15 +98,7 @@ const router = new Router({
             rule: 'user'
           }
         },
-        {
-          path: '/panel/cases',
-          name: 'Cases',
-          component: () => import('@/views/pages/user/case/cases.vue'),
-          meta: {
-            pageTitle: 'Cases',
-            rule: 'user'
-          }
-        },
+
         {
           path: '/panel/following',
           name: 'Following',
@@ -220,6 +212,15 @@ const router = new Router({
             rule: 'admin'
           }
         }, // FOR USERS & ADMIN
+        {
+            path: '/panel/services',
+            name: 'services',
+            component: () => import('@/views/pages/admin/content/service/services.vue'),
+            meta: {
+              pageTitle: 'services',
+              rule: 'admin'
+            }
+          },
         {
           path: '/panel/categories',
           name: 'categories',

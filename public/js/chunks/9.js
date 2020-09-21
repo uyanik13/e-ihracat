@@ -8881,6 +8881,12 @@ __webpack_require__.r(__webpack_exports__);
     icon: 'FileTextIcon',
     i18n: 'Posts'
   }, {
+    url: '/panel/services',
+    slug: '/panel/services',
+    name: 'services',
+    icon: 'FileTextIcon',
+    i18n: 'services'
+  }, {
     url: '/panel/categories',
     slug: '/panel/categories',
     name: 'Categories',
@@ -8892,24 +8898,6 @@ __webpack_require__.r(__webpack_exports__);
     name: 'Forms',
     icon: 'PauseIcon',
     i18n: 'Forms'
-  }]
-}, {
-  url: '/panel/e-commerce',
-  name: 'eCommerce',
-  icon: 'ShoppingCartIcon',
-  i18n: 'ECommerce',
-  submenu: [{
-    url: '/panel/products',
-    slug: '/panel/products',
-    name: 'products',
-    icon: 'FileTextIcon',
-    i18n: 'Products'
-  }, {
-    url: '/panel/orders',
-    slug: '/panel/orders',
-    name: 'Orders',
-    icon: 'PackageIcon',
-    i18n: 'Orders'
   }]
 }]);
 
