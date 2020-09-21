@@ -138,7 +138,7 @@ export default {
   },
   data () {
     return {
-      type: 'post',
+      type: 'service',
       thumbnail :null,
       id: null,
       title:'',
@@ -214,7 +214,7 @@ export default {
       this.seo_description = i18n.t('seo_description')
       this.thumbnail = 'https://via.placeholder.com/500.png'
       this.status = 1
-      this.category_id = 2
+      this.category_id = 3
     },
     submitData () {
       this.$vs.loading()
@@ -230,7 +230,6 @@ export default {
             thumbnail: this.thumbnail,
             status: this.status,
             type: this.type,
-            commitType: 'myPosts'
 
           }
           if (this.id !== null && this.id >= 0) {

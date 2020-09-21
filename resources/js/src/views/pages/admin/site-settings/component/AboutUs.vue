@@ -1,7 +1,6 @@
 <template>
   <div class="vx-col w-full md:w-12/12 mb-base">
       <vs-tabs position="left" color="danger">
-
         <vs-tab label="Anasayfa Menu Alti Slider" >
           <vx-card no-shadow v-for="(option,index)  in HomeUnderMenuSlider" :key="index">
             <div  class="vx-col  w-full md:w-12/12 mb-base">
@@ -20,48 +19,6 @@
           </div>
         </vs-tab>
 
-
-        <vs-tab label="Anasayfa About Us Yazisi" >
-          <vx-card>
-               <div class="flex flex-wrap items-center mb-5 mt-5 h-full">
-                      <span>{{$t('Content')}}</span>
-                      <quill-editor v-model="homePageDesc" :label="$t('Content')" height="600" />
-                      <span class="text-danger text-sm" v-show="errors.has('Content')">{{ errors.first('Content') ? $t('Content') : ''}}</span>
-                    </div>
-          </vx-card>
-           <vs-button class="ml-auto mt-2" @click="SaveData('homePageDesc')">{{$t('save')}}</vs-button>
-        </vs-tab>
-
-
-        <vs-tab label="Hizli Randevu Hizmet Listesi" >
-          <vx-card no-shadow v-for="(option,index)  in QuickServiceList" :key="index">
-            <div  class="vx-col  w-full md:w-12/12 mb-base">
-              <vs-input :label="'Hizmet Adi'"  v-model="option.key" class="mt-5 w-full"   v-validate="'required| min:3'"/>
-              <vs-button class="bg-danger" @click="removeThis(index,'QuickServiceList')" >{{$t('RemoveThis')}}</vs-button>
-            </div>
-            <vs-divider></vs-divider>
-          </vx-card>
-          <vs-button class="mr-6" @click="addOptions('QuickServiceList')" >{{$t('AddNew')}}</vs-button>
-          <div class="flex flex-wrap items-center justify-end">
-            <vs-button class="ml-auto mt-2" @click="SaveData('QuickServiceList')">{{$t('save')}}</vs-button>
-          </div>
-        </vs-tab>
-
-
-        <vs-tab label="4Lu Box Sayilari" >
-          <vx-card >
-              <vs-input :label="'Toplam Uyeler'"  v-model="fourBox.allusers" class="mt-5 w-full"  />
-                 <vs-divider></vs-divider>
-              <vs-input :label="'Toplam Imalatcı'"  v-model="fourBox.providers" class="mt-5 w-full"  />
-                 <vs-divider></vs-divider>
-              <vs-input :label="'Istihdam'"  v-model="fourBox.employments" class="mt-5 w-full"  />
-              <vs-input :label="'E-ticaret Hacmi'"  v-model="fourBox.exportvolume" class="mt-5 w-full"  />
-               <div class="flex flex-wrap items-center justify-end">
-                <vs-button class="ml-auto mt-2" @click="SaveData('fourBox')">{{$t('save')}}</vs-button>
-          </div>
-          </vx-card>
-        </vs-tab>
-
       </vs-tabs>
   </div>
 
@@ -72,15 +29,10 @@ import flatPickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
 import vSelect from 'vue-select'
 
-import 'quill/dist/quill.core.css'
-import 'quill/dist/quill.snow.css'
-import 'quill/dist/quill.bubble.css'
-import { quillEditor } from 'vue-quill-editor'
 
 export default {
   components: {
     flatPickr,
-    quillEditor,
     vSelect
   },
 
@@ -96,21 +48,8 @@ export default {
           url: ''
         }
       ],
-      QuickServiceList:
-      [
-        {
-          key: '',
-        }
-      ],
-      fourBox :
-        {
-          allusers: '',
-          providers: '',
-          employments: '',
-          exportvolume: ''
-        },
 
-        homePageDesc : '',
+
 
     }
   },

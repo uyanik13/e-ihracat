@@ -47,11 +47,11 @@
 
 
 <body>
-@php($urlOfThis = \App\utils\Helpers\Helper::getCurrentUrl())
+
 <!-- site preloader start -->
-<div class="page-loader">
+{{-- <div class="page-loader">
     <div class="loader-in"></div>
-</div>
+</div> --}}
 <!-- site preloader end -->
 
 <div class="pageWrapper">
@@ -124,16 +124,16 @@
                         <!-- top navigation menu start -->
                         <nav class="top-nav mega-menu">
                             <ul>
-                                <li @if($urlOfThis == 'anasayfa' ) class="selected"@endif>
+                                <li @if($category == 'anasayfa' ) class="selected"@endif>
                                     <a href="/"><i class="fa fa-home"></i><span>Anasayfa</span></a>
                                 </li>
 
-                                <li @if( $urlOfThis == 'about-us' )class="selected" @endif>
+                                <li @if( $category == 'about-us' )class="selected" @endif>
                                     <a href="/about-us"><i
                                             class="fa fa-building-o"></i><span>Hakkımızda</span></a>
                                 </li >
 
-                                <li @if( $urlOfThis == 'our-services' )class="selected" @endif>
+                                <li @if( $category == 'our-services' )class="selected" @endif>
                                     <a href="javascript:void(0);"><i
                                             class="fa fa-gift"></i><span>Hizmetler</span></a>
                                     <ul>
@@ -144,20 +144,20 @@
                                     </ul>
                                 </li>
 
-                                <li @if( $urlOfThis == 'partner-list' )class="selected" @endif >
+                                <li @if( $category == 'partner-list' )class="selected" @endif >
                                     <a href="/partner-list"><i class="fa fa-copy"></i><span>Partner</span></a>
                                 </li >
 
-                                <li @if( $urlOfThis == 'referances' )class="selected" @endif>
+                                <li @if( $category == 'referances' )class="selected" @endif>
                                     <a href="/referances"><i class="fa fa-book"></i><span>Referanslar</span></a>
                                 </li>
 
-                                <li @if( $urlOfThis == 'blog' )class="selected" @endif>
+                                <li @if( $category == 'blog' )class="selected" @endif>
                                     <a href="/blog"><i class="fa fa-newspaper-o"></i><span>Blog
 												<b class="menu-hint success">Yeni</b></span></a>
                                 </li>
 
-                                <li @if( $urlOfThis == 'export-radar' )class="selected" @endif><a href="javascript:void(0);"><i class="fa fa-question"></i><span>Bilgi
+                                <li @if( $category == 'export-radar' )class="selected" @endif><a href="javascript:void(0);"><i class="fa fa-question"></i><span>Bilgi
 												Bankası</span></a>
                                     <ul>
                                         <li><a href="/export-radar">İhracat Radarı</a></li>
@@ -167,10 +167,10 @@
                                     </ul>
                                 </li>
 
-                                <li @if( $urlOfThis == 'contact' )class="selected" @endif><a href="/contact"><i class="fa fa-phone"></i><span>İletişim</span></a>
+                                <li @if( $category == 'contact' )class="selected" @endif><a href="/contact"><i class="fa fa-phone"></i><span>İletişim</span></a>
                                 </li>
 
-                                <li @if( $urlOfThis == 'appointment-form' )class="selected" @endif><a href="/appointment-form"><i
+                                <li @if( $category == 'appointment-form' )class="selected" @endif><a href="/appointment-form"><i
                                             class="fa fa-calendar-check-o"></i><span>Randevu</span></a>
                                 </li>
                             </ul>

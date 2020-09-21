@@ -260,7 +260,7 @@ class PostSeeder extends Seeder
             ];
 
         Post::insert($posts);
-        Post::factory(10)->create();
+       // Post::factory(10)->create();
         //factory(Post::class, 100)->create();
     }
 }

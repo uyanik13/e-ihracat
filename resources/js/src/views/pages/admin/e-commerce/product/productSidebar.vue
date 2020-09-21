@@ -319,7 +319,7 @@ export default {
             type: this.type
           }
 
-          if (this.dataId !== null && this.dataId >= 0) {
+          if (this.id !== null && this.id >= 0) {
             this.$store.dispatch('post/updateItem', obj).then((response) => {
               this.$vs.loading.close()
               this.$vs.notify({

@@ -119,10 +119,6 @@ export default {
         .then((response) => {
           // console.log('POST ACTION - POSTS:',response.data.posts)
           response.data.posts.forEach(element => {
-            // const page = response.data.posts.filter(element => element.type === 'page');
-            // const post = response.data.posts.filter(element => element.type === 'post');
-            // const product = response.data.posts.filter(element => element.type === 'product');
-            // const certificate = response.data.posts.filter(element => element.type === 'certificate'):
             const service = response.data.posts.filter(element => element.type === 'service')
             commit('SET_MyServices', service)
           })

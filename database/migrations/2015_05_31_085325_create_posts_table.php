@@ -27,7 +27,7 @@ class CreatePostsTable extends Migration
       $table->string('slug')->nullable();
       $table->string('seo_title')->nullable();
       $table->string('seo_description')->nullable();
-      $table->enum('type', ['post', 'page', 'product'])->default('post');
+      $table->enum('type', ['post', 'page', 'product','service'])->default('post');
       $table->boolean('status');
       $table->string('thumbnail')->nullable();
       $table->timestamps();
