@@ -1,6 +1,10 @@
-﻿@php($blogs = \App\utils\Helpers\Helper::getAllBlogs())
-
+﻿@php
+$posts = Helper::getAllBlogs();
+$HomeUnderMenuSlider = Helper::findCustomData('HomeUnderMenuSlider');
+dd();
+@endphp
     <!-- Header End -->
+
 
     <!-- Content Start -->
     <div id="contentWrapper">
@@ -9,82 +13,43 @@
         <div class="tp-banner-container">
             <div class="tp-banner">
                 <ul>
-                    <li data-transition="fade" data-slotamount="7">
-                        <img alt="" src="{{asset('theme/images/slider/dummy.png')}}" data-lazyload="{{asset('theme/images/slider/slider-0/s4.jpg')}}"
-                             data-bgposition="left center" data-kenburns="on" data-duration="14000"
-                             data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130"
-                             data-bgpositionend="right center">
 
-                        <div class="caption fade " data-autoplay="true" data-autoplayonlyfirsttime="true"
-                             data-nextslideatend="false" data-x="470" data-y="center" data-speed="500"
-                             data-start="10" data-easing="easeOutBack">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/OO32GImSLVo"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="caption slide-head tp-resizeme witTxt doItWhite" data-x="0" data-y="center"
-                             data-speed="500" data-start="1700" data-easing="easeOutBack" width="300">
-                            Hangi Şirketler <br>
-                            E-İhracat Yapabilir ? <br>
-                            Detaylar Videoda!
-                        </div>
-                    </li>
+                    @isset ($HomeUnderMenuSlider->JsonData)
+                    @php
 
-                    <li data-transition="fade" data-slotamount="7">
-                        <img alt="" src="{{asset('theme/images/slider/dummy.png')}}" data-lazyload="{{asset('theme/images/slider/slider-0/s3.jpg')}}"
-                             data-bgposition="left center" data-kenburns="on" data-duration="14000"
-                             data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130"
-                             data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130"
-                             data-bgpositionend="right center">
+                        $data =  json_decode($HomeUnderMenuSlider->JsonData, true);
+                    @endphp
 
-                        <div class="caption slide-head tp-resizeme witTxt doLightBlack" data-x="center" data-y="150"
-                             data-speed="500" data-start="1700" data-easing="easeOutBack">Dünya Büyük Bir Pazar
-                        </div>
-                        <div class="caption large-title tp-resizeme witTxt doLightBlack" data-x="center"
-                             data-y="200" data-speed="700" data-start="1900" data-easing="easeOutBack">Globalleşme
-                            İçin Hevesli
-                            Olun!
-                        </div>
-                        <div class="caption larger-text tp-resizeme witTxt" data-x="center" data-y="300"
-                             data-speed="700" data-start="2300" data-easing="easeOutBack"><a href="#"
-                                                                                             class="btn btn-md btn-skew themeColorBtn">Detaylar</a>
-                        </div>
-                    </li>
+                    @foreach ($data['HomeUnderMenuSlider'] as  $value)
 
-                    <li data-transition="fade" data-slotamount="7">
-                        <img alt="" src="{{asset('theme/images/slider/dummy.png')}}" data-lazyload="{{asset('theme/images/slider/slider-0/s5.jpg')}}"
-                             data-duration="1000">
-                        <div class="caption large-text tp-resizeme witTxt"
-                             style="text-transform: uppercase;font-size:30px" data-x="0" data-y="400"
-                             data-speed="600" data-start="1500" data-easing="Power4.easeOut" data-splitin="chars"
-                             data-splitout="chars" data-elementdelay="0.05" data-endelementdelay="0.05"
-                             data-endspeed="300" data-endeasing="Power1.easeOut">Hevesli Olun!</div>
-                        <div class="caption large-title tp-resizeme witTxt" data-x="0" data-y="440" data-speed="600"
-                             data-start="1600" data-easing="Power4.easeOut" data-splitin="chars"
-                             data-splitout="chars" data-elementdelay="0.05" data-endelementdelay="0.05"
-                             data-endspeed="300" data-endeasing="Power1.easeOut">Dünya Büyük Bir Pazar</div>
-                        <div class="caption lft tp-resizeme" data-x="30" data-y="0" data-speed="600"
-                             data-start="1600">
-                            <div
-                                style="background:#fff;padding:20px;line-height:40px;color:#777;text-transform:uppercase;font-size:20px;margin-top:33px">
-                                Pazaryeri
-                                Entegrasyonu</div>
-                        </div>
-                        <div class="caption lft tp-resizeme" data-x="100" data-y="0" data-speed="600"
-                             data-start="1800">
-                            <div
-                                style="background:#b8b8b8;padding:20px;line-height:40px;color:#fff;text-transform:uppercase;font-size:20px;margin-top:121px">
-                                Global
-                                Pazarlama</div>
-                        </div>
-                        <div class="caption lft tp-resizeme" data-x="170" data-y="0" data-speed="600"
-                             data-start="2000">
-                            <div
-                                style="background:#000;padding:35px 20px;line-height:40px;color:#fff;text-transform:uppercase;font-size:20px;margin-top:210px">
-                                Online Pazar Yerleri</div>
-                        </div>
-                    </li>
+
+                        <li data-transition="fade" data-slotamount="7">
+                            <img alt="" src="{{$value['image']}}" data-lazyload="{{$value['image']}}"
+                                 data-bgposition="left center" data-kenburns="on" data-duration="14000"
+                                 data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130"
+                                 data-bgpositionend="right center">
+
+                            <div class="caption fade " data-autoplay="true" data-autoplayonlyfirsttime="true"
+                                 data-nextslideatend="false" data-x="470" data-y="center" data-speed="500"
+                                 data-start="10" data-easing="easeOutBack">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/OO32GImSLVo"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                            </div>
+                            <div class="caption slide-head tp-resizeme witTxt doItWhite" data-x="0" data-y="center"
+                                 data-speed="500" data-start="1700" data-easing="easeOutBack" width="300">
+                                 {{$value['h1']}}
+                            </div>
+                        </li>
+
+
+                    @endforeach
+                @endisset
+
+
+
+
                 </ul>
             </div>
         </div>
@@ -297,18 +262,18 @@
                     </div>
                     <div class="cell-9">
                         <div class="homeGallery portfolio">
-                            @forelse($blogs as $blog)
+                            @forelse($posts as $post)
                                 <div>
                                 <div class="portfolio-item">
                                     <div class="img-holder">
                                         <div class="img-over">
-                                            <a href="blog-single/{{$blog->slug}}" class="fx link"><b
+                                            <a href="blog-single/{{$post->slug}}" class="fx link"><b
                                                     class="fa fa-link"></b></a>
                                         </div>
-                                        <img alt="" src="{{$blog->thumbnail}}">
+                                        <img alt="" src="{{$post->thumbnail}}">
                                     </div>
                                     <div class="name-holder">
-                                        <a href="blog-single/{{$blog->slug}}" class="project-name">{{$blog->title}}</a>
+                                        <a href="{{route('post.find',$post->slug)}}" class="project-name">{{$post->title}}</a>
                                     </div>
                                 </div>
                             </div>

@@ -55,7 +55,7 @@ export default {
   computed: {
     canSee () {
       //console.log('meun',this.to)
-      const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+      let userInfo = this.$store.state.user.currentUser
       this.$acl.check(userInfo.role)
       return this.to ? this.$acl.check(this.$router.match(this.to).meta.rule) : true
     },

@@ -5,11 +5,3 @@
  */
 
 import './src/main.js'
-import ExampleComponent from './components/ExampleComponent.vue' //Importing
-import Deneme from './components/Deneme.vue' //Importing
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('deneme', require('./components/Deneme.vue'));
-const app = new Vue({
-    el: '#app',
-    components:{ExampleComponent,Deneme}
-});
