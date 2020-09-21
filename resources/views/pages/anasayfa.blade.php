@@ -18,6 +18,7 @@ $faqs = Helper::findCustomData('Faq');
             <div class="tp-banner">
 
                 <ul>
+                    @isset($HomeUnderMenuSlider)
                             @foreach ($HomeUnderMenuSlider  as $key => $slide)
 
                                 <li data-index="rs-{{$key}}" data-transition="fade" data-slotamount="default"
@@ -131,7 +132,7 @@ $faqs = Helper::findCustomData('Faq');
 
                             </li>
                             @endforeach
-
+                        @endisset
 
 
 
@@ -311,9 +312,9 @@ $faqs = Helper::findCustomData('Faq');
                         <div class="form-input">
                             <label>Almak İstediğiniz Hizmet<span class="red"> *</span></label>
                             <select name="fastBookService" id="fastBookService">
-                                @foreach ($QuickServiceList as $key => $item)
+                               @isset($QuickServiceList) @foreach ($QuickServiceList as $key => $item)
                             <option value="{{$key}}">{{$item['key']}}</option>
-                                @endforeach
+                                @endforeach @endisset
                             </select>
                         </div>
                     </div>
@@ -524,7 +525,7 @@ $faqs = Helper::findCustomData('Faq');
             <div class="container">
                 <!-- staff item start -->
                 <div class="cell-2 fx" data-animate="fadeInDown" data-animation-delay="200">
-                <div class="fun-number">{{$fourBox['allusers']}}+</div>
+                <div class="fun-number">@isset($fourBox['allusers']){{$fourBox['allusers']}}+ @endisset</div>
                     <div class="fun-text main-bg">{{__('homepage.total_members')}}</div>
                     <div class="fun-icon"><i class="fa fa-leaf"></i></div>
                 </div>
@@ -532,7 +533,7 @@ $faqs = Helper::findCustomData('Faq');
 
                 <!-- staff item start -->
                 <div class="cell-2 fx" data-animate="fadeInDown" data-animation-delay="400">
-                    <div class="fun-number">{{$fourBox['providers']}}+</div>
+                    <div class="fun-number">@isset($fourBox['allusers']){{$fourBox['providers']}}+ @endisset</div>
                     <div class="fun-text main-bg">{{__('homepage.total_providers')}}</div>
                     <div class="fun-icon"><i class="fa fa-clock-o"></i></div>
                 </div>
@@ -540,10 +541,10 @@ $faqs = Helper::findCustomData('Faq');
 
                 <!-- staff item start -->
                 <div class="cell-4 fx" data-animate="fadeInDown">
-                    <div class="fun-title bold">{{__('homepage.our_mission')}} </span></div>
+                    <div class="fun-title bold"><span>{{__('homepage.our_mission')}} </span></div>
                 </div>
                 <div class="cell-2 fx" data-animate="fadeInDown" data-animation-delay="600">
-                    <div class="fun-number">{{$fourBox['employments']}}+</div>
+                    <div class="fun-number">@isset($fourBox['allusers']){{$fourBox['employments']}}+ @endisset</div>
                     <div class="fun-text main-bg">{{__('homepage.employments')}}</div>
                     <div class="fun-icon"><i class="fa fa-group"></i></div>
                 </div>
@@ -551,7 +552,7 @@ $faqs = Helper::findCustomData('Faq');
 
                 <!-- staff item start -->
                 <div class="cell-2 fx" data-animate="fadeInDown" data-animation-delay="800">
-                    <div class="fun-number">{{$fourBox['exportvolume']}} +</div>
+                    <div class="fun-number">@isset($fourBox['allusers']) {{$fourBox['exportvolume']}} + @endisset</div>
                     <div class="fun-text main-bg">{{__('homepage.e_export_volume')}}</div>
                     <div class="fun-icon"><i class="fa fa-bell"></i></div>
                 </div>

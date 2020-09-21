@@ -1,4 +1,6 @@
-﻿@php($referances = \App\utils\Helpers\Helper::getReferances())
+﻿@php
+    $references = \App\utils\Helpers\Helper::getReferances();
+@endphp
 		<!-- Content Start -->
 		<div id="contentWrapper">
 			<div class="page-title title-1">
@@ -22,19 +24,20 @@
 							<div class="clearfix"></div>
 							<div class="grid-list">
 								<div class="row">
-                                    @forelse(json_decode($referances[0]->JsonData, true)['brandLogos'] as $key => $referance)
+                                   @isset($references[0]) @forelse(json_decode($references[0]->JsonData, true)['brandLogos'] as $key => $reference)
 									<div class="cell-2 fx shop-item" data-animate="fadeInUp">
 										<div class="item-box">
-											<h3 class="item-title"><a href="{{$referance['url']}}">{{$referance['name']}} </a>
+											<h3 class="item-title"><a href="{{$reference['url']}}">{{$reference['name']}} </a>
 											</h3>
 											<div class="item-img">
-												<a href="{{$referance['url']}}"><img alt=""
-														src="{{$referance['image']}}"></a>
+												<a href="{{$reference['url']}}"><img alt=""
+														src="{{$reference['image']}}"></a>
 											</div>
 										</div>
 									</div>
                                         @empty
                                     @endforelse
+                                       @endisset
 								</div>
 							</div>
 							<div class="clearfix"></div>
