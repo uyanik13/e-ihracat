@@ -28,7 +28,7 @@ $popularPosts =Helper::recentPosts(3);
 							</p>
 
 							<ul id="accordion" class="accordion">
-                                @forelse($faqs as $key => $faq)
+                               @isset($faqs) @forelse($faqs as $key => $faq)
 								<li>
 									<h3 class="skew-25"><a href="#"><span class="skew25">{{$faq['question']}}</span></a></h3>
 									<div class="accordion-panel active">{{$faq['answer']}}
@@ -36,6 +36,7 @@ $popularPosts =Helper::recentPosts(3);
 								</li>
                                     @empty
                                 @endforelse
+                                   @endisset
 							</ul>
 						</div>
 						<aside class="cell-3 right-sidebar">

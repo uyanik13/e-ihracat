@@ -148,8 +148,8 @@
                                     <a href="/partner-list"><i class="fa fa-copy"></i><span>Partner</span></a>
                                 </li >
 
-                                <li @if( $category == 'referances' )class="selected" @endif>
-                                    <a href="/referances"><i class="fa fa-book"></i><span>Referanslar</span></a>
+                                <li @if( $category == 'references' )class="selected" @endif>
+                                    <a href="/references"><i class="fa fa-book"></i><span>Referanslar</span></a>
                                 </li>
 
                                 <li @if( $category == 'blog' )class="selected" @endif>
@@ -163,7 +163,7 @@
                                         <li><a href="/export-radar">İhracat Radarı</a></li>
                                         <li><a href="#">Devlet Teşvikleri</a></li>
                                         <li><a href="#">Döviz Radarı</a></li>
-                                        <li><a href="faq.html">S.S.S</a></li>
+                                        <li><a href="faq">S.S.S</a></li>
                                     </ul>
                                 </li>
 
