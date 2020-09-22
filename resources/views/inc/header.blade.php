@@ -1,54 +1,7 @@
 @php
     $findServiceswithoutId5 = Helper::findServiceswithoutId5();
 @endphp
-<!DOCTYPE html>
-<!--[if IE 7]><html class="ie ie7 ltie8 ltie9" lang="en-US"><![endif]-->
-<!--[if IE 8]><html class="ie ie8 ltie9" lang="en-US"><![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
-<html lang="{{ app()->getLocale() }}">
-<!--<![endif]-->
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <input type="hidden" id="meta_csrf"  value="{{csrf_token()}}">
-    @if ($page)
-        <title>{{ $page->seo_title }}</title>
-        <meta name="description" content="{{ $page->seo_description }}"/>
-    @else
-        <title>test</title>
-        <meta name="description" content="test"/>
-@endif
-
-<!-- Favicon -->
-
-    <!-- Mobile Meta -->
-
-    <link rel="shortcut icon" href="{{asset('theme/images/favicon.ico')}}">
-
-    <!-- CSS StyleSheets -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-          href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800&amp;amp;subset=latin,latin-ext">
-    <link rel="stylesheet" href="{{asset('theme/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/css/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/css/prettyPhoto.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/css/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/rs-plugin/css/settings.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/css/custom.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/css/responsive.css')}}">
-    <!--[if lt IE 9]>
-    <link rel="stylesheet" href="{{asset('theme/css/ie.css')}}">
-    <script type="text/javascript" src="{{asset('theme/js/html5.js')}}"></script>
-    <![endif]-->
-    <script src="{{asset('assets/js/custom.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('theme/css/skins/defaultskin.css')}}">
 </head>
-
-
-
 <body>
 
 <!-- site preloader start -->
