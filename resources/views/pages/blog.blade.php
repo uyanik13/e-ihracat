@@ -47,7 +47,7 @@
 										<p>
 											{!! substr($post->content,0,100) !!}
 									</article>
-									<a class="btn btn-md btn-3d main-bg fx animated fadeInUp readMoreBtn" href="#"
+									<a class="btn btn-md btn-3d main-bg fx animated fadeInUp readMoreBtn" href="{{route('post.find',$post->slug)}}"
 										data-animate="fadeInUp" data-animation-delay="100"
 										style="animation-delay: 100ms;">
 										<span><i class="fa fa-search-plus selectedI"></i>Devamını Oku</span>

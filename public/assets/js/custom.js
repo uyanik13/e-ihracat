@@ -52,6 +52,7 @@ function sortByKey (key) {
 
 }
 
+
 function live_post_search () {
   const element = document.getElementById('search_result_post')
 
@@ -61,7 +62,6 @@ function live_post_search () {
     element.style.display = 'block'
     element.innerHTML = ''
     element.innerText = 'Loading...'
-
     $.ajax({
 
       url: '/search/post',
