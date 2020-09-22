@@ -259,7 +259,7 @@ $faqs = Helper::findCustomData('Faq');
                             <ul>
 
 
-                                {!! html_entity_decode($homePageDesc) !!}
+                                {{ substr(strip_tags($homePageDesc),0,25)}}
 
 
 
@@ -289,6 +289,8 @@ $faqs = Helper::findCustomData('Faq');
     			background-color: #ffffffb8;
 				background-blend-mode: overlay;
 				background-size: cover;">
+            <form method="post" action="{{route('contact.form')}}" id="myform">
+                @csrf
             <div class="container">
                 <h3 class="center block-head">
 						<span class="main-color">
@@ -326,12 +328,13 @@ $faqs = Helper::findCustomData('Faq');
                     </div>
 
                     <div class="cell-12" style="text-align: center;">
-                        <a class="btn btn-md btn-skew themeColorBtn mb-15" href="#">
+                        <a class="btn btn-md btn-skew themeColorBtn mb-15"onclick="document.getElementById('myform').submit()">
                             <span><i class="fa fa-calendar selected"></i>Randevu Al</span>
                         </a>
                     </div>
                 </div>
             </div>
+            </form>
         </section>
 
         <!-- Services boxes style 1 start -->
@@ -342,10 +345,10 @@ $faqs = Helper::findCustomData('Faq');
                     @foreach ($findServiceswithoutId as $service)
                     <div class="cell-3 service-box-1 fx" data-animate="fadeInUp" data-animation-delay="200">
                         <div class="box-top">
-                            <img src="{{$service->title}}"  >
-                        <h3>{{$service->title}}</h3>
+                            <img src="{{$service->thumbnail}}"  >
+                        <h3>{{substr($service->title,0,15)}}</h3>
                             @php
-                            echo substr($service->content,0,50);
+                            echo substr(strip_tags($service->content),0,50);
                             @endphp
                             <a class="more-btn bold" href="our-services">Hizmet Detayları</a>
                         </div>

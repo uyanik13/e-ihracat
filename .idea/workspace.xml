@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e22528c8-32fe-430c-93e4-4a6684eef910" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Utils/Helpers/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Utils/Helpers/Helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/custom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/detail_components/blog-single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/detail_components/blog-single.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/detail_components/post.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/detail_components/post.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/blog.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/partials/blog-sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/partials/blog-sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/references.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/references.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/PostSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/PostSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/detail_components/service.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/detail_components/service.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/anasayfa.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/anasayfa.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,18 +207,18 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="373" y="15" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1600759043538" />
-    <state x="463" y="144" width="609" height="536" key="find.popup" timestamp="1600703066817">
+    <state x="463" y="144" width="611" height="536" key="find.popup" timestamp="1600763290741">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="463" y="144" width="609" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1600703066817" />
+    <state x="463" y="144" width="611" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1600763290741" />
     <state x="425" y="187" key="run.anything.popup" timestamp="1600759421998">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1600759421998" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1600758113101">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1600763620559">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600758113101" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600763620559" />
     <state x="539" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/-1920.9.1536.824@0.0.1920.1040" timestamp="1600717633940" />
   </component>
 </project>
