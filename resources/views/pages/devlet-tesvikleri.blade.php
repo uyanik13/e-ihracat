@@ -1,4 +1,12 @@
 
+@php
+    $url = url("https://ticaret.gov.tr/destekler/ihracat-destekleri");
+    $content = file_get_contents($url);
+
+
+
+@endphp
+
 <div id="contentWrapper">
     <div class="page-title title-1">
         <div class="container">
@@ -17,7 +25,7 @@
             <div class="container">
 				<div class="col-lg-3 col-md-4 mb-xs-35">
 					<!--=======  contact page side content  =======-->
-                    {!! html_entity_decode($page->content) !!}
+                    {!! html_entity_decode($content) !!}
 					<!--=======  End of contact form content =======-->
 				</div>
 			</div>
