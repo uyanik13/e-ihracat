@@ -24,7 +24,7 @@
 							<div class="clearfix"></div>
 							<div class="grid-list">
 								<div class="row">
-                                   @isset($references[0]) @forelse(json_decode($references[0]->JsonData, true)['brandLogos'] as $key => $reference)
+                                   @isset(json_decode($references[0]->JsonData, true)['brandLogos']) @forelse(json_decode($references[0]->JsonData, true)['brandLogos'] as $key => $reference)
 									<div class="cell-2 fx shop-item" data-animate="fadeInUp">
 										<div class="item-box">
 											<h3 class="item-title"><a href="{{$reference['url']}}">{{$reference['name']}} </a>

@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="{{asset('theme/css/ie.css')}}">
     <script type="text/javascript" src="{{asset('theme/js/html5.js')}}"></script>
     <![endif]-->
-
+    <script src="{{asset('assets/js/custom.js')}}"></script>
     <link rel="stylesheet" href="{{asset('theme/css/skins/defaultskin.css')}}">
 </head>
 

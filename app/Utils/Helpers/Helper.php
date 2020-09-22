@@ -466,6 +466,14 @@ class Helper
     public static function getAllBlogs(){
         return Post::where('type','post')->get();
     }
+    public static function getDateForHuman($postDate,$makeArray = 0){
+        $dateFull = Carbon::parse($postDate)->format('d F Y');
+        if ($makeArray){
+            $dateArray = explode(" ",$dateFull);
+            return $dateArray;
+        }
+        return $dateFull;
+    }
 
 
 

@@ -32,7 +32,7 @@ Route::any('panel/{path}', function () {
     Route::get('/category/{name}', [PageController::class, 'pageView'])->name('category.find');
     Route::get('/service/{name}', [PageController::class, 'pageView'])->name('service.find');
     Route::get('/product/{name}', [PageController::class, 'pageView'])->name('product.find');
-    Route::get('/post/{post}', [PageController::class, 'pageView'])->name('post.find');
+    Route::get('/blog-single/{post}', [PageController::class, 'pageView'])->name('post.find');
     Route::get('/haberler/{post}', [PageController::class, 'pageView'])->name('haber.show');
     Route::get('/payment/{id}', [PageController::class, 'pageView'])->name('payment.page');
     Route::post('/payment/make', [ApiPaymentController::class, 'create_payment'])->name('payment.make');
