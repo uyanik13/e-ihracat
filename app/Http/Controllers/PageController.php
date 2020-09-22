@@ -118,10 +118,13 @@ class PageController extends ApiController
       }else{
       }
   }
+  public function search_user(Request $request){
+      $user = User::where('name','LIKE', '%'.$request->search_text.'%')->limit(4)->get();
+      return response()->json(['message',$user]);
+  }
     public function filter_product (Request $request) {
         $search_text = $request->searchKey;
         if ($search_text === NULL) {
-            dd("as");
             $searchData= Post::where('type','product')->get();
         } else {
             switch ($search_text) {

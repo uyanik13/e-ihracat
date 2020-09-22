@@ -1,4 +1,13 @@
-﻿
+﻿@php
+$allUsers;
+if (isset($filterUsers)){
+    $allUsers = $filterUsers;
+}else{
+    $allUsers = \App\Models\User::all();
+}
+$popularUsers = \App\Models\User::inRandomOrder()->get();
+@endphp
+
 		<!-- Content Start -->
 		<div id="contentWrapper">
 			<div class="page-title title-1">
@@ -21,18 +30,9 @@
 					<div class="row">
 						<aside class="cell-3 right-sidebar">
 							<ul class="sidebar_widgets">
-								<li class="widget search-w fx" data-animate="fadeInLeft">
-									<h3 class="widget-head">Partner Arama</h3>
-									<div class="widget-content">
-										<form action="#" method="get">
-											<input type="text" name="t" id="t2-search" class="txt-box"
-												placeholder="Anahtar Kelime Girin..." />
-											<button type="submit" class="btn"><i class="fa fa-search"></i></button>
-										</form>
-									</div>
-								</li>
+								@include('pages.partials.partner_search')
 
-								<li class="widget r-posts-w fx" data-animate="fadeInLeft">
+								{{--<li class="widget r-posts-w fx" data-animate="fadeInLeft">
 									<h3 class="widget-head">Detaylı Filtreleme</h3>
 									<div class="widget-content">
 										<div class="cell-12 contact-form fx" data-animate="fadeInLeft" id="contact">
@@ -65,20 +65,21 @@
 											</form>
 										</div>
 									</div>
-								</li>
+								</li>--}}
 
 								<li class="widget r-posts-w fx" data-animate="fadeInLeft">
 									<h3 class="widget-head">En Çok Oylanan Partnerler</h3>
 									<div class="widget-content">
 										<ul>
+                                            @forelse($popularUsers as $popular)
 											<li>
 												<div class="post-img">
-													<img src="{{asset('theme/images/partner-details/partner-logo.jpg')}}" alt="">
+													<img src="{{$popular->avatar}}" alt="">
 												</div>
 												<div class="widget-post-info">
 													<h4>
 														<a href="our-services.blade.php">
-															E-İhracat Türkiye
+															{{$popular->name}}
 														</a>
 													</h4>
 													<div class="meta">
@@ -86,38 +87,9 @@
 													</div>
 												</div>
 											</li>
+                                                @empty
+                                            @endforelse
 
-											<li>
-												<div class="post-img">
-													<img src="{{asset('theme/images/partner-details/partner-logo.jpg')}}" alt="">
-												</div>
-												<div class="widget-post-info">
-													<h4>
-														<a href="our-services.blade.php">
-															E-İhracat Türkiye
-														</a>
-													</h4>
-													<div class="meta">
-														<a href="our-services.blade.php"><i class="fa fa-star"></i>15</a>
-													</div>
-												</div>
-											</li>
-
-											<li>
-												<div class="post-img">
-													<img src="{{asset('theme/images/partner-details/partner-logo.jpg')}}" alt="">
-												</div>
-												<div class="widget-post-info">
-													<h4>
-														<a href="our-services.blade.php">
-															E-İhracat Türkiye
-														</a>
-													</h4>
-													<div class="meta">
-														<a href="our-services.blade.php"><i class="fa fa-star"></i>15</a>
-													</div>
-												</div>
-											</li>
 										</ul>
 									</div>
 								</li>
@@ -128,157 +100,48 @@
 						</aside>
 						<div class="cell-9 blog-thumbs">
 							<div class="blog-posts partnerLists">
-								<div class="post-item fx" data-animate="fadeInLeft">
-									<div class="post-image">
-										<a href="partner-details.blade.php">
-											<div class="mask"></div>
-											<img src="{{asset('theme/images/blog/small/1.jpg')}}" alt="Partner Logo">
-										</a>
-									</div>
-									<article class="post-content">
-										<div class="post-info-container">
-											<div class="post-info">
-												<h2><a class="main-color" href="partner-details.blade.php">Mindfactory
-														LTD</a>
-												</h2>
-												<ul class="list-details">
-													<li>
-														<i class="fa fa-map-marker"></i> <span
-															class="main-color">Lokasyon:</span>
-														İstanbul
-													</li>
-													<li>
-														<i class="fa fa-check"></i> <span
-															class="main-color">Derecelendirme:</span>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-half-empty"></i>
-													</li>
-													<li>
-														<i class="fa fa-globe"></i> <span class="main-color">Web
-															Site:</span> <a
-															href="https://www.eihracatturkiye.com">www.eihracatturkiye.com</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</article>
-								</div>
-
-								<div class="post-item fx" data-animate="fadeInLeft">
-									<div class="post-image">
-										<a href="partner-details.blade.php">
-											<div class="mask"></div>
-											<img src="{{asset('theme/images/blog/small/1.jpg')}}" alt="Partner Logo">
-										</a>
-									</div>
-									<article class="post-content">
-										<div class="post-info-container">
-											<div class="post-info">
-												<h2><a class="main-color" href="partner-details.blade.php">Mindfactory
-														LTD</a>
-												</h2>
-												<ul class="list-details">
-													<li>
-														<i class="fa fa-map-marker"></i> <span
-															class="main-color">Lokasyon:</span>
-														İstanbul
-													</li>
-													<li>
-														<i class="fa fa-check"></i> <span
-															class="main-color">Derecelendirme:</span>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-half-empty"></i>
-													</li>
-													<li>
-														<i class="fa fa-globe"></i> <span class="main-color">Web
-															Site:</span> <a
-															href="https://www.eihracatturkiye.com">www.eihracatturkiye.com</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</article>
-								</div>
-
-								<div class="post-item fx" data-animate="fadeInLeft">
-									<div class="post-image">
-										<a href="partner-details.blade.php">
-											<div class="mask"></div>
-											<img src="{{asset('theme/images/blog/small/1.jpg')}}" alt="Partner Logo">
-										</a>
-									</div>
-									<article class="post-content">
-										<div class="post-info-container">
-											<div class="post-info">
-												<h2><a class="main-color" href="partner-details.blade.php">Mindfactory
-														LTD</a>
-												</h2>
-												<ul class="list-details">
-													<li>
-														<i class="fa fa-map-marker"></i> <span
-															class="main-color">Lokasyon:</span>
-														İstanbul
-													</li>
-													<li>
-														<i class="fa fa-check"></i> <span
-															class="main-color">Derecelendirme:</span>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-half-empty"></i>
-													</li>
-													<li>
-														<i class="fa fa-globe"></i> <span class="main-color">Web
-															Site:</span> <a
-															href="https://www.eihracatturkiye.com">www.eihracatturkiye.com</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</article>
-								</div>
-
-								<div class="post-item fx" data-animate="fadeInLeft">
-									<div class="post-image">
-										<a href="partner-details.blade.php">
-											<div class="mask"></div>
-											<img src="{{asset('theme/images/blog/small/1.jpg')}}" alt="Partner Logo">
-										</a>
-									</div>
-									<article class="post-content">
-										<div class="post-info-container">
-											<div class="post-info">
-												<h2><a class="main-color" href="partner-details.blade.php">Mindfactory
-														LTD</a>
-												</h2>
-												<ul class="list-details">
-													<li>
-														<i class="fa fa-map-marker"></i> <span
-															class="main-color">Lokasyon:</span>
-														İstanbul
-													</li>
-													<li>
-														<i class="fa fa-check"></i> <span
-															class="main-color">Derecelendirme:</span>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star"></i>
-														<i class="fa fa-star-half-empty"></i>
-													</li>
-													<li>
-														<i class="fa fa-globe"></i> <span class="main-color">Web
-															Site:</span> <a
-															href="https://www.eihracatturkiye.com">www.eihracatturkiye.com</a>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</article>
-								</div>
+                                @forelse($allUsers as $user)
+                                    @php
+                                    $aboutData = json_decode($user->about_data,true);
+                                    @endphp
+                                    <div class="post-item fx" data-animate="fadeInLeft">
+                                        <div class="post-image">
+                                            <a href="../components/detail_components/partner-details.blade.php">
+                                                <div class="mask"></div>
+                                                <img src="{{$user->avatar}}" alt="Partner Logo">
+                                            </a>
+                                        </div>
+                                        <article class="post-content">
+                                            <div class="post-info-container">
+                                                <div class="post-info">
+                                                    <h2><a class="main-color" href="../components/detail_components/partner-details.blade.php">{{$user->name}}</a>
+                                                    </h2>
+                                                    <ul class="list-details">
+                                                        <li>
+                                                            <i class="fa fa-map-marker"></i> <span
+                                                                class="main-color">Lokasyon:</span>
+{{--                                                            İstanbul {{(string) $aboutData['country']['label']}}--}}
+                                                        </li>
+                                                       {{-- <li>
+                                                            <i class="fa fa-check"></i> <span
+                                                                class="main-color">Derecelendirme:</span>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-half-empty"></i>
+                                                        </li>--}}
+                                                        <li>
+                                                            <i class="fa fa-globe"></i> <span class="main-color">Web
+                                                                Site:</span> <a
+                                                                href="https://www.eihracatturkiye.com">{{$aboutData['website']}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                @empty
+                                @endforelse
 							</div>
 						</div>
 					</div>

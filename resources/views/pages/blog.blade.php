@@ -11,7 +11,7 @@
 						<div class="cell-12">
 							<h1 class="fx" data-animate="fadeInLeft">Haberler </h1>
 							<div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
-								<span class="bold">Buradasınız:</span><a href="#">Anasayfa</a><span
+								<span class="bold">Buradasdsdssınız:</span><a href="#">Anasayfa</a><span
 									class="line-separate">/</span><a href="#">Blog</a>
 							</div>
 						</div>
@@ -29,7 +29,7 @@
 
 								<div class="post-item fx" data-animate="fadeInLeft">
 									<div class="post-image">
-										<a href="{{route('post.find',$post->id)}}">
+										<a href="{{route('post.find',$post->slug)}}">
 											<div class="mask"></div>
 											<div class="post-lft-info">
 
@@ -41,7 +41,7 @@
 									<article class="post-content">
 										<div class="post-info-container">
 											<div class="post-info">
-												<h2><a class="main-color" href="../components/detail_components/blog-single.blade.php">{{$post->title}}</a></h2>
+												<h2><a class="main-color" href="{{route('post.find',$post->slug)}}">{{$post->title}}</a></h2>
 											</div>
 										</div>
 										<p>

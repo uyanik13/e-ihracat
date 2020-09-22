@@ -17,32 +17,29 @@ class CommentController extends Controller
     }
     public function store(Request $request,$user_id)
     {
-
         $validData = $request->validate([
             'content' => 'required|string'
         ]);
+        $partner_id=null;
+        $post_id=null;
+        if ($request->isFromPartnerPage == 1) {
+            $partner_id = $user_id;
+        }elseif ($request->isFromPartnerPage == 0){
+            $post_id = $user_id;
+        }
         $create_comment = Comment::create([
             'content' => $validData['content'],
-            'post_id' => $request->post_id,
-            'approved' => 1,
-            'point' =>$request->point,
+            'post_id' => $post_id,
+            'partner_id' => $partner_id,
             'user_id' =>$this->user->id,
+            'point' =>$request->point,
         ]);
-     /*   $comment = new Comment(['content' => $validData['content']]);
-        $comment->id = rand(1,100000);
-        $comment->post_id = $request->post_id;
-        $comment->approved = 1;
-        $comment->point = $request->point;
-        $comment->user_id = $user_id;
-
-        $comment->save();*/
 
         session()->flash('commentResult', [
             'message' => 'Comment added successfully, it will appear after approval',
             'success' => true
         ]);
         return redirect()->back();
-//        return redirect($post->specificResourcePath());
     }
 
     public function edit(Comment $comment)

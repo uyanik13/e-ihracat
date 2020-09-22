@@ -93631,11 +93631,10 @@ function addSubscriber(callback) {
   fetchUsers: function fetchUsers() {
     return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/api/users');
   },
-  registerUser: function registerUser(name, email, phone, password, confirmPassword) {
+  registerUser: function registerUser(name, email, password, confirmPassword) {
     return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('/api/register', {
       name: name,
       email: email,
-      phone: phone,
       password: password,
       password_confirmation: confirmPassword
     });
@@ -96339,9 +96338,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var _payload$userDetails = payload.userDetails,
         name = _payload$userDetails.name,
         email = _payload$userDetails.email,
-        phone = _payload$userDetails.phone,
-        user_ref_number = _payload$userDetails.user_ref_number,
-        store_name = _payload$userDetails.store_name,
         password = _payload$userDetails.password,
         confirmPassword = _payload$userDetails.confirmPassword;
     return new _babel_runtime_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default.a(function (resolve, reject) {
@@ -96352,7 +96348,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         });
       }
 
-      _http_requests_auth_jwt_index_js__WEBPACK_IMPORTED_MODULE_2__["default"].registerUser(name, email, phone, user_ref_number, store_name, password, confirmPassword).then(function (response) {
+      _http_requests_auth_jwt_index_js__WEBPACK_IMPORTED_MODULE_2__["default"].registerUser(name, email, password, confirmPassword).then(function (response) {
         //router.push(router.currentRoute.query.to || 'login')
         resolve(response);
       }).catch(function (error) {

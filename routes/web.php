@@ -32,6 +32,7 @@ Route::any('panel/{path}', function () {
     Route::get('/category/{name}', [PageController::class, 'pageView'])->name('category.find');
     Route::get('/service/{name}', [PageController::class, 'pageView'])->name('service.find');
     Route::get('/product/{name}', [PageController::class, 'pageView'])->name('product.find');
+    Route::get('/partner-details/{name}', [PageController::class, 'pageView'])->name('partner.find');
     Route::get('/blog-single/{post}', [PageController::class, 'pageView'])->name('post.find');
     Route::get('/haberler/{post}', [PageController::class, 'pageView'])->name('haber.show');
     Route::get('/payment/{id}', [PageController::class, 'pageView'])->name('payment.page');
@@ -40,6 +41,7 @@ Route::any('panel/{path}', function () {
 
     Route::get('/search/product',[PageController::class, 'search_product'])->name('search_product');
     Route::get('/search/post',[PageController::class, 'search_product'])->name('search_post');
+    Route::get('/search/user',[PageController::class, 'search_user'])->name('search_user');
     Route::post('/add_comment/{user_id}', [CommentController::class, 'store'])->name('add_comment_to_product');
     Route::any('/search', [PageController::class, 'search'])->name('search');
     Route::post('/live_search', [PageController::class, 'search_liveSearchproduct'] )->name('live_search');

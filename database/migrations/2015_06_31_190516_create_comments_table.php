@@ -15,8 +15,9 @@ class CreateCommentsTable extends Migration
   {
     Schema::create('comments', function (Blueprint $table) {
       $table->increments('id');
-      $table->foreignUuid('user_id');
-      $table->integer('post_id')->unsigned();
+      $table->foreignUuid('user_id')->nullable();
+      $table->integer('post_id')->unsigned()->nullable();
+      $table->foreignUuid('partner_id')->nullable();
       $table->text('content')->nullable();
       $table->foreignId('reply_to')->nullable();
       $table->smallInteger('point')->nullable();

@@ -38,184 +38,207 @@
                                     </h1>
                                 </div>
                                 {!! $post->content !!}
-                                {{--										<div class="post-tags">--}}
-                                {{--											<i class="fa fa-tags"></i><span>Etiketler: </span><a--}}
-                                {{--												href="#">E-İhracat</a>,<a>--}}
-                                {{--												İhracat</a>,<a href="#">--}}
-                                {{--												Dijital</a>,<a> İthalat</a>,<a> Ticaret</a>--}}
-                                {{--										</div>--}}
-                                {{--										<div class="share-post">--}}
-                                {{--											<span class="sh">Gönderiyi Paylaş:</span>--}}
-                                {{--											<div id="shareme" data-text="Share this post"></div>--}}
-                                {{--										</div>--}}
+                                <div class="post-tags">
+                                    <i class="fa fa-tags"></i><span>Etiketler: </span><a
+                                        href="#">E-İhracat</a>,<a>
+                                        İhracat</a>,<a href="#">
+                                        Dijital</a>,<a> İthalat</a>,<a> Ticaret</a>
+                                </div>
+                                <div class="share-post">
+                                    <span class="sh">Gönderiyi Paylaş:</span>
+                                    <div id="shareme" data-text="Share this post"></div>
+                                </div>
                             </article>
-                        </div><!-- .post-item end -->
-                        {{--								<div class="comments">--}}
-                        {{--									<h3 class="block-head">Yorumlar</h3>--}}
-                        {{--									<ul class="comment-list">--}}
-                        {{--										<li>--}}
-                        {{--											<article class="comment">--}}
-                        {{--												<img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar" class="comment-avatar">--}}
-                        {{--												<div class="comment-content">--}}
-                        {{--													<h5 class="comment-author skew-25">--}}
-                        {{--														<span class="author-name skew25">Berk Yılmaz</span>--}}
-                        {{--														<a href="#" class="comment-reply main-bg"><span--}}
-                        {{--																class="skew25"><i--}}
-                        {{--																	class="fa fa-comment"></i>cevapla</span></a>--}}
-                        {{--														<span class="comment-date skew25">15 Haziran2020</span>--}}
-                        {{--													</h5>--}}
-                        {{--													<p>--}}
-                        {{--														Güzel haber, teşekkür.--}}
-                        {{--													</p>--}}
-                        {{--												</div>--}}
-                        {{--											</article><!-- End .comment -->--}}
-                        {{--											<ul class="child-comment">--}}
-                        {{--												<li>--}}
-                        {{--													<article class="comment">--}}
-                        {{--														<img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"--}}
-                        {{--															class="comment-avatar">--}}
-                        {{--														<div class="comment-content">--}}
-                        {{--															<h5 class="comment-author skew-25">--}}
-                        {{--																<span class="author-name skew25">Arda Kök</span>--}}
-                        {{--																<a href="#" class="comment-reply main-bg"><span--}}
-                        {{--																		class="skew25"><i--}}
-                        {{--																			class="fa fa-comment"></i>cevala</span></a>--}}
-                        {{--																<span class="comment-date skew25">15 Haziran 2020</span>--}}
-                        {{--															</h5>--}}
-                        {{--															<p>Dijital dönüşüme merhaba</p>--}}
-                        {{--														</div>--}}
-                        {{--													</article><!-- End .comment -->--}}
-                        {{--												</li>--}}
-                        {{--												<li>--}}
-                        {{--													<article class="comment">--}}
-                        {{--														<img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"--}}
-                        {{--															class="comment-avatar">--}}
-                        {{--														<div class="comment-content">--}}
-                        {{--															<h5 class="comment-author skew-25">--}}
-                        {{--																<span class="author-name skew25">Arda Kök</span>--}}
-                        {{--																<a href="#" class="comment-reply main-bg"><span--}}
-                        {{--																		class="skew25"><i--}}
-                        {{--																			class="fa fa-comment"></i>cevala</span></a>--}}
-                        {{--																<span class="comment-date skew25">15 Haziran 2020</span>--}}
-                        {{--															</h5>--}}
-                        {{--															<p>Dijital dönüşüme merhaba</p>--}}
-                        {{--														</div>--}}
-                        {{--													</article><!-- End .comment -->--}}
-                        {{--												</li>--}}
-                        {{--												<li>--}}
-                        {{--													<article class="comment">--}}
-                        {{--														<img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"--}}
-                        {{--															class="comment-avatar">--}}
-                        {{--														<div class="comment-content">--}}
-                        {{--															<h5 class="comment-author skew-25">--}}
-                        {{--																<span class="author-name skew25">Arda Kök</span>--}}
-                        {{--																<a href="#" class="comment-reply main-bg"><span--}}
-                        {{--																		class="skew25"><i--}}
-                        {{--																			class="fa fa-comment"></i>cevala</span></a>--}}
-                        {{--																<span class="comment-date skew25">15 Haziran 2020</span>--}}
-                        {{--															</h5>--}}
-                        {{--															<p>Dijital dönüşüme merhaba</p>--}}
-                        {{--														</div>--}}
-                        {{--													</article><!-- End .comment -->--}}
-                        {{--												</li>--}}
-                        {{--											</ul><!-- End .child-comment -->--}}
-                        {{--										</li>--}}
-                        {{--										<li>--}}
-                        {{--											<article class="comment">--}}
-                        {{--												<img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar" class="comment-avatar">--}}
-                        {{--												<div class="comment-content">--}}
-                        {{--													<h5 class="comment-author skew-25">--}}
-                        {{--														<span class="author-name skew25">Berk Yılmaz</span>--}}
-                        {{--														<a href="#" class="comment-reply main-bg"><span--}}
-                        {{--																class="skew25"><i--}}
-                        {{--																	class="fa fa-comment"></i>cevapla</span></a>--}}
-                        {{--														<span class="comment-date skew25">15 Haziran2020</span>--}}
-                        {{--													</h5>--}}
-                        {{--													<p>--}}
-                        {{--														Güzel haber, teşekkür.--}}
-                        {{--													</p>--}}
-                        {{--												</div>--}}
-                        {{--											</article><!-- End .comment -->--}}
-                        {{--											<ul class="child-comment">--}}
-                        {{--												<li>--}}
-                        {{--													<article class="comment">--}}
-                        {{--														<img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"--}}
-                        {{--															class="comment-avatar">--}}
-                        {{--														<div class="comment-content">--}}
-                        {{--															<h5 class="comment-author skew-25">--}}
-                        {{--																<span class="author-name skew25">Arda Kök</span>--}}
-                        {{--																<a href="#" class="comment-reply main-bg"><span--}}
-                        {{--																		class="skew25"><i--}}
-                        {{--																			class="fa fa-comment"></i>cevala</span></a>--}}
-                        {{--																<span class="comment-date skew25">15 Haziran 2020</span>--}}
-                        {{--															</h5>--}}
-                        {{--															<p>Dijital dönüşüme merhaba</p>--}}
-                        {{--														</div>--}}
-                        {{--													</article><!-- End .comment -->--}}
-                        {{--												</li>--}}
-                        {{--												<li>--}}
-                        {{--													<article class="comment">--}}
-                        {{--														<img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"--}}
-                        {{--															class="comment-avatar">--}}
-                        {{--														<div class="comment-content">--}}
-                        {{--															<h5 class="comment-author skew-25">--}}
-                        {{--																<span class="author-name skew25">Arda Kök</span>--}}
-                        {{--																<a href="#" class="comment-reply main-bg"><span--}}
-                        {{--																		class="skew25"><i--}}
-                        {{--																			class="fa fa-comment"></i>cevala</span></a>--}}
-                        {{--																<span class="comment-date skew25">15 Haziran 2020</span>--}}
-                        {{--															</h5>--}}
-                        {{--															<p>Dijital dönüşüme merhaba</p>--}}
-                        {{--														</div>--}}
-                        {{--													</article><!-- End .comment -->--}}
-                        {{--												</li>--}}
-                        {{--												<li>--}}
-                        {{--													<article class="comment">--}}
-                        {{--														<img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"--}}
-                        {{--															class="comment-avatar">--}}
-                        {{--														<div class="comment-content">--}}
-                        {{--															<h5 class="comment-author skew-25">--}}
-                        {{--																<span class="author-name skew25">Arda Kök</span>--}}
-                        {{--																<a href="#" class="comment-reply main-bg"><span--}}
-                        {{--																		class="skew25"><i--}}
-                        {{--																			class="fa fa-comment"></i>cevala</span></a>--}}
-                        {{--																<span class="comment-date skew25">15 Haziran 2020</span>--}}
-                        {{--															</h5>--}}
-                        {{--															<p>Dijital dönüşüme merhaba</p>--}}
-                        {{--														</div>--}}
-                        {{--													</article><!-- End .comment -->--}}
-                        {{--												</li>--}}
-                        {{--											</ul><!-- End .child-comment -->--}}
-                        {{--										</li>--}}
-                        {{--									</ul><!-- End .comment-list -->--}}
-                        {{--								</div>--}}
-                        {{--								<form action="#" class="leave-comment contact-form">--}}
-                        {{--									<h3 class="block-head">Yorum Yap</h3>--}}
-                        {{--									<p>Aşağıdaki gerekli alanları doldurarak sizde bu haber hakkındaki fikirlerinizi--}}
-                        {{--										paylaşabilirsiniz.</p>--}}
-                        {{--									<div class="row">--}}
-                        {{--										<div class="cell-6">--}}
-                        {{--											<div class="form-input">--}}
-                        {{--												<input type="text" placeholder="Ad Soyad" required>--}}
-                        {{--											</div>--}}
-                        {{--										</div>--}}
-                        {{--										<div class="cell-6">--}}
-                        {{--											<div class="form-input">--}}
-                        {{--												<input type="email" placeholder="E-Posta Adresi" required>--}}
-                        {{--											</div>--}}
-                        {{--										</div>--}}
-                        {{--										<div class="cell-12">--}}
-                        {{--											<div class="form-input">--}}
-                        {{--												<textarea class="txt-box textArea" name="message" cols="40" rows="7"--}}
-                        {{--													id="messageTxt" placeholder="Yorumunuz" spellcheck="true"--}}
-                        {{--													required></textarea>--}}
-                        {{--											</div>--}}
-                        {{--										</div>--}}
-                        {{--										<div class="cell-12">--}}
-                        {{--											<input type="submit" class="btn btn-large main-bg" value="Yorum Yap">--}}
-                        {{--										</div>--}}
-                        {{--									</div>--}}
-                        {{--								</form>--}}
+                        </div>
+                        <div class="comments">
+                            <h3 class="block-head">Yorumlar</h3>
+                            <ul class="comment-list">
+                                <li>
+                                    <article class="comment">
+                                        <img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"
+                                             class="comment-avatar">
+                                        <div class="comment-content">
+                                            <h5 class="comment-author skew-25">
+                                                <span class="author-name skew25">Berk Yılmaz</span>
+                                                <a href="#" class="comment-reply main-bg"><span
+                                                        class="skew25"><i
+                                                            class="fa fa-comment"></i>cevapla</span></a>
+                                                <span class="comment-date skew25">15 Haziran2020</span>
+                                            </h5>
+                                            <p>
+                                                Güzel haber, teşekkür.
+                                            </p>
+                                        </div>
+                                    </article><!-- End .comment -->
+                                    <ul class="child-comment">
+                                        <li>
+                                            <article class="comment">
+                                                <img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"
+                                                     class="comment-avatar">
+                                                <div class="comment-content">
+                                                    <h5 class="comment-author skew-25">
+                                                        <span class="author-name skew25">Arda Kök</span>
+                                                        <a href="#" class="comment-reply main-bg"><span
+                                                                class="skew25"><i
+                                                                    class="fa fa-comment"></i>cevala</span></a>
+                                                        <span class="comment-date skew25">15 Haziran 2020</span>
+                                                    </h5>
+                                                    <p>Dijital dönüşüme merhaba</p>
+                                                </div>
+                                            </article><!-- End .comment -->
+                                        </li>
+                                        <li>
+                                            <article class="comment">
+                                                <img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"
+                                                     class="comment-avatar">
+                                                <div class="comment-content">
+                                                    <h5 class="comment-author skew-25">
+                                                        <span class="author-name skew25">Arda Kök</span>
+                                                        <a href="#" class="comment-reply main-bg"><span
+                                                                class="skew25"><i
+                                                                    class="fa fa-comment"></i>cevala</span></a>
+                                                        <span class="comment-date skew25">15 Haziran 2020</span>
+                                                    </h5>
+                                                    <p>Dijital dönüşüme merhaba</p>
+                                                </div>
+                                            </article><!-- End .comment -->
+                                        </li>
+                                        <li>
+                                            <article class="comment">
+                                                <img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"
+                                                     class="comment-avatar">
+                                                <div class="comment-content">
+                                                    <h5 class="comment-author skew-25">
+                                                        <span class="author-name skew25">Arda Kök</span>
+                                                        <a href="#" class="comment-reply main-bg"><span
+                                                                class="skew25"><i
+                                                                    class="fa fa-comment"></i>cevala</span></a>
+                                                        <span class="comment-date skew25">15 Haziran 2020</span>
+                                                    </h5>
+                                                    <p>Dijital dönüşüme merhaba</p>
+                                                </div>
+                                            </article><!-- End .comment -->
+                                        </li>
+                                    </ul><!-- End .child-comment -->
+                                </li>
+                                <li>
+                                    <article class="comment">
+                                        <img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"
+                                             class="comment-avatar">
+                                        <div class="comment-content">
+                                            <h5 class="comment-author skew-25">
+                                                <span class="author-name skew25">Berk Yılmaz</span>
+                                                <a href="#" class="comment-reply main-bg"><span
+                                                        class="skew25"><i
+                                                            class="fa fa-comment"></i>cevapla</span></a>
+                                                <span class="comment-date skew25">15 Haziran2020</span>
+                                            </h5>
+                                            <p>
+                                                Güzel haber, teşekkür.
+                                            </p>
+                                        </div>
+                                    </article><!-- End .comment -->
+                                    <ul class="child-comment">
+                                        <li>
+                                            <article class="comment">
+                                                <img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"
+                                                     class="comment-avatar">
+                                                <div class="comment-content">
+                                                    <h5 class="comment-author skew-25">
+                                                        <span class="author-name skew25">Arda Kök</span>
+                                                        <a href="#" class="comment-reply main-bg"><span
+                                                                class="skew25"><i
+                                                                    class="fa fa-comment"></i>cevala</span></a>
+                                                        <span class="comment-date skew25">15 Haziran 2020</span>
+                                                    </h5>
+                                                    <p>Dijital dönüşüme merhaba</p>
+                                                </div>
+                                            </article><!-- End .comment -->
+                                        </li>
+                                        <li>
+                                            <article class="comment">
+                                                <img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"
+                                                     class="comment-avatar">
+                                                <div class="comment-content">
+                                                    <h5 class="comment-author skew-25">
+                                                        <span class="author-name skew25">Arda Kök</span>
+                                                        <a href="#" class="comment-reply main-bg"><span
+                                                                class="skew25"><i
+                                                                    class="fa fa-comment"></i>cevala</span></a>
+                                                        <span class="comment-date skew25">15 Haziran 2020</span>
+                                                    </h5>
+                                                    <p>Dijital dönüşüme merhaba</p>
+                                                </div>
+                                            </article><!-- End .comment -->
+                                        </li>
+                                        <li>
+                                            <article class="comment">
+                                                <img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"
+                                                     class="comment-avatar">
+                                                <div class="comment-content">
+                                                    <h5 class="comment-author skew-25">
+                                                        <span class="author-name skew25">Arda Kök</span>
+                                                        <a href="#" class="comment-reply main-bg"><span
+                                                                class="skew25"><i
+                                                                    class="fa fa-comment"></i>cevala</span></a>
+                                                        <span class="comment-date skew25">15 Haziran 2020</span>
+                                                    </h5>
+                                                    <p>Dijital dönüşüme merhaba</p>
+                                                </div>
+                                            </article><!-- End .comment -->
+                                        </li>
+                                    </ul><!-- End .child-comment -->
+                                </li>
+                            </ul><!-- End .comment-list -->
+                        </div>
+                        @guest
+                            Yorum yapmak için
+                            <a href="/panel/login" class="btn btn-danger"> Giriş Yapınız</a>
+                        @endguest
+                        @auth
+                            <form action="{{route('add_comment_to_product',$post->id)}}" method="post" class="leave-comment contact-form">
+                                @csrf
+                                <h3 class="block-head">Yorum Yap</h3>
+                                <p>Aşağıdaki gerekli alanları doldurarak sizde bu haber hakkındaki fikirlerinizi
+                                    paylaşabilirsiniz.</p>
+                                <div class="row">
+
+                                    {{--<div class="cell-6">
+                                        <div class="form-input">
+                                            <input type="text" placeholder="Ad Soyad" required>
+                                        </div>
+                                    </div>
+                                    <div class="cell-6">
+                                        <div class="form-input">
+                                            <input type="email" placeholder="E-Posta Adresi" required>
+                                        </div>
+                                    </div>--}}
+
+                                    <div class="cell-12">
+                                        <div class="form-input rating">
+                                            <span class="bold">Derecelendirmeniz: </span>
+                                            <span>1<input value="1" class="divideThis" type="radio" name="point"></span>
+                                            <span>2<input value="2" class="divideThis" type="radio" name="point"></span>
+                                            <span>3<input value="3" class="divideThis" type="radio" name="point"></span>
+                                            <span>4<input value="4" class="divideThis" type="radio" name="point"></span>
+                                            <span>5<input value="5" class="divideThis" type="radio" name="point"></span>
+
+                                        </div>
+                                    </div>
+                                    <div class="cell-12">
+                                        <div class="form-input">
+											<textarea class="txt-box textArea" name="content" cols="40" rows="7"
+                                                      id="messageTxt" placeholder="Yorumunuz" spellcheck="true"
+                                                      required></textarea>
+                                            <input type="hidden" name="isFromPartnerPage" value="0">
+                                        </div>
+                                    </div>
+                                    <div class="cell-12">
+                                        <input type="submit" class="btn btn-large main-bg" value="Yorum Yap">
+                                    </div>
+                                </div>
+                            </form>
+                        @endauth
                     </div>
                 </div>
 

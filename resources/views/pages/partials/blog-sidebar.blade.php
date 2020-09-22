@@ -8,7 +8,7 @@
             <h3 class="widget-head">Arama</h3>
             <div class="widget-content">
                 <form action="#" method="get">
-                    <input type="text" name="t" onkeydown="live_post_search()" id="search_input_post"
+                    <input type="text" name="t" onkeyup="live_post_search()" id="search_input_post"
                            class="txt-box"
                            placeholder="Anahtar Kelime Girin..."/>
                     <button type="submit" class="btn"><i class="fa fa-search"></i></button>

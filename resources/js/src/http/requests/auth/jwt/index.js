@@ -62,8 +62,8 @@ export default {
   fetchUsers () {
     return axios.get('/api/users')
   },
-  registerUser (name, email, phone,  password, confirmPassword) {
-    return axios.post('/api/register', {name, email, phone,  password, password_confirmation:confirmPassword})
+  registerUser (name, email,  password, confirmPassword) {
+    return axios.post('/api/register', {name, email,  password, password_confirmation:confirmPassword})
   },
   emailVerifyApi (email) {
     return axios.post('/api/emailResendApi', {email})

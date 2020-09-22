@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $fillable = ['content', 'approved','user_id','post_id','point'];
-//    protected $with = ['post'];
-    //simdi test et
+    protected $guarded = [];
+    protected $with = ['user','post'];
 
     public function user()
     {

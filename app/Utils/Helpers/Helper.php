@@ -479,9 +479,15 @@ class Helper
         }
         return $dateFull;
     }
-
-
-
+    public static function blogsBelognsToPartner($partner_id){
+        return Post::where('type','post')->where('user_id',$partner_id)->get();
+    }
+    public static  function getComments($id,$isPartnerPage){
+        if ($isPartnerPage){
+           return \App\Models\Comment::where('partner_id',$id)->get();
+        }
+        return \App\Models\Comment::where('post_id',$id)->get();
+    }
 }
 
 
