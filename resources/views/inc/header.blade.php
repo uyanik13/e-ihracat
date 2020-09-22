@@ -161,13 +161,13 @@
 												<b class="menu-hint success">Yeni</b></span></a>
                                 </li>
 
-                                <li @if( $category == 'export-radar' )class="selected" @endif><a href="javascript:void(0);"><i class="fa fa-question"></i><span>Bilgi
+                                <li @if( $category == 'ihracat-radari' )class="selected" @endif><a href="javascript:void(0);"><i class="fa fa-question"></i><span>Bilgi
 												Bankası</span></a>
                                     <ul>
-                                        <li><a href="/export-radar">İhracat Radarı</a></li>
-                                        <li><a href="#">Devlet Teşvikleri</a></li>
-                                        <li><a href="#">Döviz Radarı</a></li>
-                                        <li><a href="faq">S.S.S</a></li>
+                                        <li><a href="/ihracat-radari">İhracat Radarı</a></li>
+                                        <li><a href="/devlet-tesvikleri">Devlet Teşvikleri</a></li>
+                                        <li><a href="/doviz-radari">Döviz Radarı</a></li>
+                                        <li><a href="/faq">S.S.S</a></li>
                                     </ul>
                                 </li>
 
