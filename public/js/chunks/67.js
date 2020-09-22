@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[67],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/components/excel/ImportExcel.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/components/excel/ImportExcel.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/pages/common/auth/password/reset.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/views/pages/common/auth/password/reset.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -11,8 +11,13 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_core_js_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/core-js/promise */ "./node_modules/@babel/runtime/core-js/promise.js");
 /* harmony import */ var _babel_runtime_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_core_js_promise__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! xlsx */ "./node_modules/xlsx/xlsx.js");
-/* harmony import */ var xlsx__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(xlsx__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _plugins_axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../plugins/axios */ "./resources/js/src/plugins/axios.js");
+
+
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new _babel_runtime_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a(function (resolve, reject) { var gen = fn.apply(self, args); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { _babel_runtime_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.resolve(value).then(_next, _throw); } } function _next(value) { step("next", value); } function _throw(err) { step("throw", err); } _next(); }); }; }
 
 //
 //
@@ -22,163 +27,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    onSuccess: {
-      type: Function,
-      required: true
-    }
-  },
-  data: function data() {
-    return {
-      excelData: {
-        header: null,
-        results: null,
-        meta: null
-      }
-    };
-  },
-  methods: {
-    generateData: function generateData(_ref) {
-      var header = _ref.header,
-          results = _ref.results,
-          meta = _ref.meta;
-      this.excelData.header = header;
-      this.excelData.results = results;
-      this.excelData.meta = meta;
-      if (this.onSuccess) this.onSuccess(this.excelData);
-    },
-    getHeaderRow: function getHeaderRow(sheet) {
-      var headers = [];
-      var range = xlsx__WEBPACK_IMPORTED_MODULE_1___default.a.utils.decode_range(sheet['!ref']);
-      var C = undefined;
-      var R = range.s.r;
-      /* start in the first row */
-
-      for (C = range.s.c; C <= range.e.c; ++C) {
-        /* walk every column in the range */
-        var cell = sheet[xlsx__WEBPACK_IMPORTED_MODULE_1___default.a.utils.encode_cell({
-          c: C,
-          r: R
-        })];
-        /* find the cell in the first row */
-
-        var hdr = "UNKNOWN ".concat(C); // <-- replace with your desired default
-
-        if (cell && cell.t) hdr = xlsx__WEBPACK_IMPORTED_MODULE_1___default.a.utils.format_cell(cell);
-        headers.push(hdr);
-      }
-
-      return headers;
-    },
-    handleDragover: function handleDragover(e) {
-      e.stopPropagation();
-      e.preventDefault();
-      e.dataTransfer.dropEffect = 'copy';
-    },
-    handleDrop: function handleDrop(e) {
-      e.stopPropagation();
-      e.preventDefault();
-      var files = e.dataTransfer.files;
-
-      if (files.length !== 1) {
-        this.$vs.notify({
-          title: 'Login Attempt',
-          text: 'Only support uploading one file!',
-          iconPack: 'feather',
-          icon: 'icon-alert-circle',
-          color: 'warning'
-        });
-        return;
-      }
-
-      var rawFile = files[0]; // only use files[0]
-
-      if (!this.isExcel(rawFile)) {
-        this.$vs.notify({
-          title: 'Login Attempt',
-          text: 'Only supports upload .xlsx, .xls, .csv suffix files',
-          iconPack: 'feather',
-          icon: 'icon-alert-circle',
-          color: 'warning'
-        });
-        return false;
-      }
-
-      this.uploadFile(rawFile);
-    },
-    readerData: function readerData(rawFile) {
-      var _this = this;
-
-      return new _babel_runtime_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a(function (resolve) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-          var data = e.target.result;
-          var workbook = xlsx__WEBPACK_IMPORTED_MODULE_1___default.a.read(data, {
-            type: 'array'
-          });
-          var firstSheetName = workbook.SheetNames[0];
-          var worksheet = workbook.Sheets[firstSheetName];
-
-          var header = _this.getHeaderRow(worksheet);
-
-          var results = xlsx__WEBPACK_IMPORTED_MODULE_1___default.a.utils.sheet_to_json(worksheet);
-          var meta = {
-            sheetName: firstSheetName
-          };
-
-          _this.generateData({
-            header: header,
-            results: results,
-            meta: meta
-          });
-
-          resolve();
-        };
-
-        reader.readAsArrayBuffer(rawFile);
-      });
-    },
-    handleClick: function handleClick(e) {
-      var files = e.target.files;
-      var rawFile = files[0];
-      if (!rawFile) return;
-      this.uploadFile(rawFile);
-    },
-    isExcel: function isExcel(file) {
-      return /\.(xlsx|xls|csv)$/.test(file.name);
-    },
-    uploadFile: function uploadFile(file) {
-      this.$refs['fileInput'].value = null; // fix can't select the same excel
-
-      this.readerData(file);
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/components/extra-components/import-export/Import.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/views/components/extra-components/import-export/Import.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _components_excel_ImportExcel_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/components/excel/ImportExcel.vue */ "./resources/js/src/components/excel/ImportExcel.vue");
 //
 //
 //
@@ -217,34 +65,91 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    ImportExcel: _components_excel_ImportExcel_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  middleware: 'guest',
+  metaInfo: function metaInfo() {
+    return {
+      title: this.$t('reset_password')
+    };
   },
   data: function data() {
     return {
-      tableData: [],
-      header: [],
-      sheetName: ''
+      token: '',
+      email: '',
+      password: '',
+      password_confirmation: '',
+      status: ''
     };
   },
+  created: function created() {
+    console.log('TOKEN', this.$route);
+    this.email = this.$route.query.email;
+    this.token = this.$route.query.token;
+  },
   methods: {
-    loadDataInTable: function loadDataInTable(_ref) {
-      var results = _ref.results,
-          header = _ref.header,
-          meta = _ref.meta;
-      this.header = header;
-      this.tableData = results;
-      this.sheetName = meta.sheetName;
-    }
+    reset: function () {
+      var _reset = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.mark(function _callee() {
+        var _this = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return _plugins_axios__WEBPACK_IMPORTED_MODULE_2__["default"].post("/password/reset", {
+                  email: this.email,
+                  token: this.token,
+                  password: this.password,
+                  password_confirmation: this.password_confirmation,
+                  status: this.status
+                }).then(function (response) {
+                  _this.status = response.status;
+
+                  _this.$vs.notify({
+                    title: 'Başarılı',
+                    text: 'Şifreniz Başarıyla Değiştirildi.',
+                    iconPack: 'feather',
+                    icon: 'icon-alert-circle',
+                    color: 'success'
+                  });
+
+                  _this.form.reset();
+
+                  _this.$router.push('/login');
+                }).catch(function (error) {
+                  _this.$vs.loading.close();
+
+                  _this.$vs.notify({
+                    title: 'Error',
+                    text: 'Hata Oluştu',
+                    iconPack: 'feather',
+                    icon: 'icon-alert-circle',
+                    color: 'danger'
+                  });
+                });
+
+              case 2:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      return function reset() {
+        return _reset.apply(this, arguments);
+      };
+    }()
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/components/excel/ImportExcel.vue?vue&type=template&id=435d3aaa&":
-/*!************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/components/excel/ImportExcel.vue?vue&type=template&id=435d3aaa& ***!
-  \************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/pages/common/auth/password/reset.vue?vue&type=template&id=7db683b3&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/views/pages/common/auth/password/reset.vue?vue&type=template&id=7db683b3& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -256,52 +161,175 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "excel-import" }, [
-    _c("input", {
-      ref: "fileInput",
-      staticClass: "hidden",
-      attrs: { type: "file", accept: ".xlsx, .xls" },
-      on: { change: _vm.handleClick }
-    }),
-    _vm._v(" "),
+  return _c("div", { staticClass: "h-screen flex w-full bg-img" }, [
     _c(
       "div",
       {
         staticClass:
-          "px-8 py-16 cursor-pointer text-center border-2 border-dashed d-theme-border-grey-light d-theme-dark-bg text-xl",
-        on: {
-          click: function($event) {
-            return _vm.$refs.fileInput.click()
-          },
-          drop: _vm.handleDrop,
-          dragover: _vm.handleDragover,
-          dragenter: _vm.handleDragover
-        }
+          "vx-col sm:w-3/5 md:w-3/5 lg:w-3/4 xl:w-3/5 mx-auto self-center"
       },
       [
-        _c("feather-icon", {
-          staticClass: "block",
-          attrs: {
-            icon: "UploadCloudIcon",
-            svgClasses: "h-16 w-16 stroke-current text-grey"
-          }
-        }),
-        _vm._v(" "),
-        _c("span", [_vm._v("Drop Excel File or ")]),
-        _vm._v(" "),
-        _c(
-          "span",
-          {
-            staticClass: "font-medium text-primary",
-            on: {
-              click: function($event) {
-                $event.stopPropagation()
-                return _vm.$refs.fileInput.click()
-              }
-            }
-          },
-          [_vm._v("Browse")]
-        )
+        _c("vx-card", [
+          _c(
+            "div",
+            {
+              staticClass: "full-page-bg-color",
+              attrs: { slot: "no-body" },
+              slot: "no-body"
+            },
+            [
+              _c("div", { staticClass: "vx-row" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "vx-col hidden sm:hidden md:hidden lg:block lg:w-1/2 mx-auto self-center"
+                  },
+                  [
+                    _c("img", {
+                      staticClass: "mx-auto",
+                      attrs: {
+                        src: __webpack_require__(/*! @assets/images/pages/reset-password.png */ "./resources/assets/images/pages/reset-password.png"),
+                        alt: "login"
+                      }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "vx-col sm:w-full md:w-full lg:w-1/2 mx-auto self-center  d-theme-dark-bg"
+                  },
+                  [
+                    _c("div", { staticClass: "p-8" }, [
+                      _c("div", { staticClass: "vx-card__title mb-8" }, [
+                        _c("h4", { staticClass: "mb-4" }, [
+                          _vm._v("Şifreni Sıfırla")
+                        ]),
+                        _vm._v(" "),
+                        _c("p", [_vm._v("Lütfen yeni şifrenizi girin.")])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "form",
+                        {
+                          staticClass: "user",
+                          on: {
+                            submit: function($event) {
+                              $event.preventDefault()
+                              return _vm.reset($event)
+                            },
+                            keydown: function($event) {
+                              return _vm.form.onKeydown($event)
+                            }
+                          }
+                        },
+                        [
+                          _c("vs-input", {
+                            staticClass: "w-full mb-6",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("email")
+                            },
+                            attrs: {
+                              type: "email",
+                              "label-placeholder": "Email",
+                              readonly: "",
+                              name: "email"
+                            },
+                            model: {
+                              value: _vm.form.email,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "email", $$v)
+                              },
+                              expression: "form.email"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("vs-input", {
+                            staticClass: "w-full mb-6",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("password")
+                            },
+                            attrs: {
+                              type: "password",
+                              "label-placeholder": "Şifre",
+                              name: "password"
+                            },
+                            model: {
+                              value: _vm.form.password,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "password", $$v)
+                              },
+                              expression: "form.password"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("vs-input", {
+                            staticClass: "w-full mb-8",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "password_confirmation"
+                              )
+                            },
+                            attrs: {
+                              type: "password",
+                              "label-placeholder": "Şifre Tekrarı",
+                              name: "password_confirmation"
+                            },
+                            model: {
+                              value: _vm.form.password_confirmation,
+                              callback: function($$v) {
+                                _vm.$set(_vm.form, "password_confirmation", $$v)
+                              },
+                              expression: "form.password_confirmation"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "flex flex-wrap justify-between flex-col-reverse sm:flex-row"
+                            },
+                            [
+                              _c(
+                                "vs-button",
+                                {
+                                  staticClass:
+                                    "w-full sm:w-auto mb-8 sm:mb-auto mt-3 sm:mt-auto",
+                                  attrs: { type: "border", to: "/panel/login" }
+                                },
+                                [_vm._v("Girişe Git")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "vs-button",
+                                {
+                                  staticClass: "w-full sm:w-auto",
+                                  attrs: { loading: _vm.form.busy },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.reset()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Sıfırla")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ]
+          )
+        ])
       ],
       1
     )
@@ -314,126 +342,29 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/components/extra-components/import-export/Import.vue?vue&type=template&id=53f7b576&":
-/*!**************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/views/components/extra-components/import-export/Import.vue?vue&type=template&id=53f7b576& ***!
-  \**************************************************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./resources/assets/images/pages/reset-password.png":
+/*!**********************************************************!*\
+  !*** ./resources/assets/images/pages/reset-password.png ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c(
-        "div",
-        { staticClass: "mb-8" },
-        [_c("import-excel", { attrs: { onSuccess: _vm.loadDataInTable } })],
-        1
-      ),
-      _vm._v(" "),
-      _vm.tableData.length && _vm.header.length
-        ? _c(
-            "vx-card",
-            [
-              _c(
-                "vs-table",
-                {
-                  attrs: {
-                    stripe: "",
-                    pagination: "",
-                    "max-items": 10,
-                    search: "",
-                    data: _vm.tableData
-                  },
-                  scopedSlots: _vm._u(
-                    [
-                      {
-                        key: "default",
-                        fn: function(ref) {
-                          var data = ref.data
-                          return _vm._l(data, function(tr, indextr) {
-                            return _c(
-                              "vs-tr",
-                              { key: indextr, attrs: { data: tr } },
-                              _vm._l(data[indextr], function(col, indexcol) {
-                                return _c(
-                                  "vs-td",
-                                  { key: indexcol + col, attrs: { data: col } },
-                                  [
-                                    _vm._v(
-                                      "\n            " +
-                                        _vm._s(col) +
-                                        "\n          "
-                                    )
-                                  ]
-                                )
-                              }),
-                              1
-                            )
-                          })
-                        }
-                      }
-                    ],
-                    null,
-                    false,
-                    3112142431
-                  )
-                },
-                [
-                  _c("template", { slot: "header" }, [
-                    _c("h4", [_vm._v(_vm._s(_vm.sheetName))])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "template",
-                    { slot: "thead" },
-                    _vm._l(_vm.header, function(heading) {
-                      return _c(
-                        "vs-th",
-                        { key: heading, attrs: { "sort-key": heading } },
-                        [_vm._v(_vm._s(heading))]
-                      )
-                    }),
-                    1
-                  )
-                ],
-                2
-              )
-            ],
-            1
-          )
-        : _vm._e()
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
+module.exports = "/images/reset-password.png?965156dace52dc1b319d6363d3040ff2";
 
 /***/ }),
 
-/***/ "./resources/js/src/components/excel/ImportExcel.vue":
-/*!***********************************************************!*\
-  !*** ./resources/js/src/components/excel/ImportExcel.vue ***!
-  \***********************************************************/
+/***/ "./resources/js/src/views/pages/common/auth/password/reset.vue":
+/*!*********************************************************************!*\
+  !*** ./resources/js/src/views/pages/common/auth/password/reset.vue ***!
+  \*********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ImportExcel_vue_vue_type_template_id_435d3aaa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ImportExcel.vue?vue&type=template&id=435d3aaa& */ "./resources/js/src/components/excel/ImportExcel.vue?vue&type=template&id=435d3aaa&");
-/* harmony import */ var _ImportExcel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ImportExcel.vue?vue&type=script&lang=js& */ "./resources/js/src/components/excel/ImportExcel.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _reset_vue_vue_type_template_id_7db683b3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reset.vue?vue&type=template&id=7db683b3& */ "./resources/js/src/views/pages/common/auth/password/reset.vue?vue&type=template&id=7db683b3&");
+/* harmony import */ var _reset_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reset.vue?vue&type=script&lang=js& */ "./resources/js/src/views/pages/common/auth/password/reset.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -442,9 +373,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ImportExcel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ImportExcel_vue_vue_type_template_id_435d3aaa___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ImportExcel_vue_vue_type_template_id_435d3aaa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _reset_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _reset_vue_vue_type_template_id_7db683b3___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _reset_vue_vue_type_template_id_7db683b3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -454,142 +385,40 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/src/components/excel/ImportExcel.vue"
+component.options.__file = "resources/js/src/views/pages/common/auth/password/reset.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/src/components/excel/ImportExcel.vue?vue&type=script&lang=js&":
-/*!************************************************************************************!*\
-  !*** ./resources/js/src/components/excel/ImportExcel.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************/
+/***/ "./resources/js/src/views/pages/common/auth/password/reset.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/src/views/pages/common/auth/password/reset.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ImportExcel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ImportExcel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/components/excel/ImportExcel.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ImportExcel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_reset_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./reset.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/pages/common/auth/password/reset.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_reset_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/src/components/excel/ImportExcel.vue?vue&type=template&id=435d3aaa&":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/src/components/excel/ImportExcel.vue?vue&type=template&id=435d3aaa& ***!
-  \******************************************************************************************/
+/***/ "./resources/js/src/views/pages/common/auth/password/reset.vue?vue&type=template&id=7db683b3&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/src/views/pages/common/auth/password/reset.vue?vue&type=template&id=7db683b3& ***!
+  \****************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ImportExcel_vue_vue_type_template_id_435d3aaa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ImportExcel.vue?vue&type=template&id=435d3aaa& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/components/excel/ImportExcel.vue?vue&type=template&id=435d3aaa&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ImportExcel_vue_vue_type_template_id_435d3aaa___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_reset_vue_vue_type_template_id_7db683b3___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./reset.vue?vue&type=template&id=7db683b3& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/pages/common/auth/password/reset.vue?vue&type=template&id=7db683b3&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_reset_vue_vue_type_template_id_7db683b3___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ImportExcel_vue_vue_type_template_id_435d3aaa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/src/views/components/extra-components/import-export/Import.vue":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/src/views/components/extra-components/import-export/Import.vue ***!
-  \*************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Import_vue_vue_type_template_id_53f7b576___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Import.vue?vue&type=template&id=53f7b576& */ "./resources/js/src/views/components/extra-components/import-export/Import.vue?vue&type=template&id=53f7b576&");
-/* harmony import */ var _Import_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Import.vue?vue&type=script&lang=js& */ "./resources/js/src/views/components/extra-components/import-export/Import.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_reset_vue_vue_type_template_id_7db683b3___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Import_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Import_vue_vue_type_template_id_53f7b576___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Import_vue_vue_type_template_id_53f7b576___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/src/views/components/extra-components/import-export/Import.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/src/views/components/extra-components/import-export/Import.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************!*\
-  !*** ./resources/js/src/views/components/extra-components/import-export/Import.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Import_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Import.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/components/extra-components/import-export/Import.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Import_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/src/views/components/extra-components/import-export/Import.vue?vue&type=template&id=53f7b576&":
-/*!********************************************************************************************************************!*\
-  !*** ./resources/js/src/views/components/extra-components/import-export/Import.vue?vue&type=template&id=53f7b576& ***!
-  \********************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Import_vue_vue_type_template_id_53f7b576___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Import.vue?vue&type=template&id=53f7b576& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/components/extra-components/import-export/Import.vue?vue&type=template&id=53f7b576&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Import_vue_vue_type_template_id_53f7b576___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Import_vue_vue_type_template_id_53f7b576___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ 2:
-/*!********************!*\
-  !*** fs (ignored) ***!
-  \********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 3:
-/*!************************!*\
-  !*** crypto (ignored) ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* (ignored) */
-
-/***/ }),
-
-/***/ 4:
-/*!************************!*\
-  !*** stream (ignored) ***!
-  \************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-/* (ignored) */
 
 /***/ })
 
