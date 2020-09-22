@@ -1,3 +1,6 @@
+@php
+    $findServiceswithoutId5 = Helper::findServiceswithoutId5();
+@endphp
 <!DOCTYPE html>
 <!--[if IE 7]><html class="ie ie7 ltie8 ltie9" lang="en-US"><![endif]-->
 <!--[if IE 8]><html class="ie ie8 ltie9" lang="en-US"><![endif]-->
@@ -137,10 +140,11 @@
                                     <a href="javascript:void(0);"><i
                                             class="fa fa-gift"></i><span>Hizmetler</span></a>
                                     <ul>
-                                        <li><a href="/our-services">Pazaryeri Entegrasyonu</a></li>
-                                        <li><a href="/our-services">Global Pazarlama</a></li>
-                                        <li><a href="/our-services">Online Pazaryerleri</a></li>
-                                        <li><a href="/our-services">Hukuk & Lojistik Faaliyetleri</a></li>
+                                        @foreach ($findServiceswithoutId5 as $service)
+                                    <li><a href="{{route('service.find',$service->slug)}}">{{$service->title}}</a></li>
+                                        @endforeach
+
+
                                     </ul>
                                 </li>
 
