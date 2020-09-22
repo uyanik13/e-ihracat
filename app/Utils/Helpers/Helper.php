@@ -137,6 +137,11 @@ class Helper
         return $services;
     }
 
+    public static function findServiceswithoutId5 () {
+        $services = Post::where('type','service')->limit(5)->get();
+        return $services;
+    }
+
     public static function htmlEntityWithSubStr ($str, int $first, int $last) {
         $string = htmlspecialchars($str);
         $string2 = htmlspecialchars($string);
