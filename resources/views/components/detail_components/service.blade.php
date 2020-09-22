@@ -1,4 +1,6 @@
-﻿
+﻿@php
+    $findServiceswithoutId5 = Helper::findServiceswithoutId5();
+@endphp
 		<!-- Content Start -->
 		<div id="contentWrapper">
 			<div class="page-title title-1">
@@ -37,54 +39,17 @@
 										<ul>
 											<li>
 												<ul id="accordion2" class="accordion">
+                                                  @forelse($findServiceswithoutId5 as $service)
 													<li>
-														<h3><a href="partner-details.blade.php"><span class="bold"
-                                                                                                      class="skew25">E-İhracat</span></a>
+														<h3><a href="{{route('service.find',$service->slug)}}"><span class="bold"
+                                                                                                      class="skew25">{{substr($service->title,0,15)}}</span></a>
 														</h3>
 														<div class="accordion-panel active">
-															<a href="our-services-1.html">E-İhracat Nedir?</a>
-															<a href="our-services-1.html">E-İhracat Nasıl Yapılır?</a>
-															<a href="our-services-1.html">E-İhracat Terimleri</a>
+															<a href="{{route('service.find',$service->slug)}}">{{ substr(strip_tags($service->content),0,20)}}</a>
 														</div>
 													</li>
-
-													<li>
-														<h3><a href="partner-details.blade.php"><span class="bold"
-                                                                                                      class="skew25">Online Pazar
-																	Yerleri</span></a>
-														</h3>
-														<div class="accordion-panel active">
-															<a href="our-services-1.html">Amazon</a>
-															<a href="our-services-1.html">Alibaba</a>
-															<a href="our-services-1.html">Ebay</a>
-															<a href="our-services-1.html">Etsy</a>
-														</div>
-													</li>
-
-													<li>
-														<h3><a href="partner-details.blade.php"><span class="bold"
-                                                                                                      class="skew25">Global
-																	Pazarlama</span></a>
-														</h3>
-														<div class="accordion-panel active">
-															<a href="our-services-1.html">Global Pazarlama Nedir?</a>
-															<a href="our-services-1.html">Global Pazarlama Nasıl
-																Yapılır?</a>
-															<a href="our-services-1.html">Global Pazarlama
-																Stratejileri</a>
-														</div>
-													</li>
-
-													<li>
-														<h3><a href="partner-details.blade.php"><span class="bold"
-                                                                                                      class="skew25">E-İhracat</span></a>
-														</h3>
-														<div class="accordion-panel active">
-															<a href="our-services-1.html">E-İhracat Nedir?</a>
-															<a href="our-services-1.html">E-İhracat Nasıl Yapılır?</a>
-															<a href="our-services-1.html">E-İhracat Terimleri</a>
-														</div>
-													</li>
+                                                      @empty
+                                                    @endforelse
 												</ul>
 											</li>
 										</ul>
@@ -111,8 +76,9 @@
 									<div class="widget-content">
 										<div class="cell-12 contact-form fx" data-animate="fadeInLeft" id="contact">
 											<mark id="message"></mark>
-											<form class="form-signin cform" method="post" action="php/contact.php"
-												id="cform" autocomplete="on">
+                                            <form class="form-signin cform" method="post" action="{{route('contact.form')}}" id="cform"
+                                                  autocomplete="on">
+                                                @csrf
 												<div class="form-input">
 													<label>Ad Soyad<span class="red">*</span></label>
 													<input type="text" required="required" name="name"
