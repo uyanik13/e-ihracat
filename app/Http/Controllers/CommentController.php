@@ -15,6 +15,21 @@ class CommentController extends Controller
         $this->user = auth()->setRequest($request)->user();
 
     }
+    public function storePostComment(Request $request, $post_id){
+
+        $validData = $request->validate([
+            'content' => 'required|string'
+        ]);
+
+
+        $create_comment = Comment::create([
+            'content' => $validData['content'],
+            'post_id' => $post_id,
+            'user_id' =>$this->user->id,
+            'point' =>$request->point,
+        ]);
+        return redirect()->back();
+    }
     public function store(Request $request,$user_id)
     {
         $validData = $request->validate([
@@ -22,10 +37,13 @@ class CommentController extends Controller
         ]);
         $partner_id=null;
         $post_id=null;
-        if ($request->isFromPartnerPage == 1) {
+
+        if ($request->isFromPartnerPage === '1') {
             $partner_id = $user_id;
-        }elseif ($request->isFromPartnerPage == 0){
+            $post_id = null;
+        }elseif ($request->isFromPartnerPage === '0'){
             $post_id = $user_id;
+            $partner_id = null;
         }
         $create_comment = Comment::create([
             'content' => $validData['content'],
@@ -34,12 +52,7 @@ class CommentController extends Controller
             'user_id' =>$this->user->id,
             'point' =>$request->point,
         ]);
-
-        session()->flash('commentResult', [
-            'message' => 'Comment added successfully, it will appear after approval',
-            'success' => true
-        ]);
-        return redirect()->back();
+        return back()->withSuccess(trans('lang.your_messsage_has_been_sent'));
     }
 
     public function edit(Comment $comment)

@@ -78,18 +78,17 @@ $popularUsers = \App\Models\User::inRandomOrder()->get();
 												</div>
 												<div class="widget-post-info">
 													<h4>
-														<a href="our-services.blade.php">
+														<a href="our-services">
 															{{$popular->name}}
 														</a>
 													</h4>
 													<div class="meta">
-														<a href="our-services.blade.php"><i class="fa fa-star"></i>15</a>
+														<a href="our-services"><i class="fa fa-star"></i>15</a>
 													</div>
 												</div>
 											</li>
                                                 @empty
                                             @endforelse
-
 										</ul>
 									</div>
 								</li>
@@ -106,7 +105,7 @@ $popularUsers = \App\Models\User::inRandomOrder()->get();
                                     @endphp
                                     <div class="post-item fx" data-animate="fadeInLeft">
                                         <div class="post-image">
-                                            <a href="../components/detail_components/partner-details.blade.php">
+                                            <a href="{{route('partner.find',$user->name)}}">
                                                 <div class="mask"></div>
                                                 <img src="{{$user->avatar}}" alt="Partner Logo">
                                             </a>
@@ -114,7 +113,7 @@ $popularUsers = \App\Models\User::inRandomOrder()->get();
                                         <article class="post-content">
                                             <div class="post-info-container">
                                                 <div class="post-info">
-                                                    <h2><a class="main-color" href="../components/detail_components/partner-details.blade.php">{{$user->name}}</a>
+                                                    <h2><a class="main-color" href="{{route('partner.find',$user->name)}}">{{$user->name}}</a>
                                                     </h2>
                                                     <ul class="list-details">
                                                         <li>

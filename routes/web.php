@@ -43,6 +43,7 @@ Route::any('panel/{path}', function () {
     Route::get('/search/post',[PageController::class, 'search_product'])->name('search_post');
     Route::get('/search/user',[PageController::class, 'search_user'])->name('search_user');
     Route::post('/add_comment/{user_id}', [CommentController::class, 'store'])->name('add_comment_to_product');
+    Route::post('/add_comment_post/{post_id}', [CommentController::class, 'storePostComment'])->name('add_comment_to_post');
     Route::any('/search', [PageController::class, 'search'])->name('search');
     Route::post('/live_search', [PageController::class, 'search_liveSearchproduct'] )->name('live_search');
     Route::post('/search/filter_product', [PageController::class, 'filter_product'])->name('filter_product');

@@ -3,41 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="e22528c8-32fe-430c-93e4-4a6684eef910" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CommentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CommentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Comment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Comment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Utils/Helpers/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Utils/Helpers/Helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2015_06_31_190516_create_comments_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2015_06_31_190516_create_comments_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/custom.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/custom.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/11.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/11.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/13.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/13.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/14.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/14.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/15.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/15.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/16.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/16.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/17.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/17.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/18.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/18.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/19.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/19.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/20.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/20.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/21.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/21.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/22.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/22.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/23.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/23.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/24.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/24.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/25.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/25.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chunks/9.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/9.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/src/http/requests/auth/jwt/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/src/http/requests/auth/jwt/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/src/store/auth/moduleAuthActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/src/store/auth/moduleAuthActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/chunks/50.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/50.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/chunks/51.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chunks/51.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/theme/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/theme/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/detail_components/blog-single.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/detail_components/blog-single.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/inc/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/inc/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/blog.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/blog.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/partials/blog-sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/partials/blog-sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/partner-details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/detail_components/partner-details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/partner-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/partner-list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,6 +206,7 @@
       <updated>1600676114895</updated>
       <workItem from="1600676117629" duration="24226000" />
       <workItem from="1600715541283" duration="5684000" />
+      <workItem from="1600846115515" duration="4490000" />
     </task>
     <servers />
   </component>
@@ -259,10 +238,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1600786610013" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1600787394543">
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1600849976057">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600787394543" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1600849976057" />
     <state x="539" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040/-1920.9.1536.824@0.0.1920.1040" timestamp="1600717633940" />
   </component>
 </project>

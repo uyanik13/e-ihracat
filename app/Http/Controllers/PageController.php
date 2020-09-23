@@ -43,9 +43,8 @@ class PageController extends ApiController
       $this->user = Auth::user();
       $this->products = Post::where('type','product')->paginate(12);
 
-    //   $user = auth()->user();
-    //     //dd($user);
-
+      //   $user = auth()->user();
+      //     //dd($user);
 
     $this->all_products = Post::where('type','product')->get();
     $this->new_arrivals = Post::where('type','product')->orderBy('created_at','DESC')->limit(25)->get();
@@ -61,6 +60,7 @@ class PageController extends ApiController
 
     $this->posts_for_blog_page = Post::where('type','post')->orderBy('created_at','desc')->paginate(4);
     $this->recent_post_blog_page = Post::where('type','post')->orderBy('created_at','desc')->limit(5)->get();
+
   }
 
 
