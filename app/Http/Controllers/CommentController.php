@@ -20,18 +20,19 @@ class CommentController extends Controller
         $validData = $request->validate([
             'content' => 'required|string'
         ]);
-
-
         $create_comment = Comment::create([
             'content' => $validData['content'],
             'post_id' => $post_id,
             'user_id' =>$this->user->id,
             'point' =>$request->point,
+            'reply_to' =>$request->reply_to,
+
         ]);
         return redirect()->back();
     }
     public function store(Request $request,$user_id)
     {
+
         $validData = $request->validate([
             'content' => 'required|string'
         ]);
@@ -50,6 +51,7 @@ class CommentController extends Controller
             'post_id' => $post_id,
             'partner_id' => $partner_id,
             'user_id' =>$this->user->id,
+            'reply_to' =>$request->reply_to,
             'point' =>$request->point,
         ]);
         return back()->withSuccess(trans('lang.your_messsage_has_been_sent'));

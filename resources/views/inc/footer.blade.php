@@ -1,10 +1,14 @@
 <!--Footer Top Social start-->
+@php
+    $recentPosts = Helper::recentPosts(3);
+@endphp
 <div class="footer-bar footer-bar-3">
     <div class="container">
         <div class="row">
             <div class="cell-10">
                 <p><strong class="main-color">E-İHRACAT TÜRKİYE </strong>- <a href="http://eihracatturkiye.com"
-                                                                              class="main-bg"><span data-view="Globalleşmeye">Dijitalleşmeye</span></a> hazır olun.
+                                                                              class="main-bg"><span
+                            data-view="Globalleşmeye">Dijitalleşmeye</span></a> hazır olun.
                 </p>
             </div>
             <div class="cell-2 buyNow">
@@ -63,53 +67,28 @@
                     <h3 class="block-head">Son Gönderiler </h3>
                     <div class="recent-posts-footer">
                         <ul>
-                            <li>
-                                <div class="post-img">
-                                    <img src="{{asset('theme/images/portfolio/1.jpg')}}" alt="">
-                                </div>
-                                <div class="widget-post-info">
-                                    <h4>
-                                        <a href="blog-single.html">
-                                            "Yeni düzende e-ihracat’a ayak uyduramayan
-                                            kaybolur"
+                            @forelse($recentPosts as $recent)
+                                <li>
+                                    <div class="post-img">
+                                        <a href="{{route('post.find',$recent->slug)}}">
+                                            <img src="{{$recent->thumnail}}" alt="">
                                         </a>
-                                    </h4>
-                                    <div class="meta">
-                                        <span><i class="fa fa-clock-o"></i>15 Ocak 2020</span>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="post-img">
-                                    <img src="{{asset('theme/images/portfolio/2.jpg')}}" alt="">
-                                </div>
-                                <div class="widget-post-info">
-                                    <h4>
-                                        <a href="blog-single.html">
-                                            Gagiad E-ihracat’ı değerlendirdi
-                                        </a>
-                                    </h4>
-                                    <div class="meta">
-                                        <span><i class="fa fa-clock-o"></i>10 Eylül 2020</span>
+                                    <div class="widget-post-info">
+                                        <h4>
+                                            <a href="{{route('post.find',$recent->slug)}}">
+                                                {{$recent->title}}
+                                            </a>
+                                        </h4>
+                                        <div class="meta">
+                                            <a href="{{route('post.find',$recent->slug)}}">
+                                                <span><i class="fa fa-clock-o"></i>{{Helper::getDateForHuman($recent->id)}}</span>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="post-img">
-                                    <img src="{{asset('theme/images/portfolio/3.jpg')}}" alt="">
-                                </div>
-                                <div class="widget-post-info">
-                                    <h4>
-                                        <a href="blog-single.html">
-                                            MOBİL : "İhracatta 'dijital devrim'
-                                            başlıyor"
-                                        </a>
-                                    </h4>
-                                    <div class="meta">
-                                        <span><i class="fa fa-clock-o"></i>08 Eylül 2020</span>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            @empty
+                            @endforelse
                         </ul>
                     </div>
                 </div>
