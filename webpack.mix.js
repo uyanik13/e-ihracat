@@ -15,6 +15,7 @@ require('dotenv').config();
  */
 
 mix.js('resources/js/app.js', 'public/js')
+    .js('resources/front-end-js/app.js', 'public/theme/js')
   .webpackConfig({
     resolve: {
       alias: {

@@ -1,28 +1,26 @@
 <template>
             <div class="exportDetailsTable">
-                <h1>{{country_details.countryName}}</h1>
+                <h1>{{this.$route.query.id}}</h1>
 
                 <div class="exportCountryRate">
-                    <span class="bold">{{country_details.year}}</span> yılı toplam ithalatı
-                    <span class="bold"> {{country_details.totalImportValue  }} $</span>
+                    <span class="bold"> {{code_details.hsCodeName  }} </span><br>
+                     <span class="bold">{{code_details.year}}</span> yılı toplam ithalatı {{numFormatter(code_details.totalImportValue)}}$
                 </div>
                 <table>
                     <thead>
                         <tr>
-                            <th>GTİP</th>
+                            <th>ULKE</th>
                             <th class="">İTHALAT</th>
                         </tr>
                     </thead>
 
                     <tbody>
 
-                        <tr v-for="(data,index) in country_details.items" :key="index">
+                        <tr v-for="(data,index) in code_details.items" :key="index">
+
                             <td>
-                                <a href="#"  @click="goToNextPage(data.id)">
-                                    <span class="gtipNumber">{{data.id}}</span>
-                                    <span class="gtipDescription">
-                                       {{data.hsCode.gtip2desc}}
-                                    </span>
+                                <a href="#"  @click="goToNextPage(data.country.name)">
+                                    <span class="gtipNumber">{{data.country.nameTr}}</span>
                                 </a>
                             </td>
                             <td>
@@ -55,18 +53,18 @@
         },
 
         data: () => ({
-            country_details : [],
+            code_details : [],
         }),
         computed: {
 
         },
         methods : {
-        fetchCountryDetail() {
+        fetchCodeDetails() {
           return new Promise((resolve, reject) => {
-            axios.get(`https://api.ihracatradari.com/comtrade/getcountryimports?hs=&c=${this.$route.query.country}`)
+            axios.get(`https://api.ihracatradari.com/comtrade/gettopimportersbyhs?hs=${this.$route.query.id}`)
               .then((response) => {
                   console.log(response.data)
-                this.country_details = response.data
+                this.code_details = response.data
                 resolve(response)
               })
               .catch((error) => { reject(error) })
@@ -91,14 +89,13 @@
             return this.toLocaleString()
             },
 
-
-          goToNextPage(id) {
-             this.$router.push({path: '/ihracat-ulke-tum-detaylari', query : {id:id, country: this.$route.query.country}});
+           goToNextPage(country) {
+             this.$router.push({path: '/ihracat-istatistik', query : {id:this.$route.query.id, country: country}});
          }
 
         },
         created() {
-            this.fetchCountryDetail()
+            this.fetchCodeDetails()
         }
     }
 </script>

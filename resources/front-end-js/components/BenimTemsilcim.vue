@@ -48,7 +48,7 @@
          },
 
          goToNextPage() {
-             this.$router.push({path: '/ihracat-ulke-detayi', query : { country: this.country.name}});
+             this.$router.push({path: '/benim-temsilcim-detayi', query : { country: this.country.name}});
          }
         },
         created() {
