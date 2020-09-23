@@ -3,12 +3,14 @@
 
 							<v-select id="myCountry"
                             class="w-full mt-5"
-                            v-model="country"
-                            :options="countries"
+                            v-model="dataSelected"
+                            :options="results"
                             @input="goToNextPage"
                             @search="query => search = query"
-                            :getOptionLabel="option => option.nameTr"
+                            :getOptionLabel="option => option.gtip6desc"
                             :filterable="true"/>
+
+
 
 </div>
 </template>
@@ -24,31 +26,37 @@
         },
 
         data: () => ({
+            search : '',
             show : false,
-            countries: [],
-            country: '',
+            results: [],
+            dataSelected: '',
 
         }),
         computed: {
             filtered () {
-            return this.countries.filter(country => country.includes(this.search))
+            return this.results.filter(data => data.includes(this.search))
             },
+
+        },
+        watch: {
+         search: function (searchKey) {
+             this.fetchCountries(searchKey)
+            }
         },
         methods : {
-        fetchCountries() {
+        fetchCountries(key) {
           return new Promise((resolve, reject) => {
-            axios.get("https://api.ihracatradari.com/comtrade/getcountries")
+            axios.get(`https://api.ihracatradari.com/comtrade/gethscodes?q=${key}`)
               .then((response) => {
                   //console.log(response.data)
-                this.countries = response.data
+                this.results = response.data
                 resolve(response)
               })
               .catch((error) => { reject(error) })
              })
          },
-
          goToNextPage() {
-             this.$router.push({path: '/ihracat-ulke-detayi', query : { country: this.country.name}});
+             this.$router.push({path: '/benim-urunum-ulke-detayi', query : { id: this.dataSelected.gtip6}});
          }
         },
         created() {

@@ -21,7 +21,7 @@
                                 <a href="#"  @click="goToNextPage(data.id)">
                                     <span class="gtipNumber">{{data.id}}</span>
                                     <span class="gtipDescription">
-                                       {{data.hsCode.gtip2desc}}
+                                       {{data.hsCode.gtip6desc}}
                                     </span>
                                 </a>
                             </td>
@@ -63,7 +63,7 @@
         methods : {
         fetchCountryDetail() {
           return new Promise((resolve, reject) => {
-            axios.get(`https://api.ihracatradari.com/comtrade/getcountryimports?hs=&c=${this.$route.query.country}`)
+            axios.get(`https://api.ihracatradari.com/comtrade/getcountryimports?hs=${this.$route.query.id}&c=${this.$route.query.country}`)
               .then((response) => {
                   console.log(response.data)
                 this.country_details = response.data
@@ -93,7 +93,7 @@
 
 
           goToNextPage(id) {
-             this.$router.push({path: '/ihracat-ulke-tum-detaylari', query : {id:id, country: this.$route.query.country}});
+             this.$router.push({path: '/ihracat-istatistik', query : {id:id, country: this.$route.query.country}});
          }
 
         },

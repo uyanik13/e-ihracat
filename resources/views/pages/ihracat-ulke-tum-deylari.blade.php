@@ -1,7 +1,4 @@
 ﻿
-@if ($category === 'benim-ulkem')
-<link rel="stylesheet" href="{{asset('theme/css/app.css')}}">
-@endif
 
 
 		<!-- Content Start -->

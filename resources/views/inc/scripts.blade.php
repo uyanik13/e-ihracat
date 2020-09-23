@@ -55,6 +55,8 @@
 
 <script type="text/javascript" src="{{asset('theme/js/app.js')}}"></script>
 
+
+
 </body>
 
 </html>

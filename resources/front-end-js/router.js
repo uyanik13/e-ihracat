@@ -37,15 +37,33 @@ const router = new Router({
         path: '',
         component: () => import('./layouts/BilgiBankasiLayout'),
         children: [
-            {
+
+                {
                 path: '/benim-ulkem',
                 name: 'benim-ulkem',
                 component: () => import('./components/BenimUlkem.vue'),
+              },
+                {
+                path: '/benim-temsilcim',
+                name: 'benim-temsilcim',
+                component: () => import('./components/BenimTemsilcim.vue'),
               },
               {
                 path: '/ihracat-ulke-detayi',
                 name: 'ihracat-ulke-detayi',
                 component: () => import('./components/IhracatUlkeDetayi.vue'),
+                params:true,
+              },
+              {
+                path: '/benim-urunum-ulke-detayi',
+                name: 'benim-urunum-ulke-detayi',
+                component: () => import('./components/BenimUrunumUlkeDetayi.vue'),
+                params:true,
+              },
+              {
+                path: '/ihracat-ulke-tum-detaylari',
+                name: 'ihracat-ulke-tum-detaylari',
+                component: () => import('./components/IhracatUlkeTumDetaylari.vue'),
                 params:true
               },
               {
@@ -53,6 +71,16 @@ const router = new Router({
                 name: 'ihracat-istatistik',
                 component: () => import('./components/IhracatIstatistik.vue'),
                 params:true
+              },
+              {
+                path: '/benim-urunum',
+                name: 'benim-urunum',
+                component: () => import('./components/BenimUrunum.vue'),
+              },
+              {
+                path: '/benim-temsilcim-detayi',
+                name: 'benim-temsilcim-detayi',
+                component: () => import('./components/BenimTemsilcimDetayi.vue'),
               },
         ]
     }
