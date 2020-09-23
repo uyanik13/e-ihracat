@@ -22,86 +22,34 @@
         </vx-card>
       </div>
 
-      <!-- CARD 2: SUBSCRIBERS GAINED -->
-      <div class="vx-col w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 mb-base">
-       
-      
-       <statistics-card-line
-                  icon="ArrowUpIcon"
-                  :statistic="outgoingTokensAmount | k_formatter"
-                  :statisticTitle="$t('OutgoingPayments')"
-                  :chartData="OutGoingPaymentsStatisticData()"
-                  color="warning"
-                  type="area" />
-        
-            </div>
-   
-
-      <!-- CARD 3: ORDER RECIEVED -->
-      <div class="vx-col w-full sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 mb-base">
-        <statistics-card-line
-                  icon="ArrowDownIcon"
-                  :statistic="incomingTokensAmount | k_formatter"
-                  :statisticTitle="$t('IncomingPayments')"
-                  :chartData="IncomingPaymentsStatisticData()"
-                  color="warning"
-                  type="area" />
-        
-      </div>
-    </div>
 
 
+  </div>
   </div>
 </template>
 
 <script>
-import VueApexCharts from 'vue-apexcharts'
-import StatisticsCardLine from '@/components/statistics-cards/StatisticsCardLine.vue'
-import analyticsData from './ui-elements/card/analyticsData.js'
-import ChangeTimeDurationDropdown from '@/components/ChangeTimeDurationDropdown.vue'
-import VxTimeline from '@/components/timeline/VxTimeline'
-import i18n from '@/i18n/i18n'
+
 export default {
   data () {
     return {
-      analyticsData
+
     }
   },
   components: {
-    VueApexCharts,
-    StatisticsCardLine,
-    ChangeTimeDurationDropdown,
-    VxTimeline
+
   },
   computed : {
     activeUser () {
       return this.$store.state.user.currentUser
     },
-    outgoingTokensAmount () {
-      return this.$store.getters['token/outgoingTokensAmount'](this.activeUser.id)
-    },
-    incomingTokensAmount () {
-      return this.$store.getters['token/incomingTokensAmount'](this.activeUser.id)
-    }
+
   },
   methods:{
-    outgoingTokensJustAmount () {
-      return this.$store.getters['token/outgoingTokensJustAmount'](this.activeUser.id)
-    },
-    incomingTokensJustAmount () {
-      return this.$store.getters['token/incomingTokensJustAmount'](this.activeUser.id)
-    },
-    OutGoingPaymentsStatisticData () {
-      return [{name : i18n.t('Amount'), data : this.outgoingTokensJustAmount()}]
-    },
-    IncomingPaymentsStatisticData () {
-      return [{name : i18n.t('Amount'), data : this.incomingTokensJustAmount()}]
-    }
+
   },
   created () {
-    this.$store.dispatch('token/fetchItems')
-    this.$store.dispatch('user/fetchUser')
-    // this.$store.dispatch('blogPosts/fetchItems')
+
   }
 }
 </script>

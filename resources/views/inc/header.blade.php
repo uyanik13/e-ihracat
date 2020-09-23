@@ -56,7 +56,7 @@
                             <li><a href="javascript:void(0);"><i class="fa fa-clock-o"></i>Çalışma Saatlerimiz:
                                     Pazartesi – Cuma: 09:00 /
                                     18:00</a></li>
-                            <li><a href="register"><i class="fa fa-user"></i>Kayıt Ol</a></li>
+                            <li><a href="/panel/register"><i class="fa fa-user"></i>Kayıt Ol</a></li>
                             <li><a href="#" class="login-btn"><i class="fa fa-unlock-alt"></i> Giriş Yap</a></li>
                             <li><a href="#" class="multiLanguage"><i class="fa fa-globe"></i> EN</a></li>
                         </ul>

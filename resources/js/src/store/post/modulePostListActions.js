@@ -10,83 +10,80 @@
 import axios from '../../plugins/axios.js'
 
 export default {
-  addItem (context, data) {
-    return new Promise((resolve, reject) => {
-      axios.post('/api/post', data)
-        .then((response) => {
-            context.dispatch('fetchItems')
-          resolve(response)
-        })
-        .catch((error) => { reject(error) })
-    })
-  },
-  addCategory ({ commit }, data) {
-    return new Promise((resolve, reject) => {
-      axios.post('/api/addCategory', data)
-        .then((response) => {
-          commit('ADD_CATEGORY', response.data)
-          resolve(response)
-        })
-        .catch((error) => { reject(error) })
-    })
-  },
-  fetchItems ({ commit }) {
-    return new Promise((resolve, reject) => {
-      axios.get('/api/post')
-        .then((response) => {
-          //console.log('POST ACTION - POSTS:', response.data)
-          response.data.posts.forEach(element => {
-            const page = response.data.posts.filter(element => element.type === 'page')
-            const post = response.data.posts.filter(element => element.type === 'post')
-            const service = response.data.posts.filter(element => element.type === 'service')
-            const product = response.data.posts.filter(element => element.type === 'product')
-            const certificate = response.data.posts.filter(element => element.type === 'certificate')
+    addItem (context, data) {
 
-            commit('SET_PAGES', page)
-            commit('SET_ITEM', post)
-            commit('SET_SERVICES', service)
-            commit('SET_PRODUCTS', product)
-            commit('SET_CERTIFICATE', certificate)
+        return new Promise((resolve, reject) => {
+          axios.post('/api/post', data)
+            .then((response) => {
+              context.dispatch('fetchItems')
+              resolve(response)
+            })
+            .catch((error) => { reject(error) })
+        })
+      },
+      addCategory (context, data) {
+        return new Promise((resolve, reject) => {
+          axios.post('/api/addCategory', data)
+            .then((response) => {
+             context.dispatch('fetchItems')
+              resolve(response)
+            })
+            .catch((error) => { reject(error) })
+        })
+      },
+      fetchItems ({ commit }) {
+        return new Promise((resolve, reject) => {
+          axios.get('/api/post')
+            .then((response) => {
+              //console.log('POST ACTION - POSTS:', response.data.myServices.data)
+              commit('SET_PAGES', response.data.pages)
+              commit('SET_ITEM', response.data.posts)
+              commit('SET_MyPosts', response.data.myPosts)
+
+              commit('SET_CATEGORIES', response.data.categories)
+              resolve(response)
+            })
+            .catch((error) => { reject(error) })
+        })
+      },
+      updateItem ({ commit }, data) {
+        return new Promise((resolve, reject) => {
+          //console.log('payload',data)
+          axios.patch(`/api/post/${data.id}`, data)
+            .then((response) => {
+              if (data.type === 'post') commit('UPDATE_ITEM', data)
+              if (data.type === 'page') commit('UPDATE_PAGE', data)
+              if (data.type === 'category') commit('UPDATE_CATEGORY', data)
+              if (data.type === 'certificate') commit('UPDATE_CERTIFICATE', data)
+              if (data.type === 'service') commit('UPDATE_SERVICES', data)
+              resolve(response)
+            })
+            .catch((error) => { reject(error) })
+        })
+      },
+      removeItem (context, itemId) {
+        return new Promise((resolve, reject) => {
+          axios.delete(`/api/post/${itemId}`)
+            .then((response) => {
+              context.dispatch('fetchItems')
+              resolve(response)
+            })
+            .catch((error) => { reject(error) })
+        })
+      },
+      removeCategory ({ commit }, itemId) {
+        return new Promise((resolve, reject) => {
+          axios.post('/api/removeCategory', {
+            id: itemId
           })
-          commit('SET_CATEGORIES', response.data.categories)
-          resolve(response)
+            .then((response) => {
+              commit('REMOVE_CATEGORY', itemId)
+              resolve(response)
+            })
+            .catch((error) => { reject(error) })
         })
-        .catch((error) => { reject(error) })
-    })
-  },
-  updateItem (context, data) {
-    return new Promise((resolve, reject) => {
+      },
 
-      axios.patch(`/api/post/${data.id}`, data)
-        .then((response) => {
-            context.dispatch('fetchItems')
-          resolve(response)
-        })
-        .catch((error) => { reject(error) })
-    })
-  },
-
-  updateCategory ({ commit }, data) {
-    return new Promise((resolve, reject) => {
-      //console.log('payload',data)
-      axios.post('/api/updateCategory', data)
-        .then((response) => {
-          commit('UPDATE_CATEGORY', response.data)
-          resolve(response)
-        })
-        .catch((error) => { reject(error) })
-    })
-  },
-  removeItem (context, itemId) {
-    return new Promise((resolve, reject) => {
-      axios.delete(`/api/post/${itemId}`)
-        .then((response) => {
-            context.dispatch('fetchItems')
-          resolve(response)
-        })
-        .catch((error) => { reject(error) })
-    })
-  },
   removeProductGalleryImage (context, data) {
       console.log(data)
     return new Promise((resolve, reject) => {
@@ -98,18 +95,7 @@ export default {
         .catch((error) => { reject(error) })
     })
   },
-  removeCategory ({ commit }, itemId) {
-    return new Promise((resolve, reject) => {
-      axios.post('/api/removeCategory', {
-        id: itemId
-      })
-        .then((response) => {
-          commit('REMOVE_CATEGORY', itemId)
-          resolve(response)
-        })
-        .catch((error) => { reject(error) })
-    })
-  },
+
 
 
   //Custom

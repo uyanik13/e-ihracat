@@ -10,7 +10,7 @@
 <template>
   <div id="data-list-list-view" class="data-list-container">
 
-    <data-view-sidebar :isSidebarActive="addNewDataSidebar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
+    <user-post-sidebar :isSidebarActive="addNewDataSidebar" @closeSidebar="toggleDataSidebar" :data="sidebarData" />
 
     <vs-table ref="table"  multiple v-model="selected" pagination :max-items="itemsPerPage" search :data="blogPosts">
 
@@ -25,29 +25,9 @@
           </div>
         </div>
 
-        <!-- ITEMS PER PAGE -->
-        <vs-dropdown vs-trigger-click class="cursor-pointer mb-4 mr-4 items-per-page-handler">
-          <div class="p-4 border border-solid d-theme-border-grey-light rounded-full d-theme-dark-bg cursor-pointer flex items-center justify-between font-medium">
-            <span class="mr-2">{{ currentPage * itemsPerPage - (itemsPerPage - 1) }} - {{ blogPosts.length - currentPage * itemsPerPage > 0 ? currentPage * itemsPerPage : blogPosts.length }} of {{ queriedItems }}</span>
-            <feather-icon icon="ChevronDownIcon" svgClasses="h-4 w-4" />
-          </div>
-          <!-- <vs-button class="btn-drop" type="line" color="primary" icon-pack="feather" icon="icon-chevron-down"></vs-button> -->
-          <vs-dropdown-menu>
 
-            <vs-dropdown-item @click="itemsPerPage=4">
-              <span>4</span>
-            </vs-dropdown-item>
-            <vs-dropdown-item @click="itemsPerPage=10">
-              <span>10</span>
-            </vs-dropdown-item>
-            <vs-dropdown-item @click="itemsPerPage=15">
-              <span>15</span>
-            </vs-dropdown-item>
-            <vs-dropdown-item @click="itemsPerPage=20">
-              <span>20</span>
-            </vs-dropdown-item>
-          </vs-dropdown-menu>
-        </vs-dropdown>
+
+
       </div>
 
       <template slot="thead">
@@ -64,7 +44,7 @@
           <tbody>
             <vs-tr :data="tr" :key="indextr" v-for="(tr, indextr) in data">
               <vs-td>
-              <p class="product-name font-medium truncate">{{ tr.category.title ? tr.category.title : tr.category_id }}</p>
+              <p class="product-name font-medium truncate">{{  tr.category.title ? tr.category.title  : tr.category_id }}</p>
               </vs-td>
               <vs-td>
                 <p class="product-name font-medium truncate">{{ tr.title.substring(0, 25) }}</p>
@@ -101,14 +81,13 @@
 </template>
 
 <script>
-import DataViewSidebar from './DataViewSidebar.vue'
-import modulePostList from '@/store/post/modulePostList'
+import UserPostSidebar from './userPostSidebar.vue'
 import Swal from 'sweetalert2'
 import i18n from '@/i18n/i18n'
 
 export default {
   components: {
-    DataViewSidebar
+    UserPostSidebar
 
   },
   data () {
@@ -138,8 +117,8 @@ export default {
       return this.$store.state.post.categories
     },
     blogPosts () {
-      return this.$store.getters['post/myPosts'](this.activeUser.id)
-    },
+      return this.$store.state.post.myPosts
+      },
     queriedItems () {
       return this.$refs.table ? this.$refs.table.queriedResults.length : this.blogPosts.length
     }
@@ -163,7 +142,7 @@ export default {
       }).then((result) => {
         if (result.value) {
           console.log(result)
-          this.$store.dispatch('blogPosts/removeItem', id)
+          this.$store.dispatch('post/removeItem', id)
             .then((response) => {
               this.$vs.notify({
                 title: 'Başarılı',
@@ -214,12 +193,8 @@ export default {
     }
   },
   created () {
-    if (!modulePostList.isRegistered) {
-      this.$store.registerModule('blogPosts', modulePostList)
-      modulePostList.isRegistered = true
-    }
     this.$store.dispatch('user/fetchUser')
-    this.$store.dispatch('blogPosts/fetchItems')
+    this.$store.dispatch('post/fetchItems')
   },
   mounted () {
     this.isMounted = true

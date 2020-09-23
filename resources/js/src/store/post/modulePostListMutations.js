@@ -16,6 +16,9 @@ export default {
   ADD_PAGE(state, item) {
     state.pages.unshift(item)
   },
+  ADD_MY_POST (state, item) {
+    state.myPosts.unshift(item)
+  },
   ADD_CATEGORY(state, item) {
     state.categories.unshift(item)
   },
@@ -41,7 +44,9 @@ export default {
   SET_CONTRACTS(state,itemData) {
     state.myContracts = itemData
   },
-
+  SET_MyPosts (state, itemData) {
+    state.myPosts = itemData
+  },
   SET_ITEM(state, itemData) {
     state.posts = itemData
   },
