@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="widget-post-info">
                                     <h4>
-                                        <a href="blog-single.blade.php">
+                                        <a href="{{route('post.find',$recentPost->slug)}}">
                                             {{$recentPost->title}}
                                         </a>
                                     </h4>

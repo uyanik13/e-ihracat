@@ -4,7 +4,6 @@
         <form action="#" method="get">
             <input type="text" onkeyup="live_user_search()"  id="search_input_user" class="txt-box"
                    placeholder="Anahtar Kelime Girin..." />
-            {{--											<button type="submit" class="btn"><i class="fa fa-search"></i></button>--}}
         </form>
     </div>
     <div id="search_result_user" class="bg-info">

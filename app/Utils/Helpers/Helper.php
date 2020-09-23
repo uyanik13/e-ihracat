@@ -1,5 +1,6 @@
 <?php
 namespace App\utils\Helpers;
+use App\Models\Comment;
 use App\Models\Gallery;
 use Carbon\Carbon;
 use App\Models\Post;
@@ -12,6 +13,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Expr\Isset_;
 
@@ -484,10 +486,52 @@ class Helper
     }
     public static  function getComments($id,$isPartnerPage){
         if ($isPartnerPage){
-           return \App\Models\Comment::where('partner_id',$id)->get();
+           return \App\Models\Comment::where('partner_id',$id)->where('reply_to',null)->get();
         }
-        return \App\Models\Comment::where('post_id',$id)->get();
+        return \App\Models\Comment::where('post_id',$id)->where('reply_to',null)->get();
     }
+    public static function getChildComments($commentId){
+        return Comment::where('reply_to',$commentId)->get();
+    }
+    public static function getPostPoints($postId){
+        return Comment::where('post_id',$postId)->whereNotNull('point')->get();
+
+    }
+        public static function getPopularPartners(){
+          return DB::table('comments')->select('partner_id')->orderBy(DB::raw('sum(\'point\')'))
+            ->groupBy('partner_id')->get();
+    }
+    public static function getPartnerPointAvarage($userId){
+        $data = Comment::where('partner_id',$userId)->whereNotNull('point')->get();
+        if (!$data->isEmpty()) {
+            $temp = 0;
+            foreach ($data as $vote) {
+                $temp+= $vote->point;
+            }
+            return $temp/count($data);
+        }
+        return 0;
+    }
+    public static function canVotePartner($partnerId){
+        $data = Comment::where('user_id',\auth()->user())->where('partner_id',$partnerId)->first();
+        if (\auth()->user()->id === $partnerId or $data==null){
+            return false;
+        }
+        return true;
+    }
+    public static function canVotePost($postId){
+        $data = Comment::where('user_id',\auth()->user())->where('post_id',$postId)->first();
+        if (\auth()->user()->id === $postId or $data==null){
+            return false;
+        }
+        return true;
+    }
+    public static function popularPartners(){
+        return  \App\Models\User::inRandomOrder()->get();
+     /*return   DB::table('comments')->orderBy(DB::raw('sum(\'point\')'))
+            ->groupBy('partner_id')->get();*/
+    }
+
 }
 
 

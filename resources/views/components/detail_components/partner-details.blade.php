@@ -4,6 +4,8 @@
     $partnerDate = Helper::getDateForHuman($partner->created_at);
     $blogsBelognsToPartner = Helper::blogsBelognsToPartner($partner->id);
     $comments = Helper::getComments($partner->id,1);
+    $canVote = Helper::canVotePartner($partner->id);
+
 @endphp
 <!-- Content Start -->
 <div id="contentWrapper">
@@ -58,7 +60,8 @@
                                     <i class="fa fa-calendar"></i> <span class="main-color">Kayıt Tarihi:</span>
                                     {{$partnerDate}}
                                 </li>
-                                <li>
+
+                                    <li>
                                     <i class="fa fa-check"></i> <span class="main-color">Derecelendirme:</span>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -99,7 +102,8 @@
                                                 <img alt="" src="{{$post->thumbnail}}">
                                             </div>
                                             <div class="name-holder">
-                                                <a href="{{route('post.find',$post->slug)}}" class="project-name">{{$post->title}}</a>
+                                                <a href="{{route('post.find',$post->slug)}}"
+                                                   class="project-name">{{$post->title}}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -115,71 +119,52 @@
                             <li>
                                 @isset($comments)
                                     @foreach($comments as $comment)
-                                    <article class="comment">
-                                        <img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"
-                                             class="comment-avatar">
-                                        <div class="comment-content">
-                                            <h5 class="comment-author skew-25">
-                                                <span class="author-name skew25">Berk Yılmaz</span>
-                                                <a href="#" class="comment-reply main-bg"><span class="skew25"><i
-                                                            class="fa fa-comment"></i>cevapla</span></a>
-                                                <span class="comment-date skew25">15 Haziran2020</span>
-                                            </h5>
-                                            <p>
-                                                Güzel haber, teşekkür.
-                                            </p>
-                                        </div>
-                                    </article>
-                                    <ul class="child-comment">
-                                    <li>
+                                        @php
+                                            $childComment = Helper::getChildComments($comment->id);
+                                        @endphp
                                         <article class="comment">
-                                            <img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"
+                                            <img src="{{$comment->user->avatar}}" alt="avatar"
                                                  class="comment-avatar">
                                             <div class="comment-content">
                                                 <h5 class="comment-author skew-25">
-                                                    <span class="author-name skew25">Arda Kök</span>
-                                                    <a href="#" class="comment-reply main-bg"><span
-                                                            class="skew25"><i
-                                                                class="fa fa-comment"></i>cevala</span></a>
-                                                    <span class="comment-date skew25">15 Haziran 2020</span>
+                                                    <span class="author-name skew25">{{$comment->user->name}}</span>
+                                                    <a href="#commentForm" onclick="setToWhomComment({{$comment->id}})" class="comment-reply main-bg"><span class="skew25"><i
+                                                                class="fa fa-comment"></i>cevapla</span></a>
+                                                    <span
+                                                        class="comment-date skew25">{{Helper::getDateForHuman($comment->created_at)}}</span>
                                                 </h5>
-                                                <p>Dijital dönüşüme merhaba</p>
+                                                <p>
+                                                    {{$comment->content}}
+                                                </p>
                                             </div>
-                                        </article><!-- End .comment -->
-                                    </li>
-                                    <li>
-                                        <article class="comment">
-                                            <img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"
-                                                 class="comment-avatar">
-                                            <div class="comment-content">
-                                                <h5 class="comment-author skew-25">
-                                                    <span class="author-name skew25">Arda Kök</span>
-                                                    <a href="#" class="comment-reply main-bg"><span
-                                                            class="skew25"><i
-                                                                class="fa fa-comment"></i>cevala</span></a>
-                                                    <span class="comment-date skew25">15 Haziran 2020</span>
-                                                </h5>
-                                                <p>Dijital dönüşüme merhaba</p>
-                                            </div>
-                                        </article><!-- End .comment -->
-                                    </li>
-                                    <li>
-                                        <article class="comment">
-                                            <img src="{{asset('theme/images/people/1.jpg')}}" alt="avatar"
-                                                 class="comment-avatar">
-                                            <div class="comment-content">
-                                                <h5 class="comment-author skew-25">
-                                                    <span class="author-name skew25">Arda Kök</span>
-                                                    <a href="#" class="comment-reply main-bg"><span
-                                                            class="skew25"><i
-                                                                class="fa fa-comment"></i>cevala</span></a>
-                                                    <span class="comment-date skew25">15 Haziran 2020</span>
-                                                </h5>
-                                                <p>Dijital dönüşüme merhaba</p>
-                                            </div>
-                                        </article><!-- End .comment -->
-                                    </li>
-                                </ul>
+                                        </article>
+                                        @isset($childComment)
+                                            @forelse($childComment as $key=> $child)
+                                                <ul class="child-comment">
+                                                    <li>
+                                                        <article class="comment">
+                                                            <img src="{{$child->user->avatar}}"
+                                                                 alt="avatar"
+                                                                 class="comment-avatar">
+                                                            <div class="comment-content">
+                                                                <h5 class="comment-author skew-25">
+                                                                    <span
+                                                                        class="author-name skew25">{{$child->user->name}}</span>
+                                                                    <a href="#commentForm" onclick="setToWhomComment({{$comment->id}})" class="comment-reply main-bg"><span
+                                                                            class="skew25"><i
+                                                                                class="fa fa-comment"></i>cevapla</span></a>
+                                                                    <span
+                                                                        class="comment-date skew25">{{Helper::getDateForHuman($child->created_at)}}</span>
+                                                                </h5>
+                                                                <p>{{$child->content}}</p>
+                                                            </div>
+                                                        </article><!-- End .comment -->
+                                                    </li>
+                                                </ul>
+                                            @empty
+                                            @endforelse
+                                        @endisset
+
                                     @endforeach
                                 @endisset
                             </li>
@@ -190,7 +175,8 @@
                         <a href="/panel/login" class="btn btn-danger"> Giriş Yapınız</a>
                     @endguest
                     @auth
-                        <form action="{{route('add_comment_to_product',$partner->id)}}" method="post" class="leave-comment contact-form">
+                        <form action="{{route('add_comment_to_product',$partner->id)}}" method="post"
+                              class="leave-comment contact-form" id="commentForm">
                             @csrf
                             <h3 class="block-head">Yorum Yap</h3>
                             <p>Aşağıdaki gerekli alanları doldurarak sizde bu haber hakkındaki fikirlerinizi
@@ -207,8 +193,8 @@
                                         <input type="email" placeholder="E-Posta Adresi" required>
                                     </div>
                                 </div>--}}
-
-                                <div class="cell-12">
+                                @if($canVote)
+                                <div class="cell-12" id="ratingField">
                                     <div class="form-input rating">
                                         <span class="bold">Derecelendirmeniz: </span>
                                         <span>1<input value="1" class="divideThis" type="radio" name="point"></span>
@@ -219,12 +205,14 @@
 
                                     </div>
                                 </div>
+                                @endif
                                 <div class="cell-12">
                                     <div class="form-input">
 											<textarea class="txt-box textArea" name="content" cols="40" rows="7"
                                                       id="messageTxt" placeholder="Yorumunuz" spellcheck="true"
                                                       required></textarea>
                                         <input type="hidden" name="isFromPartnerPage" value="1">
+                                        <input type="hidden" name="reply_to" id="formCommentHidden"  >
                                     </div>
                                 </div>
                                 <div class="cell-12">
@@ -300,6 +288,7 @@
 <!-- Content End -->
 <script>
     import İnput from '../../../js/src/views/forms/form-elements/input/Input'
+
     export default {
         components: {İnput}
     }

@@ -5,7 +5,8 @@ if (isset($filterUsers)){
 }else{
     $allUsers = \App\Models\User::all();
 }
-$popularUsers = \App\Models\User::inRandomOrder()->get();
+$popularUsers = Helper::popularPartners();
+
 @endphp
 
 		<!-- Content Start -->
@@ -32,42 +33,8 @@ $popularUsers = \App\Models\User::inRandomOrder()->get();
 							<ul class="sidebar_widgets">
 								@include('pages.partials.partner_search')
 
-								{{--<li class="widget r-posts-w fx" data-animate="fadeInLeft">
-									<h3 class="widget-head">Detaylı Filtreleme</h3>
-									<div class="widget-content">
-										<div class="cell-12 contact-form fx" data-animate="fadeInLeft" id="contact">
-											<mark id="message"></mark>
-											<form class="form-signin cform" method="post" action="php/contact.php"
-												id="cform" autocomplete="on">
-												<div class="form-input">
-													<label>Çalışma Alanı:<span class="red">*</span></label>
-													<select name="workCategory" id="workCategory">
-														<option value="">Bilişim</option>
-														<option value="">İhracat</option>
-														<option value="">İthalat</option>
-														<option value="">E-Ticaret</option>
-														<option value="">Satış</option>
-													</select>
-												</div>
-												<div class="form-input">
-													<label>Lokasyon:<span class="red">*</span></label>
-													<select name="workLocation" id="workLocation">
-														<option value="">İstanbul</option>
-														<option value="">Ankara</option>
-														<option value="">İzmir</option>
-														<option value="">Bolu</option>
-														<option value="">Edirne</option>
-													</select>
-												</div>
-												<div class="form-input" style="text-align: center;">
-													<input type="submit" class="btn btn-large main-bg" value="Filtrele">
-												</div>
-											</form>
-										</div>
-									</div>
-								</li>--}}
 
-								<li class="widget r-posts-w fx" data-animate="fadeInLeft">
+								<li class="widget r-posts-w" >
 									<h3 class="widget-head">En Çok Oylanan Partnerler</h3>
 									<div class="widget-content">
 										<ul>
@@ -102,6 +69,9 @@ $popularUsers = \App\Models\User::inRandomOrder()->get();
                                 @forelse($allUsers as $user)
                                     @php
                                     $aboutData = json_decode($user->about_data,true);
+                                    $avgPoint = Helper::getPartnerPointAvarage($user->id);
+                                    $fullPoint = (int)$avgPoint;
+                                    $emptyPoint = 5-$fullPoint;
                                     @endphp
                                     <div class="post-item fx" data-animate="fadeInLeft">
                                         <div class="post-image">
@@ -121,14 +91,17 @@ $popularUsers = \App\Models\User::inRandomOrder()->get();
                                                                 class="main-color">Lokasyon:</span>
 {{--                                                            İstanbul {{(string) $aboutData['country']['label']}}--}}
                                                         </li>
-                                                       {{-- <li>
+                                                        <li>
                                                             <i class="fa fa-check"></i> <span
                                                                 class="main-color">Derecelendirme:</span>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-half-empty"></i>
-                                                        </li>--}}
+                                                            @for ($i = 0; $i < $fullPoint; $i++)
+                                                                <i class="fa fa-star"></i>
+                                                            @endfor
+                                                            @for ($i = 0; $i < $emptyPoint; $i++)
+                                                                <i class="fa fa-star-half-empty"></i>
+                                                            @endfor
+                                                            ({{substr($avgPoint,0,3)}})
+                                                        </li>
                                                         <li>
                                                             <i class="fa fa-globe"></i> <span class="main-color">Web
                                                                 Site:</span> <a
