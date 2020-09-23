@@ -31,17 +31,27 @@ class ApiPostController extends ApiController
 
   public function index(Request $request)
   {
+
+
     if (!$this->user) {
       return $this->responseUnauthorized();
     }
-    $postAdmin = Post::where('status', 1)->orderBy('created_at', 'desc')->get();
-    $postUser = Post::where('status', 1)->orderBy('created_at', 'desc')->get();
+    $pages = DB::table('posts')->where('status', 1)->where('type','page')->orderBy('created_at', 'desc')->get();
+    $posts = Post::where('status', 1)
+    ->where('type','post')
+    ->orderBy('created_at', 'desc')
+    ->get();
 
-    $post = $this->user->role === 'admin' ? $postAdmin : $postUser ;
+    $myPosts = Post::where('user_id',$this->user->id)->where('status', 1)->where('type','post')->orderBy('created_at', 'desc')->get();
+
+
+
     $categories = Category::orderBy('created_at', 'desc')->get();
 
     return [
-      'posts' => $postAdmin,
+      'pages' => $pages,
+      'posts' => $posts,
+      'myPosts' => $myPosts,
       'categories' => $categories
     ];
   }
@@ -72,9 +82,10 @@ class ApiPostController extends ApiController
       $thumbnail = Helper::PostImageHelper(Str::slug($request->title), $request->thumbnail, $request->type);
     }
 
-              $allFiles = $request->session()->get('userAdditionalFiles');
+
               $options = $request->options;
-              $options['gallery'] = $allFiles;
+
+
 
               $CreatePost = Post::create([
                   'title' => $request->title,
@@ -91,7 +102,7 @@ class ApiPostController extends ApiController
                   'status' => $request->status,
                   'thumbnail' => $thumbnail
               ]);
-              $request->session()->forget('userAdditionalFiles');
+
 
 
 

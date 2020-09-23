@@ -71,57 +71,13 @@ const router = new Router({
         //                        USER CONTENT PAGES
         // =============================================================================
 
-        {
-          path: '/panel/chat',
-          name: 'chat',
-          component: () => import('@/views/pages/user/chat/chat.vue'),
-          meta: {
-            pageTitle: 'Chat',
-            rule: 'user'
-          }
-        },
-        {
-          path: '/panel/token',
-          name: 'Token',
-          component: () => import('@/views/pages/user/token/list/tokenList.vue'),
-          meta: {
-            pageTitle: 'Token',
-            rule: 'user'
-          }
-        },
-        {
-          path: '/panel/doping',
-          name: 'doping',
-          component: () => import('@/views/pages/user/doping/dopingList.vue'),
-          meta: {
-            pageTitle: 'Account Doping',
-            rule: 'user'
-          }
-        },
 
-        {
-          path: '/panel/following',
-          name: 'Following',
-          component: () => import('@/views/pages/user/following/following.vue'),
-          meta: {
-            pageTitle: 'Following',
-            rule: 'user'
-          }
-        },
-        {
-          path: '/panel/blog-post',
-          name: 'blog-post',
-          component: () => import('@/views/pages/user/blog-post/postList.vue'),
-          meta: {
-            pageTitle: 'BlogPosts',
-            rule: 'user'
-          }
-        },
+
         {
           path: '/panel/file-manager',
           name: 'FileManager',
           meta: {
-            rule: 'admin'
+            rule: 'common'
           }
         }, //MAIN PAGE
         {
@@ -135,7 +91,7 @@ const router = new Router({
               {title: 'List', active: true}
             ],
             pageTitle: 'FileManager',
-            rule: 'admin'
+            rule: 'common'
           }
         },
         {
@@ -149,7 +105,7 @@ const router = new Router({
               {title: 'List', active: true}
             ],
             pageTitle: 'FileList',
-            rule: 'admin'
+            rule: 'common'
           }
         },
 
@@ -212,6 +168,20 @@ const router = new Router({
             rule: 'admin'
           }
         }, // FOR USERS & ADMIN
+        {
+            path: '/panel/blog-posts',
+            name: 'blog-posts',
+            component: () => import('@/views/pages/user/blog-post/postList.vue'),
+            meta: {
+              breadcrumb: [
+                {title: 'Anasayfa', url: '/'},
+                {title: 'Posts'},
+                {title: 'List', active: true}
+              ],
+              pageTitle: 'Posts',
+              rule: 'user'
+            }
+          }, // FOR USERS & ADMIN
         {
             path: '/panel/services',
             name: 'services',

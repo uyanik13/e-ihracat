@@ -3,7 +3,12 @@
     $recentPosts = Helper::recentPosts(3);
     $comments = Helper::getComments($post->id,false);
       $canVote = Helper::canVotePost($post->id);
+
+      $tags = Helper::jsonToArray($post->options);
+
 @endphp
+
+
 <!-- Content Start -->
 <div id="contentWrapper">
     <div class="page-title title-1">
@@ -40,12 +45,18 @@
                                     </h1>
                                 </div>
                                 {!! $post->content !!}
+
+
                                 <div class="post-tags">
-                                    <i class="fa fa-tags"></i><span>Etiketler: </span><a
-                                        href="#">E-İhracat</a>,<a>
-                                        İhracat</a>,<a href="#">
-                                        Dijital</a>,<a> İthalat</a>,<a> Ticaret</a>
-                                </div>
+                                    <i class="fa fa-tags"></i><span>Etiketler: </span>
+
+                                    @foreach ($tags as $key1 => $tag)
+                                    @foreach ($tag as $key2 => $item)
+                                    <a>{{$item}}</a>
+                                    @endforeach
+                                    @endforeach
+
+
                                 <div class="share-post">
                                     <span class="sh">Gönderiyi Paylaş:</span>
                                     <div id="shareme" data-text="Share this post"></div>

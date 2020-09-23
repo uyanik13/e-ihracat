@@ -36,6 +36,11 @@
                       <quill-editor  :options="editorOption" :label="$t('postContent')" name="dataDescription" v-model="dataDescription"></quill-editor>
                       <span class="text-danger text-sm" v-show="errors.has('dataDescription')">{{ errors.first('dataDescription') ? 'İçerik Gerekli' : ''}}</span>
                     </div>
+
+                         <span>{{$t('tags')}}</span>
+                      <v-select taggable push-tags multiple :closeOnSelect="false" v-model="tags"  :dir="$vs.rtl ? 'rtl' : 'ltr'" /><br>
+
+
                     <!--  CATEGORY -->
                     <vs-select v-model="dataCategory" :label="$t('category')"  name="dataCategory" class="mt-5 w-full">
                       <vs-select-item :key="category.id" :value="category.id" :text="category.title" v-for="category in data.categories" />
@@ -48,6 +53,9 @@
                       <vs-select-item :key="status.value" :value="status.value" :text="status.text" v-for="status in status_choices" />
                       <span class="text-danger text-sm" v-show="errors.has('dataStatus')">{{ errors.first('dataStatus') ? 'Durum Gerekli' : '' }}</span>
                     </vs-select>
+
+
+
 
                   </div>
                 </vs-tab>
@@ -102,6 +110,7 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import modulePostList from '@/store/post/modulePostList'
 import { quillEditor } from 'vue-quill-editor'
+import vSelect from 'vue-select'
 
 export default {
   props: {
@@ -139,6 +148,7 @@ export default {
   data () {
     return {
       type: 'post',
+      tags: [],
       isMounted: false,
       image :null,
       video :null,
@@ -220,7 +230,7 @@ export default {
       this.image = ''
       this.video = ''
       this.dataStatus = 1
-      this.dataCategory = ''
+      this.dataCategory = 2
     },
     submitData () {
       this.$validator.validateAll().then(result => {
@@ -228,10 +238,11 @@ export default {
           const obj = {
             id: this.dataId,
             title: this.dataName,
-            category: this.dataCategory,
+            category_id: this.dataCategory,
             content:this.dataDescription,
             seo_title:this.dataSeoTitle,
             seo_description:this.dataSeoDescription,
+            options: {tags:this.tags},
             image: this.image,
             status: this.dataStatus,
             type: this.type
@@ -295,7 +306,8 @@ export default {
   },
   components: {
     VuePerfectScrollbar,
-    quillEditor
+    quillEditor,
+     'v-select': vSelect,
   }
 }
 </script>

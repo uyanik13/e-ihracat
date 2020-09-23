@@ -119,6 +119,13 @@ export default [
         i18n: 'Posts'
       },
       {
+        url:'/panel/blog-posts',
+        slug: '/panel/blog-posts',
+        name: 'blog-posts',
+        icon: 'FileTextIcon',
+        i18n: 'Posts'
+      },
+      {
         url:'/panel/services',
         slug: '/panel/services',
         name: 'services',

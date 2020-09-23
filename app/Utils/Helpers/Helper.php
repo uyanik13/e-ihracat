@@ -276,6 +276,11 @@ class Helper
         return  $newData ;
       }
 
+    public static function jsonToObject ($data) {
+        $newData =  (object)json_decode($data, true);
+        return  $newData ;
+      }
+
 
       public static function guestBasketControl($id,$qty){
         $qty = $qty === null ? 1 : $qty;
