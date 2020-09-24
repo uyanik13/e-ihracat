@@ -1,5 +1,6 @@
 ﻿@php
     $findServiceswithoutId5 = Helper::findServiceswithoutId5();
+$QuickServiceList = Helper::findCustomData('QuickServiceList');
 @endphp
 		<!-- Content Start -->
 		<div id="contentWrapper">
@@ -56,21 +57,8 @@
 									</div>
 								</li>
 
-								<li class="widget blog-cat-w fx" data-animate="fadeInLeft">
-									<h3 class="widget-head">Bizimle İletişime Geçebilirsiniz</h3>
-									<div class="widget-content">
-										<ul class="sidebarCallLocation">
-											<li><a title="Whatsapp Destek Hattı" href="https://wa.me/908503469956"><i
-														class="fa fa-whatsapp fa-2x"></i></a></li>
-											<li><a title="Telefonla Ulaşın" href="tel:+908503469956"><i
-														class="fa fa-phone fa-2x"></i></a>
-											<li><a title="E-Posta İletişim" href="mailto:info@eihracatturkiye.com"><i
-														class="fa fa-envelope fa-2x"></i></a>
-											</li>
-										</ul>
-									</div>
-								</li>
 
+                                @include('pages.partials.contact_info')
 								<li class="widget r-posts-w fx" data-animate="fadeInRight">
 									<h3 class="widget-head">Hizmet Bilgi Talep Formu</h3>
 									<div class="widget-content">
@@ -96,9 +84,9 @@
 												<div class="form-input">
 													<label>Hizmet Seçimi</label>
 													<select name="servicesSelectArea" id="servicesSelectArea">
-														<option value="services1">E-İhracat</option>
-														<option value="services1">Online Pazar Yerleri</option>
-														<option value="services1">Global Pazarlama</option>
+                                                        @isset($QuickServiceList) @foreach ($QuickServiceList as $key => $item)
+                                                            <option value="{{$key}}">{{$item['key']}}</option>
+                                                        @endforeach @endisset
 													</select>
 												</div>
 												<div class="form-input">

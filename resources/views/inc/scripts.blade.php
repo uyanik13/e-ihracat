@@ -53,7 +53,6 @@
 <script src="{{asset('assets/js/custom.js')}}"></script>
 
 
-<script type="text/javascript" src="{{asset('theme/js/app.js')}}"></script>
 
 
 

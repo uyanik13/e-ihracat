@@ -1,4 +1,5 @@
 ﻿
+
 @if ($category === 'benim-ulkem')
 <link rel="stylesheet" href="{{asset('theme/css/app.css')}}">
 @endif
@@ -15,3 +16,6 @@
 
 			</div>
 		</div>
+@if ($category === 'benim-ulkem')
+    <script type="text/javascript" src="{{asset('theme/js/app.js')}}"></script>
+@endif

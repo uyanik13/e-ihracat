@@ -20,7 +20,7 @@
     <vs-input class="w-full mb-base" name="google"  icon-pack="material" icon="mdi-google" :label-placeholder="$t('Google')" v-model="google"></vs-input>
     <vs-input class="w-full mb-base" name="pinterest" icon-pack="feather" icon="icon-pinterest" :label-placeholder="$t('Pinterest')" v-model="pinterest"></vs-input>
     <vs-input class="w-full mb-base" name="address" icon-pack="feather" icon="icon-map-pin" :label-placeholder="$t('Address')" v-model="address"></vs-input>
-    <vs-input class="w-full mb-base" name="phone" icon-pack="feather" icon="icon-phone" :label-placeholder="$t('Phone')" v-model="phone"></vs-input>
+    <vs-input class="w-full mb-base" name="phone" icon-pack="feather" icon="icon-phone" :label-placeholder="$t('Phone(+905554321077)')" v-model="phone"></vs-input>
     <vs-input class="w-full mb-base" name="email" icon-pack="feather" icon="icon-mail" :label-placeholder="$t('Email')" v-model="email"></vs-input>
     <vs-input class="w-full mb-base" name="site_url" icon-pack="feather" icon="icon-link" :label-placeholder="$t('SiteUrl')" v-model="site_url"></vs-input>
     <vs-input class="w-full mb-base" name="map_iframe" icon-pack="feather" icon="icon-map" :label-placeholder="$t('map_iframe')" v-model="map_iframe"></vs-input>

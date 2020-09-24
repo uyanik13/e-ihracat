@@ -80,8 +80,8 @@ class ApiPostController extends ApiController
 
     if ($request->thumbnail !== null) {
       $thumbnail = Helper::PostImageHelper(Str::slug($request->title), $request->thumbnail, $request->type);
-    }
 
+    }
 
               $options = $request->options;
 
@@ -130,36 +130,39 @@ class ApiPostController extends ApiController
 
       $postData = Post::where('id', $id)->firstOrFail();
 
-      if ($this->user->id !== $postData->user_id) {
-        return $this->responseUnauthorized();
+      if ($this->user->id === $postData->user_id || $this->user->role === 'admin') {
+//
+          $allFiles = $request->session()->get('userAdditionalFiles');
+          $options = $request->options;
+          $options['gallery'] = $allFiles;
+
+
+
+          $thumbnail = $request->thumbnail == $postData->thumbnail ? $request->thumbnail : Helper::PostImageHelper(Str::slug($request->title), $request->thumbnail, 'post');
+
+          $postData->title = $postData->title === request('title') ? $postData->title : request('title');
+          $postData->content = $postData->content === $request->input('content') ? $postData->content : $request->input('content');
+          $postData->seo_title = $postData->seo_title === request('seo_title') ? $postData->title : request('seo_title');
+          $postData->price = $postData->price === request('price') ? $postData->price : request('price');
+          $postData->discounted_price = $postData->discounted_price === request('discounted_price') ? $postData->discounted_price : request('discounted_price');
+          $postData->quantity = $postData->quantity === request('quantity') ? $postData->quantity : request('quantity');
+          $postData->seo_description = $postData->title === request('seo_description') ? $postData->title : request('seo_description');
+          $postData->category_id = $postData->category_id === request('category_id') ? $postData->category_id : request('category_id');
+          $postData->status = $postData->status === request('status') ? $postData->status : request('status');
+          $postData->options = $postData->options === json_encode($options) ? $postData->options : json_encode($options);
+          $postData->thumbnail = $thumbnail;
+          $postData->save();
+
+
+          $postData->save();
+          $request->session()->forget('userAdditionalFiles');
+          return response()->json($postData);
+
+      }else{
+          return $this->responseUnauthorized();
       }
 
 
-      $allFiles = $request->session()->get('userAdditionalFiles');
-      $options = $request->options;
-      $options['gallery'] = $allFiles;
-
-
-
-      $thumbnail = $request->thumbnail == $postData->thumbnail ? $request->thumbnail : Helper::PostImageHelper(Str::slug(request('title')), $request->thumbnail, 'post');
-
-      $postData->title = $postData->title === request('title') ? $postData->title : request('title');
-      $postData->content = $postData->content === $request->input('content') ? $postData->content : $request->input('content');
-      $postData->seo_title = $postData->seo_title === request('seo_title') ? $postData->title : request('seo_title');
-      $postData->price = $postData->price === request('price') ? $postData->price : request('price');
-      $postData->discounted_price = $postData->discounted_price === request('discounted_price') ? $postData->discounted_price : request('discounted_price');
-      $postData->quantity = $postData->quantity === request('quantity') ? $postData->quantity : request('quantity');
-      $postData->seo_description = $postData->title === request('seo_description') ? $postData->title : request('seo_description');
-      $postData->category_id = $postData->category_id === request('category_id') ? $postData->category_id : request('category_id');
-      $postData->status = $postData->status === request('status') ? $postData->status : request('status');
-      $postData->options = $postData->options === json_encode($options) ? $postData->options : json_encode($options);
-      $postData->thumbnail = $thumbnail;
-      $postData->save();
-
-
-        $postData->save();
-        $request->session()->forget('userAdditionalFiles');
-        return response()->json($postData);
 
 
   }
@@ -186,17 +189,19 @@ class ApiPostController extends ApiController
     }
     $postData = Post::where('id', $id)->firstOrFail();
 
-    if ($this->user->id !== $postData->user_id) {
-      return $this->responseUnauthorized();
-    }
+      if ($this->user->id === $postData->user_id || $this->user->role === 'admin') {
+          try {
+              $postData->delete();
+              return response()->json($postData);
 
-    try {
-      $postData->delete();
-      return response()->json($postData);
+          } catch (Exception $e) {
+              return $this->responseServerError('Error deleting resource.');
+          }
+      }else{
+          return $this->responseUnauthorized();
+      }
 
-    } catch (Exception $e) {
-      return $this->responseServerError('Error deleting resource.');
-    }
+
   }
 
 

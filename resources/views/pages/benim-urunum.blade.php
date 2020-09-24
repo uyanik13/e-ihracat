@@ -15,3 +15,6 @@
 
 			</div>
 		</div>
+@if ($category === 'benim-urunum')
+    <script type="text/javascript" src="{{asset('theme/js/app.js')}}"></script>
+@endif

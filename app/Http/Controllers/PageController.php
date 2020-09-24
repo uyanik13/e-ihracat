@@ -126,7 +126,8 @@ class PageController extends ApiController
       } else {
           $searchData = User::where('name','LIKE','%'.$search_text.'%')
               ->orWhere('about_data','LIKE','%'.$search_text.'%')
-              ->orWhere('social_data','LIKE','%'.$search_text.'%')
+              ->orWhere('user_data','LIKE','%'.$search_text.'%')
+              ->orWhere('address','LIKE','%'.$search_text.'%')
               ->where('role','user')->get();
       }
 

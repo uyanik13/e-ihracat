@@ -108,7 +108,7 @@ class ApiAppointmentController extends ApiController
           ];
 
 
-          //Mail::to($setting['Email']->value)->send(new ShortEmail($setting['Email']->value,$setting['site_name']->value,$data));
+          Mail::to($setting['Email']->value)->send(new ShortEmail($setting['Email']->value,$setting['site_name']->value,$data));
 
           return back()->withSuccess(trans('lang.your_messsage_has_been_sent'));
           //return redirect('contact')->with('success', 'Task Created Successfully!');

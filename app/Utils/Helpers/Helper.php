@@ -30,7 +30,6 @@ class Helper
 
   public static function PostImageHelper($url, $image, $path)
   {
-
     if (strlen($image) < 255) {
       return $image;
     }
@@ -444,6 +443,9 @@ class Helper
     public static function randomProducts(){
       return Post::where('type','product')->inRandomOrder()->get();
     }
+    public static function randomPartners(){
+        return User::where('role','user')->inRandomOrder()->get();
+    }
     public static function urlToCategory($itemId){
         return Category::where('slug',$itemId)->first();
     }
@@ -502,10 +504,7 @@ class Helper
         return Comment::where('post_id',$postId)->whereNotNull('point')->get();
 
     }
-        public static function getPopularPartners(){
-          return DB::table('comments')->select('partner_id')->orderBy(DB::raw('sum(\'point\')'))
-            ->groupBy('partner_id')->get();
-    }
+
     public static function getPartnerPointAvarage($userId){
         $data = Comment::where('partner_id',$userId)->whereNotNull('point')->get();
         if (!$data->isEmpty()) {
@@ -513,7 +512,7 @@ class Helper
             foreach ($data as $vote) {
                 $temp+= $vote->point;
             }
-            return $temp/count($data);
+            return substr($temp/count($data),0,3);
         }
         return 0;
     }
@@ -532,19 +531,10 @@ class Helper
         return true;
     }
     public static function popularPartners(){
-        return  \App\Models\User::inRandomOrder()->get();
-     /*return   DB::table('comments')->orderBy(DB::raw('sum(\'point\')'))
-            ->groupBy('partner_id')->get();*/
+        return  Comment::whereNotNull('point')->whereNotNull('partner_id')->selectRaw('AVG(point) average')->groupBy('partner_id')->get();
+
     }
-
+    public static function getPopularPartners(){
+        return User::where('role','user')->withCount('comments')->orderBy('comments_count', 'desc')->get();
+    }
 }
-
-
-
-
-
-
-
-
-
-
