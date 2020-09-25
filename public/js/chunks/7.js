@@ -3203,7 +3203,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************************************************************************!*\
   !*** ./resources/js/src/views/pages/admin/site-settings/component/HomePage.vue?vue&type=template&id=7d23dddb& ***!
   \****************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

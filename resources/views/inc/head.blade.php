@@ -18,3 +18,4 @@
         <title>test</title>
         <meta name="description" content="test"/>
 @endif
+    <x-embed-styles />
