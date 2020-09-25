@@ -127,23 +127,25 @@
                     <div class="block fx aboutTextArea margin-top-50" data-animate="fadeInLeft">
                         <h3 class="center block-head"><span class="main-color">E-İhracat Türkiye'ye Hoş Geldiniz!
                         </h3>
-
+                        @isset ($about['homePageDesc'])
                         <p class="margin-bottom-0">
                             {{ substr(strip_tags($about['homePageDesc']),0,25)}}
 
                         </p>
-
+                        @endisset
                         <a class="btn btn-md btn-skew themeColorBtn mb-15" href="#">
                             <span><i class="fa fa-chevron-right selected"></i>Hakkımızda Daha Fazla</span>
                         </a>
                         <a class="btn btn-md btn-skew themeColorBtn mb-15" href="#">
                             <span><i class="fa fa-chevron-right selected"></i>Şimdi Kayıt Olun!</span>
                         </a> <br>
+                        @isset ($about['url'])
                         <a style="display: inline-block; margin-top: 15px;"
                            class="btn btn-md btn-3d btn-mulled_wine fx animated fadeInUp mb-15" href="{{$about['url']}}"
                            data-animate="fadeInUp" data-animation-delay="700" style="animation-delay: 700ms;">
                             <span>Hizmet Kataloğumuzu İndirin <i class="fa fa-file-pdf-o"></i></span>
                         </a>
+                        @endisset
                     </div>
                 </div>
             </div>
