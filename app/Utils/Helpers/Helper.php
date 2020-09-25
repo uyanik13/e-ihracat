@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Basket;
 use App\Models\Custom;
-
+use Fomvasss\Youtube\Facades\Youtube;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
@@ -536,5 +536,8 @@ class Helper
     }
     public static function getPopularPartners(){
         return User::where('role','user')->withCount('comments')->orderBy('comments_count', 'desc')->get();
+    }
+    public static function youtubeUrl($url){
+       return Youtube::iFrame($url);
     }
 }

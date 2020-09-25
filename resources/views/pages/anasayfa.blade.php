@@ -22,28 +22,42 @@
                 @isset($HomeUnderMenuSlider)
                     @foreach ($HomeUnderMenuSlider  as $key => $slide)
                         <li data-transition="fade" data-slotamount="7">
-                            <img alt=""  data-lazyload="{{$slide['image']}}"
+                            <img alt="" data-lazyload="{{$slide['image']}}"
                                  data-bgposition="left center" data-kenburns="on" data-duration="14000"
                                  data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130"
                                  data-bgpositionend="right center">
                             <div class="caption fade " data-autoplay="true" data-autoplayonlyfirsttime="true"
                                  data-nextslideatend="false" data-x="470" data-y="center" data-speed="500"
-                                 data-start="10" data-easing="easeOutBack">
-                                @isset($slide['video']) <iframe width="560" height="315" src="{{$slide['video']}}"
-                                        frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen></iframe>@endisset
+                                 data-start="10" data-easing="easeOutBahck">
+
+                                @isset($slide['video'])
+                                    @php
+                                        $url = $slide['video'];
+                                        $url = str_replace('watch?v=','embed/',$url);
+                                    @endphp
+                                    <iframe width="560" height="315" src="{{$url}}"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen></iframe>
+                                @endisset
                             </div>
-                            @isset($slide['h1'])<div class="caption slide-head tp-resizeme witTxt doLightBlack" data-x="center" data-y="150"
-                                 data-speed="500" data-start="1700" data-easing="easeOutBack">{{$slide['h1']}}@endisset
-                            </div>
-                            @isset($slide['h2'])<div class="caption large-title tp-resizeme witTxt doLightBlack" data-x="center"
-                                 data-y="200" data-speed="700" data-start="1900" data-easing="easeOutBack">{{$slide['h2']}}@endisset
-                            </div>
-                            @isset($slide['url'])<div class="caption larger-text tp-resizeme witTxt" data-x="center" data-y="300"
-                                 data-speed="700" data-start="2300" data-easing="easeOutBack"><a href="{{$slide['url']}}"
-                                                                                                 class="btn btn-md btn-skew themeColorBtn">Detaylar</a>@endisset
-                            </div>
+                            @isset($slide['h1'])
+                                <div class="caption slide-head tp-resizeme witTxt doLightBlack" data-x="center"
+                                     data-y="150"
+                                     data-speed="500" data-start="1700"
+                                     data-easing="easeOutBack">{{$slide['h1']}}@endisset
+                                </div>
+                                @isset($slide['h2'])
+                                    <div class="caption large-title tp-resizeme witTxt doLightBlack" data-x="center"
+                                         data-y="200" data-speed="700" data-start="1900"
+                                         data-easing="easeOutBack">{{$slide['h2']}}@endisset
+                                    </div>
+                                    @isset($slide['url'])
+                                        <div class="caption larger-text tp-resizeme witTxt" data-x="center" data-y="300"
+                                             data-speed="700" data-start="2300" data-easing="easeOutBack"><a
+                                                href="{{$slide['url']}}"
+                                                class="btn btn-md btn-skew themeColorBtn">Detaylar</a>@endisset
+                                        </div>
                         </li>
 
                     @endforeach
