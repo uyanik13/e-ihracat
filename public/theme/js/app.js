@@ -4663,7 +4663,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#myCountry {\n  width: 60%;\n}\n\n\n", ""]);
+exports.push([module.i, "#myCountry {\n  width: 60%;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -4682,7 +4682,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#myCountry {\n  width: 60%;\n}\n\n\n", ""]);
+exports.push([module.i, "#myCountry {\n  width: 60%;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -4701,7 +4701,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#myCountry {\n  width: 60%;\n}\n\n\n", ""]);
+exports.push([module.i, "#myCountry {\n  width: 60%;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -36655,8 +36655,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _plugins_index_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./plugins/index.js */ "./resources/front-end-js/plugins/index.js");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./router */ "./resources/front-end-js/router.js");
 
+ // Vue.use(Vuesax)
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuesax__WEBPACK_IMPORTED_MODULE_1___default.a);
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('benim-ulkem', __webpack_require__(/*! ./components/BenimUlkem.vue */ "./resources/front-end-js/components/BenimUlkem.vue").default);
@@ -37376,7 +37376,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/ihracat-istatistik',
       name: 'ihracat-istatistik',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(7), __webpack_require__.e(32)]).then(__webpack_require__.bind(null, /*! ./components/IhracatIstatistik.vue */ "./resources/front-end-js/components/IhracatIstatistik.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(3), __webpack_require__.e(25)]).then(__webpack_require__.bind(null, /*! ./components/IhracatIstatistik.vue */ "./resources/front-end-js/components/IhracatIstatistik.vue"));
       },
       params: true
     }, {
@@ -37389,7 +37389,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/benim-temsilcim-detayi',
       name: 'benim-temsilcim-detayi',
       component: function component() {
-        return __webpack_require__.e(/*! import() */ 52).then(__webpack_require__.bind(null, /*! ./components/BenimTemsilcimDetayi.vue */ "./resources/front-end-js/components/BenimTemsilcimDetayi.vue"));
+        return __webpack_require__.e(/*! import() */ 37).then(__webpack_require__.bind(null, /*! ./components/BenimTemsilcimDetayi.vue */ "./resources/front-end-js/components/BenimTemsilcimDetayi.vue"));
       }
     }]
   }]
@@ -37414,7 +37414,7 @@ router.afterEach(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\ugur_\Desktop\PROJECTS\e-ihracat\resources\front-end-js\app.js */"./resources/front-end-js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Recep\Desktop\projects\e-ihracat\resources\front-end-js\app.js */"./resources/front-end-js/app.js");
 
 
 /***/ })

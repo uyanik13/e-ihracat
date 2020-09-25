@@ -137,7 +137,7 @@ class User extends Authenticatable implements JWTSubject
   {
     return $this->hasMany('App\Models\Gallery');
   }
-  public function comment()
+  public function comments()
   {
     return $this->hasMany('App\Models\Comment','partner_id','id');
   }

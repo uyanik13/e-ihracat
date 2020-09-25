@@ -7,35 +7,13 @@
 <!-- site preloader start -->
 {{-- <div class="page-loader">
     <div class="loader-in"></div>
-</div> --}}
+</div>--}}
 <!-- site preloader end -->
 
 <div class="pageWrapper">
 
     <!-- login box start -->
-    <div class="login-box">
-        <a class="close-login" href="#"><i class="fa fa-times"></i></a>
-        <form>
-            <div class="container">
-                <p>Sahip Olduğunuz Üyelik Bilgileri ile Aşağıdaki Formdan Giriş Yapabilirsiniz</p>
-                <div class="login-controls">
-                    <div class="skew-25 input-box left">
-                        <input type="text" class="txt-box skew25" placeholder="E-Posta Adresi" />
-                    </div>
-                    <div class="skew-25 input-box left">
-                        <input type="password" class="txt-box skew25" placeholder="Şifre" />
-                    </div>
-                    <div class="left skew-25 main-bg">
-                        <input type="submit" class="btn skew25" value="Giriş Yap" />
-                    </div>
-                    <div class="check-box-box">
-                        <input type="checkbox" class="check-box" /><label>Beni Hatırla !</label>
-                        <a href="#" style="color: #f14e4f;">Şifremi Unuttum ?</a>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+
     <!-- login box End -->
 
     <!-- Header Start -->
@@ -47,8 +25,8 @@
                 <div class="row">
                     <div class="cell-5">
                         <ul>
-                            <li><a href="#"><i class="fa fa-envelope"></i>info@eihracatturkiye.com</a></li>
-                            <li><span><i class="fa fa-phone"></i> Bizi Arayın: +90 850 346 9956</span></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i>@isset($setting['email']) {{ $setting['email']->value }} @endisset</a></li>
+                            <li><span><i class="fa fa-phone"></i> Bizi Arayın: @isset($setting['phone']) {{ $setting['phone']->value }} @endisset</span></li>
                         </ul>
                     </div>
                     <div class="cell-7 right-bar">
@@ -57,7 +35,7 @@
                                     Pazartesi – Cuma: 09:00 /
                                     18:00</a></li>
                             <li><a href="/panel/register"><i class="fa fa-user"></i>Kayıt Ol</a></li>
-                            <li><a href="#" class="login-btn"><i class="fa fa-unlock-alt"></i> Giriş Yap</a></li>
+                            <li><a href="/panel/login" class=""><i class="fa fa-unlock-alt"></i> Giriş Yap</a></li>
                             <li><a href="#" class="multiLanguage"><i class="fa fa-globe"></i> EN</a></li>
                         </ul>
                     </div>

@@ -53,10 +53,10 @@
                 <div class="cell-3">
                     <h3 class="block-head">Linkler</h3>
                     <ul class="footer-menu">
-                        <li><a href="index.html">Anasayfa</a></li>
-                        <li><a href="our-services.html">Hizmetler</a></li>
-                        <li><a href="partner-list.html">Partnerler</a></li>
-                        <li><a href="appointment-form.html">Randevu</a></li>
+                        <li><a href="/index">Anasayfa</a></li>
+                        <li><a href="our-services">Hizmetler</a></li>
+                        <li><a href="partner-list">Partnerler</a></li>
+                        <li><a href="appointment-form">Randevu</a></li>
                     </ul>
                 </div>
                 <!-- main menu footer cell start -->
@@ -103,7 +103,7 @@
 										No. 55/57 34373
 										Şişli – İstanbul / Türkiye</span></li>
                         <li class="footer-contact"><i class="fa fa-globe"></i><span><a
-                                    href="#">info@eihracatturkiye.com</a></span></li>
+                                    href="">info@eihracatturkiye.com</a></span></li>
                         <li class="footer-contact"><i class="fa fa-phone"></i><span>+90 850 346 9956</span>
                         </li>
                         <li class="footer-contact"><i class="fa fa-map-marker"></i><span><a

@@ -1,7 +1,7 @@
 
 import Vue from 'vue'
 import Vuesax from 'vuesax'
-Vue.use(Vuesax)
+// Vue.use(Vuesax)
 
 import './plugins/index.js'
 import router from './router'

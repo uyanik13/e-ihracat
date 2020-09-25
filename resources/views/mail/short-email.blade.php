@@ -10,12 +10,9 @@
 <body>
 <h3 >Ürün sayfasından yeni bir mail aldınız</h3>
 <br><br>
-<b>İsim </b>: {{$data['order_name']}}<br>
-<b> Email</b>: {{$data['email']}}<br>
-<b>Telefon Numarası </b>: {{$data['order_phone']}}<br>
-<b>Ürün</b> : {{$data['order_product']}}
-<br><br>
-<b>Mesajı </b>: {{$data['order_note']}}<br>
+@foreach($data as $key => $item)
+    <b>{{$data[$key]}} </b>: {{$data[$item]}}<br>
+    @endforeach
 
 </body>
 </html>

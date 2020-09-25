@@ -5,8 +5,7 @@ if (isset($filterUsers)){
 }else{
     $allUsers = \App\Models\User::all();
 }
-$popularUsers = Helper::popularPartners();
-
+$popularUsers = Helper::getPopularPartners();
 @endphp
 
 		<!-- Content Start -->
@@ -39,18 +38,31 @@ $popularUsers = Helper::popularPartners();
 									<div class="widget-content">
 										<ul>
                                             @forelse($popularUsers as $popular)
+                                                @php
+                                                    $avgPoint = Helper::getPartnerPointAvarage($popular->id);
+                                                    $fullPoint = (int)$avgPoint;
+                                                    $emptyPoint = 5-$fullPoint;
+                                                @endphp
 											<li>
 												<div class="post-img">
 													<img src="{{$popular->avatar}}" alt="">
 												</div>
 												<div class="widget-post-info">
 													<h4>
-														<a href="our-services">
+														<a href="{{route('partner.find',$popular->id)}}">
 															{{$popular->name}}
 														</a>
 													</h4>
 													<div class="meta">
-														<a href="our-services"><i class="fa fa-star"></i>15</a>
+														<a href="{{route('partner.find',$popular->id)}}">
+                                                            @for ($i = 0; $i < $fullPoint; $i++)
+                                                                <i class="fa fa-star"></i>
+                                                            @endfor
+                                                            @for ($i = 0; $i < $emptyPoint; $i++)
+                                                                <i class="fa fa-star-o"></i>
+                                                            @endfor
+                                                            ({{$avgPoint}})
+                                                        </a>
 													</div>
 												</div>
 											</li>
@@ -75,7 +87,7 @@ $popularUsers = Helper::popularPartners();
                                     @endphp
                                     <div class="post-item fx" data-animate="fadeInLeft">
                                         <div class="post-image">
-                                            <a href="{{route('partner.find',$user->name)}}">
+                                            <a href="{{route('partner.find',$user->id)}}">
                                                 <div class="mask"></div>
                                                 <img src="{{$user->avatar}}" alt="Partner Logo">
                                             </a>
@@ -83,13 +95,13 @@ $popularUsers = Helper::popularPartners();
                                         <article class="post-content">
                                             <div class="post-info-container">
                                                 <div class="post-info">
-                                                    <h2><a class="main-color" href="{{route('partner.find',$user->name)}}">{{$user->name}}</a>
+                                                    <h2><a class="main-color" href="{{route('partner.find',$user->id)}}">{{$user->name}}</a>
                                                     </h2>
                                                     <ul class="list-details">
                                                         <li>
                                                             <i class="fa fa-map-marker"></i> <span
-                                                                class="main-color">Lokasyon:</span>
-{{--                                                            İstanbul {{(string) $aboutData['country']['label']}}--}}
+                                                                class="main-color">Lokasyon:</span>@isset($user->address)
+                                                             {{$user->address}}@endisset
                                                         </li>
                                                         <li>
                                                             <i class="fa fa-check"></i> <span
@@ -98,15 +110,17 @@ $popularUsers = Helper::popularPartners();
                                                                 <i class="fa fa-star"></i>
                                                             @endfor
                                                             @for ($i = 0; $i < $emptyPoint; $i++)
-                                                                <i class="fa fa-star-half-empty"></i>
+                                                                <i class="fa fa-star-o"></i>
                                                             @endfor
                                                             ({{substr($avgPoint,0,3)}})
                                                         </li>
+                                                        @isset($aboutData['website'])
                                                         <li>
                                                             <i class="fa fa-globe"></i> <span class="main-color">Web
                                                                 Site:</span> <a
-                                                                href="https://www.eihracatturkiye.com">{{$aboutData['website']}}</a>
+                                                                href="{{$aboutData['website']}}">{{$aboutData['website']}}</a>
                                                         </li>
+                                                        @endisset
                                                     </ul>
                                                 </div>
                                             </div>

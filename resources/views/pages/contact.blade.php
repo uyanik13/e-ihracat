@@ -72,8 +72,7 @@
 
 			<div class="padd-vertical-45">
 				<div class="container">
-					@isset($setting['map_iframe']) {{ $setting['map_iframe']->value }} @endisset
+					@isset($setting['map_iframe']) {!! $setting['map_iframe']->value !!} @endisset
 				</div>
 			</div>
 		</div>
-	<!-- Content End -->

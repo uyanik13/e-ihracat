@@ -9,10 +9,10 @@
         <p v-show="video !== null">{{$t('saveYourVideo')}}</p>
       </div>
     </div>
-
     <!-- Bio -->
     <vs-textarea label="Bio" v-model="bio" placeholder="Your bio..." />
-
+      <span>{{$t('Work Areas')}}</span>
+      <v-select taggable push-tags multiple :closeOnSelect="false" v-model="tags"  :dir="$vs.rtl ? 'rtl' : 'ltr'" /><br>
     <!-- DOB -->
     <div class="mt-8">
       <label class="text-sm">Birth Date</label>
@@ -109,7 +109,8 @@ export default {
       website: '',
       current_salary: '',
       expected_salary: '',
-      video: ''
+      video: '',
+        tags:[],
 
     }
   },
@@ -156,7 +157,8 @@ export default {
           experience: this.experience,
           current_salary: this.current_salary,
           expected_salary: this.expected_salary,
-          gender: this.gender
+          gender: this.gender,
+          tags: this.tags
         },
         video: this.video
       }
@@ -197,6 +199,7 @@ export default {
       this.website = this.user.about_data[0].website
       this.video = this.user.about_data[0].video
       this.city = this.user.about_data[0].city
+      this.tags = this.user.about_data[0].tags
     },
     update_video (input) {
 

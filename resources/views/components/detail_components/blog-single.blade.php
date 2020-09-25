@@ -46,21 +46,23 @@
                                 </div>
                                 {!! $post->content !!}
 
-
                                 <div class="post-tags">
                                     <i class="fa fa-tags"></i><span>Etiketler: </span>
+                                    @isset($tags)
+                                        @foreach ($tags as $key1 => $tag)
+                                            @isset($tag)
+                                            @foreach ($tag as $key2 => $item)
+                                                <a>{{$item}}</a>
+                                            @endforeach
+                                            @endisset
+                                        @endforeach
+                                    @endisset
 
-                                    @foreach ($tags as $key1 => $tag)
-                                    @foreach ($tag as $key2 => $item)
-                                    <a>{{$item}}</a>
-                                    @endforeach
-                                    @endforeach
 
-
-                                <div class="share-post">
-                                    <span class="sh">Gönderiyi Paylaş:</span>
-                                    <div id="shareme" data-text="Share this post"></div>
-                                </div>
+                                    <div class="share-post">
+                                        <span class="sh">Gönderiyi Paylaş:</span>
+                                        <div id="shareme" data-text="Share this post"></div>
+                                    </div>
                             </article>
                         </div>
                         <div class="comments">

@@ -25,11 +25,12 @@
           <vx-card>
                <div class="flex flex-wrap items-center mb-5 mt-5 h-full">
                       <span>{{$t('Content')}}</span>
-                      <quill-editor v-model="homePageDesc" :label="$t('Content')" height="600" />
+                      <quill-editor v-model="about.homePageDesc" :label="$t('Content')" height="600" />
                       <span class="text-danger text-sm" v-show="errors.has('Content')">{{ errors.first('Content') ? $t('Content') : ''}}</span>
                     </div>
           </vx-card>
-           <vs-button class="ml-auto mt-2" @click="SaveData('homePageDesc')">{{$t('save')}}</vs-button>
+            <vs-input :label="'Hizmet Kataloğu Linki (ex = https://google.com)'"  v-model="about.url" class="mt-5 w-full"  />
+           <vs-button class="ml-auto mt-2" @click="SaveData('about')">{{$t('save')}}</vs-button>
         </vs-tab>
 
 
@@ -110,8 +111,8 @@ export default {
           exportvolume: ''
         },
 
-        homePageDesc : '',
 
+        about:{ homePageDesc : '', url:''}
     }
   },
   methods:{
