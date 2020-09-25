@@ -157,19 +157,19 @@
                     <div class="cell-3">
                         <div class="form-input">
                             <label for="fastBookName">Ad Soyad<span class="red"> *</span></label>
-                            <input type="text" id="fastBookName" name="fastBookName">
+                            <input type="text" id="fastBookName" name="name">
                         </div>
                     </div>
                     <div class="cell-3">
                         <div class="form-input">
                             <label for="fastBookEmail">E-Posta<span class="red"> *</span></label>
-                            <input type="email" id="fastBookEmail" name="fastBookEmail">
+                            <input type="email" id="fastBookEmail" name="email">
                         </div>
                     </div>
                     <div class="cell-3">
                         <div class="form-input">
                             <label>Almak İstediğiniz Hizmet<span class="red"> *</span></label>
-                            <select name="fastBookService" id="fastBookService">
+                            <select name="service" id="fastBookService">
                                 @isset($QuickServiceList) @foreach ($QuickServiceList as $key => $item)
                                     <option value="{{$key}}">{{$item['key']}}</option>
                                 @endforeach @endisset
@@ -179,7 +179,7 @@
                     <div class="cell-3">
                         <div class="form-input">
                             <label for="fastBookDate">Tarih<span class="red"> *</span></label>
-                            <input type="date" name="fastBookDate" id="fastBookDate">
+                            <input type="date" name="date" id="fastBookDate">
                         </div>
                     </div>
 

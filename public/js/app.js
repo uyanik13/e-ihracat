@@ -95346,7 +95346,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/admin-dashboard',
       name: 'admin-dashboard',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(39), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! ./views/AdminDashboard.vue */ "./resources/js/src/views/AdminDashboard.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(39), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./views/AdminDashboard.vue */ "./resources/js/src/views/AdminDashboard.vue"));
       },
       meta: {
         rule: 'admin'
@@ -95451,7 +95451,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/posts',
       name: 'posts',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/post/list/postList.vue */ "./resources/js/src/views/pages/admin/content/post/list/postList.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(14)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/post/list/postList.vue */ "./resources/js/src/views/pages/admin/content/post/list/postList.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -95471,7 +95471,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/blog-posts',
       name: 'blog-posts',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! @/views/pages/user/blog-post/postList.vue */ "./resources/js/src/views/pages/user/blog-post/postList.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! @/views/pages/user/blog-post/postList.vue */ "./resources/js/src/views/pages/user/blog-post/postList.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -95491,7 +95491,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/services',
       name: 'services',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/service/services.vue */ "./resources/js/src/views/pages/admin/content/service/services.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/service/services.vue */ "./resources/js/src/views/pages/admin/content/service/services.vue"));
       },
       meta: {
         pageTitle: 'services',
@@ -95520,7 +95520,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/forms',
       name: 'Forms',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(4), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/form/list/formList.vue */ "./resources/js/src/views/pages/admin/content/form/list/formList.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(4), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/form/list/formList.vue */ "./resources/js/src/views/pages/admin/content/form/list/formList.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -95554,7 +95554,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/products',
       name: 'products',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/e-commerce/product/productList.vue */ "./resources/js/src/views/pages/admin/e-commerce/product/productList.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/e-commerce/product/productList.vue */ "./resources/js/src/views/pages/admin/e-commerce/product/productList.vue"));
       },
       meta: {
         breadcrumb: [{
