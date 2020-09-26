@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Api\ApiGalleryController;
 use App\Http\Controllers\Api\ApiPackageController;
 use App\Http\Controllers\Api\ApiSettingController;
+use App\Http\Controllers\Api\LocaleFileController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Api\ApiAppointmentController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -48,6 +49,13 @@ Route::group(['middleware' => 'auth:api'], function () {
   Route::post('uploadAdditionalFiles', [ApiPostController::class, 'uploadAdditionalFiles'] );
   Route::post('uploadImageGallery', [ApiPostController::class, 'uploadImageGallery'] );
   Route::post('removeProductGalleryImage', [ApiPostController::class, 'removeProductGalleryImage'] );
+
+
+
+  Route::post('lang/front-side-read', [LocaleFileController::class, 'frontSideRead'] );
+  Route::post('lang/front-side-write', [LocaleFileController::class, 'frontSideWrite'] );
+  Route::post('lang/back-side-read', [LocaleFileController::class, 'backSideRead'] );
+  Route::post('lang/back-side-write', [LocaleFileController::class, 'backSideWrite'] );
 
 
 

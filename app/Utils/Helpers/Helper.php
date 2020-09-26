@@ -57,6 +57,8 @@ class Helper
 
   }
 
+
+
   public static function PostVideoHelper($url, $video, $path)
   {
 
@@ -537,7 +539,34 @@ class Helper
     public static function getPopularPartners(){
         return User::where('role','user')->withCount('comments')->orderBy('comments_count', 'desc')->get();
     }
-    public static function youtubeUrl($url){
-       return Youtube::iFrame($url);
+
+    public static function siteSettingsImageUpload($url, $image, $path)
+    {
+      if (strlen($image) < 255) {
+        return $image;
+      }
+
+
+      $extension = explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];   // .jpg .png .pdf
+
+      $replace = substr($image, 0, strpos($image, ',') + 1);
+
+
+      $imageConvert = str_replace($replace, '', $image);
+
+      $imageConvert = str_replace(' ', '+', $imageConvert);
+
+      $imageName = $url . '_' . time() . '.' . $extension;
+
+      Storage::disk('public')->put('/images/' . $path . '/' . $imageName, base64_decode($imageConvert));
+
+
+
+      $imageUrl =  '/images/' . $path . '/' . $imageName;
+
+
+
+      return $imageUrl;
+
     }
 }

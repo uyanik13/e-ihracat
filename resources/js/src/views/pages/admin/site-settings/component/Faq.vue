@@ -1,20 +1,18 @@
 <template>
   <div class="vx-col w-full md:w-12/12 mb-base">
-      <vs-tabs position="left" color="danger">
-          <vx-card no-shadow v-for="(option,index)  in Faq" :key="index">
+      <vx-card no-shadow v-for="(option,index)  in Faq" :key="index" class="mb-5 ml-2 mr-5 mt-5" >
             <div  class="vx-col  w-full md:w-12/12 mb-base">
               <vs-input :label="'Question'"  v-model="option.question" class="mt-5 w-full"  />
               <vs-input :label="'Answer'"  v-model="option.answer" class="mt-5 w-full"  />
 <!--              <vs-input :label="'Brand Url (ex = https://google.com)'"  v-model="option.url" class="mt-5 w-full"  />-->
-              <vs-button class="bg-danger"  @click="removeThis(index,'Faq')" >{{$t('RemoveThis')}}</vs-button>
+              <vs-button class="bg-danger mt-5"  @click="removeThis(index,'Faq')" >{{$t('RemoveThis')}}</vs-button>
             </div>
             <vs-divider></vs-divider>
           </vx-card>
-          <vs-button class="mr-6" @click="addOptions('Faq')" >{{$t('AddNew')}}</vs-button>
+          <vs-button class="mr-6 mt-5" @click="addOptions('Faq')" >{{$t('AddNew')}}</vs-button>
           <div class="flex flex-wrap items-center justify-end">
             <vs-button class="ml-auto mt-2" @click="SaveData('Faq')">{{$t('save')}}</vs-button>
           </div>
-      </vs-tabs>
   </div>
 
 </template>

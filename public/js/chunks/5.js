@@ -1780,6 +1780,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -1795,6 +1797,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
     i18n_locale_img: function i18n_locale_img() {
@@ -1803,19 +1806,16 @@ __webpack_require__.r(__webpack_exports__);
       // If you are not using laravel + Vue, you can use below code to dynamically get image
       // return require(`@assets/images/flags/${this.$i18n.locale}.png`)
       var locale = this.$i18n.locale;
-      if (locale === 'en') return __webpack_require__(/*! @assets/images/flags/en.png */ "./resources/assets/images/flags/en.png");else if (locale === 'pt') return __webpack_require__(/*! @assets/images/flags/pt.png */ "./resources/assets/images/flags/pt.png");else if (locale === 'fr') return __webpack_require__(/*! @assets/images/flags/fr.png */ "./resources/assets/images/flags/fr.png");else if (locale === 'de') return __webpack_require__(/*! @assets/images/flags/de.png */ "./resources/assets/images/flags/de.png");else return __webpack_require__(/*! @assets/images/flags/en.png */ "./resources/assets/images/flags/en.png");
+      if (locale === 'en') return __webpack_require__(/*! @assets/images/flags/en.png */ "./resources/assets/images/flags/en.png");else if (locale === 'tr') return __webpack_require__(/*! @assets/images/flags/tr.png */ "./resources/assets/images/flags/tr.png");else if (locale === 'de') return __webpack_require__(/*! @assets/images/flags/de.png */ "./resources/assets/images/flags/de.png");else return __webpack_require__(/*! @assets/images/flags/en.png */ "./resources/assets/images/flags/en.png");
     },
     getCurrentLocaleData: function getCurrentLocaleData() {
       var locale = this.$i18n.locale;
       if (locale === 'en') return {
         flag: 'us',
         lang: 'English'
-      };else if (locale === 'pt') return {
-        flag: 'br',
-        lang: 'Portuguese'
-      };else if (locale === 'fr') return {
-        flag: 'fr',
-        lang: 'French'
+      };else if (locale === 'tr') return {
+        flag: 'tr',
+        lang: 'Turkish'
       };else if (locale === 'de') return {
         flag: 'de',
         lang: 'German'
@@ -1824,7 +1824,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     updateLocale: function updateLocale(locale) {
-      this.$i18n.locale = locale;
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('/lang/setLocale', {
+        language: locale
+      }).then(function (response) {
+        //console.log(response)
+        _this.$i18n.locale = response.data;
+        _this.$i18n.fallbackLocale = response.data;
+      }).catch(function (error) {
+        console.log(error);
+      });
     }
   }
 });
@@ -5999,7 +6009,7 @@ var render = function() {
                   alt: "en"
                 }
               }),
-              _vm._v("  English")
+              _vm._v("  " + _vm._s(_vm.$t("English")))
             ]
           ),
           _vm._v(" "),
@@ -6008,7 +6018,7 @@ var render = function() {
             {
               on: {
                 click: function($event) {
-                  return _vm.updateLocale("fr")
+                  return _vm.updateLocale("tr")
                 }
               }
             },
@@ -6016,11 +6026,11 @@ var render = function() {
               _c("img", {
                 staticClass: "h-4 w-5 mr-1",
                 attrs: {
-                  src: __webpack_require__(/*! @assets/images/flags/fr.png */ "./resources/assets/images/flags/fr.png"),
-                  alt: "fr"
+                  src: __webpack_require__(/*! @assets/images/flags/tr.png */ "./resources/assets/images/flags/tr.png"),
+                  alt: "tr"
                 }
               }),
-              _vm._v("  French")
+              _vm._v("  " + _vm._s(_vm.$t("Turkish")))
             ]
           ),
           _vm._v(" "),
@@ -6041,28 +6051,7 @@ var render = function() {
                   alt: "de"
                 }
               }),
-              _vm._v("  German")
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "vs-dropdown-item",
-            {
-              on: {
-                click: function($event) {
-                  return _vm.updateLocale("pt")
-                }
-              }
-            },
-            [
-              _c("img", {
-                staticClass: "h-4 w-5 mr-1",
-                attrs: {
-                  src: __webpack_require__(/*! @assets/images/flags/pt.png */ "./resources/assets/images/flags/pt.png"),
-                  alt: "pt"
-                }
-              }),
-              _vm._v("  Portuguese")
+              _vm._v("  " + _vm._s(_vm.$t("German")))
             ]
           )
         ],
@@ -7362,7 +7351,7 @@ module.exports = "/images/xls.png?cec7307e53ac24771d151806ae183144";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/de.png?5d9561246523cf6183928756fd605e25";
+module.exports = "/images/de.png?d495543548007d3b14ce37110b6dbef9";
 
 /***/ }),
 
@@ -7373,29 +7362,18 @@ module.exports = "/images/de.png?5d9561246523cf6183928756fd605e25";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/en.png?83b065848d14d33c0d10a13e01862f34";
+module.exports = "/images/en.png?753b9f13faf2e76cdc9e64675a67b7bc";
 
 /***/ }),
 
-/***/ "./resources/assets/images/flags/fr.png":
+/***/ "./resources/assets/images/flags/tr.png":
 /*!**********************************************!*\
-  !*** ./resources/assets/images/flags/fr.png ***!
+  !*** ./resources/assets/images/flags/tr.png ***!
   \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/fr.png?134bee9f9d794dc5c0922d1b9bdbb710";
-
-/***/ }),
-
-/***/ "./resources/assets/images/flags/pt.png":
-/*!**********************************************!*\
-  !*** ./resources/assets/images/flags/pt.png ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/pt.png?eba93d33545c78cc67915d9be8323661";
+module.exports = "/images/tr.png?b5432829d452b5f250339263de42f11e";
 
 /***/ }),
 
@@ -8904,6 +8882,24 @@ __webpack_require__.r(__webpack_exports__);
     name: 'Forms',
     icon: 'PauseIcon',
     i18n: 'Forms'
+  }]
+}, {
+  url: '/panel/front-side-language',
+  name: 'front-side-language',
+  icon: 'GlobeIcon',
+  i18n: 'language',
+  submenu: [{
+    url: '/panel/front-side-language',
+    slug: '/panel/front-side-language',
+    name: 'front-side-language',
+    icon: 'FileIcon',
+    i18n: 'frontSideLanguage'
+  }, {
+    url: '/panel/back-side-language',
+    slug: '/panel/back-side-language',
+    name: 'back-side-language',
+    icon: 'FileTextIcon',
+    i18n: 'backSideLanguage'
   }]
 }]);
 

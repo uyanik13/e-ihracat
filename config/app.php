@@ -145,7 +145,6 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        Fomvasss\Youtube\YoutubeServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -237,7 +236,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Helper' => App\utils\Helpers\Helper::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
-        'Youtube' =>  Fomvasss\Youtube\YoutubeServiceProvider::class,
 
     ],
 

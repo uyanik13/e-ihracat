@@ -10,19 +10,19 @@
 
     <vs-tab icon-pack="feather" icon="flag" :label="!isSmallerScreen ? $t('HomePage') : ''">
       <div class="tab-change-pwd md:ml-4 md:mt-10 mt-4 ml-0">
-        <HomePage />
+        <home-page />
       </div>
     </vs-tab>
 
       <vs-tab icon-pack="feather" icon="flag" :label="!isSmallerScreen ? $t('AboutUs') : ''">
           <div class="tab-change-pwd md:ml-4 md:mt-10 mt-4 ml-0">
-              <AboutUs />
+              <about-us />
           </div>
       </vs-tab>
 
-      <vs-tab icon-pack="feather" icon="flag" :label="!isSmallerScreen ? $t('Referances') : ''">
+      <vs-tab icon-pack="feather" icon="flag" :label="!isSmallerScreen ? $t('References') : ''">
           <div class="tab-change-pwd md:ml-4 md:mt-10 mt-4 ml-0">
-              <Referances />
+              <References />
           </div>
       </vs-tab>
 
@@ -39,10 +39,10 @@
 <script>
 import General from "./General.vue"
 import VideoGallery from "./Video-Gallery"
-import AboutUs from "./AboutUs"
 import HomePage from "./HomePage"
+import AboutUs from "./AboutUs"
 import Bayiler from "./Bayiler"
-import Referances from "./Referances"
+import References from "./References"
 import Faq from "./Faq"
 
 export default {
@@ -52,7 +52,7 @@ export default {
     HomePage,
     Bayiler,
       AboutUs,
-      Referances,
+      References,
       Faq,
   },
   data() {

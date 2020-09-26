@@ -46,7 +46,7 @@ const router = new Router({
 
         {
           path: '/panel/',
-          redirect: '/dashboard'
+          redirect: '/panel/dashboard'
         },
         {
           path: '/panel/dashboard',
@@ -265,6 +265,34 @@ const router = new Router({
           }
         },
 
+        {
+            path:'/panel/front-side-language',
+            name: 'front-side-language',
+           component: () => import('@/views/pages/admin/language/FrontSideLanguage.vue'),
+           meta: {
+             breadcrumb: [
+               {title: 'Home', url: '/'},
+               {title: 'language'},
+             ],
+             pageTitle: 'Front Side Edit',
+             rule: 'admin'
+
+           }
+         },
+        {
+            path:'/panel/back-side-language',
+            name: 'back-side-language',
+           component: () => import('@/views/pages/admin/language/BackSideLanguage.vue'),
+           meta: {
+             breadcrumb: [
+               {title: 'Home', url: '/'},
+               {title: 'language'},
+             ],
+             pageTitle: 'Back Side Edit',
+             rule: 'admin'
+
+           }
+         },
 
         // ============================
         // ==========USERS=============

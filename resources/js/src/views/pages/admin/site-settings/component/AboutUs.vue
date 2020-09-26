@@ -2,20 +2,21 @@
   <div class="vx-col w-full md:w-12/12 mb-base">
       <vs-tabs position="left" color="danger">
         <vs-tab label="Anasayfa Menu Alti Slider" >
-          <vx-card no-shadow v-for="(option,index)  in HomeUnderMenuSlider" :key="index">
+            <vs-input :label="'Yönetim Kurulu Üyelerimiz Title'"  v-model="title" class="mt-5 w-full"  />
+          <vx-card no-shadow v-for="(option,index)  in AboutUSMembers" :key="index">
             <div  class="vx-col  w-full md:w-12/12 mb-base">
-              <vs-input :label="'H1 Aciklama'"  v-model="option.h1" class="mt-5 w-full"  />
-              <vs-input :label="'H2 Aciklama'"  v-model="option.h2" class="mt-5 w-full"  />
-              <vs-input :label="'Video Url'"  v-model="option.video" class="mt-5 w-full"  />
-              <vs-input :label="'Resim URL'"  v-model="option.image" class="mt-5 w-full"  />
-              <vs-input :label="'Button Url'"  v-model="option.url" class="mt-5 w-full"  />
-              <vs-button class="bg-danger" @click="removeThis(index,'HomeUnderMenuSlider')" >{{$t('RemoveThis')}}</vs-button>
+
+              <vs-input :label="'Name'"  v-model="option.name" class="mt-5 w-full"  />
+              <vs-input :label="'Position'"  v-model="option.position" class="mt-5 w-full"  />
+              <vs-input :label="'Image Url'"  v-model="option.image" class="mt-5 w-full"  />
+              <vs-input :label="'Linkedin Link'"  v-model="option.url" class="mt-5 w-full"  />
+              <vs-button class="bg-danger" @click="removeThis(index,'AboutUSMembers')" >{{$t('RemoveThis')}}</vs-button>
             </div>
             <vs-divider></vs-divider>
           </vx-card>
-          <vs-button class="mr-6" @click="addOptions('HomeUnderMenuSlider')" >{{$t('AddNew')}}</vs-button>
+          <vs-button class="mr-6" @click="addOptions('AboutUSMembers')" >{{$t('AddNew')}}</vs-button>
           <div class="flex flex-wrap items-center justify-end">
-            <vs-button class="ml-auto mt-2" @click="SaveData('HomeUnderMenuSlider')">{{$t('save')}}</vs-button>
+            <vs-button class="ml-auto mt-2" @click="SaveData('AboutUSMembers')">{{$t('save')}}</vs-button>
           </div>
         </vs-tab>
 
@@ -38,12 +39,12 @@ export default {
 
   data () {
     return {
-      HomeUnderMenuSlider:
+        title: '',
+        AboutUSMembers:
       [
         {
-          h1: '',
-          h2: '',
-          video: '',
+            name: '',
+          position: '',
           image: '',
           url: ''
         }
@@ -96,7 +97,7 @@ export default {
     this.$store.dispatch('custom/fetchItems')
       .then((response) => {
         response.data.forEach(element => {
-          if (element.type === 'HomeUnderMenuSlider') {
+          if (element.type === 'AboutUSMembers') {
             this[element.type].push(JSON.parse(element.JsonData)[element.type])
             this[element.type].splice(0, 1)
             this[element.type] = this[element.type][0]

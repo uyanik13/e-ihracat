@@ -148,6 +148,29 @@ export default [
       }
     ]
   },
+  {
+    url:'/panel/front-side-language',
+    name: 'front-side-language',
+    icon: 'GlobeIcon',
+    i18n: 'language',
+    submenu:[
+      {
+        url:'/panel/front-side-language',
+        slug: '/panel/front-side-language',
+        name: 'front-side-language',
+        icon: 'FileIcon',
+        i18n: 'frontSideLanguage'
+      },
+      {
+        url:'/panel/back-side-language',
+        slug: '/panel/back-side-language',
+        name: 'back-side-language',
+        icon: 'FileTextIcon',
+        i18n: 'backSideLanguage'
+      },
+
+    ]
+  },
 //   {
 //     url:'/panel/e-commerce',
 //     name: 'eCommerce',

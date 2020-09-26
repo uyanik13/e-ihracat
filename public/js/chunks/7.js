@@ -58,6 +58,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
 //
 //
 //
+//
 
 
 
@@ -68,10 +69,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
   },
   data: function data() {
     return {
-      HomeUnderMenuSlider: [{
-        h1: '',
-        h2: '',
-        video: '',
+      title: '',
+      AboutUSMembers: [{
+        name: '',
+        position: '',
         image: '',
         url: ''
       }]
@@ -119,7 +120,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
 
     this.$store.dispatch('custom/fetchItems').then(function (response) {
       response.data.forEach(function (element) {
-        if (element.type === 'HomeUnderMenuSlider') {
+        if (element.type === 'AboutUSMembers') {
           _this2[element.type].push(JSON.parse(element.JsonData)[element.type]);
 
           _this2[element.type].splice(0, 1);
@@ -343,8 +344,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
 //
 //
 //
-//
-//
 
 
 
@@ -431,6 +430,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_setting_setting__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/store/setting/setting */ "./resources/js/src/store/setting/setting.js");
+//
 //
 //
 //
@@ -681,6 +681,27 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -697,11 +718,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
   data: function data() {
     return {
       HomeUnderMenuSlider: [{
-        h1: '',
-        h2: '',
-        video: '',
+        h1: 'Slider Basligi',
+        h2: 'Slider Aciklamasi',
+        video: 'Youtube Video Url',
         image: '',
-        url: ''
+        url: 'Button URL'
       }],
       QuickServiceList: [{
         key: ''
@@ -748,6 +769,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
           color: 'danger'
         });
       });
+    },
+    sliderUpload: function sliderUpload(input, index, type) {
+      var _this2 = this;
+
+      //console.log(input.target.files[0])
+      if (input.target.files && input.target.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          return _this2[type][index].image = e.target.result;
+        };
+
+        reader.readAsDataURL(input.target.files[0]);
+      }
+    },
+    openFileInput: function openFileInput(type) {
+      return this.$refs[type][0].click();
     }
   },
   computed: {
@@ -756,18 +794,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
     this.$store.dispatch('custom/fetchItems').then(function (response) {
       response.data.forEach(function (element) {
         if (element.type === 'HomeUnderMenuSlider') {
-          _this2[element.type].push(JSON.parse(element.JsonData)[element.type]);
+          _this3[element.type].push(JSON.parse(element.JsonData)[element.type]);
 
-          _this2[element.type].splice(0, 1);
+          _this3[element.type].splice(0, 1);
 
-          _this2[element.type] = _this2[element.type][0];
+          _this3[element.type] = _this3[element.type][0];
         } else {
-          _this2[element.type] = JSON.parse(element.JsonData)[element.type];
+          _this3[element.type] = JSON.parse(element.JsonData)[element.type];
         }
       });
     }).catch(function (error) {
@@ -778,9 +816,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/pages/admin/site-settings/component/Referances.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/pages/admin/site-settings/component/References.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/views/pages/admin/site-settings/component/Referances.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/views/pages/admin/site-settings/component/References.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -799,6 +837,19 @@ __webpack_require__.r(__webpack_exports__);
 
 function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -867,28 +918,40 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
           color: 'danger'
         });
       });
+    },
+    sliderUpload: function sliderUpload(input, index, type) {
+      var _this2 = this;
+
+      //console.log(input.target.files[0])
+      if (input.target.files && input.target.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          return _this2[type][index].image = e.target.result;
+        };
+
+        reader.readAsDataURL(input.target.files[0]);
+      }
+    },
+    openFileInput: function openFileInput(type) {
+      return this.$refs[type][0].click();
     }
   },
   computed: {
     activeUserInfo: function activeUserInfo() {
-      return this.$store.state.AppActiveUser;
+      return this.$store.state.auth.user;
     }
   },
   created: function created() {
-    var _this2 = this;
-
-    this.$store.dispatch('custom/fetchItems').then(function (response) {
-      response.data.forEach(function (element) {
-        if (element.type === 'References') {
-          _this2[element.type].push(JSON.parse(element.JsonData)[element.type]);
-
-          _this2[element.type].splice(0, 1);
-
-          _this2[element.type] = _this2[element.type][0];
-        } else {
-          _this2[element.type] = JSON.parse(element.JsonData)[element.type];
-        }
-      });
+    this.$store.dispatch('custom/fetchItems').then(function (response) {// response.data.forEach(element => {
+      //   if (element.type === 'References') {
+      //     this[element.type].push(JSON.parse(element.JsonData)[element.type])
+      //     this[element.type].splice(0, 1)
+      //     this[element.type] = this[element.type][0]
+      //   } else {
+      //     this[element.type] = JSON.parse(element.JsonData)[element.type]
+      //   }
+      // })
     }).catch(function (error) {
       console.log(error);
     });
@@ -1020,10 +1083,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _General_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./General.vue */ "./resources/js/src/views/pages/admin/site-settings/component/General.vue");
 /* harmony import */ var _Video_Gallery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Video-Gallery */ "./resources/js/src/views/pages/admin/site-settings/component/Video-Gallery.vue");
-/* harmony import */ var _AboutUs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AboutUs */ "./resources/js/src/views/pages/admin/site-settings/component/AboutUs.vue");
-/* harmony import */ var _HomePage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./HomePage */ "./resources/js/src/views/pages/admin/site-settings/component/HomePage.vue");
+/* harmony import */ var _HomePage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./HomePage */ "./resources/js/src/views/pages/admin/site-settings/component/HomePage.vue");
+/* harmony import */ var _AboutUs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AboutUs */ "./resources/js/src/views/pages/admin/site-settings/component/AboutUs.vue");
 /* harmony import */ var _Bayiler__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Bayiler */ "./resources/js/src/views/pages/admin/site-settings/component/Bayiler.vue");
-/* harmony import */ var _Referances__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Referances */ "./resources/js/src/views/pages/admin/site-settings/component/Referances.vue");
+/* harmony import */ var _References__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./References */ "./resources/js/src/views/pages/admin/site-settings/component/References.vue");
 /* harmony import */ var _Faq__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Faq */ "./resources/js/src/views/pages/admin/site-settings/component/Faq.vue");
 //
 //
@@ -1074,10 +1137,10 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     VideoGallery: _Video_Gallery__WEBPACK_IMPORTED_MODULE_1__["default"],
     General: _General_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    HomePage: _HomePage__WEBPACK_IMPORTED_MODULE_3__["default"],
+    HomePage: _HomePage__WEBPACK_IMPORTED_MODULE_2__["default"],
     Bayiler: _Bayiler__WEBPACK_IMPORTED_MODULE_4__["default"],
-    AboutUs: _AboutUs__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Referances: _Referances__WEBPACK_IMPORTED_MODULE_5__["default"],
+    AboutUs: _AboutUs__WEBPACK_IMPORTED_MODULE_3__["default"],
+    References: _References__WEBPACK_IMPORTED_MODULE_5__["default"],
     Faq: _Faq__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   data: function data() {
@@ -1198,7 +1261,19 @@ var render = function() {
             "vs-tab",
             { attrs: { label: "Anasayfa Menu Alti Slider" } },
             [
-              _vm._l(_vm.HomeUnderMenuSlider, function(option, index) {
+              _c("vs-input", {
+                staticClass: "mt-5 w-full",
+                attrs: { label: "Yönetim Kurulu Üyelerimiz Title" },
+                model: {
+                  value: _vm.title,
+                  callback: function($$v) {
+                    _vm.title = $$v
+                  },
+                  expression: "title"
+                }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.AboutUSMembers, function(option, index) {
                 return _c(
                   "vx-card",
                   { key: index, attrs: { "no-shadow": "" } },
@@ -1209,43 +1284,31 @@ var render = function() {
                       [
                         _c("vs-input", {
                           staticClass: "mt-5 w-full",
-                          attrs: { label: "H1 Aciklama" },
+                          attrs: { label: "Name" },
                           model: {
-                            value: option.h1,
+                            value: option.name,
                             callback: function($$v) {
-                              _vm.$set(option, "h1", $$v)
+                              _vm.$set(option, "name", $$v)
                             },
-                            expression: "option.h1"
+                            expression: "option.name"
                           }
                         }),
                         _vm._v(" "),
                         _c("vs-input", {
                           staticClass: "mt-5 w-full",
-                          attrs: { label: "H2 Aciklama" },
+                          attrs: { label: "Position" },
                           model: {
-                            value: option.h2,
+                            value: option.position,
                             callback: function($$v) {
-                              _vm.$set(option, "h2", $$v)
+                              _vm.$set(option, "position", $$v)
                             },
-                            expression: "option.h2"
+                            expression: "option.position"
                           }
                         }),
                         _vm._v(" "),
                         _c("vs-input", {
                           staticClass: "mt-5 w-full",
-                          attrs: { label: "Video Url" },
-                          model: {
-                            value: option.video,
-                            callback: function($$v) {
-                              _vm.$set(option, "video", $$v)
-                            },
-                            expression: "option.video"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("vs-input", {
-                          staticClass: "mt-5 w-full",
-                          attrs: { label: "Resim URL" },
+                          attrs: { label: "Image Url" },
                           model: {
                             value: option.image,
                             callback: function($$v) {
@@ -1257,7 +1320,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("vs-input", {
                           staticClass: "mt-5 w-full",
-                          attrs: { label: "Button Url" },
+                          attrs: { label: "Linkedin Link" },
                           model: {
                             value: option.url,
                             callback: function($$v) {
@@ -1273,10 +1336,7 @@ var render = function() {
                             staticClass: "bg-danger",
                             on: {
                               click: function($event) {
-                                return _vm.removeThis(
-                                  index,
-                                  "HomeUnderMenuSlider"
-                                )
+                                return _vm.removeThis(index, "AboutUSMembers")
                               }
                             }
                           },
@@ -1298,7 +1358,7 @@ var render = function() {
                   staticClass: "mr-6",
                   on: {
                     click: function($event) {
-                      return _vm.addOptions("HomeUnderMenuSlider")
+                      return _vm.addOptions("AboutUSMembers")
                     }
                   }
                 },
@@ -1315,7 +1375,7 @@ var render = function() {
                       staticClass: "ml-auto mt-2",
                       on: {
                         click: function($event) {
-                          return _vm.SaveData("HomeUnderMenuSlider")
+                          return _vm.SaveData("AboutUSMembers")
                         }
                       }
                     },
@@ -1633,102 +1693,99 @@ var render = function() {
     "div",
     { staticClass: "vx-col w-full md:w-12/12 mb-base" },
     [
-      _c(
-        "vs-tabs",
-        { attrs: { position: "left", color: "danger" } },
-        [
-          _vm._l(_vm.Faq, function(option, index) {
-            return _c(
-              "vx-card",
-              { key: index, attrs: { "no-shadow": "" } },
+      _vm._l(_vm.Faq, function(option, index) {
+        return _c(
+          "vx-card",
+          {
+            key: index,
+            staticClass: "mb-5 ml-2 mr-5 mt-5",
+            attrs: { "no-shadow": "" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "vx-col  w-full md:w-12/12 mb-base" },
               [
-                _c(
-                  "div",
-                  { staticClass: "vx-col  w-full md:w-12/12 mb-base" },
-                  [
-                    _c("vs-input", {
-                      staticClass: "mt-5 w-full",
-                      attrs: { label: "Question" },
-                      model: {
-                        value: option.question,
-                        callback: function($$v) {
-                          _vm.$set(option, "question", $$v)
-                        },
-                        expression: "option.question"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("vs-input", {
-                      staticClass: "mt-5 w-full",
-                      attrs: { label: "Answer" },
-                      model: {
-                        value: option.answer,
-                        callback: function($$v) {
-                          _vm.$set(option, "answer", $$v)
-                        },
-                        expression: "option.answer"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "vs-button",
-                      {
-                        staticClass: "bg-danger",
-                        on: {
-                          click: function($event) {
-                            return _vm.removeThis(index, "Faq")
-                          }
-                        }
-                      },
-                      [_vm._v(_vm._s(_vm.$t("RemoveThis")))]
-                    )
-                  ],
-                  1
-                ),
+                _c("vs-input", {
+                  staticClass: "mt-5 w-full",
+                  attrs: { label: "Question" },
+                  model: {
+                    value: option.question,
+                    callback: function($$v) {
+                      _vm.$set(option, "question", $$v)
+                    },
+                    expression: "option.question"
+                  }
+                }),
                 _vm._v(" "),
-                _c("vs-divider")
+                _c("vs-input", {
+                  staticClass: "mt-5 w-full",
+                  attrs: { label: "Answer" },
+                  model: {
+                    value: option.answer,
+                    callback: function($$v) {
+                      _vm.$set(option, "answer", $$v)
+                    },
+                    expression: "option.answer"
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "vs-button",
+                  {
+                    staticClass: "bg-danger mt-5",
+                    on: {
+                      click: function($event) {
+                        return _vm.removeThis(index, "Faq")
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.$t("RemoveThis")))]
+                )
               ],
               1
-            )
-          }),
-          _vm._v(" "),
+            ),
+            _vm._v(" "),
+            _c("vs-divider")
+          ],
+          1
+        )
+      }),
+      _vm._v(" "),
+      _c(
+        "vs-button",
+        {
+          staticClass: "mr-6 mt-5",
+          on: {
+            click: function($event) {
+              return _vm.addOptions("Faq")
+            }
+          }
+        },
+        [_vm._v(_vm._s(_vm.$t("AddNew")))]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "flex flex-wrap items-center justify-end" },
+        [
           _c(
             "vs-button",
             {
-              staticClass: "mr-6",
+              staticClass: "ml-auto mt-2",
               on: {
                 click: function($event) {
-                  return _vm.addOptions("Faq")
+                  return _vm.SaveData("Faq")
                 }
               }
             },
-            [_vm._v(_vm._s(_vm.$t("AddNew")))]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "flex flex-wrap items-center justify-end" },
-            [
-              _c(
-                "vs-button",
-                {
-                  staticClass: "ml-auto mt-2",
-                  on: {
-                    click: function($event) {
-                      return _vm.SaveData("Faq")
-                    }
-                  }
-                },
-                [_vm._v(_vm._s(_vm.$t("save")))]
-              )
-            ],
-            1
+            [_vm._v(_vm._s(_vm.$t("save")))]
           )
         ],
-        2
+        1
       )
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -1883,40 +1940,6 @@ var render = function() {
       _c("vs-input", {
         staticClass: "w-full mb-base",
         attrs: {
-          name: "google",
-          "icon-pack": "material",
-          icon: "mdi-google",
-          "label-placeholder": _vm.$t("Google")
-        },
-        model: {
-          value: _vm.google,
-          callback: function($$v) {
-            _vm.google = $$v
-          },
-          expression: "google"
-        }
-      }),
-      _vm._v(" "),
-      _c("vs-input", {
-        staticClass: "w-full mb-base",
-        attrs: {
-          name: "pinterest",
-          "icon-pack": "feather",
-          icon: "icon-pinterest",
-          "label-placeholder": _vm.$t("Pinterest")
-        },
-        model: {
-          value: _vm.pinterest,
-          callback: function($$v) {
-            _vm.pinterest = $$v
-          },
-          expression: "pinterest"
-        }
-      }),
-      _vm._v(" "),
-      _c("vs-input", {
-        staticClass: "w-full mb-base",
-        attrs: {
           name: "address",
           "icon-pack": "feather",
           icon: "icon-map-pin",
@@ -1968,23 +1991,6 @@ var render = function() {
       _c("vs-input", {
         staticClass: "w-full mb-base",
         attrs: {
-          name: "site_url",
-          "icon-pack": "feather",
-          icon: "icon-link",
-          "label-placeholder": _vm.$t("SiteUrl")
-        },
-        model: {
-          value: _vm.site_url,
-          callback: function($$v) {
-            _vm.site_url = $$v
-          },
-          expression: "site_url"
-        }
-      }),
-      _vm._v(" "),
-      _c("vs-input", {
-        staticClass: "w-full mb-base",
-        attrs: {
           name: "map_iframe",
           "icon-pack": "feather",
           icon: "icon-map",
@@ -2013,40 +2019,6 @@ var render = function() {
             _vm.site_name = $$v
           },
           expression: "site_name"
-        }
-      }),
-      _vm._v(" "),
-      _c("vs-input", {
-        staticClass: "w-full mb-base",
-        attrs: {
-          name: "site_video",
-          "icon-pack": "feather",
-          icon: "icon-play",
-          "label-placeholder": _vm.$t("site_video")
-        },
-        model: {
-          value: _vm.site_video,
-          callback: function($$v) {
-            _vm.site_video = $$v
-          },
-          expression: "site_video"
-        }
-      }),
-      _vm._v(" "),
-      _c("vs-input", {
-        staticClass: "w-full mb-base",
-        attrs: {
-          name: "currency",
-          "icon-pack": "feather",
-          icon: "icon-dollar-sign",
-          "label-placeholder": _vm.$t("currency")
-        },
-        model: {
-          value: _vm.currency,
-          callback: function($$v) {
-            _vm.currency = $$v
-          },
-          expression: "currency"
         }
       }),
       _vm._v(" "),
@@ -2089,218 +2061,204 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { staticClass: "vx-col w-full md:w-12/12 mb-base" },
+    "vs-tabs",
+    { attrs: { position: "left", color: "danger" } },
     [
       _c(
-        "vs-tabs",
-        { attrs: { position: "left", color: "danger" } },
+        "vs-tab",
+        {
+          staticClass: "mb-5 ml-5 mt-5 sm:w-11/12",
+          attrs: { label: "Anasayfa Menu Alti Slider" }
+        },
         [
-          _c(
-            "vs-tab",
-            { attrs: { label: "Anasayfa Menu Alti Slider" } },
-            [
-              _vm._l(_vm.HomeUnderMenuSlider, function(option, index) {
-                return _c(
-                  "vx-card",
-                  { key: index, attrs: { "no-shadow": "" } },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "vx-col  w-full md:w-12/12 mb-base" },
-                      [
-                        _c("vs-input", {
-                          staticClass: "mt-5 w-full",
-                          attrs: { label: "H1 Aciklama" },
-                          model: {
-                            value: option.h1,
-                            callback: function($$v) {
-                              _vm.$set(option, "h1", $$v)
-                            },
-                            expression: "option.h1"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("vs-input", {
-                          staticClass: "mt-5 w-full",
-                          attrs: { label: "H2 Aciklama" },
-                          model: {
-                            value: option.h2,
-                            callback: function($$v) {
-                              _vm.$set(option, "h2", $$v)
-                            },
-                            expression: "option.h2"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("vs-input", {
-                          staticClass: "mt-5 w-full",
-                          attrs: { label: "Video Url" },
-                          model: {
-                            value: option.video,
-                            callback: function($$v) {
-                              _vm.$set(option, "video", $$v)
-                            },
-                            expression: "option.video"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("vs-input", {
-                          staticClass: "mt-5 w-full",
-                          attrs: { label: "Resim URL" },
-                          model: {
-                            value: option.image,
-                            callback: function($$v) {
-                              _vm.$set(option, "image", $$v)
-                            },
-                            expression: "option.image"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("vs-input", {
-                          staticClass: "mt-5 w-full",
-                          attrs: { label: "Button Url" },
-                          model: {
-                            value: option.url,
-                            callback: function($$v) {
-                              _vm.$set(option, "url", $$v)
-                            },
-                            expression: "option.url"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "vs-button",
-                          {
-                            staticClass: "bg-danger",
+          _vm._l(_vm.HomeUnderMenuSlider, function(option, index) {
+            return _c(
+              "vx-card",
+              { key: index, staticClass: "mb-5 ml-2 mr-5 mt-5" },
+              [
+                _c("div", { staticClass: "vx-row" }, [
+                  _c(
+                    "div",
+                    { staticClass: "vx-col sm:w-1/2 lg:w-1/1 mb-2" },
+                    [
+                      _c("vs-input", {
+                        staticClass: "mt-5 w-full",
+                        attrs: { label: "H1 Aciklama" },
+                        model: {
+                          value: option.h1,
+                          callback: function($$v) {
+                            _vm.$set(option, "h1", $$v)
+                          },
+                          expression: "option.h1"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "vx-col sm:w-1/2 lg:w-1/1 mb-2" },
+                    [
+                      _c("vs-input", {
+                        staticClass: "mt-5 w-full",
+                        attrs: { label: "H2 Aciklama" },
+                        model: {
+                          value: option.h2,
+                          callback: function($$v) {
+                            _vm.$set(option, "h2", $$v)
+                          },
+                          expression: "option.h2"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "vx-col sm:w-1/2 lg:w-1/1 mb-2" },
+                    [
+                      _c("vs-input", {
+                        staticClass: "mt-5 w-full",
+                        attrs: { label: "Video Url" },
+                        model: {
+                          value: option.video,
+                          callback: function($$v) {
+                            _vm.$set(option, "video", $$v)
+                          },
+                          expression: "option.video"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "vx-col sm:w-1/2 lg:w-1/1 mb-2" },
+                    [
+                      _c("vs-input", {
+                        staticClass: "mt-5 w-full",
+                        attrs: { label: "Button Url" },
+                        model: {
+                          value: option.url,
+                          callback: function($$v) {
+                            _vm.$set(option, "url", $$v)
+                          },
+                          expression: "option.url"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "flex flex-wrap items-center mb-base ml-3 mt-2"
+                    },
+                    [
+                      !option.image
+                        ? _c("img", {
+                            staticClass: "card-img-top",
+                            attrs: {
+                              src: __webpack_require__(/*! @assets/images/slider/slider-to-here.png */ "./resources/assets/images/slider/slider-to-here.png"),
+                              height: "450px",
+                              width: "680px"
+                            }
+                          })
+                        : _c("img", {
+                            staticClass: "card-img-top",
+                            attrs: {
+                              src: option.image,
+                              height: "480px",
+                              width: "720px"
+                            }
+                          }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        [
+                          _c("input", {
+                            ref: "sliderImage" + index,
+                            refInFor: true,
+                            staticClass: "hidden",
+                            attrs: { type: "file", accept: "image/*" },
                             on: {
-                              click: function($event) {
-                                return _vm.removeThis(
+                              change: function($event) {
+                                return _vm.sliderUpload(
+                                  $event,
                                   index,
                                   "HomeUnderMenuSlider"
                                 )
                               }
                             }
-                          },
-                          [_vm._v(_vm._s(_vm.$t("RemoveThis")))]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("vs-divider")
-                  ],
-                  1
-                )
-              }),
-              _vm._v(" "),
-              _c(
-                "vs-button",
-                {
-                  staticClass: "mr-6",
-                  on: {
-                    click: function($event) {
-                      return _vm.addOptions("HomeUnderMenuSlider")
-                    }
-                  }
-                },
-                [_vm._v(_vm._s(_vm.$t("AddNew")))]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "flex flex-wrap items-center justify-end" },
-                [
-                  _c(
-                    "vs-button",
-                    {
-                      staticClass: "ml-auto mt-2",
-                      on: {
-                        click: function($event) {
-                          return _vm.SaveData("HomeUnderMenuSlider")
-                        }
-                      }
-                    },
-                    [_vm._v(_vm._s(_vm.$t("save")))]
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "vs-button",
+                            {
+                              staticClass: "ml-3 sm:mb-0 mb-2",
+                              on: {
+                                click: function($event) {
+                                  return _vm.openFileInput(
+                                    "sliderImage" + index
+                                  )
+                                }
+                              }
+                            },
+                            [_vm._v(_vm._s(_vm.$t("addSlider")))]
+                          )
+                        ],
+                        1
+                      )
+                    ]
                   )
-                ],
-                1
-              )
-            ],
-            2
+                ]),
+                _vm._v(" "),
+                _c(
+                  "vs-button",
+                  {
+                    staticClass: "bg-danger mt-3",
+                    on: {
+                      click: function($event) {
+                        return _vm.removeThis(index, "HomeUnderMenuSlider")
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.$t("removeThisSLider")))]
+                )
+              ],
+              1
+            )
+          }),
+          _vm._v(" "),
+          _c(
+            "vs-button",
+            {
+              staticClass: "mr-6",
+              on: {
+                click: function($event) {
+                  return _vm.addOptions("HomeUnderMenuSlider")
+                }
+              }
+            },
+            [_vm._v(_vm._s(_vm.$t("AddNew")))]
           ),
           _vm._v(" "),
           _c(
-            "vs-tab",
-            { attrs: { label: "Anasayfa About Us Yazisi" } },
+            "div",
+            { staticClass: "flex flex-wrap items-center justify-end" },
             [
-              _c("vx-card", [
-                _c(
-                  "div",
-                  {
-                    staticClass: "flex flex-wrap items-center mb-5 mt-5 h-full"
-                  },
-                  [
-                    _c("span", [_vm._v(_vm._s(_vm.$t("Content")))]),
-                    _vm._v(" "),
-                    _c("quill-editor", {
-                      attrs: { label: _vm.$t("Content"), height: "600" },
-                      model: {
-                        value: _vm.about.homePageDesc,
-                        callback: function($$v) {
-                          _vm.$set(_vm.about, "homePageDesc", $$v)
-                        },
-                        expression: "about.homePageDesc"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        directives: [
-                          {
-                            name: "show",
-                            rawName: "v-show",
-                            value: _vm.errors.has("Content"),
-                            expression: "errors.has('Content')"
-                          }
-                        ],
-                        staticClass: "text-danger text-sm"
-                      },
-                      [
-                        _vm._v(
-                          _vm._s(
-                            _vm.errors.first("Content") ? _vm.$t("Content") : ""
-                          )
-                        )
-                      ]
-                    )
-                  ],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c("vs-input", {
-                staticClass: "mt-5 w-full",
-                attrs: {
-                  label: "Hizmet Kataloğu Linki (ex = https://google.com)"
-                },
-                model: {
-                  value: _vm.about.url,
-                  callback: function($$v) {
-                    _vm.$set(_vm.about, "url", $$v)
-                  },
-                  expression: "about.url"
-                }
-              }),
-              _vm._v(" "),
               _c(
                 "vs-button",
                 {
                   staticClass: "ml-auto mt-2",
                   on: {
                     click: function($event) {
-                      return _vm.SaveData("about")
+                      return _vm.SaveData("HomeUnderMenuSlider")
                     }
                   }
                 },
@@ -2308,75 +2266,251 @@ var render = function() {
               )
             ],
             1
+          )
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "vs-tab",
+        {
+          staticClass: "mb-5 ml-5 mt-5 sm:w-11/12",
+          attrs: { label: "Anasayfa About Us Yazisi" }
+        },
+        [
+          _c("vx-card", [
+            _c(
+              "div",
+              {
+                staticClass: "flex flex-wrap items-center mb-5 mt-5 ml-5 h-full"
+              },
+              [
+                _c("span", [_vm._v(_vm._s(_vm.$t("Content")))]),
+                _vm._v(" "),
+                _c("quill-editor", {
+                  attrs: { label: _vm.$t("Content"), height: "600" },
+                  model: {
+                    value: _vm.about.homePageDesc,
+                    callback: function($$v) {
+                      _vm.$set(_vm.about, "homePageDesc", $$v)
+                    },
+                    expression: "about.homePageDesc"
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.errors.has("Content"),
+                        expression: "errors.has('Content')"
+                      }
+                    ],
+                    staticClass: "text-danger text-sm"
+                  },
+                  [
+                    _vm._v(
+                      _vm._s(
+                        _vm.errors.first("Content") ? _vm.$t("Content") : ""
+                      )
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("vs-input", {
+            staticClass: "mt-5 w-full",
+            attrs: { label: "Hizmet Kataloğu Linki (ex = https://google.com)" },
+            model: {
+              value: _vm.about.url,
+              callback: function($$v) {
+                _vm.$set(_vm.about, "url", $$v)
+              },
+              expression: "about.url"
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "vs-button",
+            {
+              staticClass: "ml-auto mt-2",
+              on: {
+                click: function($event) {
+                  return _vm.SaveData("about")
+                }
+              }
+            },
+            [_vm._v(_vm._s(_vm.$t("save")))]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "vs-tab",
+        {
+          staticClass: "mb-5 ml-5 mt-5 sm:w-11/12",
+          attrs: { label: "Hizli Randevu Hizmet Listesi" }
+        },
+        [
+          _vm._l(_vm.QuickServiceList, function(option, index) {
+            return _c(
+              "vx-card",
+              {
+                key: index,
+                staticClass: "mb-5 mt-5 ",
+                attrs: { "no-shadow": "" }
+              },
+              [
+                _c(
+                  "div",
+                  { staticClass: "vx-col  w-full md:w-12/12 mb-base" },
+                  [
+                    _c("vs-input", {
+                      directives: [
+                        {
+                          name: "validate",
+                          rawName: "v-validate",
+                          value: "required| min:3",
+                          expression: "'required| min:3'"
+                        }
+                      ],
+                      staticClass: "mt-5 w-full",
+                      attrs: { label: "Hizmet Adi" },
+                      model: {
+                        value: option.key,
+                        callback: function($$v) {
+                          _vm.$set(option, "key", $$v)
+                        },
+                        expression: "option.key"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "vs-button",
+                      {
+                        staticClass: "bg-danger mt-5",
+                        on: {
+                          click: function($event) {
+                            return _vm.removeThis(index, "QuickServiceList")
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.$t("RemoveThis")))]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("vs-divider")
+              ],
+              1
+            )
+          }),
+          _vm._v(" "),
+          _c(
+            "vs-button",
+            {
+              staticClass: "mr-6 mt-5",
+              on: {
+                click: function($event) {
+                  return _vm.addOptions("QuickServiceList")
+                }
+              }
+            },
+            [_vm._v(_vm._s(_vm.$t("AddNew")))]
           ),
           _vm._v(" "),
           _c(
-            "vs-tab",
-            { attrs: { label: "Hizli Randevu Hizmet Listesi" } },
+            "div",
+            { staticClass: "flex flex-wrap items-center justify-end" },
             [
-              _vm._l(_vm.QuickServiceList, function(option, index) {
-                return _c(
-                  "vx-card",
-                  { key: index, attrs: { "no-shadow": "" } },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "vx-col  w-full md:w-12/12 mb-base" },
-                      [
-                        _c("vs-input", {
-                          directives: [
-                            {
-                              name: "validate",
-                              rawName: "v-validate",
-                              value: "required| min:3",
-                              expression: "'required| min:3'"
-                            }
-                          ],
-                          staticClass: "mt-5 w-full",
-                          attrs: { label: "Hizmet Adi" },
-                          model: {
-                            value: option.key,
-                            callback: function($$v) {
-                              _vm.$set(option, "key", $$v)
-                            },
-                            expression: "option.key"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "vs-button",
-                          {
-                            staticClass: "bg-danger",
-                            on: {
-                              click: function($event) {
-                                return _vm.removeThis(index, "QuickServiceList")
-                              }
-                            }
-                          },
-                          [_vm._v(_vm._s(_vm.$t("RemoveThis")))]
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("vs-divider")
-                  ],
-                  1
-                )
-              }),
-              _vm._v(" "),
               _c(
                 "vs-button",
                 {
-                  staticClass: "mr-6",
+                  staticClass: "ml-auto mt-2",
                   on: {
                     click: function($event) {
-                      return _vm.addOptions("QuickServiceList")
+                      return _vm.SaveData("QuickServiceList")
                     }
                   }
                 },
-                [_vm._v(_vm._s(_vm.$t("AddNew")))]
-              ),
+                [_vm._v(_vm._s(_vm.$t("save")))]
+              )
+            ],
+            1
+          )
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "vs-tab",
+        {
+          staticClass: "mb-5 ml-5 mt-5 sm:w-11/12",
+          attrs: { label: "4Lu Box Sayilari" }
+        },
+        [
+          _c(
+            "vx-card",
+            [
+              _c("vs-input", {
+                staticClass: "mt-5 w-full",
+                attrs: { label: "Toplam Uyeler" },
+                model: {
+                  value: _vm.fourBox.allusers,
+                  callback: function($$v) {
+                    _vm.$set(_vm.fourBox, "allusers", $$v)
+                  },
+                  expression: "fourBox.allusers"
+                }
+              }),
+              _vm._v(" "),
+              _c("vs-divider"),
+              _vm._v(" "),
+              _c("vs-input", {
+                staticClass: "mt-5 w-full",
+                attrs: { label: "Toplam Imalatcı" },
+                model: {
+                  value: _vm.fourBox.providers,
+                  callback: function($$v) {
+                    _vm.$set(_vm.fourBox, "providers", $$v)
+                  },
+                  expression: "fourBox.providers"
+                }
+              }),
+              _vm._v(" "),
+              _c("vs-divider"),
+              _vm._v(" "),
+              _c("vs-input", {
+                staticClass: "mt-5 w-full",
+                attrs: { label: "Istihdam" },
+                model: {
+                  value: _vm.fourBox.employments,
+                  callback: function($$v) {
+                    _vm.$set(_vm.fourBox, "employments", $$v)
+                  },
+                  expression: "fourBox.employments"
+                }
+              }),
+              _vm._v(" "),
+              _c("vs-input", {
+                staticClass: "mt-5 w-full",
+                attrs: { label: "E-ticaret Hacmi" },
+                model: {
+                  value: _vm.fourBox.exportvolume,
+                  callback: function($$v) {
+                    _vm.$set(_vm.fourBox, "exportvolume", $$v)
+                  },
+                  expression: "fourBox.exportvolume"
+                }
+              }),
               _vm._v(" "),
               _c(
                 "div",
@@ -2388,96 +2522,11 @@ var render = function() {
                       staticClass: "ml-auto mt-2",
                       on: {
                         click: function($event) {
-                          return _vm.SaveData("QuickServiceList")
+                          return _vm.SaveData("fourBox")
                         }
                       }
                     },
                     [_vm._v(_vm._s(_vm.$t("save")))]
-                  )
-                ],
-                1
-              )
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c(
-            "vs-tab",
-            { attrs: { label: "4Lu Box Sayilari" } },
-            [
-              _c(
-                "vx-card",
-                [
-                  _c("vs-input", {
-                    staticClass: "mt-5 w-full",
-                    attrs: { label: "Toplam Uyeler" },
-                    model: {
-                      value: _vm.fourBox.allusers,
-                      callback: function($$v) {
-                        _vm.$set(_vm.fourBox, "allusers", $$v)
-                      },
-                      expression: "fourBox.allusers"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("vs-divider"),
-                  _vm._v(" "),
-                  _c("vs-input", {
-                    staticClass: "mt-5 w-full",
-                    attrs: { label: "Toplam Imalatcı" },
-                    model: {
-                      value: _vm.fourBox.providers,
-                      callback: function($$v) {
-                        _vm.$set(_vm.fourBox, "providers", $$v)
-                      },
-                      expression: "fourBox.providers"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("vs-divider"),
-                  _vm._v(" "),
-                  _c("vs-input", {
-                    staticClass: "mt-5 w-full",
-                    attrs: { label: "Istihdam" },
-                    model: {
-                      value: _vm.fourBox.employments,
-                      callback: function($$v) {
-                        _vm.$set(_vm.fourBox, "employments", $$v)
-                      },
-                      expression: "fourBox.employments"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("vs-input", {
-                    staticClass: "mt-5 w-full",
-                    attrs: { label: "E-ticaret Hacmi" },
-                    model: {
-                      value: _vm.fourBox.exportvolume,
-                      callback: function($$v) {
-                        _vm.$set(_vm.fourBox, "exportvolume", $$v)
-                      },
-                      expression: "fourBox.exportvolume"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "flex flex-wrap items-center justify-end" },
-                    [
-                      _c(
-                        "vs-button",
-                        {
-                          staticClass: "ml-auto mt-2",
-                          on: {
-                            click: function($event) {
-                              return _vm.SaveData("fourBox")
-                            }
-                          }
-                        },
-                        [_vm._v(_vm._s(_vm.$t("save")))]
-                      )
-                    ],
-                    1
                   )
                 ],
                 1
@@ -2499,9 +2548,9 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/pages/admin/site-settings/component/Referances.vue?vue&type=template&id=4c010211&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/pages/admin/site-settings/component/References.vue?vue&type=template&id=c5da83d6&":
 /*!************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/views/pages/admin/site-settings/component/Referances.vue?vue&type=template&id=4c010211& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/src/views/pages/admin/site-settings/component/References.vue?vue&type=template&id=c5da83d6& ***!
   \************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -2516,116 +2565,160 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "vx-col w-full md:w-12/12 mb-base" },
     [
-      _c(
-        "vs-tabs",
-        { attrs: { position: "left", color: "danger" } },
-        [
-          _vm._l(_vm.References, function(option, index) {
-            return _c(
-              "vx-card",
-              { key: index, attrs: { "no-shadow": "" } },
-              [
-                _c(
-                  "div",
-                  { staticClass: "vx-col  w-full md:w-12/12 mb-base" },
-                  [
-                    _c("vs-input", {
-                      staticClass: "mt-5 w-full",
-                      attrs: { label: "Brand Name" },
-                      model: {
-                        value: option.name,
-                        callback: function($$v) {
-                          _vm.$set(option, "name", $$v)
-                        },
-                        expression: "option.name"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("vs-input", {
-                      staticClass: "mt-5 w-full",
-                      attrs: { label: "Brand Image URL" },
-                      model: {
-                        value: option.image,
-                        callback: function($$v) {
-                          _vm.$set(option, "image", $$v)
-                        },
-                        expression: "option.image"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("vs-input", {
-                      staticClass: "mt-5 w-full",
-                      attrs: { label: "Brand Url (ex = https://google.com)" },
-                      model: {
-                        value: option.url,
-                        callback: function($$v) {
-                          _vm.$set(option, "url", $$v)
-                        },
-                        expression: "option.url"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "vs-button",
-                      {
-                        staticClass: "bg-danger",
+      _vm._l(_vm.References, function(option, index) {
+        return _c(
+          "vx-card",
+          { key: index, staticClass: "mb-5 ml-2 mr-5 mt-5" },
+          [
+            _c("div", { staticClass: "vx-row" }, [
+              _c(
+                "div",
+                { staticClass: "vx-col sm:w-1/2 lg:w-1/1 mb-2" },
+                [
+                  _c("vs-input", {
+                    staticClass: "mt-5 w-full",
+                    attrs: { label: "Brand Name" },
+                    model: {
+                      value: option.name,
+                      callback: function($$v) {
+                        _vm.$set(option, "name", $$v)
+                      },
+                      expression: "option.name"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "vx-col sm:w-1/2 lg:w-1/1 mb-2" },
+                [
+                  _c("vs-input", {
+                    staticClass: "mt-5 w-full",
+                    attrs: { label: "Brand Url (ex = https://google.com)" },
+                    model: {
+                      value: option.url,
+                      callback: function($$v) {
+                        _vm.$set(option, "url", $$v)
+                      },
+                      expression: "option.url"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "flex flex-wrap items-center mb-base ml-3 mt-2"
+                },
+                [
+                  !option.image
+                    ? _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src: "https://via.placeholder.com/150.png",
+                          height: "150px",
+                          width: "150px"
+                        }
+                      })
+                    : _c("img", {
+                        staticClass: "card-img-top",
+                        attrs: {
+                          src: option.image,
+                          height: "150px",
+                          width: "150px"
+                        }
+                      }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    [
+                      _c("input", {
+                        ref: "brandImage" + index,
+                        refInFor: true,
+                        staticClass: "hidden",
+                        attrs: { type: "file", accept: "image/*" },
                         on: {
-                          click: function($event) {
-                            return _vm.removeThis(index, "References")
+                          change: function($event) {
+                            return _vm.sliderUpload($event, index, "References")
                           }
                         }
-                      },
-                      [_vm._v(_vm._s(_vm.$t("RemoveThis")))]
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("vs-divider")
-              ],
-              1
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "vs-button",
+                        {
+                          staticClass: "ml-3 sm:mb-0 mb-2",
+                          on: {
+                            click: function($event) {
+                              return _vm.openFileInput("brandImage" + index)
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.$t("addBrandImage")))]
+                      )
+                    ],
+                    1
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "vs-button",
+              {
+                staticClass: "bg-danger mt-3",
+                on: {
+                  click: function($event) {
+                    return _vm.removeThis(index, "References")
+                  }
+                }
+              },
+              [_vm._v(_vm._s(_vm.$t("removeThisSection")))]
             )
-          }),
-          _vm._v(" "),
+          ],
+          1
+        )
+      }),
+      _vm._v(" "),
+      _c(
+        "vs-button",
+        {
+          staticClass: "mr-6",
+          on: {
+            click: function($event) {
+              return _vm.addOptions("References")
+            }
+          }
+        },
+        [_vm._v(_vm._s(_vm.$t("AddNew")))]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "flex flex-wrap items-center justify-end" },
+        [
           _c(
             "vs-button",
             {
-              staticClass: "mr-6",
+              staticClass: "ml-auto mt-2",
               on: {
                 click: function($event) {
-                  return _vm.addOptions("References")
+                  return _vm.SaveData("References")
                 }
               }
             },
-            [_vm._v(_vm._s(_vm.$t("AddNew")))]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "flex flex-wrap items-center justify-end" },
-            [
-              _c(
-                "vs-button",
-                {
-                  staticClass: "ml-auto mt-2",
-                  on: {
-                    click: function($event) {
-                      return _vm.SaveData("References")
-                    }
-                  }
-                },
-                [_vm._v(_vm._s(_vm.$t("save")))]
-              )
-            ],
-            1
+            [_vm._v(_vm._s(_vm.$t("save")))]
           )
         ],
-        2
+        1
       )
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -2799,7 +2892,7 @@ var render = function() {
           _c(
             "div",
             { staticClass: "tab-change-pwd md:ml-4 md:mt-10 mt-4 ml-0" },
-            [_c("HomePage")],
+            [_c("home-page")],
             1
           )
         ]
@@ -2818,7 +2911,7 @@ var render = function() {
           _c(
             "div",
             { staticClass: "tab-change-pwd md:ml-4 md:mt-10 mt-4 ml-0" },
-            [_c("AboutUs")],
+            [_c("about-us")],
             1
           )
         ]
@@ -2830,14 +2923,14 @@ var render = function() {
           attrs: {
             "icon-pack": "feather",
             icon: "flag",
-            label: !_vm.isSmallerScreen ? _vm.$t("Referances") : ""
+            label: !_vm.isSmallerScreen ? _vm.$t("References") : ""
           }
         },
         [
           _c(
             "div",
             { staticClass: "tab-change-pwd md:ml-4 md:mt-10 mt-4 ml-0" },
-            [_c("Referances")],
+            [_c("References")],
             1
           )
         ]
@@ -2869,6 +2962,17 @@ var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./resources/assets/images/slider/slider-to-here.png":
+/*!***********************************************************!*\
+  !*** ./resources/assets/images/slider/slider-to-here.png ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/slider-to-here.png?0134ef01948dfe4a7e9a5ec29ff3c880";
 
 /***/ }),
 
@@ -3203,7 +3307,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************************************************************************!*\
   !*** ./resources/js/src/views/pages/admin/site-settings/component/HomePage.vue?vue&type=template&id=7d23dddb& ***!
   \****************************************************************************************************************/
-/*! no static exports found */
+/*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3217,17 +3321,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/src/views/pages/admin/site-settings/component/Referances.vue":
+/***/ "./resources/js/src/views/pages/admin/site-settings/component/References.vue":
 /*!***********************************************************************************!*\
-  !*** ./resources/js/src/views/pages/admin/site-settings/component/Referances.vue ***!
+  !*** ./resources/js/src/views/pages/admin/site-settings/component/References.vue ***!
   \***********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Referances_vue_vue_type_template_id_4c010211___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Referances.vue?vue&type=template&id=4c010211& */ "./resources/js/src/views/pages/admin/site-settings/component/Referances.vue?vue&type=template&id=4c010211&");
-/* harmony import */ var _Referances_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Referances.vue?vue&type=script&lang=js& */ "./resources/js/src/views/pages/admin/site-settings/component/Referances.vue?vue&type=script&lang=js&");
+/* harmony import */ var _References_vue_vue_type_template_id_c5da83d6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./References.vue?vue&type=template&id=c5da83d6& */ "./resources/js/src/views/pages/admin/site-settings/component/References.vue?vue&type=template&id=c5da83d6&");
+/* harmony import */ var _References_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./References.vue?vue&type=script&lang=js& */ "./resources/js/src/views/pages/admin/site-settings/component/References.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -3237,9 +3341,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Referances_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Referances_vue_vue_type_template_id_4c010211___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Referances_vue_vue_type_template_id_4c010211___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _References_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _References_vue_vue_type_template_id_c5da83d6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _References_vue_vue_type_template_id_c5da83d6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -3249,38 +3353,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/src/views/pages/admin/site-settings/component/Referances.vue"
+component.options.__file = "resources/js/src/views/pages/admin/site-settings/component/References.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/src/views/pages/admin/site-settings/component/Referances.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/src/views/pages/admin/site-settings/component/References.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************!*\
-  !*** ./resources/js/src/views/pages/admin/site-settings/component/Referances.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/src/views/pages/admin/site-settings/component/References.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Referances_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Referances.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/pages/admin/site-settings/component/Referances.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Referances_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_References_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./References.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/pages/admin/site-settings/component/References.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_References_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/src/views/pages/admin/site-settings/component/Referances.vue?vue&type=template&id=4c010211&":
+/***/ "./resources/js/src/views/pages/admin/site-settings/component/References.vue?vue&type=template&id=c5da83d6&":
 /*!******************************************************************************************************************!*\
-  !*** ./resources/js/src/views/pages/admin/site-settings/component/Referances.vue?vue&type=template&id=4c010211& ***!
+  !*** ./resources/js/src/views/pages/admin/site-settings/component/References.vue?vue&type=template&id=c5da83d6& ***!
   \******************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Referances_vue_vue_type_template_id_4c010211___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./Referances.vue?vue&type=template&id=4c010211& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/pages/admin/site-settings/component/Referances.vue?vue&type=template&id=4c010211&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Referances_vue_vue_type_template_id_4c010211___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_References_vue_vue_type_template_id_c5da83d6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../../../node_modules/vue-loader/lib??vue-loader-options!./References.vue?vue&type=template&id=c5da83d6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/src/views/pages/admin/site-settings/component/References.vue?vue&type=template&id=c5da83d6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_References_vue_vue_type_template_id_c5da83d6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Referances_vue_vue_type_template_id_4c010211___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_References_vue_vue_type_template_id_c5da83d6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
