@@ -16,17 +16,17 @@
     <vs-input class="w-full mb-base" name="instagram" icon-pack="feather" icon="icon-instagram" :label-placeholder="$t('Instagram')" v-model="instagram"></vs-input>
     <vs-input class="w-full mb-base" name="youtube" icon-pack="feather" icon="icon-youtube" :label-placeholder="$t('Youtube')" v-model="youtube"></vs-input>
     <vs-input class="w-full mb-base" name="linkedin" icon-pack="feather" icon="icon-linkedin" :label-placeholder="$t('Linkedin')" v-model="linkedin"></vs-input>
-    <vs-input class="w-full mb-base" name="twitter"  icon-pack="feather" icon="icon-twitter" :label-placeholder="$t('Twitter')" v-model="twitter"></vs-input>
-    <vs-input class="w-full mb-base" name="google"  icon-pack="material" icon="mdi-google" :label-placeholder="$t('Google')" v-model="google"></vs-input>
-    <vs-input class="w-full mb-base" name="pinterest" icon-pack="feather" icon="icon-pinterest" :label-placeholder="$t('Pinterest')" v-model="pinterest"></vs-input>
+<!--    <vs-input class="w-full mb-base" name="twitter"  icon-pack="feather" icon="icon-twitter" :label-placeholder="$t('Twitter')" v-model="twitter"></vs-input>-->
+<!--    <vs-input class="w-full mb-base" name="google"  icon-pack="material" icon="mdi-google" :label-placeholder="$t('Google')" v-model="google"></vs-input>-->
+<!--    <vs-input class="w-full mb-base" name="pinterest" icon-pack="feather" icon="icon-pinterest" :label-placeholder="$t('Pinterest')" v-model="pinterest"></vs-input>-->
     <vs-input class="w-full mb-base" name="address" icon-pack="feather" icon="icon-map-pin" :label-placeholder="$t('Address')" v-model="address"></vs-input>
     <vs-input class="w-full mb-base" name="phone" icon-pack="feather" icon="icon-phone" :label-placeholder="$t('Phone(+905554321077)')" v-model="phone"></vs-input>
     <vs-input class="w-full mb-base" name="email" icon-pack="feather" icon="icon-mail" :label-placeholder="$t('Email')" v-model="email"></vs-input>
-    <vs-input class="w-full mb-base" name="site_url" icon-pack="feather" icon="icon-link" :label-placeholder="$t('SiteUrl')" v-model="site_url"></vs-input>
+<!--    <vs-input class="w-full mb-base" name="site_url" icon-pack="feather" icon="icon-link" :label-placeholder="$t('SiteUrl')" v-model="site_url"></vs-input>-->
     <vs-input class="w-full mb-base" name="map_iframe" icon-pack="feather" icon="icon-map" :label-placeholder="$t('map_iframe')" v-model="map_iframe"></vs-input>
-    <vs-input class="w-full mb-base" name="site_name" icon-pack="feather" icon="icon-airplay" :label-placeholder="$t('site_name')" v-model="site_name"></vs-input>
-    <vs-input class="w-full mb-base" name="site_video" icon-pack="feather" icon="icon-play" :label-placeholder="$t('site_video')" v-model="site_video"></vs-input>
-    <vs-input class="w-full mb-base" name="currency" icon-pack="feather" icon="icon-dollar-sign" :label-placeholder="$t('currency')" v-model="currency"></vs-input>
+<!--    <vs-input class="w-full mb-base" name="site_name" icon-pack="feather" icon="icon-airplay" :label-placeholder="$t('site_name')" v-model="site_name"></vs-input>-->
+<!--    <vs-input class="w-full mb-base" name="site_video" icon-pack="feather" icon="icon-play" :label-placeholder="$t('site_video')" v-model="site_video"></vs-input>-->
+    <vs-input class="w-full mb-base" name="currency" icon-pack="feather" icon="icon-dollar-sign" :label-placeholder="$t('Çalışma Saatleri')" v-model="currency"></vs-input>
 
 
     <!-- Save & Reset Button -->

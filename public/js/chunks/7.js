@@ -58,6 +58,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
 //
 //
 //
+//
 
 
 
@@ -68,10 +69,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
   },
   data: function data() {
     return {
-      HomeUnderMenuSlider: [{
-        h1: '',
-        h2: '',
-        video: '',
+      title: '',
+      AboutUSMembers: [{
+        name: '',
+        position: '',
         image: '',
         url: ''
       }]
@@ -119,7 +120,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
 
     this.$store.dispatch('custom/fetchItems').then(function (response) {
       response.data.forEach(function (element) {
-        if (element.type === 'HomeUnderMenuSlider') {
+        if (element.type === 'AboutUSMembers') {
           _this2[element.type].push(JSON.parse(element.JsonData)[element.type]);
 
           _this2[element.type].splice(0, 1);
@@ -1198,7 +1199,19 @@ var render = function() {
             "vs-tab",
             { attrs: { label: "Anasayfa Menu Alti Slider" } },
             [
-              _vm._l(_vm.HomeUnderMenuSlider, function(option, index) {
+              _c("vs-input", {
+                staticClass: "mt-5 w-full",
+                attrs: { label: "Yönetim Kurulu Üyelerimiz Title" },
+                model: {
+                  value: _vm.title,
+                  callback: function($$v) {
+                    _vm.title = $$v
+                  },
+                  expression: "title"
+                }
+              }),
+              _vm._v(" "),
+              _vm._l(_vm.AboutUSMembers, function(option, index) {
                 return _c(
                   "vx-card",
                   { key: index, attrs: { "no-shadow": "" } },
@@ -1209,43 +1222,31 @@ var render = function() {
                       [
                         _c("vs-input", {
                           staticClass: "mt-5 w-full",
-                          attrs: { label: "H1 Aciklama" },
+                          attrs: { label: "Name" },
                           model: {
-                            value: option.h1,
+                            value: option.name,
                             callback: function($$v) {
-                              _vm.$set(option, "h1", $$v)
+                              _vm.$set(option, "name", $$v)
                             },
-                            expression: "option.h1"
+                            expression: "option.name"
                           }
                         }),
                         _vm._v(" "),
                         _c("vs-input", {
                           staticClass: "mt-5 w-full",
-                          attrs: { label: "H2 Aciklama" },
+                          attrs: { label: "Position" },
                           model: {
-                            value: option.h2,
+                            value: option.position,
                             callback: function($$v) {
-                              _vm.$set(option, "h2", $$v)
+                              _vm.$set(option, "position", $$v)
                             },
-                            expression: "option.h2"
+                            expression: "option.position"
                           }
                         }),
                         _vm._v(" "),
                         _c("vs-input", {
                           staticClass: "mt-5 w-full",
-                          attrs: { label: "Video Url" },
-                          model: {
-                            value: option.video,
-                            callback: function($$v) {
-                              _vm.$set(option, "video", $$v)
-                            },
-                            expression: "option.video"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c("vs-input", {
-                          staticClass: "mt-5 w-full",
-                          attrs: { label: "Resim URL" },
+                          attrs: { label: "Image Url" },
                           model: {
                             value: option.image,
                             callback: function($$v) {
@@ -1257,7 +1258,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("vs-input", {
                           staticClass: "mt-5 w-full",
-                          attrs: { label: "Button Url" },
+                          attrs: { label: "Linkedin Link" },
                           model: {
                             value: option.url,
                             callback: function($$v) {
@@ -1273,10 +1274,7 @@ var render = function() {
                             staticClass: "bg-danger",
                             on: {
                               click: function($event) {
-                                return _vm.removeThis(
-                                  index,
-                                  "HomeUnderMenuSlider"
-                                )
+                                return _vm.removeThis(index, "AboutUSMembers")
                               }
                             }
                           },
@@ -1298,7 +1296,7 @@ var render = function() {
                   staticClass: "mr-6",
                   on: {
                     click: function($event) {
-                      return _vm.addOptions("HomeUnderMenuSlider")
+                      return _vm.addOptions("AboutUSMembers")
                     }
                   }
                 },
@@ -1315,7 +1313,7 @@ var render = function() {
                       staticClass: "ml-auto mt-2",
                       on: {
                         click: function($event) {
-                          return _vm.SaveData("HomeUnderMenuSlider")
+                          return _vm.SaveData("AboutUSMembers")
                         }
                       }
                     },
@@ -1866,57 +1864,6 @@ var render = function() {
       _c("vs-input", {
         staticClass: "w-full mb-base",
         attrs: {
-          name: "twitter",
-          "icon-pack": "feather",
-          icon: "icon-twitter",
-          "label-placeholder": _vm.$t("Twitter")
-        },
-        model: {
-          value: _vm.twitter,
-          callback: function($$v) {
-            _vm.twitter = $$v
-          },
-          expression: "twitter"
-        }
-      }),
-      _vm._v(" "),
-      _c("vs-input", {
-        staticClass: "w-full mb-base",
-        attrs: {
-          name: "google",
-          "icon-pack": "material",
-          icon: "mdi-google",
-          "label-placeholder": _vm.$t("Google")
-        },
-        model: {
-          value: _vm.google,
-          callback: function($$v) {
-            _vm.google = $$v
-          },
-          expression: "google"
-        }
-      }),
-      _vm._v(" "),
-      _c("vs-input", {
-        staticClass: "w-full mb-base",
-        attrs: {
-          name: "pinterest",
-          "icon-pack": "feather",
-          icon: "icon-pinterest",
-          "label-placeholder": _vm.$t("Pinterest")
-        },
-        model: {
-          value: _vm.pinterest,
-          callback: function($$v) {
-            _vm.pinterest = $$v
-          },
-          expression: "pinterest"
-        }
-      }),
-      _vm._v(" "),
-      _c("vs-input", {
-        staticClass: "w-full mb-base",
-        attrs: {
           name: "address",
           "icon-pack": "feather",
           icon: "icon-map-pin",
@@ -1968,23 +1915,6 @@ var render = function() {
       _c("vs-input", {
         staticClass: "w-full mb-base",
         attrs: {
-          name: "site_url",
-          "icon-pack": "feather",
-          icon: "icon-link",
-          "label-placeholder": _vm.$t("SiteUrl")
-        },
-        model: {
-          value: _vm.site_url,
-          callback: function($$v) {
-            _vm.site_url = $$v
-          },
-          expression: "site_url"
-        }
-      }),
-      _vm._v(" "),
-      _c("vs-input", {
-        staticClass: "w-full mb-base",
-        attrs: {
           name: "map_iframe",
           "icon-pack": "feather",
           icon: "icon-map",
@@ -2002,44 +1932,10 @@ var render = function() {
       _c("vs-input", {
         staticClass: "w-full mb-base",
         attrs: {
-          name: "site_name",
-          "icon-pack": "feather",
-          icon: "icon-airplay",
-          "label-placeholder": _vm.$t("site_name")
-        },
-        model: {
-          value: _vm.site_name,
-          callback: function($$v) {
-            _vm.site_name = $$v
-          },
-          expression: "site_name"
-        }
-      }),
-      _vm._v(" "),
-      _c("vs-input", {
-        staticClass: "w-full mb-base",
-        attrs: {
-          name: "site_video",
-          "icon-pack": "feather",
-          icon: "icon-play",
-          "label-placeholder": _vm.$t("site_video")
-        },
-        model: {
-          value: _vm.site_video,
-          callback: function($$v) {
-            _vm.site_video = $$v
-          },
-          expression: "site_video"
-        }
-      }),
-      _vm._v(" "),
-      _c("vs-input", {
-        staticClass: "w-full mb-base",
-        attrs: {
           name: "currency",
           "icon-pack": "feather",
           icon: "icon-dollar-sign",
-          "label-placeholder": _vm.$t("currency")
+          "label-placeholder": _vm.$t("Çalışma Saatleri")
         },
         model: {
           value: _vm.currency,
@@ -3203,7 +3099,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************************************************************************!*\
   !*** ./resources/js/src/views/pages/admin/site-settings/component/HomePage.vue?vue&type=template&id=7d23dddb& ***!
   \****************************************************************************************************************/
-/*! no static exports found */
+/*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

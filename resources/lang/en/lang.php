@@ -12,7 +12,19 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
+    'keep_contact_us' => 'Keep contact us',
+    'name' => 'Name',
+    'email' => 'E-Mail',
+    'phone' => 'Phone',
+    'message' => 'Message',
+    'send' => 'Send',
+    'reset' => 'Reset',
+    'form' => 'Form',
+    'contact_info_title' => 'Contact info',
+    'contact_info_title_under_text' => 'In order to contact with us you can use information below or by filling contact form you can share your opinions to us.We be in touch as soon as possible',
+    'address' => 'Address',
+    'get_contact_us' => 'Get contact us',
+    'if_you_have_a_any_question' => 'If you have any other questions you can contact us',
     'thanks_for_your_order' => 'Thanks for your order',
     'you_will_receive_an_email_when_your_items_status_changed' => 'You will receive an email when your items are shipped.',
     'view_order_status' => 'View order status',
@@ -25,7 +37,6 @@ return [
     'order_total' => 'Order Total',
     'shop' => 'Shop',
     'items_ordered' => 'ITEMS ORDERED',
-    'name' => 'Name',
     'qty' => 'Qty',
     'price' => 'Price',
     'subtotal' => 'Subtotal',
@@ -45,7 +56,8 @@ return [
     'you_can_payment' => 'Now you can payment',
     'please_login_with_credentials_you_created' => 'Please login with your created credentials',
     'logout_successfully' => 'Logout Successfully',
-
+    'title' => 'This is the title of sss page',
+    'description' => 'Title^s description',
 
 
 ];

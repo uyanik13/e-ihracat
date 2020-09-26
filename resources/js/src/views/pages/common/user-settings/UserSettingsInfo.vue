@@ -1,28 +1,28 @@
 <template>
   <vx-card no-shadow>
 <span>{{$t('VideoAboutYou')}}</span><br>
-  <div class="flex flex-wrap items-center mb-base">
+ <!-- <div class="flex flex-wrap items-center mb-base">
       <video :src="video"  height="250px" width="250px" class="mr-4 mb-4" />
       <div>
         <input type="file" class="hidden" ref="updateImgInput" @change="update_video" accept="video/*">
         <vs-button class="mr-4 sm:mb-0 mb-2" @click="$refs.updateImgInput.click()">{{$t('UploadVideoAboutYou')}}</vs-button>
         <p v-show="video !== null">{{$t('saveYourVideo')}}</p>
       </div>
-    </div>
+    </div>-->
     <!-- Bio -->
     <vs-textarea label="Bio" v-model="bio" placeholder="Your bio..." />
       <span>{{$t('Work Areas')}}</span>
       <v-select taggable push-tags multiple :closeOnSelect="false" v-model="tags"  :dir="$vs.rtl ? 'rtl' : 'ltr'" /><br>
     <!-- DOB -->
-    <div class="mt-8">
+    <!--<div class="mt-8">
       <label class="text-sm">Birth Date</label>
       <flat-pickr v-model="dob" :config="{ dateFormat: 'Y-m-d' }" class="w-full" />
-    </div>
+    </div>-->
 
-     <div class="mt-8">
+     <!--<div class="mt-8">
       <label class="text-sm">Experience From</label>
       <flat-pickr v-model="experience" :config="{ dateFormat: 'Y-m-d' }" class="w-full" />
-    </div>
+    </div>-->
 
     <!-- Country -->
     <label class="text-sm">{{$t('Country')}}</label>
@@ -46,27 +46,27 @@
                             :filterable="true"/>
 
     <!-- Languages -->
-    <div class="mt-8">
+    <!--<div class="mt-8">
       <label class="text-sm">Languages</label>
       <v-select v-model="lang_known" multiple :closeOnSelect="false" :options="langOptions" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
-    </div>
+    </div>-->
 
     <!-- Website  -->
-    <vs-input class="w-full mt-8" :label-placeholder="$t('Profession')" v-model="profession" />
-    <vs-input class="w-full mt-8" :label-placeholder="$t('current_salary')" v-model="current_salary" />
-    <vs-input class="w-full mt-8" :label-placeholder="$t('expected_salary')" v-model="expected_salary" />
+<!--    <vs-input class="w-full mt-8" :label-placeholder="$t('Profession')" v-model="profession" />-->
+<!--    <vs-input class="w-full mt-8" :label-placeholder="$t('current_salary')" v-model="current_salary" />-->
+<!--    <vs-input class="w-full mt-8" :label-placeholder="$t('expected_salary')" v-model="expected_salary" />-->
 
     <vs-input class="w-full mt-8" label-placeholder="Website" v-model="website" />
 
     <!-- Gender -->
-    <div class="mt-8 mb-base">
-      <label class="text-sm">Gender</label>
-      <div class="mt-2">
-        <vs-radio v-model="gender" vs-value="male" class="mr-4">Male</vs-radio>
-        <vs-radio v-model="gender" vs-value="female" class="mr-4">Female</vs-radio>
-        <vs-radio v-model="gender" vs-value="other">Other</vs-radio>
-      </div>
-    </div>
+<!--    <div class="mt-8 mb-base">-->
+<!--      <label class="text-sm">Gender</label>-->
+<!--      <div class="mt-2">-->
+<!--        <vs-radio v-model="gender" vs-value="male" class="mr-4">Male</vs-radio>-->
+<!--        <vs-radio v-model="gender" vs-value="female" class="mr-4">Female</vs-radio>-->
+<!--        <vs-radio v-model="gender" vs-value="other">Other</vs-radio>-->
+<!--      </div>-->
+<!--    </div>-->
 
     <!-- Save & Reset Button -->
     <div class="flex flex-wrap items-center justify-end">

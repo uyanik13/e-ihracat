@@ -89,7 +89,7 @@ $popularUsers = Helper::getPopularPartners();
                                         <div class="post-image">
                                             <a href="{{route('partner.find',$user->id)}}">
                                                 <div class="mask"></div>
-                                                <img src="{{$user->avatar}}" alt="Partner Logo">
+                                                <img style="width: 30%" src="{{$user->avatar}}" alt="Partner Logo">
                                             </a>
                                         </div>
                                         <article class="post-content">
