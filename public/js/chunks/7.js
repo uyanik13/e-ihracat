@@ -681,27 +681,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -718,11 +697,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
   data: function data() {
     return {
       HomeUnderMenuSlider: [{
-        h1: 'Slider Basligi',
-        h2: 'Slider Aciklamasi',
-        video: 'Youtube Video Url',
+        h1: '',
+        h2: '',
+        video: '',
         image: '',
-        url: 'Button URL'
+        url: ''
       }],
       QuickServiceList: [{
         key: ''
@@ -769,23 +748,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
           color: 'danger'
         });
       });
-    },
-    sliderUpload: function sliderUpload(input, index, type) {
-      var _this2 = this;
-
-      //console.log(input.target.files[0])
-      if (input.target.files && input.target.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-          return _this2[type][index].image = e.target.result;
-        };
-
-        reader.readAsDataURL(input.target.files[0]);
-      }
-    },
-    openFileInput: function openFileInput(type) {
-      return this.$refs[type][0].click();
     }
   },
   computed: {
@@ -794,18 +756,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
     }
   },
   created: function created() {
-    var _this3 = this;
+    var _this2 = this;
 
     this.$store.dispatch('custom/fetchItems').then(function (response) {
       response.data.forEach(function (element) {
         if (element.type === 'HomeUnderMenuSlider') {
-          _this3[element.type].push(JSON.parse(element.JsonData)[element.type]);
+          _this2[element.type].push(JSON.parse(element.JsonData)[element.type]);
 
-          _this3[element.type].splice(0, 1);
+          _this2[element.type].splice(0, 1);
 
-          _this3[element.type] = _this3[element.type][0];
+          _this2[element.type] = _this2[element.type][0];
         } else {
-          _this3[element.type] = JSON.parse(element.JsonData)[element.type];
+          _this2[element.type] = JSON.parse(element.JsonData)[element.type];
         }
       });
     }).catch(function (error) {
@@ -2061,456 +2023,123 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "vs-tabs",
-    { attrs: { position: "left", color: "danger" } },
+    "div",
+    { staticClass: "vx-col w-full md:w-12/12 mb-base" },
     [
       _c(
-        "vs-tab",
-        {
-          staticClass: "mb-5 ml-5 mt-5 sm:w-11/12",
-          attrs: { label: "Anasayfa Menu Alti Slider" }
-        },
+        "vs-tabs",
+        { attrs: { position: "left", color: "danger" } },
         [
-          _vm._l(_vm.HomeUnderMenuSlider, function(option, index) {
-            return _c(
-              "vx-card",
-              { key: index, staticClass: "mb-5 ml-2 mr-5 mt-5" },
-              [
-                _c("div", { staticClass: "vx-row" }, [
-                  _c(
-                    "div",
-                    { staticClass: "vx-col sm:w-1/2 lg:w-1/1 mb-2" },
-                    [
-                      _c("vs-input", {
-                        staticClass: "mt-5 w-full",
-                        attrs: { label: "H1 Aciklama" },
-                        model: {
-                          value: option.h1,
-                          callback: function($$v) {
-                            _vm.$set(option, "h1", $$v)
-                          },
-                          expression: "option.h1"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "vx-col sm:w-1/2 lg:w-1/1 mb-2" },
-                    [
-                      _c("vs-input", {
-                        staticClass: "mt-5 w-full",
-                        attrs: { label: "H2 Aciklama" },
-                        model: {
-                          value: option.h2,
-                          callback: function($$v) {
-                            _vm.$set(option, "h2", $$v)
-                          },
-                          expression: "option.h2"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "vx-col sm:w-1/2 lg:w-1/1 mb-2" },
-                    [
-                      _c("vs-input", {
-                        staticClass: "mt-5 w-full",
-                        attrs: { label: "Video Url" },
-                        model: {
-                          value: option.video,
-                          callback: function($$v) {
-                            _vm.$set(option, "video", $$v)
-                          },
-                          expression: "option.video"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "vx-col sm:w-1/2 lg:w-1/1 mb-2" },
-                    [
-                      _c("vs-input", {
-                        staticClass: "mt-5 w-full",
-                        attrs: { label: "Button Url" },
-                        model: {
-                          value: option.url,
-                          callback: function($$v) {
-                            _vm.$set(option, "url", $$v)
-                          },
-                          expression: "option.url"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass:
-                        "flex flex-wrap items-center mb-base ml-3 mt-2"
-                    },
-                    [
-                      !option.image
-                        ? _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src: __webpack_require__(/*! @assets/images/slider/slider-to-here.png */ "./resources/assets/images/slider/slider-to-here.png"),
-                              height: "450px",
-                              width: "680px"
-                            }
-                          })
-                        : _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              src: option.image,
-                              height: "480px",
-                              width: "720px"
-                            }
-                          }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        [
-                          _c("input", {
-                            ref: "sliderImage" + index,
-                            refInFor: true,
-                            staticClass: "hidden",
-                            attrs: { type: "file", accept: "image/*" },
+          _c(
+            "vs-tab",
+            { attrs: { label: "Anasayfa Menu Alti Slider" } },
+            [
+              _vm._l(_vm.HomeUnderMenuSlider, function(option, index) {
+                return _c(
+                  "vx-card",
+                  { key: index, attrs: { "no-shadow": "" } },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "vx-col  w-full md:w-12/12 mb-base" },
+                      [
+                        _c("vs-input", {
+                          staticClass: "mt-5 w-full",
+                          attrs: { label: "H1 Aciklama" },
+                          model: {
+                            value: option.h1,
+                            callback: function($$v) {
+                              _vm.$set(option, "h1", $$v)
+                            },
+                            expression: "option.h1"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("vs-input", {
+                          staticClass: "mt-5 w-full",
+                          attrs: { label: "H2 Aciklama" },
+                          model: {
+                            value: option.h2,
+                            callback: function($$v) {
+                              _vm.$set(option, "h2", $$v)
+                            },
+                            expression: "option.h2"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("vs-input", {
+                          staticClass: "mt-5 w-full",
+                          attrs: { label: "Video Url" },
+                          model: {
+                            value: option.video,
+                            callback: function($$v) {
+                              _vm.$set(option, "video", $$v)
+                            },
+                            expression: "option.video"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("vs-input", {
+                          staticClass: "mt-5 w-full",
+                          attrs: { label: "Resim URL" },
+                          model: {
+                            value: option.image,
+                            callback: function($$v) {
+                              _vm.$set(option, "image", $$v)
+                            },
+                            expression: "option.image"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("vs-input", {
+                          staticClass: "mt-5 w-full",
+                          attrs: { label: "Button Url" },
+                          model: {
+                            value: option.url,
+                            callback: function($$v) {
+                              _vm.$set(option, "url", $$v)
+                            },
+                            expression: "option.url"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "vs-button",
+                          {
+                            staticClass: "bg-danger",
                             on: {
-                              change: function($event) {
-                                return _vm.sliderUpload(
-                                  $event,
+                              click: function($event) {
+                                return _vm.removeThis(
                                   index,
                                   "HomeUnderMenuSlider"
                                 )
                               }
                             }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "vs-button",
-                            {
-                              staticClass: "ml-3 sm:mb-0 mb-2",
-                              on: {
-                                click: function($event) {
-                                  return _vm.openFileInput(
-                                    "sliderImage" + index
-                                  )
-                                }
-                              }
-                            },
-                            [_vm._v(_vm._s(_vm.$t("addSlider")))]
-                          )
-                        ],
-                        1
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
-                  "vs-button",
-                  {
-                    staticClass: "bg-danger mt-3",
-                    on: {
-                      click: function($event) {
-                        return _vm.removeThis(index, "HomeUnderMenuSlider")
-                      }
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.$t("removeThisSLider")))]
-                )
-              ],
-              1
-            )
-          }),
-          _vm._v(" "),
-          _c(
-            "vs-button",
-            {
-              staticClass: "mr-6",
-              on: {
-                click: function($event) {
-                  return _vm.addOptions("HomeUnderMenuSlider")
-                }
-              }
-            },
-            [_vm._v(_vm._s(_vm.$t("AddNew")))]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "flex flex-wrap items-center justify-end" },
-            [
-              _c(
-                "vs-button",
-                {
-                  staticClass: "ml-auto mt-2",
-                  on: {
-                    click: function($event) {
-                      return _vm.SaveData("HomeUnderMenuSlider")
-                    }
-                  }
-                },
-                [_vm._v(_vm._s(_vm.$t("save")))]
-              )
-            ],
-            1
-          )
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _c(
-        "vs-tab",
-        {
-          staticClass: "mb-5 ml-5 mt-5 sm:w-11/12",
-          attrs: { label: "Anasayfa About Us Yazisi" }
-        },
-        [
-          _c("vx-card", [
-            _c(
-              "div",
-              {
-                staticClass: "flex flex-wrap items-center mb-5 mt-5 ml-5 h-full"
-              },
-              [
-                _c("span", [_vm._v(_vm._s(_vm.$t("Content")))]),
-                _vm._v(" "),
-                _c("quill-editor", {
-                  attrs: { label: _vm.$t("Content"), height: "600" },
-                  model: {
-                    value: _vm.about.homePageDesc,
-                    callback: function($$v) {
-                      _vm.$set(_vm.about, "homePageDesc", $$v)
-                    },
-                    expression: "about.homePageDesc"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.errors.has("Content"),
-                        expression: "errors.has('Content')"
-                      }
-                    ],
-                    staticClass: "text-danger text-sm"
-                  },
-                  [
-                    _vm._v(
-                      _vm._s(
-                        _vm.errors.first("Content") ? _vm.$t("Content") : ""
-                      )
-                    )
-                  ]
-                )
-              ],
-              1
-            )
-          ]),
-          _vm._v(" "),
-          _c("vs-input", {
-            staticClass: "mt-5 w-full",
-            attrs: { label: "Hizmet Kataloğu Linki (ex = https://google.com)" },
-            model: {
-              value: _vm.about.url,
-              callback: function($$v) {
-                _vm.$set(_vm.about, "url", $$v)
-              },
-              expression: "about.url"
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "vs-button",
-            {
-              staticClass: "ml-auto mt-2",
-              on: {
-                click: function($event) {
-                  return _vm.SaveData("about")
-                }
-              }
-            },
-            [_vm._v(_vm._s(_vm.$t("save")))]
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "vs-tab",
-        {
-          staticClass: "mb-5 ml-5 mt-5 sm:w-11/12",
-          attrs: { label: "Hizli Randevu Hizmet Listesi" }
-        },
-        [
-          _vm._l(_vm.QuickServiceList, function(option, index) {
-            return _c(
-              "vx-card",
-              {
-                key: index,
-                staticClass: "mb-5 mt-5 ",
-                attrs: { "no-shadow": "" }
-              },
-              [
-                _c(
-                  "div",
-                  { staticClass: "vx-col  w-full md:w-12/12 mb-base" },
-                  [
-                    _c("vs-input", {
-                      directives: [
-                        {
-                          name: "validate",
-                          rawName: "v-validate",
-                          value: "required| min:3",
-                          expression: "'required| min:3'"
-                        }
+                          },
+                          [_vm._v(_vm._s(_vm.$t("RemoveThis")))]
+                        )
                       ],
-                      staticClass: "mt-5 w-full",
-                      attrs: { label: "Hizmet Adi" },
-                      model: {
-                        value: option.key,
-                        callback: function($$v) {
-                          _vm.$set(option, "key", $$v)
-                        },
-                        expression: "option.key"
-                      }
-                    }),
+                      1
+                    ),
                     _vm._v(" "),
-                    _c(
-                      "vs-button",
-                      {
-                        staticClass: "bg-danger mt-5",
-                        on: {
-                          click: function($event) {
-                            return _vm.removeThis(index, "QuickServiceList")
-                          }
-                        }
-                      },
-                      [_vm._v(_vm._s(_vm.$t("RemoveThis")))]
-                    )
+                    _c("vs-divider")
                   ],
                   1
-                ),
-                _vm._v(" "),
-                _c("vs-divider")
-              ],
-              1
-            )
-          }),
-          _vm._v(" "),
-          _c(
-            "vs-button",
-            {
-              staticClass: "mr-6 mt-5",
-              on: {
-                click: function($event) {
-                  return _vm.addOptions("QuickServiceList")
-                }
-              }
-            },
-            [_vm._v(_vm._s(_vm.$t("AddNew")))]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "flex flex-wrap items-center justify-end" },
-            [
+                )
+              }),
+              _vm._v(" "),
               _c(
                 "vs-button",
                 {
-                  staticClass: "ml-auto mt-2",
+                  staticClass: "mr-6",
                   on: {
                     click: function($event) {
-                      return _vm.SaveData("QuickServiceList")
+                      return _vm.addOptions("HomeUnderMenuSlider")
                     }
                   }
                 },
-                [_vm._v(_vm._s(_vm.$t("save")))]
-              )
-            ],
-            1
-          )
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _c(
-        "vs-tab",
-        {
-          staticClass: "mb-5 ml-5 mt-5 sm:w-11/12",
-          attrs: { label: "4Lu Box Sayilari" }
-        },
-        [
-          _c(
-            "vx-card",
-            [
-              _c("vs-input", {
-                staticClass: "mt-5 w-full",
-                attrs: { label: "Toplam Uyeler" },
-                model: {
-                  value: _vm.fourBox.allusers,
-                  callback: function($$v) {
-                    _vm.$set(_vm.fourBox, "allusers", $$v)
-                  },
-                  expression: "fourBox.allusers"
-                }
-              }),
-              _vm._v(" "),
-              _c("vs-divider"),
-              _vm._v(" "),
-              _c("vs-input", {
-                staticClass: "mt-5 w-full",
-                attrs: { label: "Toplam Imalatcı" },
-                model: {
-                  value: _vm.fourBox.providers,
-                  callback: function($$v) {
-                    _vm.$set(_vm.fourBox, "providers", $$v)
-                  },
-                  expression: "fourBox.providers"
-                }
-              }),
-              _vm._v(" "),
-              _c("vs-divider"),
-              _vm._v(" "),
-              _c("vs-input", {
-                staticClass: "mt-5 w-full",
-                attrs: { label: "Istihdam" },
-                model: {
-                  value: _vm.fourBox.employments,
-                  callback: function($$v) {
-                    _vm.$set(_vm.fourBox, "employments", $$v)
-                  },
-                  expression: "fourBox.employments"
-                }
-              }),
-              _vm._v(" "),
-              _c("vs-input", {
-                staticClass: "mt-5 w-full",
-                attrs: { label: "E-ticaret Hacmi" },
-                model: {
-                  value: _vm.fourBox.exportvolume,
-                  callback: function($$v) {
-                    _vm.$set(_vm.fourBox, "exportvolume", $$v)
-                  },
-                  expression: "fourBox.exportvolume"
-                }
-              }),
+                [_vm._v(_vm._s(_vm.$t("AddNew")))]
+              ),
               _vm._v(" "),
               _c(
                 "div",
@@ -2522,11 +2151,267 @@ var render = function() {
                       staticClass: "ml-auto mt-2",
                       on: {
                         click: function($event) {
-                          return _vm.SaveData("fourBox")
+                          return _vm.SaveData("HomeUnderMenuSlider")
                         }
                       }
                     },
                     [_vm._v(_vm._s(_vm.$t("save")))]
+                  )
+                ],
+                1
+              )
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "vs-tab",
+            { attrs: { label: "Anasayfa About Us Yazisi" } },
+            [
+              _c("vx-card", [
+                _c(
+                  "div",
+                  {
+                    staticClass: "flex flex-wrap items-center mb-5 mt-5 h-full"
+                  },
+                  [
+                    _c("span", [_vm._v(_vm._s(_vm.$t("Content")))]),
+                    _vm._v(" "),
+                    _c("quill-editor", {
+                      attrs: { label: _vm.$t("Content"), height: "600" },
+                      model: {
+                        value: _vm.about.homePageDesc,
+                        callback: function($$v) {
+                          _vm.$set(_vm.about, "homePageDesc", $$v)
+                        },
+                        expression: "about.homePageDesc"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: _vm.errors.has("Content"),
+                            expression: "errors.has('Content')"
+                          }
+                        ],
+                        staticClass: "text-danger text-sm"
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            _vm.errors.first("Content") ? _vm.$t("Content") : ""
+                          )
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("vs-input", {
+                staticClass: "mt-5 w-full",
+                attrs: {
+                  label: "Hizmet Kataloğu Linki (ex = https://google.com)"
+                },
+                model: {
+                  value: _vm.about.url,
+                  callback: function($$v) {
+                    _vm.$set(_vm.about, "url", $$v)
+                  },
+                  expression: "about.url"
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "vs-button",
+                {
+                  staticClass: "ml-auto mt-2",
+                  on: {
+                    click: function($event) {
+                      return _vm.SaveData("about")
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.$t("save")))]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "vs-tab",
+            { attrs: { label: "Hizli Randevu Hizmet Listesi" } },
+            [
+              _vm._l(_vm.QuickServiceList, function(option, index) {
+                return _c(
+                  "vx-card",
+                  { key: index, attrs: { "no-shadow": "" } },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "vx-col  w-full md:w-12/12 mb-base" },
+                      [
+                        _c("vs-input", {
+                          directives: [
+                            {
+                              name: "validate",
+                              rawName: "v-validate",
+                              value: "required| min:3",
+                              expression: "'required| min:3'"
+                            }
+                          ],
+                          staticClass: "mt-5 w-full",
+                          attrs: { label: "Hizmet Adi" },
+                          model: {
+                            value: option.key,
+                            callback: function($$v) {
+                              _vm.$set(option, "key", $$v)
+                            },
+                            expression: "option.key"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "vs-button",
+                          {
+                            staticClass: "bg-danger",
+                            on: {
+                              click: function($event) {
+                                return _vm.removeThis(index, "QuickServiceList")
+                              }
+                            }
+                          },
+                          [_vm._v(_vm._s(_vm.$t("RemoveThis")))]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("vs-divider")
+                  ],
+                  1
+                )
+              }),
+              _vm._v(" "),
+              _c(
+                "vs-button",
+                {
+                  staticClass: "mr-6",
+                  on: {
+                    click: function($event) {
+                      return _vm.addOptions("QuickServiceList")
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.$t("AddNew")))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "flex flex-wrap items-center justify-end" },
+                [
+                  _c(
+                    "vs-button",
+                    {
+                      staticClass: "ml-auto mt-2",
+                      on: {
+                        click: function($event) {
+                          return _vm.SaveData("QuickServiceList")
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(_vm.$t("save")))]
+                  )
+                ],
+                1
+              )
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "vs-tab",
+            { attrs: { label: "4Lu Box Sayilari" } },
+            [
+              _c(
+                "vx-card",
+                [
+                  _c("vs-input", {
+                    staticClass: "mt-5 w-full",
+                    attrs: { label: "Toplam Uyeler" },
+                    model: {
+                      value: _vm.fourBox.allusers,
+                      callback: function($$v) {
+                        _vm.$set(_vm.fourBox, "allusers", $$v)
+                      },
+                      expression: "fourBox.allusers"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("vs-divider"),
+                  _vm._v(" "),
+                  _c("vs-input", {
+                    staticClass: "mt-5 w-full",
+                    attrs: { label: "Toplam Imalatcı" },
+                    model: {
+                      value: _vm.fourBox.providers,
+                      callback: function($$v) {
+                        _vm.$set(_vm.fourBox, "providers", $$v)
+                      },
+                      expression: "fourBox.providers"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("vs-divider"),
+                  _vm._v(" "),
+                  _c("vs-input", {
+                    staticClass: "mt-5 w-full",
+                    attrs: { label: "Istihdam" },
+                    model: {
+                      value: _vm.fourBox.employments,
+                      callback: function($$v) {
+                        _vm.$set(_vm.fourBox, "employments", $$v)
+                      },
+                      expression: "fourBox.employments"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("vs-input", {
+                    staticClass: "mt-5 w-full",
+                    attrs: { label: "E-ticaret Hacmi" },
+                    model: {
+                      value: _vm.fourBox.exportvolume,
+                      callback: function($$v) {
+                        _vm.$set(_vm.fourBox, "exportvolume", $$v)
+                      },
+                      expression: "fourBox.exportvolume"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "flex flex-wrap items-center justify-end" },
+                    [
+                      _c(
+                        "vs-button",
+                        {
+                          staticClass: "ml-auto mt-2",
+                          on: {
+                            click: function($event) {
+                              return _vm.SaveData("fourBox")
+                            }
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.$t("save")))]
+                      )
+                    ],
+                    1
                   )
                 ],
                 1
@@ -2962,17 +2847,6 @@ var staticRenderFns = []
 render._withStripped = true
 
 
-
-/***/ }),
-
-/***/ "./resources/assets/images/slider/slider-to-here.png":
-/*!***********************************************************!*\
-  !*** ./resources/assets/images/slider/slider-to-here.png ***!
-  \***********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/slider-to-here.png?0134ef01948dfe4a7e9a5ec29ff3c880";
 
 /***/ }),
 
