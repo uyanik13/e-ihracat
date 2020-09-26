@@ -1,25 +1,46 @@
 <template>
   <div class="vx-col w-full md:w-12/12 mb-base">
-      <vs-tabs position="left" color="danger">
-        <vs-tab label="Anasayfa Menu Alti Slider" >
-          <vx-card no-shadow v-for="(option,index)  in HomeUnderMenuSlider" :key="index">
-            <div  class="vx-col  w-full md:w-12/12 mb-base">
-              <vs-input :label="'H1 Aciklama'"  v-model="option.h1" class="mt-5 w-full"  />
-              <vs-input :label="'H2 Aciklama'"  v-model="option.h2" class="mt-5 w-full"  />
-              <vs-input :label="'Video Url'"  v-model="option.video" class="mt-5 w-full"  />
-              <vs-input :label="'Resim URL'"  v-model="option.image" class="mt-5 w-full"  />
-              <vs-input :label="'Button Url'"  v-model="option.url" class="mt-5 w-full"  />
-              <vs-button class="bg-danger" @click="removeThis(index,'HomeUnderMenuSlider')" >{{$t('RemoveThis')}}</vs-button>
-            </div>
-            <vs-divider></vs-divider>
-          </vx-card>
-          <vs-button class="mr-6" @click="addOptions('HomeUnderMenuSlider')" >{{$t('AddNew')}}</vs-button>
-          <div class="flex flex-wrap items-center justify-end">
-            <vs-button class="ml-auto mt-2" @click="SaveData('HomeUnderMenuSlider')">{{$t('save')}}</vs-button>
-          </div>
-        </vs-tab>
 
-      </vs-tabs>
+             <vs-input :label="'Yönetim Kurulu Üyelerimiz Title'"  v-model="title" class="mt-5 w-full"  />
+
+           <vx-card v-for="(option,index)  in AboutUSMembers" :key="index" class="mb-5 ml-2 mr-5 mt-5" >
+                    <div class="vx-row">
+
+                        <div class="vx-col sm:w-1/2 lg:w-1/1 mb-2">
+                             <vs-input :label="'Name'"  v-model="option.name" class="mt-5 w-full"  />
+                         </div>
+
+                        <div class="vx-col sm:w-1/2 lg:w-1/1 mb-2">
+                           <vs-input :label="'Position'"  v-model="option.position" class="mt-5 w-full"  />
+                        </div>
+
+                        <div class="vx-col sm:w-1/2 lg:w-1/1 mb-2">
+                            <vs-input :label="'Url'"  v-model="option.url" class="mt-5 w-full"  />
+                        </div>
+
+                        <div class="vx-col sm:w-1/2 lg:w-1/1 mb-2">
+                            <div class="flex flex-wrap items-center mb-base ml-3 mt-2">
+                          <img v-if="!option.image"  src="https://via.placeholder.com/150.png"  height="150px"  width="150px" class="card-img-top" />
+                          <img v-else :src="option.image"   height="150px"  width="150px" class="card-img-top" />
+                        <div>
+                            <input type="file"  class="hidden" :ref="'AboutUSMembers'+index" @change="sliderUpload($event,index,'AboutUSMembers')" accept="image/*">
+                            <vs-button class="ml-3 sm:mb-0 mb-2" @click="openFileInput('AboutUSMembers'+index)">{{$t('AboutUSMembers')}}</vs-button>
+                        </div>
+                        </div>
+                        </div>
+
+
+                    </div>
+                    <vs-button class="bg-danger mt-3" @click="removeThis(index,'AboutUSMembers')" >{{$t('removeThisSection')}}</vs-button>
+                </vx-card>
+
+                <vs-button class="mr-6" @click="addOptions('AboutUSMembers')" >{{$t('AddNew')}}</vs-button>
+                <div class="flex flex-wrap items-center justify-end">
+                    <vs-button class="ml-auto mt-2" @click="SaveData('AboutUSMembers')">{{$t('save')}}</vs-button>
+                </div>
+
+
+
   </div>
 
 </template>
@@ -28,29 +49,23 @@
 import flatPickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
 import vSelect from 'vue-select'
-
-
 export default {
   components: {
     flatPickr,
     vSelect
   },
-
   data () {
     return {
-      HomeUnderMenuSlider:
-      [
-        {
-          h1: '',
-          h2: '',
-          video: '',
-          image: '',
-          url: ''
-        }
-      ],
-
-
-
+        title: '',
+        AboutUSMembers:
+            [
+                {
+                    name: '',
+                position: '',
+                image: '',
+                url: ''
+                }
+            ],
     }
   },
   methods:{
@@ -74,7 +89,6 @@ export default {
           icon: 'icon-success',
           color: 'success'
         })
-
       }).catch(error => {
         this.$vs.notify({
           title: 'Hata',
@@ -85,30 +99,26 @@ export default {
         })
       })
     },
-
   },
   computed: {
     activeUserInfo () {
-      return this.$store.state.AppActiveUser
+      return this.$store.state.auth.user
     }
   },
   created () {
     this.$store.dispatch('custom/fetchItems')
       .then((response) => {
         response.data.forEach(element => {
-          if (element.type === 'HomeUnderMenuSlider') {
+          if (element.type === 'AboutUSMembers') {
             this[element.type].push(JSON.parse(element.JsonData)[element.type])
             this[element.type].splice(0, 1)
             this[element.type] = this[element.type][0]
           } else {
             this[element.type] = JSON.parse(element.JsonData)[element.type]
           }
-
         })
-
       })
       .catch((error) => { console.log(error) })
-
   }
 }
 </script>

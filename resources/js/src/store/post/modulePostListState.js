@@ -9,6 +9,7 @@
 
 export default {
   posts: [],
+  myPosts: [],
   pages: [],
   categories: [],
   products: [],

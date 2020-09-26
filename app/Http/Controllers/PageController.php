@@ -43,9 +43,8 @@ class PageController extends ApiController
       $this->user = Auth::user();
       $this->products = Post::where('type','product')->paginate(12);
 
-    //   $user = auth()->user();
-    //     //dd($user);
-
+      //   $user = auth()->user();
+      //     //dd($user);
 
     $this->all_products = Post::where('type','product')->get();
     $this->new_arrivals = Post::where('type','product')->orderBy('created_at','DESC')->limit(25)->get();
@@ -61,6 +60,7 @@ class PageController extends ApiController
 
     $this->posts_for_blog_page = Post::where('type','post')->orderBy('created_at','desc')->paginate(4);
     $this->recent_post_blog_page = Post::where('type','post')->orderBy('created_at','desc')->limit(5)->get();
+
   }
 
 
@@ -119,8 +119,20 @@ class PageController extends ApiController
       }
   }
   public function search_user(Request $request){
-      $user = User::where('name','LIKE', '%'.$request->search_text.'%')->limit(4)->get();
-      return response()->json(['message',$user]);
+      $search_text = $request->search_text;
+      $searchData =null;
+      if ($search_text === NULL) {
+          $searchData= User::where('role','user')->get();
+      } else {
+          $searchData = User::where('name','LIKE','%'.$search_text.'%')
+              ->orWhere('about_data','LIKE','%'.$search_text.'%')
+              ->orWhere('user_data','LIKE','%'.$search_text.'%')
+              ->orWhere('address','LIKE','%'.$search_text.'%')
+              ->where('role','user')->get();
+      }
+
+//      $user = User::where('role','user')->where('name','LIKE', '%'.$request->search_text.'%')->orWhere('about_data','LIKE', '%'.$request->search_text.'%')->where('role','user')->orWhere('user_data','LIKE', '%'.$request->search_text.'%')->where('role','user')->limit(4)->get();
+      return response()->json(['message',$searchData]);
   }
     public function filter_product (Request $request) {
         $search_text = $request->searchKey;

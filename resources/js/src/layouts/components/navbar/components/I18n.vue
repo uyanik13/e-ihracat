@@ -5,15 +5,16 @@
       <span class="hidden sm:block ml-2">{{ getCurrentLocaleData.lang }}</span>
     </span>
     <vs-dropdown-menu class="w-48 i18n-dropdown vx-navbar-dropdown">
-      <vs-dropdown-item @click="updateLocale('en')"><img class="h-4 w-5 mr-1" src="@assets/images/flags/en.png" alt="en" /> &nbsp;English</vs-dropdown-item>
-      <vs-dropdown-item @click="updateLocale('fr')"><img class="h-4 w-5 mr-1" src="@assets/images/flags/fr.png" alt="fr" /> &nbsp;French</vs-dropdown-item>
-      <vs-dropdown-item @click="updateLocale('de')"><img class="h-4 w-5 mr-1" src="@assets/images/flags/de.png" alt="de" /> &nbsp;German</vs-dropdown-item>
-      <vs-dropdown-item @click="updateLocale('pt')"><img class="h-4 w-5 mr-1" src="@assets/images/flags/pt.png" alt="pt" /> &nbsp;Portuguese</vs-dropdown-item>
+      <vs-dropdown-item @click="updateLocale('en')"><img class="h-4 w-5 mr-1" src="@assets/images/flags/en.png" alt="en" /> &nbsp;{{$t('English')}}</vs-dropdown-item>
+      <vs-dropdown-item @click="updateLocale('tr')"><img class="h-4 w-5 mr-1" src="@assets/images/flags/tr.png" alt="tr" /> &nbsp;{{$t('Turkish')}}</vs-dropdown-item>
+      <vs-dropdown-item @click="updateLocale('de')"><img class="h-4 w-5 mr-1" src="@assets/images/flags/de.png" alt="de" /> &nbsp;{{$t('German')}}</vs-dropdown-item>
+
     </vs-dropdown-menu>
   </vs-dropdown>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   computed: {
     i18n_locale_img () {
@@ -24,22 +25,26 @@ export default {
 
       const locale = this.$i18n.locale
       if (locale === 'en')      return require('@assets/images/flags/en.png')
-      else if (locale === 'pt') return require('@assets/images/flags/pt.png')
-      else if (locale === 'fr') return require('@assets/images/flags/fr.png')
+      else if (locale === 'tr') return require('@assets/images/flags/tr.png')
       else if (locale === 'de') return require('@assets/images/flags/de.png')
       else return require('@assets/images/flags/en.png')
     },
     getCurrentLocaleData () {
       const locale = this.$i18n.locale
       if (locale === 'en')      return { flag: 'us', lang: 'English'    }
-      else if (locale === 'pt') return { flag: 'br', lang: 'Portuguese' }
-      else if (locale === 'fr') return { flag: 'fr', lang: 'French'     }
+      else if (locale === 'tr') return { flag: 'tr', lang: 'Turkish'     }
       else if (locale === 'de') return { flag: 'de', lang: 'German'     }
     }
   },
   methods: {
     updateLocale (locale) {
-      this.$i18n.locale = locale
+      axios.post('/lang/setLocale', {language:locale})
+        .then((response) => {
+          //console.log(response)
+          this.$i18n.locale  = response.data
+          this.$i18n.fallbackLocale  = response.data
+        })
+        .catch((error) => { console.log(error) })
     }
   }
 }

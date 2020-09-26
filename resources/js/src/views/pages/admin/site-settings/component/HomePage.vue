@@ -1,54 +1,76 @@
 <template>
-  <div class="vx-col w-full md:w-12/12 mb-base">
-      <vs-tabs position="left" color="danger">
 
-        <vs-tab label="Anasayfa Menu Alti Slider" >
-          <vx-card no-shadow v-for="(option,index)  in HomeUnderMenuSlider" :key="index">
-            <div  class="vx-col  w-full md:w-12/12 mb-base">
-              <vs-input :label="'H1 Aciklama'"  v-model="option.h1" class="mt-5 w-full"  />
-              <vs-input :label="'H2 Aciklama'"  v-model="option.h2" class="mt-5 w-full"  />
-              <vs-input :label="'Video Url'"  v-model="option.video" class="mt-5 w-full"  />
-              <vs-input :label="'Resim URL'"  v-model="option.image" class="mt-5 w-full"  />
-              <vs-input :label="'Button Url'"  v-model="option.url" class="mt-5 w-full"  />
-              <vs-button class="bg-danger" @click="removeThis(index,'HomeUnderMenuSlider')" >{{$t('RemoveThis')}}</vs-button>
-            </div>
-            <vs-divider></vs-divider>
-          </vx-card>
-          <vs-button class="mr-6" @click="addOptions('HomeUnderMenuSlider')" >{{$t('AddNew')}}</vs-button>
-          <div class="flex flex-wrap items-center justify-end">
-            <vs-button class="ml-auto mt-2" @click="SaveData('HomeUnderMenuSlider')">{{$t('save')}}</vs-button>
-          </div>
+
+      <vs-tabs position="left" color="danger">
+        <vs-tab label="Anasayfa Menu Alti Slider" class="mb-5 ml-5 mt-5 sm:w-11/12">
+
+                <vx-card v-for="(option,index)  in HomeUnderMenuSlider" :key="index" class="mb-5 ml-2 mr-5 mt-5" >
+                    <div class="vx-row">
+                        <div class="vx-col sm:w-1/2 lg:w-1/1 mb-2">
+                             <vs-input :label="'H1 Aciklama'"  v-model="option.h1" class="mt-5 w-full"  />
+                        </div>
+                        <div class="vx-col sm:w-1/2 lg:w-1/1 mb-2">
+                           <vs-input :label="'H2 Aciklama'"  v-model="option.h2" class="mt-5 w-full"  />
+                        </div>
+                        <div class="vx-col sm:w-1/2 lg:w-1/1 mb-2">
+                            <vs-input :label="'Video Url'"  v-model="option.video" class="mt-5 w-full"  />
+                        </div>
+                        <div class="vx-col sm:w-1/2 lg:w-1/1 mb-2">
+                             <vs-input :label="'Button Url'"  v-model="option.url" class="mt-5 w-full"  />
+                        </div>
+                        <div class="flex flex-wrap items-center mb-base ml-3 mt-2">
+                          <img v-if="!option.image"  src="@assets/images/slider/slider-to-here.png"  height="450px"  width="680px" class="card-img-top" />
+                          <img v-else :src="option.image"   height="480px"  width="720px" class="card-img-top" />
+                        <div>
+                            <input type="file"  class="hidden" :ref="'sliderImage'+index" @change="sliderUpload($event,index,'HomeUnderMenuSlider')" accept="image/*">
+                            <vs-button class="ml-3 sm:mb-0 mb-2" @click="openFileInput('sliderImage'+index)">{{$t('addSlider')}}</vs-button>
+                        </div>
+                        </div>
+                    </div>
+                    <vs-button class="bg-danger mt-3" @click="removeThis(index,'HomeUnderMenuSlider')" >{{$t('removeThisSLider')}}</vs-button>
+                </vx-card>
+
+                <vs-button class="mr-6" @click="addOptions('HomeUnderMenuSlider')" >{{$t('AddNew')}}</vs-button>
+                <div class="flex flex-wrap items-center justify-end">
+                    <vs-button class="ml-auto mt-2" @click="SaveData('HomeUnderMenuSlider')">{{$t('save')}}</vs-button>
+                </div>
+
+
+
+
+
         </vs-tab>
 
 
-        <vs-tab label="Anasayfa About Us Yazisi" >
-          <vx-card>
-               <div class="flex flex-wrap items-center mb-5 mt-5 h-full">
+        <vs-tab label="Anasayfa About Us Yazisi" class="mb-5 ml-5 mt-5 sm:w-11/12" >
+          <vx-card  >
+               <div class="flex flex-wrap items-center mb-5 mt-5 ml-5 h-full">
                       <span>{{$t('Content')}}</span>
-                      <quill-editor v-model="homePageDesc" :label="$t('Content')" height="600" />
+                      <quill-editor v-model="about.homePageDesc" :label="$t('Content')" height="600" />
                       <span class="text-danger text-sm" v-show="errors.has('Content')">{{ errors.first('Content') ? $t('Content') : ''}}</span>
                     </div>
           </vx-card>
-           <vs-button class="ml-auto mt-2" @click="SaveData('homePageDesc')">{{$t('save')}}</vs-button>
+            <vs-input :label="'Hizmet Kataloğu Linki (ex = https://google.com)'"  v-model="about.url" class="mt-5 w-full"  />
+           <vs-button class="ml-auto mt-2" @click="SaveData('about')">{{$t('save')}}</vs-button>
         </vs-tab>
 
 
-        <vs-tab label="Hizli Randevu Hizmet Listesi" >
-          <vx-card no-shadow v-for="(option,index)  in QuickServiceList" :key="index">
+        <vs-tab label="Hizli Randevu Hizmet Listesi" class="mb-5 ml-5 mt-5 sm:w-11/12">
+          <vx-card no-shadow v-for="(option,index)  in QuickServiceList" :key="index" class="mb-5 mt-5 ">
             <div  class="vx-col  w-full md:w-12/12 mb-base">
               <vs-input :label="'Hizmet Adi'"  v-model="option.key" class="mt-5 w-full"   v-validate="'required| min:3'"/>
-              <vs-button class="bg-danger" @click="removeThis(index,'QuickServiceList')" >{{$t('RemoveThis')}}</vs-button>
+              <vs-button class="bg-danger mt-5" @click="removeThis(index,'QuickServiceList')" >{{$t('RemoveThis')}}</vs-button>
             </div>
             <vs-divider></vs-divider>
           </vx-card>
-          <vs-button class="mr-6" @click="addOptions('QuickServiceList')" >{{$t('AddNew')}}</vs-button>
+          <vs-button class="mr-6 mt-5" @click="addOptions('QuickServiceList')" >{{$t('AddNew')}}</vs-button>
           <div class="flex flex-wrap items-center justify-end">
             <vs-button class="ml-auto mt-2" @click="SaveData('QuickServiceList')">{{$t('save')}}</vs-button>
           </div>
         </vs-tab>
 
 
-        <vs-tab label="4Lu Box Sayilari" >
+        <vs-tab label="4Lu Box Sayilari" class="mb-5 ml-5 mt-5 sm:w-11/12">
           <vx-card >
               <vs-input :label="'Toplam Uyeler'"  v-model="fourBox.allusers" class="mt-5 w-full"  />
                  <vs-divider></vs-divider>
@@ -63,7 +85,7 @@
         </vs-tab>
 
       </vs-tabs>
-  </div>
+
 
 </template>
 
@@ -89,11 +111,11 @@ export default {
       HomeUnderMenuSlider:
       [
         {
-          h1: '',
-          h2: '',
-          video: '',
+          h1: 'Slider Basligi',
+          h2: 'Slider Aciklamasi',
+          video: 'Youtube Video Url',
           image: '',
-          url: ''
+          url: 'Button URL'
         }
       ],
       QuickServiceList:
@@ -110,8 +132,8 @@ export default {
           exportvolume: ''
         },
 
-        homePageDesc : '',
 
+        about:{ homePageDesc : '', url:''}
     }
   },
   methods:{
@@ -146,6 +168,20 @@ export default {
         })
       })
     },
+
+    sliderUpload (input,index,type) {
+        //console.log(input.target.files[0])
+      if (input.target.files && input.target.files[0]) {
+        const reader = new FileReader()
+        reader.onload = e => {
+         return this[type][index].image = e.target.result
+        }
+        reader.readAsDataURL(input.target.files[0])
+      }
+    },
+    openFileInput (type) {
+      return this.$refs[type][0].click()
+    }
 
   },
   computed: {

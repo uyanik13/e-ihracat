@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Api\ApiGalleryController;
 use App\Http\Controllers\Api\ApiPackageController;
 use App\Http\Controllers\Api\ApiSettingController;
+use App\Http\Controllers\Api\LocaleFileController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Api\ApiAppointmentController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -51,6 +52,13 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 
 
+  Route::post('lang/front-side-read', [LocaleFileController::class, 'frontSideRead'] );
+  Route::post('lang/front-side-write', [LocaleFileController::class, 'frontSideWrite'] );
+  Route::post('lang/back-side-read', [LocaleFileController::class, 'backSideRead'] );
+  Route::post('lang/back-side-write', [LocaleFileController::class, 'backSideWrite'] );
+
+
+
   //FOLLOW & UNFOLLOW
   Route::post('user/follow', [ApiUserController::class, 'follow']);
   Route::post('user/un-follow',[ApiUserController::class, 'unFollow']);
@@ -78,7 +86,7 @@ Route::group(['middleware' => 'guest:api'], function () {
   Route::post('logout', [AuthController::class, 'logout'])->name('logout');
   Route::post('ajax-logout', [LoginController::class, 'logout'])->name('ajax.logout');
   Route::get('refresh', [AuthController::class, 'checkToken']);
-  Route::post('register', [RegisterController::class, 'register']);
+  Route::post('register', [RegisterController::class, 'registerWithApi']);
   Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail']);
   Route::post('email/verify/{user}',[VerificationController::class, 'verify'] )->name('verification.verify');
   Route::post('email/resend', [VerificationController::class, 'resend']);

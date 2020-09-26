@@ -114,6 +114,11 @@ function live_user_search () {
     }
 }
 
+function setToWhomComment(id) {
+    document.getElementById('formCommentHidden').value = id;
+    document.getElementById('ratingField').style.display = "none";
+
+}
 
 function render_basket (is_logged_in) {
   $.ajax({

@@ -10,11 +10,17 @@
 
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import i18nData from './i18nData'
+import en from './en.json'
+import tr from './tr.json'
+import de from './de.json'
 
 Vue.use(VueI18n)
 
+
 export default new VueI18n({
-  locale: 'en', // set default locale
-  messages: i18nData,
+  locale: 'en',
+  fallbackLocale: 'en',
+  messages: { en,tr,de}
+
 })
+

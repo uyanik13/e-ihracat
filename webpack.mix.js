@@ -63,4 +63,5 @@ mix.webpackConfig({
     chunkFilename: 'js/chunks/[name].js',
   }
 });
-// mix.js('resources/js/components/app.js', 'public/theme/js');
+
+ // mix.js('resources/front-end-js/app.js', 'public/theme/js');

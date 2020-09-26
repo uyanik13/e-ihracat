@@ -119,6 +119,13 @@ export default [
         i18n: 'Posts'
       },
       {
+        url:'/panel/blog-posts',
+        slug: '/panel/blog-posts',
+        name: 'blog-posts',
+        icon: 'FileTextIcon',
+        i18n: 'Posts'
+      },
+      {
         url:'/panel/services',
         slug: '/panel/services',
         name: 'services',
@@ -139,6 +146,29 @@ export default [
         icon: 'PauseIcon',
         i18n: 'Forms'
       }
+    ]
+  },
+  {
+    url:'/panel/front-side-language',
+    name: 'front-side-language',
+    icon: 'GlobeIcon',
+    i18n: 'language',
+    submenu:[
+      {
+        url:'/panel/front-side-language',
+        slug: '/panel/front-side-language',
+        name: 'front-side-language',
+        icon: 'FileIcon',
+        i18n: 'frontSideLanguage'
+      },
+      {
+        url:'/panel/back-side-language',
+        slug: '/panel/back-side-language',
+        name: 'back-side-language',
+        icon: 'FileTextIcon',
+        i18n: 'backSideLanguage'
+      },
+
     ]
   },
 //   {

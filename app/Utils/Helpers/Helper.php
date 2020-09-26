@@ -1,5 +1,6 @@
 <?php
 namespace App\utils\Helpers;
+use App\Models\Comment;
 use App\Models\Gallery;
 use Carbon\Carbon;
 use App\Models\Post;
@@ -7,11 +8,12 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Basket;
 use App\Models\Custom;
-
+use Fomvasss\Youtube\Facades\Youtube;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Expr\Isset_;
 
@@ -28,7 +30,6 @@ class Helper
 
   public static function PostImageHelper($url, $image, $path)
   {
-
     if (strlen($image) < 255) {
       return $image;
     }
@@ -55,6 +56,8 @@ class Helper
     return $imageUrl;
 
   }
+
+
 
   public static function PostVideoHelper($url, $video, $path)
   {
@@ -274,6 +277,11 @@ class Helper
         return  $newData ;
       }
 
+    public static function jsonToObject ($data) {
+        $newData =  (object)json_decode($data, true);
+        return  $newData ;
+      }
+
 
       public static function guestBasketControl($id,$qty){
         $qty = $qty === null ? 1 : $qty;
@@ -437,6 +445,9 @@ class Helper
     public static function randomProducts(){
       return Post::where('type','product')->inRandomOrder()->get();
     }
+    public static function randomPartners(){
+        return User::where('role','user')->inRandomOrder()->get();
+    }
     public static function urlToCategory($itemId){
         return Category::where('slug',$itemId)->first();
     }
@@ -484,18 +495,78 @@ class Helper
     }
     public static  function getComments($id,$isPartnerPage){
         if ($isPartnerPage){
-           return \App\Models\Comment::where('partner_id',$id)->get();
+           return \App\Models\Comment::where('partner_id',$id)->where('reply_to',null)->get();
         }
-        return \App\Models\Comment::where('post_id',$id)->get();
+        return \App\Models\Comment::where('post_id',$id)->where('reply_to',null)->get();
+    }
+    public static function getChildComments($commentId){
+        return Comment::where('reply_to',$commentId)->get();
+    }
+    public static function getPostPoints($postId){
+        return Comment::where('post_id',$postId)->whereNotNull('point')->get();
+
+    }
+
+    public static function getPartnerPointAvarage($userId){
+        $data = Comment::where('partner_id',$userId)->whereNotNull('point')->get();
+        if (!$data->isEmpty()) {
+            $temp = 0;
+            foreach ($data as $vote) {
+                $temp+= $vote->point;
+            }
+            return substr($temp/count($data),0,3);
+        }
+        return 0;
+    }
+    public static function canVotePartner($partnerId){
+        $data = Comment::where('user_id',\auth()->user())->where('partner_id',$partnerId)->first();
+        if (\auth()->user()->id === $partnerId or $data==null){
+            return false;
+        }
+        return true;
+    }
+    public static function canVotePost($postId){
+        $data = Comment::where('user_id',\auth()->user())->where('post_id',$postId)->first();
+        if (\auth()->user()->id === $postId or $data==null){
+            return false;
+        }
+        return true;
+    }
+    public static function popularPartners(){
+        return  Comment::whereNotNull('point')->whereNotNull('partner_id')->selectRaw('AVG(point) average')->groupBy('partner_id')->get();
+
+    }
+    public static function getPopularPartners(){
+        return User::where('role','user')->withCount('comments')->orderBy('comments_count', 'desc')->get();
+    }
+
+    public static function siteSettingsImageUpload($url, $image, $path)
+    {
+      if (strlen($image) < 255) {
+        return $image;
+      }
+
+
+      $extension = explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];   // .jpg .png .pdf
+
+      $replace = substr($image, 0, strpos($image, ',') + 1);
+
+
+      $imageConvert = str_replace($replace, '', $image);
+
+      $imageConvert = str_replace(' ', '+', $imageConvert);
+
+      $imageName = $url . '_' . time() . '.' . $extension;
+
+      Storage::disk('public')->put('/images/' . $path . '/' . $imageName, base64_decode($imageConvert));
+
+
+
+      $imageUrl =  '/images/' . $path . '/' . $imageName;
+
+
+
+      return $imageUrl;
+
     }
 }
-
-
-
-
-
-
-
-
-
-

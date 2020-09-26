@@ -25,9 +25,7 @@
 						<div class="cell-9 masonry">
 							<div class="blog-posts">
                             @forelse($allPosts as $post)
-
-
-								<div class="post-item fx" data-animate="fadeInLeft">
+								<div class="post-item" >
 									<div class="post-image">
 										<a href="{{route('post.find',$post->slug)}}">
 											<div class="mask"></div>
@@ -44,7 +42,6 @@
 												<h2><a class="main-color" href="{{route('post.find',$post->slug)}}">{{$post->title}}</a></h2>
 											</div>
 										</div>
-										<p>
 											{!! substr($post->content,0,100) !!}
 									</article>
 									<a class="btn btn-md btn-3d main-bg fx animated fadeInUp readMoreBtn" href="{{route('post.find',$post->slug)}}"
@@ -55,7 +52,6 @@
 								</div>
                             @empty
                             @endforelse
-
 							</div>
 						</div>
                          @include('pages.partials.blog-sidebar')

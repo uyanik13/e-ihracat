@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Api;
 use App\Models\User;
 use App\Models\Custom;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\utils\Helpers\Helper;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\ApiController;
@@ -58,22 +60,47 @@ class ApiCustomController extends ApiController
         return $this->responseUnauthorized();
       }
 
-       $slider = '';
+       $customData = '';
 
-        $slider = Custom::where('type',$request->type)->first();
-        if($slider){
-            $slider = Custom::where('type',$request->type)->firstOrFail();
-            $slider->JsonData = json_encode($request->all());
-            $slider->save();
+
+
+       //$image = Helper::siteSettingsImageUpload();
+
+        $customData = Custom::where('type',$request->type)->first();
+        if($customData){
+            $customData = Custom::where('type',$request->type)->firstOrFail();
+            $requestData = $request->all();
+            if(isset($requestData[$request->type][0]['image'])){
+               foreach ($requestData[$request->type] as $index => $data) {
+                   if($data['image']){
+                     $fileName = 'image-'.time();
+                     $requestData[$request->type][$index]['image'] = Helper::siteSettingsImageUpload(Str::slug($fileName), $data['image'], 'site-settings');
+                     }
+                   }
+               }
+            $customData->JsonData = json_encode($requestData);
+            $customData->save();
         }else{
-            $slider = Custom::create([
+
+
+             $requestData = $request->all();
+             if(isset($requestData[$request->type][0]['image'])){
+                foreach ($requestData[$request->type] as $index => $data) {
+                    if($data['image']){
+                      $fileName = 'image-'.time();
+                      $requestData[$request->type][$index]['image'] = Helper::siteSettingsImageUpload(Str::slug($fileName), $data['image'], 'site-settings');
+                      }
+                    }
+                }
+
+             $customData = Custom::create([
                 'user_id' => $user->id,
-                'JsonData' => json_encode($request->all()),
+                'JsonData' => json_encode($requestData),
                 'type' => $request->type,
               ]);
         }
 
-        return response()->json($slider);
+        return response()->json($customData);
 
     }
 

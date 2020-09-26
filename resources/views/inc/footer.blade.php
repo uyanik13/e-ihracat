@@ -1,10 +1,14 @@
 <!--Footer Top Social start-->
+@php
+    $recentPosts = Helper::recentPosts(3);
+@endphp
 <div class="footer-bar footer-bar-3">
     <div class="container">
         <div class="row">
             <div class="cell-10">
                 <p><strong class="main-color">E-İHRACAT TÜRKİYE </strong>- <a href="http://eihracatturkiye.com"
-                                                                              class="main-bg"><span data-view="Globalleşmeye">Dijitalleşmeye</span></a> hazır olun.
+                                                                              class="main-bg"><span
+                            data-view="Globalleşmeye">Dijitalleşmeye</span></a> hazır olun.
                 </p>
             </div>
             <div class="cell-2 buyNow">
@@ -49,10 +53,10 @@
                 <div class="cell-3">
                     <h3 class="block-head">Linkler</h3>
                     <ul class="footer-menu">
-                        <li><a href="index.html">Anasayfa</a></li>
-                        <li><a href="our-services.html">Hizmetler</a></li>
-                        <li><a href="partner-list.html">Partnerler</a></li>
-                        <li><a href="appointment-form.html">Randevu</a></li>
+                        <li><a href="/index">Anasayfa</a></li>
+                        <li><a href="our-services">Hizmetler</a></li>
+                        <li><a href="partner-list">Partnerler</a></li>
+                        <li><a href="appointment-form">Randevu</a></li>
                     </ul>
                 </div>
                 <!-- main menu footer cell start -->
@@ -63,53 +67,28 @@
                     <h3 class="block-head">Son Gönderiler </h3>
                     <div class="recent-posts-footer">
                         <ul>
-                            <li>
-                                <div class="post-img">
-                                    <img src="{{asset('theme/images/portfolio/1.jpg')}}" alt="">
-                                </div>
-                                <div class="widget-post-info">
-                                    <h4>
-                                        <a href="blog-single.html">
-                                            "Yeni düzende e-ihracat’a ayak uyduramayan
-                                            kaybolur"
+                            @forelse($recentPosts as $recent)
+                                <li>
+                                    <div class="post-img">
+                                        <a href="{{route('post.find',$recent->slug)}}">
+                                            <img src="{{$recent->thumnail}}" alt="">
                                         </a>
-                                    </h4>
-                                    <div class="meta">
-                                        <span><i class="fa fa-clock-o"></i>15 Ocak 2020</span>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="post-img">
-                                    <img src="{{asset('theme/images/portfolio/2.jpg')}}" alt="">
-                                </div>
-                                <div class="widget-post-info">
-                                    <h4>
-                                        <a href="blog-single.html">
-                                            Gagiad E-ihracat’ı değerlendirdi
-                                        </a>
-                                    </h4>
-                                    <div class="meta">
-                                        <span><i class="fa fa-clock-o"></i>10 Eylül 2020</span>
+                                    <div class="widget-post-info">
+                                        <h4>
+                                            <a href="{{route('post.find',$recent->slug)}}">
+                                                {{$recent->title}}
+                                            </a>
+                                        </h4>
+                                        <div class="meta">
+                                            <a href="{{route('post.find',$recent->slug)}}">
+                                                <span><i class="fa fa-clock-o"></i>{{Helper::getDateForHuman($recent->id)}}</span>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="post-img">
-                                    <img src="{{asset('theme/images/portfolio/3.jpg')}}" alt="">
-                                </div>
-                                <div class="widget-post-info">
-                                    <h4>
-                                        <a href="blog-single.html">
-                                            MOBİL : "İhracatta 'dijital devrim'
-                                            başlıyor"
-                                        </a>
-                                    </h4>
-                                    <div class="meta">
-                                        <span><i class="fa fa-clock-o"></i>08 Eylül 2020</span>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            @empty
+                            @endforelse
                         </ul>
                     </div>
                 </div>
@@ -124,7 +103,7 @@
 										No. 55/57 34373
 										Şişli – İstanbul / Türkiye</span></li>
                         <li class="footer-contact"><i class="fa fa-globe"></i><span><a
-                                    href="#">info@eihracatturkiye.com</a></span></li>
+                                    href="">info@eihracatturkiye.com</a></span></li>
                         <li class="footer-contact"><i class="fa fa-phone"></i><span>+90 850 346 9956</span>
                         </li>
                         <li class="footer-contact"><i class="fa fa-map-marker"></i><span><a
@@ -143,7 +122,7 @@
                     </ul>
                 </div>
                 <!-- contact us footer cell end -->
-
+a
             </div>
         </div>
     </div>
@@ -182,53 +161,3 @@
 </div>
 </div>
 
-
-<!-- Load JS siles -->
-<script type="text/javascript" src="{{asset('theme/js/jquery.min.js')}}"></script>
-
-<!-- Waypoints script -->
-<script type="text/javascript" src="{{asset('theme/js/waypoints.min.js')}}"></script>
-
-<!-- SLIDER REVOLUTION SCRIPTS  -->
-<script type="text/javascript" src="{{asset('theme/rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('theme/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
-
-<!-- Animate numbers increment -->
-<script type="text/javascript" src="{{asset('theme/js/jquery.animateNumber.min.js')}}"></script>
-
-<!-- slick slider carousel -->
-<script type="text/javascript" src="{{asset('theme/js/slick.min.js')}}"></script>
-
-<!-- Animate numbers increment -->
-<script type="text/javascript" src="{{asset('theme/js/jquery.easypiechart.min.js')}}"></script>
-
-<!-- PrettyPhoto script -->
-<script type="text/javascript" src="{{asset('theme/js/jquery.prettyPhoto.js')}}"></script>
-
-<!-- Share post plugin script -->
-<script type="text/javascript" src="{{asset('theme/js/jquery.sharrre.min.js')}}"></script>
-
-<!-- Product images zoom plugin -->
-<script type="text/javascript" src="{{asset('theme/js/jquery.elevateZoom-3.0.8.min.js')}}"></script>
-
-<!-- Input placeholder plugin -->
-<script type="text/javascript" src="{{asset('theme/js/jquery.placeholder.js')}}"></script>
-
-<!-- Tweeter API plugin -->
-<script type="text/javascript" src="{{asset('theme/js/twitterfeed.js')}}"></script>
-
-<!-- Flickr API plugin -->
-<script type="text/javascript" src="{{asset('theme/js/jflickrfeed.min.js')}}"></script>
-
-<!-- MailChimp plugin -->
-<script type="text/javascript" src="{{asset('theme/js/mailChimp.js')}}"></script>
-
-<!-- NiceScroll plugin -->
-<script type="text/javascript" src="{{asset('theme/js/jquery.nicescroll.min.js')}}"></script>
-
-<!-- general script file -->
-<script type="text/javascript" src="{{asset('theme/js/script.js')}}"></script>
-
-</body>
-
-</html>

@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="widget-post-info">
                                     <h4>
-                                        <a href="blog-single.blade.php">
+                                        <a href="{{route('post.find',$recentPost->slug)}}">
                                             {{$recentPost->title}}
                                         </a>
                                     </h4>
@@ -52,19 +52,6 @@
             </div>
         </li>
 
-        <li class="widget blog-cat-w fx" data-animate="fadeInLeft">
-            <h3 class="widget-head">Bizimle İletişime Geçebilirsiniz</h3>
-            <div class="widget-content">
-                <ul class="sidebarCallLocation">
-                    <li><a title="Whatsapp Destek Hattı" href="https://wa.me/908503469956"><i
-                                class="fa fa-whatsapp fa-2x"></i></a></li>
-                    <li><a title="Telefonla Ulaşın" href="tel:+908503469956"><i
-                                class="fa fa-phone fa-2x"></i></a>
-                    <li><a title="E-Posta İletişim" href="mailto:info@eihracatturkiye.com"><i
-                                class="fa fa-envelope fa-2x"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+        @include('pages.partials.contact_info')
     </ul>
 </aside>

@@ -1,10 +1,10 @@
 
 @include('inc/head')
-
+@include('inc/head-scripts')
 @include('inc/header')
 
-
-@switch($type)
+<div id="front-end">
+    @switch($type)
     @case($type)
     @if($type === 'page')
         @include('components/page')
@@ -20,6 +20,7 @@
     @include('components/page')
 
 @endswitch
+</div>
 
 @include('inc/footer')
 @include('inc/scripts')

@@ -1,88 +1,19 @@
 @php
     $findServiceswithoutId5 = Helper::findServiceswithoutId5();
 @endphp
-<!DOCTYPE html>
-<!--[if IE 7]><html class="ie ie7 ltie8 ltie9" lang="en-US"><![endif]-->
-<!--[if IE 8]><html class="ie ie8 ltie9" lang="en-US"><![endif]-->
-<!--[if !(IE 7) | !(IE 8)  ]><!-->
-<html lang="{{ app()->getLocale() }}">
-<!--<![endif]-->
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <input type="hidden" id="meta_csrf"  value="{{csrf_token()}}">
-    @if ($page)
-        <title>{{ $page->seo_title }}</title>
-        <meta name="description" content="{{ $page->seo_description }}"/>
-    @else
-        <title>test</title>
-        <meta name="description" content="test"/>
-@endif
-
-<!-- Favicon -->
-
-    <!-- Mobile Meta -->
-
-    <link rel="shortcut icon" href="{{asset('theme/images/favicon.ico')}}">
-
-    <!-- CSS StyleSheets -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-          href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800&amp;amp;subset=latin,latin-ext">
-    <link rel="stylesheet" href="{{asset('theme/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/css/animate.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/css/prettyPhoto.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/css/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/rs-plugin/css/settings.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/css/custom.css')}}">
-    <link rel="stylesheet" href="{{asset('theme/css/responsive.css')}}">
-    <!--[if lt IE 9]>
-    <link rel="stylesheet" href="{{asset('theme/css/ie.css')}}">
-    <script type="text/javascript" src="{{asset('theme/js/html5.js')}}"></script>
-    <![endif]-->
-    <script src="{{asset('assets/js/custom.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('theme/css/skins/defaultskin.css')}}">
 </head>
-
-
-
 <body>
 
 <!-- site preloader start -->
 {{-- <div class="page-loader">
     <div class="loader-in"></div>
-</div> --}}
+</div>--}}
 <!-- site preloader end -->
 
 <div class="pageWrapper">
 
     <!-- login box start -->
-    <div class="login-box">
-        <a class="close-login" href="#"><i class="fa fa-times"></i></a>
-        <form>
-            <div class="container">
-                <p>Sahip Olduğunuz Üyelik Bilgileri ile Aşağıdaki Formdan Giriş Yapabilirsiniz</p>
-                <div class="login-controls">
-                    <div class="skew-25 input-box left">
-                        <input type="text" class="txt-box skew25" placeholder="E-Posta Adresi" />
-                    </div>
-                    <div class="skew-25 input-box left">
-                        <input type="password" class="txt-box skew25" placeholder="Şifre" />
-                    </div>
-                    <div class="left skew-25 main-bg">
-                        <input type="submit" class="btn skew25" value="Giriş Yap" />
-                    </div>
-                    <div class="check-box-box">
-                        <input type="checkbox" class="check-box" /><label>Beni Hatırla !</label>
-                        <a href="#" style="color: #f14e4f;">Şifremi Unuttum ?</a>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+
     <!-- login box End -->
 
     <!-- Header Start -->
@@ -94,8 +25,8 @@
                 <div class="row">
                     <div class="cell-5">
                         <ul>
-                            <li><a href="#"><i class="fa fa-envelope"></i>info@eihracatturkiye.com</a></li>
-                            <li><span><i class="fa fa-phone"></i> Bizi Arayın: +90 850 346 9956</span></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i>@isset($setting['email']) {{ $setting['email']->value }} @endisset</a></li>
+                            <li><span><i class="fa fa-phone"></i> Bizi Arayın: @isset($setting['phone']) {{ $setting['phone']->value }} @endisset</span></li>
                         </ul>
                     </div>
                     <div class="cell-7 right-bar">
@@ -103,8 +34,8 @@
                             <li><a href="javascript:void(0);"><i class="fa fa-clock-o"></i>Çalışma Saatlerimiz:
                                     Pazartesi – Cuma: 09:00 /
                                     18:00</a></li>
-                            <li><a href="register"><i class="fa fa-user"></i>Kayıt Ol</a></li>
-                            <li><a href="#" class="login-btn"><i class="fa fa-unlock-alt"></i> Giriş Yap</a></li>
+                            <li><a href="/panel/register"><i class="fa fa-user"></i>Kayıt Ol</a></li>
+                            <li><a href="/panel/login" class=""><i class="fa fa-unlock-alt"></i> Giriş Yap</a></li>
                             <li><a href="#" class="multiLanguage"><i class="fa fa-globe"></i> EN</a></li>
                         </ul>
                     </div>
