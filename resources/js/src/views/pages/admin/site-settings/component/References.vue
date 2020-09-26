@@ -112,16 +112,16 @@ export default {
     this.$store.dispatch('custom/fetchItems')
       .then((response) => {
 
-        // response.data.forEach(element => {
-        //   if (element.type === 'References') {
-        //     this[element.type].push(JSON.parse(element.JsonData)[element.type])
-        //     this[element.type].splice(0, 1)
-        //     this[element.type] = this[element.type][0]
-        //   } else {
-        //     this[element.type] = JSON.parse(element.JsonData)[element.type]
-        //   }
+        response.data.forEach(element => {
+          if (element.type === 'References') {
+            this[element.type].push(JSON.parse(element.JsonData)[element.type])
+            this[element.type].splice(0, 1)
+            this[element.type] = this[element.type][0]
+          } else {
+            this[element.type] = JSON.parse(element.JsonData)[element.type]
+          }
 
-        // })
+        })
 
       })
       .catch((error) => { console.log(error) })
