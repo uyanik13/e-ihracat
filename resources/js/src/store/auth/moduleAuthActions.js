@@ -1,4 +1,4 @@
-import Api from '@/http/api.js'
+import Api from '@/plugins/api.js'
 import Cookies from 'js-cookie'
 
 
@@ -7,7 +7,7 @@ export default {
   login (context, payload) {
     return new Promise((resolve, reject) => {
         Api.post('/api/login',payload).then(response => {
-            console.log(response)
+            //console.log(response)
            context.commit('SET_BEARER', response.access_token)
            context.dispatch('fetchUser')
           setTimeout(() => { resolve(response.user) }, 500)
@@ -37,7 +37,7 @@ export default {
   fetchUser (context) {
     return new Promise((resolve, reject) => {
         Api.get('/api/user').then(response => {
-            console.log(response)
+            //console.log(response)
           context.commit('SET_USER', response)
           acl => acl.change(response.role)
           resolve(response)
@@ -51,10 +51,7 @@ export default {
   logout () {
     return new Promise((resolve, reject) => {
         Api.post('/api/logout').then(response => {
-            Cookies.remove('token')
-            Cookies.remove('user')
-            console.log('LOGOUT')
-            resolve(response)
+         Api.clearCreds()
         })
         .catch(error => { reject(error) })
     })
@@ -65,7 +62,7 @@ export default {
     return new Promise((resolve, reject) => {
       Api.get('/api/refresh').then(response => {
           context.commit('SET_BEARER', response)
-          resolve(response.data)
+          resolve(response)
         })
         .catch(error => { reject(error) })
     })

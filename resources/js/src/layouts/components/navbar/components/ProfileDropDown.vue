@@ -84,8 +84,6 @@ export default {
     logout () {
       this.$store.dispatch('auth/logout').then(response => {
         this.$acl.change('guest')
-        this.$router.push('/panel/login')
-        // Change role on logout. Same value as initialRole of acj.js
       }).catch(error => { console.log(error) })
     }
   },

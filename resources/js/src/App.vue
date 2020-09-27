@@ -16,7 +16,7 @@
 
 <script>
 import themeConfig from '@/../themeConfig.js'
-import Api         from '@/http/api.js'
+//import Api         from '@/http/api.js'
 
 export default {
   data () {
@@ -78,7 +78,7 @@ export default {
   async created () {
 
     // jwt
-   Api.init()
+   //Api.init()
 
     const dir = this.$vs.rtl ? 'rtl' : 'ltr'
     document.documentElement.setAttribute('dir', dir)

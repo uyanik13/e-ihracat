@@ -41,7 +41,6 @@ Route::group(['middleware' => 'jwt.verify'], function () {
 
 
   //POST METHODS
-  Route::post('logout', [LoginController::class, 'logout']);
   Route::post('addCategory', [ApiPostController::class, 'addCategory']);
   Route::post('updateCategory', [ApiPostController::class, 'updateCategory']);
   Route::post('removeCategory',[ApiPostController::class, 'removeCategory'] );
@@ -82,9 +81,7 @@ Route::group(['middleware' => 'jwt.verify'], function () {
 Route::group(['middleware' => 'guest:api'], function () {
   //POST METHODS
 
-  Route::post('login', [LoginController::class, 'login'] );
-  Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-  Route::post('ajax-logout', [LoginController::class, 'logout'])->name('ajax.logout');
+  Route::post('login', [AuthController::class, 'login'] )->name('api.login');
   Route::post('register', [RegisterController::class, 'registerWithApi']);
   Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail']);
   Route::post('email/verify/{user}',[VerificationController::class, 'verify'] )->name('verification.verify');
@@ -102,7 +99,7 @@ Route::group(['middleware' => 'guest:api'], function () {
 
 Route::group(['middleware' => 'jwt.verify'], function () {
 
-  Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+  Route::post('logout', [AuthController::class, 'logout'])->name('api.logout');
   Route::get('refresh', [AuthController::class, 'checkToken'])->name('token.refresh');
 
 
