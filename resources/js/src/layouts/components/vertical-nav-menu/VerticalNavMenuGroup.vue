@@ -26,12 +26,14 @@
 
           <!-- Group Icon -->
           <feather-icon
+             v-show="canSee"
             v-if        = "group.icon  || (this.groupIndex > Math.floor(this.groupIndex))"
             :icon       = "group.icon  || 'CircleIcon'"
             :svgClasses = "{ 'w-3 h-3' : this.groupIndex % 1 != 0 }" />
 
           <!-- Group Name -->
-          <span v-show="!verticalNavMenuItemsMin" class="truncate mr-3 select-none">{{ $t(group.i18n) || group.name }}</span>
+          <!-- <span v-show="canSee && !verticalNavMenuItemsMin"  class="truncate mr-3 select-none">{{ canSee }}</span> -->
+          <span v-show="canSee && !verticalNavMenuItemsMin"  class="truncate mr-3 select-none">{{ $t(group.i18n) || group.name }}</span>
 
           <!-- Group Tag -->
           <vs-chip class="ml-auto mr-4" :color="group.tagColor" v-if="group.tag && !verticalNavMenuItemsMin">{{ group.tag }}</vs-chip>
@@ -106,10 +108,9 @@ export default {
       return { maxHeight: this.maxHeight }
     },
     canSee() {
-      //console.log('meun',this.group)
-      let userInfo = this.$store.state.user.currentUser
+        let userInfo = this.$store.state.auth.user
       this.$acl.check(userInfo.role)
-      return this.to ? this.$acl.check(this.$router.match(this.group.url).meta.rule) : true
+      return this.$acl.check(this.$router.match(this.group.url).meta.rule)
     },
     itemIcon () {
       return (index) => {

@@ -55,7 +55,7 @@ export default {
   computed: {
     canSee () {
       //console.log('meun',this.to)
-      let userInfo = this.$store.state.user.currentUser
+      let userInfo = this.$store.state.auth.user
       this.$acl.check(userInfo.role)
       return this.to ? this.$acl.check(this.$router.match(this.to).meta.rule) : true
     },

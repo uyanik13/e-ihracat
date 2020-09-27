@@ -25,33 +25,34 @@
                     <div class="vx-col w-full md:w-11/12 mb-base">
                         <vx-card>
                             <vs-tabs>
-                                <vs-tab :label="$t('textArea')">
+                                <vs-tab :label="$t('textArea')" class="mt-5">
                                     <div class="mt-3">
                                         <!-- NAME -->
                                         <vs-input :label="$t('postName')" v-model="title" class="mt-5 w-full" name="title" v-validate="'required'" />
-                                        <span class="text-danger text-sm" v-show="errors.has('title')">{{ errors.first('title') ? 'Başlık Gerekli' : ''}}</span>
+                                        <span class="text-danger text-sm" v-show="errors.has('title')">{{ errors.first('title') ? $t('titleRequired') : ''}}</span>
 
                                         <div class="flex flex-wrap items-center mb-20 mt-20 h-full">
-                                            <span>{{$t('postContent')}}</span>
-                                            <quill-editor  :options="editorOption" :label="$t('postContent')" name="content" v-model="content"></quill-editor>
-                                            <span class="text-danger text-sm" v-show="errors.has('content')">{{ errors.first('content') ? 'İçerik Gerekli' : ''}}</span>
+                                        <span>{{$t('postContent')}}</span>
+                                        <quill-editor  :label="$t('postContent')" name="dataDescription" v-model="content"></quill-editor>
+                                        <span class="text-danger text-sm" v-show="errors.has('content')">{{ errors.first('content') ? $t('descriptionRequired') : ''}}</span>
                                         </div>
 
                                         <span>{{$t('tags')}}</span>
                                         <v-select taggable push-tags multiple :closeOnSelect="false" v-model="tags"  :dir="$vs.rtl ? 'rtl' : 'ltr'" /><br>
 
 
-                                        <!--  CATEGORY -->
-                                        <vs-select v-model="category_id" :label="$t('category')"  name="category_id" class="mt-5 w-full">
-                                            <vs-select-item :key="category.id" :value="category.id" :text="category.title" v-for="category in data.categories" />
-                                            <span class="text-danger text-sm" v-show="errors.has('category_id')">{{ errors.first('category_id') ? 'Kategori Gerekli' : '' }}</span>
-                                        </vs-select>
+                                     <!--  CATEGORY -->
+                                    <!-- <vs-select v-model="category_id" :label="$t('category')"  name="category_id" class="mt-5 w-full">
+                                    <vs-select-item :key="category.id" :value="category.id" :text="category.title" v-for="category in data.categories" />
+                                    <span class="text-danger text-sm" v-show="errors.has('category_id')">{{ errors.first('category_id') ? $t('categoryRequired') : '' }}</span>
+                                    </vs-select> -->
+
 
 
                                         <!--  STATUS -->
                                         <vs-select v-model="status" :label="$t('status')"  name="status" class="mt-5 w-full">
-                                            <vs-select-item :key="status.value" :value="status.value" :text="status.text" v-for="status in status_choices" />
-                                            <span class="text-danger text-sm" v-show="errors.has('status')">{{ errors.first('status') ? 'Durum Gerekli' : '' }}</span>
+                                        <vs-select-item :key="status.value" :value="status.value" :text="status.text" v-for="status in status_choices" />
+                                        <span class="text-danger text-sm" v-show="errors.has('status')">{{ errors.first('status') ? $t('statusRequired') : '' }}</span>
                                         </vs-select>
 
 
@@ -59,34 +60,39 @@
 
                                     </div>
                                 </vs-tab>
-                                <vs-tab :label="$t('thumbnailArea')">
+                                <vs-tab :label="$t('thumbnailArea')" class="mt-5">
                                     <div class="vx-col w-full sm:w-10/12 lg:w-2/5 mb-base">
-                                        <vx-card>
-                                            <div slot="no-body">
-                                                <img :src="thumbnail" alt="Resim Yükle" class="responsive card-img-top">
-                                            </div>
-                                            <div class="flex justify-between flex-wrap">
-                                                <input type="file" class="hidden" ref="updateImgInput" @change="update_avatar" accept="thumbnail/*">
-                                                <vs-button class="mr-4 sm:mb-0 mb-2" @click="$refs.updateImgInput.click()">{{$t('thumbnailUpload') ? 'Resim Gerekli' : ''}}</vs-button>
-                                            </div>
+                                        <vx-card class="overlay-card overflow-hidden">
+                                              <template slot="no-body">
+                                                 <img v-if="!thumbnail" src="@assets/images/place-holders/image-to-here.png"   height="380px"  width="380px" class="responsive" />
+                                                 <img v-else :src="thumbnail"    height="380px"  width="380px"  class="responsive" />
+                                            </template>
                                         </vx-card>
+                                         <div class="flex justify-between flex-wrap">
+                                                <input type="file" class="hidden" ref="updateImgInput" @change="update_avatar" accept="thumbnail/*">
+                                            </div>
+                                         <vs-button class="mr-4 sm:mb-0 mb-2 mt-5" @click="$refs.updateImgInput.click()">{{$t('thumbnailUpload') ?  $t('thumbnailRequired') : ''}}</vs-button>
 
                                     </div>
                                 </vs-tab>
-                                <vs-tab :label="$t('SeoArea')">
-                                    <div class="mt-3">
-                                        <!-- SEO TITLE -->
-                                        <vs-input :label="$t('seoTitle')" v-model="seo_title" class="mt-5 w-full" name="seo_title" v-validate="'required'" />
-                                        <span class="text-danger text-sm" v-show="errors.has('seo_title')">{{ errors.first('seo_title') ? 'Seo Başlığı Gerekli ve max 71 karakter' : '' }}</span>
-                                        <vs-progress :percent="Number(seo_title.length)" :color="getPopularityColorTitle(Number(seo_title.length))" class="shadow-md" />
 
-                                        <!-- SEO DESCRIPTION -->
-                                        <vs-input :label="$t('seoDescription')" v-model="seo_description" class="mt-5 w-full" name="seo_description" v-validate="'required'" />
-                                        <span class="text-danger text-sm" v-show="errors.has('seo_description')">{{ errors.first('seo_description') ? 'Seo Açıklaması Gerekli ve max 160 karakter' : '' }}</span>
-                                        <vs-progress :percent="Number(seo_description.length)" :color="getPopularityColorDescription(Number(seo_description.length))" class="shadow-md" />
-                                    </div>
+                                 <vs-tab :label="$t('SeoArea')">
+                                <div class="mt-3">
+                                    <!-- SEO TITLE -->
+                                    <vs-input :label="$t('seoTitle')" v-model="seo_title" class="mt-5 w-full" name="seo_title" v-validate="'required'" />
+                                    <span class="text-danger text-sm" v-show="errors.has('seo_title')">{{ errors.first('seo_title') ? $t('seoTitleRequiredMax71Char') : '' }}</span>
+                                    <vs-progress :percent="Number(seo_title.length)" :color="getPopularityColorTitle(Number(seo_title.length))" class="shadow-md" />
+
+                                    <!-- SEO DESCRIPTION -->
+                                    <vs-input :label="$t('seoDescription')" v-model="seo_description" class="mt-5 w-full" name="seo_description" v-validate="'required'" />
+                                    <span class="text-danger text-sm" v-show="errors.has('seo_description')">{{ errors.first('seo_description') ? $t('seoDescRequiredMax161Char') : '' }}</span>
+                                    <vs-progress :percent="Number(seo_description.length)" :color="getPopularityColorDescription(Number(seo_description.length))" class="shadow-md" />
+                                </div>
                                 </vs-tab>
+
+
                             </vs-tabs>
+
                         </vx-card>
                     </div>
                 </div>
@@ -111,6 +117,7 @@
     import modulePostList from '@/store/post/modulePostList'
     import { quillEditor } from 'vue-quill-editor'
     import vSelect from 'vue-select'
+    import i18n from '@/i18n/i18n'
 
     export default {
         props: {
@@ -127,7 +134,7 @@
             isSidebarActive (val) {
 
                 if (!val) return
-                if (this.data.newData) {
+                 if (this.data.newData) {
                     this.initValues()
                     this.$validator.reset()
                 } else {
@@ -166,8 +173,8 @@
                 category:'',
                 categories:[],
                 status_choices: [
-                    {text:'Aktif', value:1},
-                    {text:'DeAktif', value:0}
+                    {text:i18n.t('active'), value:1},
+                    {text:i18n.t('deActive'), value:0}
                 ],
                 settings: { // perfectscrollbar settings
                     maxScrollbarLength: 60,
@@ -225,12 +232,10 @@
             initValues () {
                 if (this.data.id) return
                 this.id = null
-                this.title = 'Yazı Başlığı'
-                this.seo_title = 'SEO Başlığı'
-                this.seo_description = 'SEO Açıklaması'
-                this.content = 'İçerik'
-                this.thumbnail = ''
-                this.video = ''
+                this.title = i18n.t('title')
+                this.content = i18n.t('content')
+                this.seo_title = i18n.t('seo_title')
+                this.seo_description = i18n.t('seo_description')
                 this.status = 1
                 this.category_id = 2
             },

@@ -19,12 +19,9 @@ use Illuminate\Support\Str;
 
 class ApiUserController extends ApiController
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   *
-   */
+
+
+
   public function index(Request $request)
   {
 
@@ -197,36 +194,20 @@ class ApiUserController extends ApiController
 
   public function CurrentUser(Request $request)
   {
+
     $user = auth()->setRequest($request)->user();
     // Get user from $request token.
     if (!$user) {
       return $this->responseUnauthorized();
     }
 
-
-
-    return response()->json([
-      'id' => $user->id,
-      'name' => $user->name,
-      'email' => $user->email,
-      'address' => $user->address,
-      'phone' => $user->phone,
-      'avatar' => $user->avatar,
-      'social_data' => json_decode($user->social_data, true),
-      'about_data' => json_decode($user->about_data, true),
-      'user_data' => json_decode($user->user_data, true),
-      'notification_data' => json_decode($user->notification_data, true),
-      'role' => $user->role,
-      'status' => $user->status,
-      'token' => $user->token
-
-    ], 201);
+    return response()->json($user);
 
 
   }
 
 
- 
+
 
   public function uploadCv(Request $request)
   {

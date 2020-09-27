@@ -2,7 +2,14 @@
 
 namespace App\Exceptions;
 
+use Throwable;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -25,13 +32,64 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    /**
-     * Register the exception handling callbacks for the application.
-     *
-     * @return void
-     */
-    public function register()
+    public function report(Throwable $exception)
     {
-        //
+        parent::report($exception);
     }
+
+
+
+    protected function renderHttpException(HttpExceptionInterface $e)
+    {
+        if ($e instanceof NotFoundHttpException) {
+            return response()->json([
+                'status' => trans('api.not_found'),
+                'locale' => app()->getLocale(),
+                'errors' => true,
+                'data' => [
+                    'message' => trans('api.endpoint_not_found'),
+                ]
+            ], JsonResponse::HTTP_NOT_FOUND);
+        }
+        if ($e instanceof MethodNotAllowedHttpException) {
+            return response()->json([
+                'status' => trans('api.not_found'),
+                'locale' => app()->getLocale(),
+                'errors' => true,
+                'data' => [
+                    'message' => trans('api.http_method_not_allowed'),
+                ]
+            ], JsonResponse::HTTP_METHOD_NOT_ALLOWED);
+        }
+        if ($e instanceof AuthenticationException ) {
+            return response()->json([
+                'status' => trans('api.unauthorized'),
+                'locale' => app()->getLocale(),
+                'errors' => true,
+                'data' => [
+                    'message' => trans('api.http_method_not_allowed'),
+                ]
+            ], JsonResponse::HTTP_FORBIDDEN);
+        }
+        if ($e instanceof UnauthorizedHttpException) {
+            return response()->json([
+                'status' => trans('api.unauthorized'),
+                'locale' => app()->getLocale(),
+                'errors' => true,
+                'data' => [
+                    'message' => trans('api.unauthorized'),
+                ]
+            ], JsonResponse::HTTP_FORBIDDEN);
+        }
+
+        return response()->json([
+            'status' => trans('api.bad_request'),
+            'locale' => app()->getLocale(),
+            'errors' => true,
+            'data' => [
+                'message' => trans('api.bad_request'),
+            ]
+        ], JsonResponse::HTTP_FORBIDDEN);
+    }
+
 }

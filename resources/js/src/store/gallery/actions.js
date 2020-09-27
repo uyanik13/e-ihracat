@@ -7,7 +7,7 @@
   Author URL: https://www.dijitalreklam.org
 ==========================================================================================*/
 
-import axios from "../../plugins/axios.js"
+import axios from "axios"
 
 export default {
   addItem({ commit }, data) {
@@ -25,7 +25,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios.get("/api/gallery")
         .then((response) => {
-          console.log('response gallery',response.data)
+          //console.log('response gallery',response.data)
           commit('SET_ITEM', response.data)
           resolve(response)
         })

@@ -8,6 +8,8 @@ use Illuminate\Http\JsonResponse;
 abstract class ApiController extends Controller
 {
 
+
+
     /**
      * Returns a generic success (200) JSON response.
      *

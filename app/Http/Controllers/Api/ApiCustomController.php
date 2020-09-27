@@ -74,7 +74,7 @@ class ApiCustomController extends ApiController
                foreach ($requestData[$request->type] as $index => $data) {
                    if($data['image']){
                      $fileName = 'image-'.time();
-                     $requestData[$request->type][$index]['image'] = Helper::siteSettingsImageUpload(Str::slug($fileName), $data['image'], 'site-settings');
+                     $requestData[$request->type][$index]['image'] = Helper::PostImageHelper(Str::slug($fileName), $data['image'], 'site-settings');
                      }
                    }
                }
@@ -88,7 +88,7 @@ class ApiCustomController extends ApiController
                 foreach ($requestData[$request->type] as $index => $data) {
                     if($data['image']){
                       $fileName = 'image-'.time();
-                      $requestData[$request->type][$index]['image'] = Helper::siteSettingsImageUpload(Str::slug($fileName), $data['image'], 'site-settings');
+                      $requestData[$request->type][$index]['image'] = Helper::PostImageHelper(Str::slug($fileName), $data['image'], 'site-settings');
                       }
                     }
                 }

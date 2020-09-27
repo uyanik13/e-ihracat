@@ -404,6 +404,11 @@ public function ajaxLogout (Request $request) {
 }
 
 
+public  function setLocale (Request $request) {
+    app()->setLocale($request->language);
+    $request->session()->put('language', $request->language);
+    return  response()->json(session('language'));
+}
 
 
 

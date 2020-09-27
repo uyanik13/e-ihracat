@@ -100,6 +100,7 @@ ECharts.registerTheme('blue', theme)
         components: {
             ECharts
         },
+<<<<<<< Updated upstream
         computed: {
 
         },
@@ -158,6 +159,17 @@ ECharts.registerTheme('blue', theme)
                     data: []
                      }
                   ]
+=======
+        data: () => ({
+             options: {
+            legend: {},
+            tooltip: {},
+            dataset: {
+            // Provide data.
+            source: [
+                this.getData0()
+            ]
+>>>>>>> Stashed changes
             },
             importDetails : [],
             data0 : [],
@@ -188,6 +200,7 @@ ECharts.registerTheme('blue', theme)
                 this.data0Chart.series[0].data = this.data0.map((value ) => parseFloat(this.numberConvert(value['value'],0)))
                 //console.log(this.options.series[0].data)
                 resolve(response)
+                return response.data
               })
               .catch((error) => { reject(error) })
              })

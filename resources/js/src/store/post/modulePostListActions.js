@@ -7,7 +7,7 @@
   Author URL: https://www.dijitalreklam.org
 ==========================================================================================*/
 
-import axios from '../../plugins/axios.js'
+import axios from 'axios'
 
 export default {
     addItem (context, data) {

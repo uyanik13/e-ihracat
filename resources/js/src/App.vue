@@ -16,7 +16,7 @@
 
 <script>
 import themeConfig from '@/../themeConfig.js'
-import jwt         from '@/http/requests/auth/jwt/index.js'
+import Api         from '@/http/api.js'
 
 export default {
   data () {
@@ -58,6 +58,12 @@ export default {
       this.$store.commit('UPDATE_WINDOW_SCROLL_Y', window.scrollY)
     }
   },
+    computed : {
+    activeUser () {
+      return this.$store.state.auth.user
+    },
+
+  },
   mounted () {
     this.toggleClassInBody(themeConfig.theme)
     this.$store.commit('UPDATE_WINDOW_WIDTH', window.innerWidth)
@@ -68,21 +74,19 @@ export default {
 
 
   },
+
   async created () {
 
     // jwt
-   // jwt.init()
+   Api.init()
 
     const dir = this.$vs.rtl ? 'rtl' : 'ltr'
     document.documentElement.setAttribute('dir', dir)
 
     window.addEventListener('resize', this.handleWindowResize)
     window.addEventListener('scroll', this.handleScroll)
-
-    // Auth0
-    try       {
-      // await this.$auth.renewTokens()
-    } catch (e) { console.error(e) }
+    //if (this.activeUser.length < 1) this.$store.dispatch('user/fetchUser')
+    //console.log('userr',this.activeUser.length )
 
   },
   destroyed () {

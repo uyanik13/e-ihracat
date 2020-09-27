@@ -65,7 +65,7 @@ export default {
       return this.$store.getters['package/upgrade_profile']
     },
     activeUser () {
-      return this.$store.state.user.currentUser
+      return this.$store.state.auth.user
     },
   },
   methods:{

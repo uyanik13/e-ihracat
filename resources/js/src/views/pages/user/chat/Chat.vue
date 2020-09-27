@@ -55,7 +55,7 @@
         <div class="chat__bg no-scroll-content chat-content-area border border-solid d-theme-border-grey-light border-t-0 border-r-0 border-b-0" :class="{'sidebar-spacer--wide': clickNotClose, 'flex items-center justify-center': activeChatUser === null}">
             <template v-if="activeChatUser">
                 <div class="chat__navbar">
-                   
+
                   <chat-navbar :isSidebarCollapsed="!clickNotClose"
                                  :userId="activeChatUser"
                                  :activeUser="activeUser"
@@ -63,15 +63,15 @@
                                  @openContactsSidebar="toggleChatSidebar(true)"
                                  @showProfileSidebar="showProfileSidebar"
                                  @toggleIsChatPinned="toggleIsChatPinned">
-                              
+
                                  </chat-navbar>
                 </div>
                 <component :is="scrollbarTag" class="chat-content-scroll-area border border-solid d-theme-border-grey-light" :settings="settings" ref="chatLogPS" :key="$vs.rtl">
                     <div class="chat__log" ref="chatLog">
-                        <chat-log 
+                        <chat-log
                         :userDetails="this.chatContacts.find((contact) => contact.id === activeChatUser)"
-                        :userId="activeChatUser"  
-                        :activeUser="activeUser" 
+                        :userId="activeChatUser"
+                        :activeUser="activeUser"
                         v-if="activeChatUser"></chat-log>
                     </div>
                 </component>
@@ -124,7 +124,7 @@ export default {
     }
   },
   computed: {
-    
+
     chatUnseenMessages () {
       return (userId) => {
         const unseenMsg = this.$store.getters['chat/chatUnseenMessages'](userId)
@@ -132,7 +132,7 @@ export default {
       }
     },
     activeUser () {
-      return this.$store.state.user.currentUser
+      return this.$store.state.auth.user
     },
     getStatusColor () {
       return (isActiveUser) => {
@@ -209,8 +209,8 @@ export default {
       }
       this.$store.dispatch('chat/sendChatMessage', payload)
       this.typedMessage = ''
-      
-      
+
+
       const scroll_el = this.$refs.chatLogPS.$el || this.$refs.chatLogPS
       scroll_el.scrollTop = this.$refs.chatLog.scrollHeight
     },
@@ -231,7 +231,7 @@ export default {
     hanleIncoming (message) {
       if (message.to === this.activeUser.id) {
         //console.log('hersey ok',message)
-        //this.$store.commit('chat/SEND_CHAT_MESSAGE', message)  
+        //this.$store.commit('chat/SEND_CHAT_MESSAGE', message)
         //this.$store.dispatch('chat/sendChatMessageForMutation', message)
         return this.$store.dispatch('chat/fetchChats')
       }

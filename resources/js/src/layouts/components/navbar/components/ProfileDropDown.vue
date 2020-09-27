@@ -9,7 +9,7 @@
     <vs-dropdown vs-custom-content vs-trigger-click class="cursor-pointer">
 
       <div class="con-img ml-3">
-        <img v-if="activeUser.avatar" key="onlineImg" :src="activeUser.avatar" alt="user-img" width="40" height="40" class="rounded-full shadow-md cursor-pointer block" />
+        <img  key="onlineImg" :src="activeUser.avatar? activeUser.avatar : 'https://via.placeholder.com/100.png'" alt="user-img" width="40" height="40" class="rounded-full shadow-md cursor-pointer block" />
       </div>
 
       <vs-dropdown-menu class="vx-navbar-dropdown">
@@ -66,6 +66,8 @@
 
 <script>
 
+import Cookies from 'js-cookie'
+
 export default {
   data () {
     return {
@@ -74,7 +76,7 @@ export default {
   },
   computed: {
     activeUser () {
-      return this.$store.state.user.currentUser
+      return Cookies.get('user') ? JSON.parse(Cookies.get('user')) :  this.$store.state.auth.user
     }
 
   },
@@ -88,7 +90,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('user/fetchUser')
+
   }
 }
 </script>

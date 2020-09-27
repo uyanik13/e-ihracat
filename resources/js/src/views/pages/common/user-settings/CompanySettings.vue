@@ -77,7 +77,7 @@ export default {
       return this.$store.state.user.upgradePackage_remaining_days
     },
     activeUser () {
-      return this.$store.state.user.currentUser
+      return this.$store.state.auth.user
     }
 
   },
@@ -86,8 +86,8 @@ export default {
       this.$store.registerModule('userManagement', userManagement)
       userManagement.isRegistered = true
     }
-    this.$store.dispatch('user/fetchUser')
-    this.$store.dispatch('user/fetchPackageInformation')
+    //this.$store.dispatch('user/fetchUser')
+    //this.$store.dispatch('user/fetchPackageInformation')
   }
 }
 </script>

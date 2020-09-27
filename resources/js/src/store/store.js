@@ -18,23 +18,20 @@ import actions from './actions'
 
 Vue.use(Vuex)
 
-// import moduleTodo from './todo/moduleTodo.js'
-// import moduleCalendar from './calendar/moduleCalendar.js'
-// import moduleChat from './chat/moduleChat.js'
-// import moduleEmail from './email/moduleEmail.js'
+
+//import moduleECommerce from './ecommerce/moduleECommerce.js'
+//import tokenModule from './token/token.js'
+//import packageModule from './package/package.js'
+//import subscriptionModule from './subscription/subscription.js'
+//import moduleChat from './chat/moduleChat.js'
+//import moduleInvoiceList from './invoices/moduleInvoiceList.js'
 
 import moduleAdmin from './admin/admin.js'
-import moduleECommerce from './ecommerce/moduleECommerce.js'
-import tokenModule from './token/token.js'
-import packageModule from './package/package.js'
-import subscriptionModule from './subscription/subscription.js'
-import moduleChat from './chat/moduleChat.js'
 import ModuleGallery from './gallery/galleryModule.js'
 import custom from './custom/custom.js'
 import formList from './form/formList.js'
 import setting from './setting/setting.js'
 import modulePostList from './post/modulePostList.js'
-import moduleInvoiceList from './invoices/moduleInvoiceList.js'
 import moduleUserManagement from './user-management/moduleUserManagement.js'
 import moduleAuth from './auth/moduleAuth.js'
 
@@ -45,21 +42,19 @@ export default new Vuex.Store({
   state,
   actions,
   modules: {
-    // todo: moduleTodo,
-    // calendar: moduleCalendar,
-    // email: moduleEmail,
-    admin: moduleAdmin,
-    eCommerce: moduleECommerce,
-    package: packageModule,
-    subscription: subscriptionModule,
-    token: tokenModule,
-    chat: moduleChat,
+
+    // eCommerce: moduleECommerce,
+    // package: packageModule,
+    // subscription: subscriptionModule,
+    // invoice: moduleInvoiceList,
+    // token: tokenModule,
+    // chat: moduleChat,
     gallery: ModuleGallery,
+    admin: moduleAdmin,
     custom,
     form: formList,
     setting,
     post: modulePostList,
-    invoice: moduleInvoiceList,
     user: moduleUserManagement,
     auth: moduleAuth
   },

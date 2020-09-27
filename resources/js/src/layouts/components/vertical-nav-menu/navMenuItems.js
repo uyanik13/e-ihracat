@@ -77,8 +77,8 @@ export default [
   },
 
   {
-    url:'/panel/file-manager',
-    name: 'FileManager',
+    url: '/panel/file-manager-upload',
+    name: 'FileUpload',
     icon: 'UploadIcon',
     i18n: 'FileManager',
     submenu:[
@@ -99,8 +99,8 @@ export default [
     ]
   },
   {
-    url:'/panel/main-pages',
-    name: 'MainPages',
+    url: '/panel/blog-posts',
+    name: 'blog-posts',
     icon: 'FileIcon',
     i18n: 'Content',
     submenu:[

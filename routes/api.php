@@ -22,7 +22,7 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 
 
 
-Route::group(['middleware' => 'auth:api'], function () {
+Route::group(['middleware' => 'jwt.verify'], function () {
 
 
 
@@ -85,17 +85,25 @@ Route::group(['middleware' => 'guest:api'], function () {
   Route::post('login', [LoginController::class, 'login'] );
   Route::post('logout', [AuthController::class, 'logout'])->name('logout');
   Route::post('ajax-logout', [LoginController::class, 'logout'])->name('ajax.logout');
-  Route::get('refresh', [AuthController::class, 'checkToken']);
   Route::post('register', [RegisterController::class, 'registerWithApi']);
   Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail']);
   Route::post('email/verify/{user}',[VerificationController::class, 'verify'] )->name('verification.verify');
   Route::post('email/resend', [VerificationController::class, 'resend']);
-  Route::post('create_session', [ApiCustomController::class, 'create_session']);
+
 
 
 
   //Route::get('cities', [SettingController::class, 'getCities']);
 
+
+
+});
+
+
+Route::group(['middleware' => 'jwt.verify'], function () {
+
+  Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+  Route::get('refresh', [AuthController::class, 'checkToken'])->name('token.refresh');
 
 
 });

@@ -1,17 +1,16 @@
-/*=========================================================================================
-  File Name: moduleAuthMutations.js
-  Description: Auth Module Mutations
-  ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-  Author: Pixinvent
-  Author URL: https://www.dijitalreklam.org
-==========================================================================================*/
 import axios from 'axios'
-
+import Cookies from 'js-cookie'
 
 export default {
-  SET_BEARER (state, token) {
-    axios.defaults.headers.common['Authorization'] = `Bearer ${  token}`
-  }
+  SET_BEARER (state,token) {
+    //console.log(token)
+    axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` }
+    Cookies.set('token', token)
+  },
+
+  SET_USER (state, payload) {
+    state.user = payload
+    Cookies.set('user', payload)
+  },
 
 }

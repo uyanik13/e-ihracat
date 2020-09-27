@@ -19,12 +19,12 @@
       <flat-pickr v-model="dob" :config="{ dateFormat: 'Y-m-d' }" class="w-full" />
     </div>
 
-     <div class="mt-8">
+     <!-- <div class="mt-8">
       <label class="text-sm">Experience From</label>
       <flat-pickr v-model="experience" :config="{ dateFormat: 'Y-m-d' }" class="w-full" />
-    </div>
+    </div> -->
 
-    <!-- Country -->
+    <!-- Country
     <label class="text-sm">{{$t('Country')}}</label>
     <v-select
 
@@ -45,20 +45,20 @@
                             :getOptionLabel="option => option.name"
                             :filterable="true"/>
 
-    <!-- Languages -->
+
     <div class="mt-8">
       <label class="text-sm">Languages</label>
       <v-select v-model="lang_known" multiple :closeOnSelect="false" :options="langOptions" :dir="$vs.rtl ? 'rtl' : 'ltr'" />
     </div>
 
-    <!-- Website  -->
+
     <vs-input class="w-full mt-8" :label-placeholder="$t('Profession')" v-model="profession" />
     <vs-input class="w-full mt-8" :label-placeholder="$t('current_salary')" v-model="current_salary" />
-    <vs-input class="w-full mt-8" :label-placeholder="$t('expected_salary')" v-model="expected_salary" />
+    <vs-input class="w-full mt-8" :label-placeholder="$t('expected_salary')" v-model="expected_salary" /> -->
 
-    <vs-input class="w-full mt-8" label-placeholder="Website" v-model="website" />
+    <!-- <vs-input class="w-full mt-8" label-placeholder="Website" v-model="website" />
 
-    <!-- Gender -->
+
     <div class="mt-8 mb-base">
       <label class="text-sm">Gender</label>
       <div class="mt-2">
@@ -66,7 +66,7 @@
         <vs-radio v-model="gender" vs-value="female" class="mr-4">Female</vs-radio>
         <vs-radio v-model="gender" vs-value="other">Other</vs-radio>
       </div>
-    </div>
+    </div> -->
 
     <!-- Save & Reset Button -->
     <div class="flex flex-wrap items-center justify-end">
@@ -116,13 +116,13 @@ export default {
   },
   props: {
     user: {
-      type: Object,
+      type: [Object,Array],
       default: () => {}
     },
-    countryOptions: {
-      type: Array,
-      default: []
-    },
+    // countryOptions: {
+    //   type: Array,
+    //   default: []
+    // },
   },
   watch: {
 

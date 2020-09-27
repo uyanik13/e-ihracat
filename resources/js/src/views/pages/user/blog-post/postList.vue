@@ -111,7 +111,7 @@ export default {
     },
 
     activeUser () {
-      return this.$store.state.user.currentUser
+      return this.$store.state.auth.user
     },
     categoryList () {
       return this.$store.state.post.categories
@@ -126,6 +126,7 @@ export default {
   methods: {
     addNewData () {
       this.sidebarData = {
+          newData : true,
         categories:this.categoryList
       }
       this.toggleDataSidebar(true)
@@ -170,6 +171,7 @@ export default {
     editData (data) {
       // this.sidebarData = JSON.parse(JSON.stringify(this.blankData))
       this.sidebarData = {
+           newData : false,
         categories:this.categoryList,
         data
       }

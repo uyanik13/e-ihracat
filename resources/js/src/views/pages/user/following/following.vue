@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     activeUser () {
-      return this.$store.state.user.currentUser
+      return this.$store.state.auth.user
     },
     followerList () {
       return this.$store.state.user.myFollowers
@@ -53,7 +53,7 @@ export default {
     }
   },
   methods: {
-    
+
   },
   created () {
     this.$store.dispatch('user/fetchUser')
