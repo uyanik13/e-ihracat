@@ -14,10 +14,10 @@ Author URL: https://www.dijitalreklam.org
       v-validate="'required|min:3'"
       data-vv-validate-on="blur"
       :label-placeholder="$t('NameAndSurname')"
-      name="displayName"
-      v-model="displayName"
+      name="name"
+      v-model="name"
       class="w-full" />
-    <span class="text-danger text-sm">{{ errors.first('displayName')? $t('NameRequried') : '' }}</span>
+    <span class="text-danger text-sm">{{ errors.first('name')? $t('NameRequried') : '' }}</span>
 
     <vs-input
       v-validate="'required|email'"
@@ -67,7 +67,7 @@ Author URL: https://www.dijitalreklam.org
 
     <vs-checkbox v-model="isTermsConditionAccepted" class="mt-6">{{$t('TermsAndConditions')}}</vs-checkbox>
     <vs-button  type="border"  @click="loginUser()" class="mt-6">{{$t('login')}}</vs-button>
-    <vs-button class="float-right mt-6" @click="registerUserJWt" :disabled="!validateForm">{{$t('Register')}}</vs-button>
+    <vs-button class="float-right mt-6" @click="register" :disabled="!validateForm">{{$t('Register')}}</vs-button>
   </div>
 </template>
 
@@ -80,7 +80,7 @@ export default {
   },
   data () {
     return {
-      displayName: '',
+      name: '',
       email: '',
       phone: '',
       type: '',
@@ -91,7 +91,7 @@ export default {
   },
   computed: {
     validateForm () {
-      return !this.errors.any() && this.displayName != '' && this.email != ''   && this.password != '' && this.confirm_password != '' && this.isTermsConditionAccepted === true
+      return !this.errors.any() && this.name != '' && this.email != ''   && this.password != '' && this.confirm_password != '' && this.isTermsConditionAccepted === true
     }
   },
   methods: {
@@ -104,20 +104,17 @@ export default {
       }
       return true
     },
-    registerUserJWt () {
+    register () {
       if (!this.validateForm) return
       this.$vs.loading()
       const payload = {
-        userDetails: {
-          name: this.displayName,
+          name: this.name,
           phone:this.phone,
           email: this.email,
           password: this.password,
-          confirmPassword: this.confirm_password
-        },
-        notify: this.$vs.notify
+          confirm_password: this.confirm_password
       }
-      this.$store.dispatch('auth/registerUserJWT', payload)
+      this.$store.dispatch('auth/register', payload)
         .then((response) => {
           this.$vs.loading.close()
           this.showAlert(i18n.t('Success'), i18n.t('yourAccountCreated'), 'icon-success', 'success')

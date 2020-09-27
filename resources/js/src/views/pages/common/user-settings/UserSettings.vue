@@ -14,7 +14,7 @@
       </div>
     </vs-tab>
 
-    <vs-tab icon-pack="feather"  icon="icon-info" :label="!isSmallerScreen ? $t('Info') : ''">
+    <!-- <vs-tab icon-pack="feather"  icon="icon-info" :label="!isSmallerScreen ? $t('Info') : ''">
       <div class="tab-info md:ml-4 md:mt-10 mt-4 ml-0">
         <user-settings-info
           v-if="upgradePackage_remaining_days !== 'NoSubscripton'"
@@ -24,30 +24,31 @@
           <user-settings-get-premium v-else />
 
       </div>
-    </vs-tab>
-    <vs-tab icon-pack="feather" icon="icon-octagon" :label="!isSmallerScreen ? $t('CV_Education_Work') : ''">
+    </vs-tab> -->
+    <!-- <vs-tab icon-pack="feather" icon="icon-octagon" :label="!isSmallerScreen ? $t('CV_Education_Work') : ''">
       <div class="tab-info md:ml-4 md:mt-10 mt-4 ml-0">
         <user-settings-cv-edu
          v-if="upgradePackage_remaining_days !== 'NoSubscripton'"
           :user="activeUser" />
           <user-settings-get-premium v-else />
       </div>
-    </vs-tab>
-    <vs-tab icon-pack="feather" icon="icon-github" :label="!isSmallerScreen ? $t('SocialLinks') : ''">
+    </vs-tab> -->
+
+    <!-- <vs-tab icon-pack="feather" icon="icon-github" :label="!isSmallerScreen ? $t('SocialLinks') : ''">
       <div class="tab-social-links md:ml-4 md:mt-10 mt-4 ml-0">
         <user-settings-social-links v-if="upgradePackage_remaining_days !== 'NoSubscripton'" :user="activeUser"  />
         <user-settings-get-premium v-else />
       </div>
-    </vs-tab>
+    </vs-tab> -->
 
-    <vs-tab icon-pack="feather" icon="icon-bell" :label="!isSmallerScreen ?  $t('Notifications') : ''">
+    <!-- <vs-tab icon-pack="feather" icon="icon-bell" :label="!isSmallerScreen ?  $t('Notifications') : ''">
       <div class="tab-text md:ml-4 md:mt-10 mt-4 ml-0">
         <user-settings-notifications :user="activeUser"  v-if="upgradePackage_remaining_days !== 'NoSubscripton'" />
          <user-settings-get-premium v-else />
       </div>
-    </vs-tab>
+    </vs-tab> -->
 
-    <vs-tab icon-pack="feather" icon="icon-check" :label="!isSmallerScreen ? $t('VerifyAccount') : ''">
+    <!-- <vs-tab icon-pack="feather" icon="icon-check" :label="!isSmallerScreen ? $t('VerifyAccount') : ''">
       <div class="tab-text md:ml-4 md:mt-10 mt-4 ml-0">
         <user-settings-verify-account v-if="upgradePackage_remaining_days !== 'NoSubscripton'" :user="activeUser" />
           <user-settings-get-premium v-else :user="activeUser" />
@@ -59,7 +60,7 @@
         <user-settings-bank-info v-if="upgradePackage_remaining_days !== 'NoSubscripton'" :user="activeUser" />
           <user-settings-get-premium v-else :user="activeUser" />
       </div>
-    </vs-tab>
+    </vs-tab> -->
 
 
   </vs-tabs>
@@ -108,7 +109,7 @@ export default {
       return this.$store.state.user.upgradePackage_remaining_days
     },
     activeUser () {
-      return this.$store.state.user.currentUser
+      return this.$store.state.auth.user
     }
 
   },
@@ -117,8 +118,8 @@ export default {
       this.$store.registerModule('userManagement', userManagement)
       userManagement.isRegistered = true
     }
-    this.$store.dispatch('user/fetchUser')
-    this.$store.dispatch('user/fetchPackageInformation')
+    //this.$store.dispatch('user/fetchUser')
+    //this.$store.dispatch('user/fetchPackageInformation')
   }
 }
 </script>

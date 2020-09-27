@@ -73,7 +73,7 @@ Route::any('panel/{path}', function () {
     Route::post('/ajax/create-order',[ApiOrderController::class, 'store'])->name('ajax.order');
 
 
-
+    Route::post('/lang/setLocale',[PageController::class, 'setLocale'])->name('lang.setLocale');
 
 
 

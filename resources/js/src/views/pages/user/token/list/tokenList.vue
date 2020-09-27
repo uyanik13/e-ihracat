@@ -10,18 +10,18 @@
 <template>
   <div id="data-list-list-view" class="data-list-container">
 
-  
+
     <div class="vx-col w-full md:w-12/12 mb-base">
       <vs-tabs position="left" color="danger">
         <vs-tab :label="$t('Account')"  icon-pack="feather" icon="icon-monitor">
           <div class="vx-row">
-        
+
             <!-- CONTENT CARD - PROGRESS BAR/GOAL -->
             <div class="vx-col w-full sm:w-1/1 md:w-1/1 lg:w-1/3 xl:w-1/3 mb-base">
               <statistics-card-line icon="ShoppingBagIcon" :statistic="Number(activeUser.token ? activeUser.token : 0)" :statisticTitle="$t('Token')"  color="warning" type="area"></statistics-card-line>
             </div>
-      
-    
+
+
             <div class="vx-col w-full sm:w-1/1 md:w-1/1 lg:w-1/3 xl:w-1/3 mb-base">
               <statistics-card-line icon="ShoppingBagIcon" :statistic="Number(pendingToken)" :statisticTitle="$t('PendingPayments')"  color="warning" type="area"></statistics-card-line>
             </div>
@@ -52,7 +52,7 @@
                       </vs-td>
                       <vs-td :data="data[indextr].title">
                         <span>{{data[indextr].title}}</span>
-      
+
                       </vs-td>
 
                         <vs-td :data="data[indextr].amount">
@@ -66,8 +66,8 @@
                       <vs-td :data="data[indextr].created_at">
                         <span>{{toDate(data[indextr].created_at)}}</span>
                       </vs-td>
-                    
-                    
+
+
                     </vs-tr>
                   </template>
                 </vs-table>
@@ -100,7 +100,7 @@
                       </vs-td>
                       <vs-td :data="data[indextr].title">
                         <span>{{data[indextr].title}}</span>
-      
+
                       </vs-td>
 
                         <vs-td :data="data[indextr].amount">
@@ -114,8 +114,8 @@
                       <vs-td :data="data[indextr].created_at">
                         <span>{{toDate(data[indextr].created_at)}}</span>
                       </vs-td>
-                    
-                    
+
+
                     </vs-tr>
                   </template>
                 </vs-table>
@@ -147,7 +147,7 @@
                       </vs-td>
                       <vs-td :data="data[indextr].title">
                         <span>{{data[indextr].title}}</span>
-      
+
                       </vs-td>
 
                         <vs-td :data="data[indextr].amount">
@@ -161,8 +161,8 @@
                       <vs-td :data="data[indextr].created_at">
                         <span>{{toDate(data[indextr].created_at)}}</span>
                       </vs-td>
-                    
-                    
+
+
                     </vs-tr>
                   </template>
                 </vs-table>
@@ -193,7 +193,7 @@
                 </div>
                 <div class="flex justify-between flex-wrap">
                   <global-payment-popup/>
-                 
+
                 </div>
               </vx-card>
             </div>
@@ -219,7 +219,7 @@
                       </vs-td>
                       <vs-td :data="data[indextr].request_id">
                         <span>{{data[indextr].request_id}}</span>
-      
+
                       </vs-td>
 
                         <vs-td :data="data[indextr].amount">
@@ -233,8 +233,8 @@
                       <vs-td :data="data[indextr].created_at">
                         <span>{{toDate(data[indextr].created_at)}}</span>
                       </vs-td>
-                    
-                    
+
+
                     </vs-tr>
                   </template>
                 </vs-table>
@@ -283,7 +283,7 @@ export default {
       return this.projects
     },
     activeUser () {
-      return this.$store.state.user.currentUser
+      return this.$store.state.auth.user
     },
     paymentRequests () {
       return this.$store.state.token.tokenRequests
@@ -350,7 +350,7 @@ export default {
     this.$store.dispatch('token/fetchItems')
     this.$store.dispatch('user/fetchUser')
   }
- 
+
 }
 </script>
 

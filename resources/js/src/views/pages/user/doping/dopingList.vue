@@ -19,7 +19,7 @@
         <div class="vx-row">
             <div v-for="packageData in newsPackage" :key="packageData.id" :class="`vx-col w-full  lg:w-1/`+newsPackage.length+` mb-base`">
               <vx-card>
-              
+
                 <h2 :style="packageData.popular === 1 ? 'color: rgb(231, 96, 59)' : 'color: #22292f !important' ">{{packageData.title}}</h2>
                 <p class="text-grey">{{packageData.second_title}}</p>
 
@@ -32,7 +32,7 @@
 
                 <div class="flex justify-between flex-wrap">
                   <payment-popup :activeUser="activeUser"  :item="packageData" :PriceAnnual="PriceAnnual"/>
-                 
+
                 </div>
               </vx-card>
             </div>
@@ -42,7 +42,7 @@
         <div class="vx-row">
             <div v-for="packageData in servicePackage" :key="packageData.id" :class="`vx-col w-full  lg:w-1/`+servicePackage.length+` mb-base`">
               <vx-card>
-              
+
                 <h2 :style="packageData.popular === 1 ? 'color: rgb(231, 96, 59)' : 'color: #22292f !important' ">{{packageData.title}}</h2>
                 <p class="text-grey">{{packageData.second_title}}</p>
 
@@ -55,7 +55,7 @@
 
                 <div class="flex justify-between flex-wrap">
                   <payment-popup :activeUser="activeUser"  :item="packageData" :PriceAnnual="PriceAnnual"/>
-                 
+
                 </div>
               </vx-card>
             </div>
@@ -65,7 +65,7 @@
         <div class="vx-row">
             <div v-for="packageData in profilePackage" :key="packageData.id" :class="`vx-col w-full  lg:w-1/`+profilePackage.length+` mb-base`">
               <vx-card>
-              
+
                 <h2 :style="packageData.popular === 1 ? 'color: rgb(231, 96, 59)' : 'color: #22292f !important' ">{{packageData.title}}</h2>
                 <p class="text-grey">{{packageData.second_title}}</p>
 
@@ -78,7 +78,7 @@
 
                 <div class="flex justify-between flex-wrap">
                   <payment-popup :activeUser="activeUser"  :item="packageData" :PriceAnnual="PriceAnnual"/>
-                 
+
                 </div>
               </vx-card>
             </div>
@@ -117,9 +117,9 @@ export default {
       return this.$store.getters['package/profilePackage']
     },
     activeUser () {
-      return this.$store.state.user.currentUser
+      return this.$store.state.auth.user
     }
-    
+
 
   },
   methods: {
@@ -129,7 +129,7 @@ export default {
   created () {
     this.$store.dispatch('package/fetchItems')
     this.$store.dispatch('user/fetchUser')
-      
+
   }
 
 }

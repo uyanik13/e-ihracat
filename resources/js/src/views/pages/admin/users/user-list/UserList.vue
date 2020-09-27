@@ -336,7 +336,7 @@ export default {
   },
   mounted() {
     this.gridApi = this.gridOptions.api
-    console.log('all users',this.allUsers)
+    //console.log('all users',this.allUsers)
 
     /* =================================================================
       NOTE:

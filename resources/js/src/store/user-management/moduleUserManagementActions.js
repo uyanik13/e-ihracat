@@ -7,7 +7,7 @@
   Author URL: https://www.dijitalreklam.org
 ==========================================================================================*/
 
-import axios from '../../plugins/axios.js'
+import axios from 'axios'
 
 export default {
   // addItem({ commit }, item) {
@@ -163,19 +163,19 @@ export default {
     })
   },
 
-  fetchPackageInformation ({ commit }) {
-    return new Promise((resolve, reject) => {
-      axios.get('/api/user/my-packages')
-        .then((response) => {
-          //console.log('user',response.data)
-          commit('SET_UPGRADE_PACKAGE_LEFT', response.data.upgradePackage_remaining_days)
-          commit('SET_PROFILE_DOPING_PACKAGE_LEFT', response.data.profileDopingPackage_remaining_days)
-          commit('SET_NEWS_DOPING_PACKAGE_LEFT', response.data.newsDopingPackage_remaining_days)
-          commit('SET_SERVICE_DOPING_PACKAGE_LEFT', response.data.serviceDopingPackage_remaining_days)
-          resolve(response)
-        })
-        .catch((error) => { reject(error) })
-    })
-  },
+//   fetchPackageInformation ({ commit }) {
+//     return new Promise((resolve, reject) => {
+//       axios.get('/api/user/my-packages')
+//         .then((response) => {
+//           //console.log('user',response.data)
+//           commit('SET_UPGRADE_PACKAGE_LEFT', response.data.upgradePackage_remaining_days)
+//           commit('SET_PROFILE_DOPING_PACKAGE_LEFT', response.data.profileDopingPackage_remaining_days)
+//           commit('SET_NEWS_DOPING_PACKAGE_LEFT', response.data.newsDopingPackage_remaining_days)
+//           commit('SET_SERVICE_DOPING_PACKAGE_LEFT', response.data.serviceDopingPackage_remaining_days)
+//           resolve(response)
+//         })
+//         .catch((error) => { reject(error) })
+//     })
+//   },
 
 }

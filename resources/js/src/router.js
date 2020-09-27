@@ -51,7 +51,7 @@ const router = new Router({
         {
           path: '/panel/dashboard',
           name: 'dashboard',
-          component: () => import('./views/DashboardAnalytics.vue'),
+          component: () => import('./views/UserDashboard.vue'),
           meta: {
             rule: 'user'
 
@@ -77,7 +77,7 @@ const router = new Router({
           path: '/panel/file-manager',
           name: 'FileManager',
           meta: {
-            rule: 'common'
+            rule: 'admin'
           }
         }, //MAIN PAGE
         {
@@ -91,7 +91,7 @@ const router = new Router({
               {title: 'List', active: true}
             ],
             pageTitle: 'FileManager',
-            rule: 'common'
+            rule: 'admin'
           }
         },
         {
@@ -105,7 +105,7 @@ const router = new Router({
               {title: 'List', active: true}
             ],
             pageTitle: 'FileList',
-            rule: 'common'
+            rule: 'admin'
           }
         },
 

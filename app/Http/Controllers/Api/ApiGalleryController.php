@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\ApiController;
-use App\Models\Gallery;
 use http\Exception;
+use App\Models\Gallery;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
+use App\Http\Controllers\ApiController;
 
 
 class ApiGalleryController extends ApiController
@@ -41,23 +44,31 @@ class ApiGalleryController extends ApiController
   public function store(Request $request)
   {
     $user = auth()->setRequest($request)->user();
-    // Get user from $request token.
-    if (!$user->role == 'admin') {
+    if (!$user) {
       return $this->responseUnauthorized();
     }
 
 
     if (is_array($request->all())) {
       foreach ($request->file('files') as  $image) {
-        $FileFullName = $image->getClientOriginalName();
-        $FileNameForSaving = time().'-'.$FileFullName;
-        $FileName = explode('.',$FileFullName)[0];
         $type = $image->extension();
-        $slug = '/images/file-manager/'.$FileNameForSaving;
-        $image->move('images/file-manager', $FileNameForSaving);
+        $FileName = explode('.',$image->getClientOriginalName())[0];
+        $fileNameForSaving = time().'-'.Str::slug($FileName).'.'.$type;
+        $destinationPath = public_path('/images/file-manager/'.$user->id);
+
+        $img = Image::make($image->getRealPath());
+        File::exists($destinationPath) or File::makeDirectory($destinationPath, 0777, true, true);
+        $img->resize(800, 800, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($destinationPath.'/'.$fileNameForSaving);
+
+        $image->move($destinationPath, $fileNameForSaving);
+
+        $slug = '/images/file-manager/'.$user->id.'/'.$fileNameForSaving;
+
         $Gallery = Gallery::firstOrCreate([
           'user_id' => $user->id,
-          'file_name' => $FileName,
+          'file_name' => $fileNameForSaving,
           'slug' => $slug,
           'type' => $type,
         ]);
@@ -127,8 +138,8 @@ class ApiGalleryController extends ApiController
         unlink(public_path($gallery->slug));
         $gallery->delete();
       }else{
-
-        return $this->responseServerError('File Doesnt Exist.');
+        $gallery->delete();
+        return $this->responseResourceDeleted();
 
       }
       return $this->responseResourceDeleted();

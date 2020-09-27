@@ -66,7 +66,7 @@ export default {
       return !this.errors.any()
     },
      activeUser () {
-      return this.$store.state.user.currentUser
+      return this.$store.state.auth.user
     },
      verifyRequests () {
       return this.$store.state.user.verifyRequests[0]

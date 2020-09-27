@@ -1,21 +1,19 @@
 <?php
 namespace App\utils\Helpers;
-use App\Models\Comment;
-use App\Models\Gallery;
 use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Basket;
 use App\Models\Custom;
-use Fomvasss\Youtube\Facades\Youtube;
+use App\Models\Comment;
+use App\Models\Gallery;
 use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
-use PhpParser\Node\Expr\Isset_;
 
 class Helper
 {
@@ -46,10 +44,19 @@ class Helper
 
     $imageName = $url . '_' . time() . '.' . $extension;
 
-    Storage::disk('public')->put('/images/' . $path . '/' . $imageName, base64_decode($imageConvert));
+    $destinationPath = public_path('/images/' . $path . '/');
+
+    $img = Image::make($image);
 
 
-    $imageUrl =  env('APP_URL') .'/images/' . $path . '/' . $imageName;
+    File::exists($destinationPath) or File::makeDirectory($destinationPath, 0777, true, true);
+
+    $img->resize(800, 800, function ($constraint) {
+        $constraint->aspectRatio();
+    })->save($destinationPath.'/'.$imageName);
+
+
+    $imageUrl =  '/images/' . $path . '/' . $imageName;
 
 
 
@@ -540,33 +547,5 @@ class Helper
         return User::where('role','user')->withCount('comments')->orderBy('comments_count', 'desc')->get();
     }
 
-    public static function siteSettingsImageUpload($url, $image, $path)
-    {
-      if (strlen($image) < 255) {
-        return $image;
-      }
-
-
-      $extension = explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];   // .jpg .png .pdf
-
-      $replace = substr($image, 0, strpos($image, ',') + 1);
-
-
-      $imageConvert = str_replace($replace, '', $image);
-
-      $imageConvert = str_replace(' ', '+', $imageConvert);
-
-      $imageName = $url . '_' . time() . '.' . $extension;
-
-      Storage::disk('public')->put('/images/' . $path . '/' . $imageName, base64_decode($imageConvert));
-
-
-
-      $imageUrl =  '/images/' . $path . '/' . $imageName;
-
-
-
-      return $imageUrl;
-
-    }
+    
 }

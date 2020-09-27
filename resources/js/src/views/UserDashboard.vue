@@ -30,6 +30,7 @@
 
 <script>
 
+import Cookies from 'js-cookie'
 export default {
   data () {
     return {
@@ -41,7 +42,7 @@ export default {
   },
   computed : {
     activeUser () {
-      return this.$store.state.user.currentUser
+      return  Cookies.get('user') ? JSON.parse(Cookies.get('user')) :  this.$store.state.auth.user
     },
 
   },

@@ -19,7 +19,7 @@
                              <vs-input :label="'Button Url'"  v-model="option.url" class="mt-5 w-full"  />
                         </div>
                         <div class="flex flex-wrap items-center mb-base ml-3 mt-2">
-                          <img v-if="!option.image"  src="@assets/images/slider/slider-to-here.png"  height="450px"  width="680px" class="card-img-top" />
+                          <img v-if="!option.image" src="@assets/images/place-holders/slider-to-here.png"   height="480px"  width="720px" class="card-img-top" />
                           <img v-else :src="option.image"   height="480px"  width="720px" class="card-img-top" />
                         <div>
                             <input type="file"  class="hidden" :ref="'sliderImage'+index" @change="sliderUpload($event,index,'HomeUnderMenuSlider')" accept="image/*">
@@ -114,7 +114,7 @@ export default {
           h1: 'Slider Basligi',
           h2: 'Slider Aciklamasi',
           video: 'Youtube Video Url',
-          image: '',
+          image: 'https://via.placeholder.com/500.png',
           url: 'Button URL'
         }
       ],

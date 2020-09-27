@@ -1,26 +1,26 @@
 <template>
-  <div class="vx-row">
-    <div  v-for="(file,index) in List" :key="index"
-          class="vx-col w-full sm:w-1/3 lg:w-1/3 mb-base">
-      <vx-card >
-        <div slot="no-body">
-          <img height="90px" width="60px" src="/images/site_settings/pdf.png" :alt="file.file_name" v-if="file.type === 'pdf'"  >
-          <img height="90px" width="60px" src="/images/site_settings/doc.png" :alt="file.file_name" v-else-if="file.type === 'doc' || file.type === 'docx'" >
-          <img height="90px" width="60px" src="/images/site_settings/xls.png" :alt="file.file_name" v-else-if="file.type === 'xls' || file.type === 'xlsx'"  >
-          <img height="100px" width="100px" :src="file.slug" :alt="file.file_name" v-else  class="responsive" >
-        </div>
-        <h5 class="mb-2">{{ file.file_name }}</h5>
-        <div class="flex justify-between flex-wrap">
-          <popup-background v-show="file.type === 'png' || file.type === 'jpeg' || file.type === 'jpg'" :File="file"/>
-          <vs-button color="warning" type="filled" icon-pack="feather"
-                     v-clipboard:copy="file.slug"
-                     v-clipboard:success="copySlug" icon="icon-copy"></vs-button>
-          <vs-button color="danger" type="filled" icon-pack="feather" @click.stop="deleteData(file.id)" icon="icon-trash"></vs-button>
-        </div>
-      </vx-card>
-    </div>
+    <div class="vx-row">
 
-  </div>
+        <div class="vx-col w-full lg:w-1/4" v-for="(file,index) in List" :key="index">
+                <vx-card class="overlay-card overflow-hidden mb-5">
+                    <template slot="no-body">
+                      <img class="responsive h-64" :src=" file.type === 'png' || file.type === 'jpeg' || file.type === 'jpg' ? file.slug : '/images/site_settings/file.png' ">
+                        <div class="card-overlay text-white flex flex-col justify-between">
+                            <div class="flex justify-between flex-wrap">
+                            <popup-background v-show="file.type === 'png' || file.type === 'jpeg' || file.type === 'jpg'" :File="file"/>
+                            <vs-button color="warning" type="filled" icon-pack="feather"
+                                        v-clipboard:copy="file.slug"
+                                        v-clipboard:success="copySlug" icon="icon-copy"></vs-button>
+                            <vs-button color="danger" type="filled" icon-pack="feather" @click.stop="deleteData(file.id)" icon="icon-trash"></vs-button>
+                            </div>
+                        </div>
+                    </template>
+                </vx-card>
+            </div>
+
+
+
+    </div>
 </template>
 
 <script>
@@ -28,9 +28,11 @@
 import PopupBackground from './PopupBackground.vue'
 import Swal from 'sweetalert2'
 import i18n from '@/i18n/i18n'
+
 export default {
   components:{
     PopupBackground
+
   },
   data () {
     return {
@@ -103,10 +105,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #profile-tabs {
   .vs-tabs--content {
     padding: 0;
   }
+
 }
 </style>

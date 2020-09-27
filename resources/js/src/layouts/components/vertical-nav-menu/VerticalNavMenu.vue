@@ -1,12 +1,3 @@
-<!-- =========================================================================================
-  File Name: VerticalNavMenu.vue
-  Description: Vertical NavMenu Component
-  Component Name: VerticalNavMenu
-  ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-    Author: Pixinvent
-  Author URL: http://www.themeforest.net/user/pixinvent
-========================================================================================== -->
 
 
 <template >
@@ -30,10 +21,14 @@
         <div class="header-sidebar flex items-end justify-between" slot="header">
 
           <!-- Logo -->
-          <router-link tag="div" class="vx-logo cursor-pointer flex items-center" to="/panel/dashboard">
+          <router-link
+           tag="div"
+           class="vx-logo cursor-pointer flex items-center"
+            :to="activeUser.role === 'admin' ? '/panel/admin-dashboard' : '/panel/dashboard'">
             <logo class="w-80 mr-4 fill-current text-primary" />
-            <!-- <span class="vx-logo-text text-primary" v-show="isMouseEnter || !reduce" v-if="title">{{ title }}</span> -->
+            <span class="vx-logo-text text-primary" v-show="isMouseEnter || !reduce" v-if="title">{{ title }}</span>
           </router-link>
+
           <!-- /Logo -->
 
           <!-- Menu Buttons -->
@@ -61,7 +56,14 @@
         <div class="shadow-bottom" v-show="showShadowBottom" />
 
         <!-- Menu Items -->
-        <component :is="scrollbarTag" ref="verticalNavMenuPs" class="scroll-area-v-nav-menu pt-2" :settings="settings" @ps-scroll-y="psSectionScroll" @scroll="psSectionScroll" :key="$vs.rtl">
+        <component
+          :is="scrollbarTag"
+          ref="verticalNavMenuPs"
+          class="scroll-area-v-nav-menu pt-2"
+          :settings="settings"
+          @ps-scroll-y="psSectionScroll"
+          @scroll="psSectionScroll"
+          :key="$vs.rtl">
 
           <template v-for="(item, index) in menuItemsUpdated">
             <!-- Group Header -->
@@ -81,10 +83,10 @@
                 :icon="item.icon" :target="item.target"
                 :isDisabled="item.isDisabled"
                 :slug="item.slug">
-                  <span v-show="!verticalNavMenuItemsMin"
-                        class="truncate">{{ $t(item.i18n) || item.name }}</span>
-                <vs-chip class="ml-auto" :color="item.tagColor"
-                         v-if="item.tag && (isMouseEnter || !reduce)">{{ item.tag }}</vs-chip>
+
+                <span v-show="!verticalNavMenuItemsMin" class="truncate">{{ $t(item.i18n) || item.name }}</span>
+                <vs-chip class="ml-auto" :color="item.tagColor" v-if="item.tag && (isMouseEnter || !reduce)">{{ item.tag }}</vs-chip>
+
               </v-nav-menu-item>
 
               <!-- Nav-Group -->
@@ -120,8 +122,8 @@
 import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 import VNavMenuGroup from './VerticalNavMenuGroup.vue'
 import VNavMenuItem from './VerticalNavMenuItem.vue'
-
 import Logo from '../Logo.vue'
+import Cookies from 'js-cookie'
 
 export default {
   name: 'v-nav-menu',
@@ -152,6 +154,9 @@ export default {
     showShadowBottom    : false
   }),
   computed: {
+       activeUser () {
+        return  Cookies.get('user') ? JSON.parse(Cookies.get('user')) :  this.$store.state.auth.user
+        },
     isGroupActive () {
       return (item) => {
         const path        = this.$route.fullPath

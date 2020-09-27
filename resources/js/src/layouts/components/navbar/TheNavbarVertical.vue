@@ -24,7 +24,7 @@
         <vs-button icon-pack="feather" icon="icon-link" href="/" target="_blank" class="shadow-lg btn-back-to-top" > {{ $t('GoToTheWebSite')}}</vs-button>
         <vs-spacer />
 
-    <!--    <i18n />-->
+       <i18n />
 
 <!--        <search-bar />-->
 

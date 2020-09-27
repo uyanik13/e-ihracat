@@ -22,7 +22,7 @@
         icon-pack="feather"
         :label-placeholder="$t('Password')"
         v-model="password"
-        @keyup.enter="loginJWT"
+        @keyup.enter="login"
         class="w-full mt-6" />
     <span class="text-danger text-sm">{{ errors.first('password')? $t('PasswordRequired') : '' }}</span>
 
@@ -32,7 +32,7 @@
     </div>
     <div class="flex flex-wrap justify-between mb-3">
       <vs-button  type="border" @click="registerUser">{{$t('Register')}}</vs-button>
-      <vs-button :disabled="!validateForm"   @click="loginJWT">{{$t('Login')}}</vs-button>
+      <vs-button :disabled="!validateForm"   @click="login">{{$t('Login')}}</vs-button>
     </div>
   </div>
 </template>
@@ -69,18 +69,18 @@ export default {
       }
       return true
     },
-    loginJWT () {
+    login () {
       this.$vs.loading()
       const payload = {
         checkbox_remember_me: this.checkbox_remember_me,
         email: this.email,
         password: this.password
       }
-      this.$store.dispatch('auth/loginJWT', payload)
+      this.$store.dispatch('auth/login', payload)
         .then((response) => {
           // console.log('İÇ',response)
           this.$vs.loading.close()
-          this.$acl.change(response.data.user.role)
+          this.$acl.change(response.role)
            this.showAlert(i18n.t('Success'), i18n.t('login_successfull'), 'icon-success', 'success')
           this.checkLogin()
         })

@@ -15,39 +15,6 @@ function addSubscriber (callback) {
 }
 
 export default {
-  init () {
-    axios.interceptors.response.use(function (response) {
-      return response
-    }, function (error) {
-      // const { config, response: { status } } = error
-      const { config, response } = error
-      const originalRequest = config
-
-      // if (status === 401) {
-      if (response && response.status === 401) {
-        if (!isAlreadyFetchingAccessToken) {
-          isAlreadyFetchingAccessToken = true
-          store.dispatch('auth/refreshToken')
-            .then((access_token) => {
-              isAlreadyFetchingAccessToken = false
-              onAccessTokenFetched(access_token)
-            })
-        }
-
-        const retryOriginalRequest = new Promise((resolve) => {
-          addSubscriber(access_token => {
-            originalRequest.headers.Authorization = `Bearer ${access_token}`
-            Cookies.set('token', access_token)
-            resolve(axios(originalRequest))
-            router.push(router.currentRoute.query.to || '/')
-          })
-        })
-        return retryOriginalRequest
-      }
-      return Promise.reject(error)
-    })
-  },
-
   login (email, pwd) {
     return axios.post('/api/login', {email, password: pwd})
   },

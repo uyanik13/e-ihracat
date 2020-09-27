@@ -4683,6 +4683,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "#myCountry {\n  width: 60%;\n}\r\n\r\n\r\n", ""]);
+<<<<<<< Updated upstream
 
 // exports
 
@@ -4702,6 +4703,8 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "#myCountry {\n  width: 60%;\n}\r\n\r\n\r\n", ""]);
+=======
+>>>>>>> Stashed changes
 
 // exports
 
@@ -37376,7 +37379,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/ihracat-istatistik',
       name: 'ihracat-istatistik',
       component: function component() {
+<<<<<<< Updated upstream
         return Promise.all(/*! import() */[__webpack_require__.e(3), __webpack_require__.e(25)]).then(__webpack_require__.bind(null, /*! ./components/IhracatIstatistik.vue */ "./resources/front-end-js/components/IhracatIstatistik.vue"));
+=======
+        return Promise.all(/*! import() */[__webpack_require__.e(7), __webpack_require__.e(32)]).then(__webpack_require__.bind(null, /*! ./components/IhracatIstatistik.vue */ "./resources/front-end-js/components/IhracatIstatistik.vue"));
+>>>>>>> Stashed changes
       },
       params: true
     }, {

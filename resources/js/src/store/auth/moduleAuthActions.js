@@ -1,29 +1,16 @@
-/*=========================================================================================
-  File Name: moduleAuthActions.js
-  Description: Auth Module Actions
-  ----------------------------------------------------------------------------------------
-  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-  Author: Pixinvent
-  Author URL: https://www.dijitalreklam.org
-==========================================================================================*/
-
-import jwt from '../../http/requests/auth/jwt/index.js'
-import * as types from '../mutation-types'
+import Api from '@/http/api.js'
 import Cookies from 'js-cookie'
-import axios from 'axios'
 
 
 export default {
 
-  loginJWT ({commit}, payload) {
+  login (context, payload) {
     return new Promise((resolve, reject) => {
-      jwt.login(payload.email, payload.password)
-        .then(response => {
-            commit('SET_BEARER', response.data.access_token)
-            Cookies.set('token', response.data.access_token)
-            Cookies.set('user', response.data.user)
-          setTimeout(() => { resolve(response) }, 1000)
-          //acl => acl.change(response.data.user.role)
+        Api.post('/api/login',payload).then(response => {
+            console.log(response)
+           context.commit('SET_BEARER', response.access_token)
+           context.dispatch('fetchUser')
+          setTimeout(() => { resolve(response.user) }, 500)
         })
         .catch(error => {
           console.log(error)
@@ -33,20 +20,13 @@ export default {
   },
 
 
-  registerUserJWT ({ commit }, payload) {
-
-    const { name, email, password, confirmPassword } = payload.userDetails
-
+  register ({ commit }, payload) {
     return new Promise((resolve, reject) => {
-
-      // Check confirm password
-      if (password !== confirmPassword) {
+      if (payload.password !== payload.confirm_password) {
         reject({message: 'Password doesn\'t match. Please try again.'})
       }
-
-      jwt.registerUser(name, email, password, confirmPassword)
+      Api.post('/api/register',payload)
         .then(response => {
-          //router.push(router.currentRoute.query.to || 'login')
           resolve(response)
         })
         .catch(error => { reject(error) })
@@ -54,72 +34,49 @@ export default {
   },
 
 
-  saveToken ({ commit, dispatch }, payload) {
-    commit(types.SAVE_TOKEN, payload)
+  fetchUser (context) {
+    return new Promise((resolve, reject) => {
+        Api.get('/api/user').then(response => {
+            console.log(response)
+          context.commit('SET_USER', response)
+          acl => acl.change(response.role)
+          resolve(response)
+        })
+        .catch(error => { reject(error) })
+    })
   },
 
 
-  async fetchOauthUrl (ctx, { provider }) {
-    const { data } = await axios.post(`/api/oauth/${provider}`)
-    return data.url
+
+  logout () {
+    return new Promise((resolve, reject) => {
+        Api.post('/api/logout').then(response => {
+            Cookies.remove('token')
+            Cookies.remove('user')
+            console.log('LOGOUT')
+            resolve(response)
+        })
+        .catch(error => { reject(error) })
+    })
   },
+
+
+  refreshToken (context) {
+    return new Promise((resolve, reject) => {
+      Api.get('/api/refresh').then(response => {
+          context.commit('SET_BEARER', response)
+          resolve(response.data)
+        })
+        .catch(error => { reject(error) })
+    })
+  },
+
 
   emailVerifyApi ({ commit }, payload) {
     return new Promise((resolve, reject) => {
-
-      jwt.emailVerifyApi(payload)
+     Api.post('/api/emailResendApi',payload)
         .then(response => {
           resolve(response)
-        })
-        .catch(error => { reject(error) })
-    })
-  },
-
-  fetchUser ({ commit }) {
-    return new Promise((resolve, reject) => {
-      jwt.fetchUser()
-        .then(response => {
-          commit('UPDATE_USER_INFO', response.data, {root: true})
-          return response.data
-        })
-        .catch(error => { reject(error) })
-    })
-  },
-
-  fetchStore ({ commit }) {
-    return new Promise((resolve, reject) => {
-      jwt.fetchStore()
-        .then(response => {
-          return response.data
-        })
-        .catch(error => { reject(error) })
-    })
-  },
-
-
-    logout () {
-        axios.post('/api/logout')
-        Cookies.remove('token')
-        Cookies.remove('user')
-        console.log('LOGOUT')
-    },
-
-
-  updateUserRole ({ dispatch }, payload) {
-    // Change client side
-    payload.aclChangeRole(payload.role)
-    // Make API call to server for changing role
-    // Change userInfo in localStorage and store
-    dispatch('updateUserInfo', {role: payload.role})
-  },
-
-
-  refreshToken ({ commit }) {
-    return new Promise((resolve, reject) => {
-      jwt.refreshToken()
-        .then(response => {
-          //console.log(response.data)
-          return response.data
         })
         .catch(error => { reject(error) })
     })
