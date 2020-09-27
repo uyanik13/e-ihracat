@@ -43,7 +43,10 @@ import i18n from '@/i18n/i18n'
 
 export default {
   created () {
-    this.checkLogin()
+    if (this.$route.query.sessionExpired == 1) {
+      this.$acl.change('guest')
+      console.clear()
+    }
   },
   data () {
     return {
@@ -58,17 +61,6 @@ export default {
     }
   },
   methods: {
-    checkLogin () {
-      // If user is already logged in notify
-      if (this.$acl.check('user')) {
-        //this.showAlert(i18n.t('Error'), i18n.t('you_are_logged_in'), 'icon-alert-circle', 'warning')
-        return this.$router.push({ name: 'dashboard'})
-      } else if (this.$acl.check('admin')) {
-        //this.showAlert(i18n.t('Error'), i18n.t('you_are_logged_in'), 'icon-alert-circle', 'warning')
-        return this.$router.push({ name: 'admin-dashboard'})
-      }
-      return true
-    },
     login () {
       this.$vs.loading()
       const payload = {
@@ -82,7 +74,13 @@ export default {
           this.$vs.loading.close()
           this.$acl.change(response.role)
            this.showAlert(i18n.t('Success'), i18n.t('login_successfull'), 'icon-success', 'success')
-          this.checkLogin()
+            if (response.role === 'user') {
+            //this.showAlert(i18n.t('Error'), i18n.t('you_are_logged_in'), 'icon-alert-circle', 'warning')
+            return this.$router.push({ name: 'dashboard'})
+            } else if (response.role === 'admin') {
+            //this.showAlert(i18n.t('Error'), i18n.t('you_are_logged_in'), 'icon-alert-circle', 'warning')
+            return this.$router.push({ name: 'admin-dashboard'})
+            }
         })
         .catch(error => {
           console.log(error)

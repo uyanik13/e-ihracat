@@ -11,14 +11,17 @@ use Tymon\JWTAuth\Exceptions\TokenBlacklistedException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;
+use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
-class JWTMiddleware extends BaseMiddleware
+class JWTMiddleware extends Middleware
 {
     public function handle($request, Closure $next)
     {
+
+
         try {
             JWTAuth::parseToken()->authenticate();
+
         }
         catch (TokenBlacklistedException $e){
             return response()->json([

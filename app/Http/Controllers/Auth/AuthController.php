@@ -3,103 +3,70 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cookie;
-use App\Http\Controllers\Auth\AuthController;
+use App\Exceptions\VerifyEmailException;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 
 class AuthController extends Controller
 {
-    /**
-     * Create a new AuthController instance.
-     *
-     * @return void
-     */
+    use AuthenticatesUsers;
+
     public function __construct()
     {
-        $this->middleware('jwt.verify', ['except' => ['logout']]);
+        $this->middleware('jwt.verify', ['except' => ['logout','login']]);
     }
 
-    /**
-     * Get a JWT via given credentials.
+     /**
+     * Attempt to log the user into the application.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
      */
-    public function login()
+    protected function attemptLogin(Request $request)
     {
-        $credentials = request(['email', 'password']);
 
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+
+        $token = $this->guard()->attempt($this->credentials($request));
+
+
+
+        if (! $token) {
+            return false;
         }
 
-        return $this->me($token);
+
+
+        $user = $this->guard()->user();
+
+
+        if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
+            return false;
+        }
+
+        $this->guard()->setToken($token);
+
+
+
+        return true;
     }
 
     /**
-     * Get the authenticated User.
+     * Send the response after the user was authenticated.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function me($token)
+    protected function sendLoginResponse(Request $request)
     {
+        $this->clearLoginAttempts($request);
 
-        $user = auth()->user();
-
-        return response()->json([
-            'status' => 200,
-            'message' => 'Authorized.',
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => array(
-                'id' => $user->id,
-                'name' => $user->name,
-                'avatar' => $user->avatar,
-                'email' => $user->email,
-                'role' => $user->role
-            )
-        ], 200);
-
-
-
-
-    }
-
-    /**
-     * Log the user out (Invalidate the token).
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function logout(Request $request)
-    {
-
-        auth()->logout();
-        $request->session()->forget('user');
-        Cookie::forget('token');
-        return back()->withSuccess(trans('lang.logout_successfully'));
-    }
-
-    /**
-     * Refresh a token.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function refresh()
-    {
-        return $this->respondWithToken(auth()->refresh());
-    }
-
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function respondWithToken($token)
-    {
-
+        $token = (string) $this->guard()->getToken();
         $expiration = $this->guard()->getPayload()->get('exp');
         $user = auth()->user();
 
@@ -117,6 +84,64 @@ class AuthController extends Controller
                 'role' => $user->role
             )
         ], 200);
+    }
+
+    /**
+     * Get the failed login response instance.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        $user = $this->guard()->user();
+        if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
+            throw VerifyEmailException::forUser($user);
+        }
+
+        throw ValidationException::withMessages([
+            $this->username() => [trans('auth.failed')],
+        ]);
+    }
+
+    public function logout( Request $request ) {
+
+        $token = $request->header( 'Authorization' );
+
+
+        try {
+            JWTAuth::parseToken()->invalidate( $token );
+
+            return response()->json( [
+                'error'   => false,
+                'message' => trans( 'auth.logged_out' )
+            ],201);
+
+        } catch ( TokenExpiredException $exception ) {
+
+            return response()->json( [
+                'error'   => true,
+                'message' => trans( 'auth.token.expired' )
+
+            ], 401 );
+
+        } catch ( TokenInvalidException $exception ) {
+
+            return response()->json( [
+                'error'   => true,
+                'message' => trans( 'auth.token.invalid' )
+            ], 401 );
+
+        } catch ( JWTException $exception ) {
+
+            return response()->json( [
+                'error'   => true,
+                'message' => trans( 'auth.token.missing' )
+            ], 500 );
+
+        }
     }
 
     public function checkToken()
