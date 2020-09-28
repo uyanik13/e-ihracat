@@ -34,15 +34,22 @@
                         şimdi tam zamanı! Bünyemizdeki güçlü çözüm ortaklarımız ile ihtiyacınız olan hizmetlere
                         ulaşın. </p>
                     <ul class="social-list hover_links_effect">
-                        <li><a target="_blank" href="https://www.facebook.com/eihracatturkiye/"><span
-                                    class="fa fa-facebook"></span></a></span></a></li>
-                        <li><a target="_blank" href="https://www.instagram.com/eihracatturkiye/"><span
-                                    class="fa fa-instagram"></span></a></span></a></li>
-                        <li><a target="_blank" href="https://www.linkedin.com/company/e-i̇hracat-türkiye/"><span
-                                    class="fa fa-linkedin"></span></a></li>
-                        <li><a target="_blank"
-                               href="https://www.youtube.com/channel/UCnAxySZ049LOK7DLQbYofeQ"><span
-                                    class="fa fa-youtube"></span></a>
+                        <li>@isset($setting['facebook']->value)<a target="_blank" href="{{$setting['facebook']->value}}"><span
+                                    class="fa fa-facebook"></span></a>
+                            @endisset
+                        </li>
+                        <li>@isset($setting['instagram']->value)<a target="_blank" href="{{$setting['instagram']->value}}"><span
+                                    class="fa fa-instagram"></span></a>
+                            @endisset
+                        </li>
+                        <li>@isset($setting['linkedin']->value)<a target="_blank" href="{{$setting['linkedin']->value}}"><span
+                                    class="fa fa-linkedin"></span></a>
+                            @endisset
+                        </li>
+                        <li>
+                            @isset($setting['youtube']->value)<a target="_blank"
+                               href="{{$setting['youtube']->value}}"><span
+                                    class="fa fa-youtube"></span></a> @endisset
                         </li>
                     </ul>
                 </div>
@@ -99,15 +106,28 @@
                 <div class="cell-3">
                     <h3 class="block-head">İletişim Bilgileri</h3>
                     <ul>
-                        <li class="footer-contact"><i class="fa fa-home"></i><span>Ergenekon Mah. Kayahatun Sok.
-										No. 55/57 34373
-										Şişli – İstanbul / Türkiye</span></li>
-                        <li class="footer-contact"><i class="fa fa-globe"></i><span><a
-                                    href="">info@eihracatturkiye.com</a></span></li>
-                        <li class="footer-contact"><i class="fa fa-phone"></i><span>+90 850 346 9956</span>
+                        <li class="footer-contact">
+                            @isset($setting['address']->value)
+                                <i class="fa fa-home"></i><span>
+                                    {{$setting['address']->value}}
+                                </span>
+                             @endisset
                         </li>
-                        <li class="footer-contact"><i class="fa fa-map-marker"></i><span><a
-                                    href="contact.html#map_canvas">Haritada Bizi Görüntüleyin</a></span></li>
+                        <li class="footer-contact">
+                        @isset($setting['email']->value)
+                            <i class="fa fa-globe"></i><span><a
+                                    href="mailto:{{$setting['email']->value}}">{{$setting['email']->value}}</a></span>
+                        @endisset
+                        </li>
+                        <li class="footer-contact">
+                            @isset($setting['phone']->value)
+                                <i class="fa fa-phone"></i><span>{{$setting['phone']->value}}</span>
+                            @endisset
+                        </li>
+                        <li class="footer-contact">
+                            <i class="fa fa-map-marker"></i><span><a
+                                    href="contact/#map_canvas">Haritada Bizi Görüntüleyin</a></span>
+                        </li>
                         <li class="footer-contact newsletterArea">
 									<span style="text-align: text-center">
 										<h5>Bültene Abone Olun </h5>
@@ -122,7 +142,6 @@
                     </ul>
                 </div>
                 <!-- contact us footer cell end -->
-a
             </div>
         </div>
     </div>

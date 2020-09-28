@@ -55,7 +55,7 @@
         </vs-tab>
 
 
-        <vs-tab label="Hizli Randevu Hizmet Listesi" class="mb-5 ml-5 mt-5 sm:w-11/12">
+        <!-- <vs-tab label="Hizli Randevu Hizmet Listesi" class="mb-5 ml-5 mt-5 sm:w-11/12">
           <vx-card no-shadow v-for="(option,index)  in QuickServiceList" :key="index" class="mb-5 mt-5 ">
             <div  class="vx-col  w-full md:w-12/12 mb-base">
               <vs-input :label="'Hizmet Adi'"  v-model="option.key" class="mt-5 w-full"   v-validate="'required| min:3'"/>
@@ -67,7 +67,7 @@
           <div class="flex flex-wrap items-center justify-end">
             <vs-button class="ml-auto mt-2" @click="SaveData('QuickServiceList')">{{$t('save')}}</vs-button>
           </div>
-        </vs-tab>
+        </vs-tab> -->
 
 
         <vs-tab label="4Lu Box Sayilari" class="mb-5 ml-5 mt-5 sm:w-11/12">

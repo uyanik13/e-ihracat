@@ -76,7 +76,7 @@ function live_post_search () {
           element.innerHTML += new_result
         }
         for (let i = 0; i < resp[1].length; i++) {
-          var new_result = `<li class="search_result_li"  > <a class="search_result_a" href=${  resp[1][i].slug  }>${  resp[1][i].title.substring(0, 18)  }...</a></li><hr>`
+          var new_result = `<li class="search_result_li"  > <a class="search_result_a" href=${  resp[1][i].slug  }>${  resp[1][i].title.substring(0, 30)  }...</a></li>`
           element.innerHTML += new_result
         }
       }

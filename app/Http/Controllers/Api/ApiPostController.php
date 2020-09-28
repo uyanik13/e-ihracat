@@ -41,6 +41,10 @@ class ApiPostController extends ApiController
     ->where('type','post')
     ->orderBy('created_at', 'desc')
     ->get();
+    $services = Post::where('status', 1)
+    ->where('type','service')
+    ->orderBy('created_at', 'desc')
+    ->get();
 
     $myPosts = Post::where('user_id',$this->user->id)->where('status', 1)->where('type','post')->orderBy('created_at', 'desc')->get();
 
@@ -51,6 +55,7 @@ class ApiPostController extends ApiController
     return [
       'pages' => $pages,
       'posts' => $posts,
+      'services' => $services,
       'myPosts' => $myPosts,
       'categories' => $categories
     ];

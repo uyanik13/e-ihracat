@@ -71,13 +71,13 @@ class ApiCustomController extends ApiController
             $customData = Custom::where('type',$request->type)->firstOrFail();
             $requestData = $request->all();
             if(isset($requestData[$request->type][0]['image'])){
-               foreach ($requestData[$request->type] as $index => $data) {
-                   if($data['image']){
-                     $fileName = 'image-'.time();
-                     $requestData[$request->type][$index]['image'] = Helper::PostImageHelper(Str::slug($fileName), $data['image'], 'site-settings');
-                     }
-                   }
-               }
+              foreach ($requestData[$request->type] as $index => $data) {
+                  if($data['image']){
+                    $fileName = 'image-'.time();
+                    $requestData[$request->type][$index]['image'] = Helper::siteImageHelper(Str::slug($fileName), $data['image'], 'site-settings');
+                    }
+                  }
+              }
             $customData->JsonData = json_encode($requestData);
             $customData->save();
         }else{
@@ -88,7 +88,7 @@ class ApiCustomController extends ApiController
                 foreach ($requestData[$request->type] as $index => $data) {
                     if($data['image']){
                       $fileName = 'image-'.time();
-                      $requestData[$request->type][$index]['image'] = Helper::PostImageHelper(Str::slug($fileName), $data['image'], 'site-settings');
+                      $requestData[$request->type][$index]['image'] = Helper::siteImageHelper(Str::slug($fileName), $data['image'], 'site-settings');
                       }
                     }
                 }

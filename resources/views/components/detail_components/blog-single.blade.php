@@ -37,10 +37,10 @@
                                         <span class="tri-col"></span>
                                     </div>
                                 </div>
-                                <img src="{{$post->thumbnail}}" alt="Our Blog post image goes here">
+                                {{-- <img src="{{$post->thumbnail}}" alt="Our Blog post image goes here"> --}}
                             </div>
                             <article class="post-content">
-                                <div class="post-info-container">
+                                <div class="post-info-container" style="margin-top: 130px">
                                     <h1 class="main-color">{!! $post->title  !!}
                                     </h1>
                                 </div>

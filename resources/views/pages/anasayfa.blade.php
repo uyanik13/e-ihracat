@@ -22,10 +22,11 @@
                 @isset($HomeUnderMenuSlider)
                     @foreach ($HomeUnderMenuSlider  as $key => $slide)
                         <li data-transition="fade" data-slotamount="7">
-                            <img alt="" data-lazyload="{{$slide['image']}}"
+                            @isset($slide['image'])<img alt="" data-lazyload="{{$slide['image']}}"
                                  data-bgposition="left center" data-kenburns="on" data-duration="14000"
                                  data-ease="Linear.easeNone" data-bgfit="100" data-bgfitend="130"
                                  data-bgpositionend="right center">
+                        @endisset
                             <div class="caption fade " data-autoplay="true" data-autoplayonlyfirsttime="true"
                                  data-nextslideatend="false" data-x="470" data-y="center" data-speed="500"
                                  data-start="10" data-easing="easeOutBahck">
@@ -41,23 +42,53 @@
                                             allowfullscreen></iframe>
                                 @endisset
                             </div>
-                            @isset($slide['h1'])
-                                <div class="caption slide-head tp-resizeme witTxt doLightBlack" data-x="center"
-                                     data-y="150"
-                                     data-speed="500" data-start="1700"
-                                     data-easing="easeOutBack">{{$slide['h1']}}@endisset
-                                </div>
+                            @if(isset($slide['video']))
+                                @isset($slide['h1'])
+
+                                    <div class="caption slide-head tp-resizeme witTxt doItWhite"  style="width: 150px;word-wrap: break-word" data-x="0"
+                                         data-y="150"
+                                         data-speed="500" data-start="1700"
+                                         data-easing="easeOutBack">{{$slide['h1']}}
+
+                                    </div>
+                                @endisset
+                                @isset($slide['h2'])
+                                    <div class="caption slide-head tp-resizeme witTxt doItWhite" data-x="0"
+                                         data-y="200" data-speed="700" data-start="1900"
+                                         data-easing="easeOutBack">{{$slide['h2']}}
+                                    </div>
+                                @endisset
+                                @isset($slide['url'])
+                                    <div class="caption larger-text tp-resizeme witTxt" data-x="0" data-y="300"
+                                         data-speed="700" data-start="2300" data-easing="easeOutBack"><a
+                                            href="{{$slide['url']}}"
+                                            class="btn btn-md btn-skew themeColorBtn">Detaylar</a>
+                                    </div>
+                                @endisset
+                            @else
+                                @isset($slide['h1'])
+                                    <div class="caption slide-head tp-resizeme witTxt doLightBlack" data-x="center"
+                                         data-y="150"
+                                         data-speed="500" data-start="1700"
+                                         data-easing="easeOutBack">{{$slide['h1']}}
+
+                                    </div>
+                                @endisset
                                 @isset($slide['h2'])
                                     <div class="caption large-title tp-resizeme witTxt doLightBlack" data-x="center"
                                          data-y="200" data-speed="700" data-start="1900"
-                                         data-easing="easeOutBack">{{$slide['h2']}}@endisset
+                                         data-easing="easeOutBack">{{$slide['h2']}}
                                     </div>
-                                    @isset($slide['url'])
-                                        <div class="caption larger-text tp-resizeme witTxt" data-x="center" data-y="300"
-                                             data-speed="700" data-start="2300" data-easing="easeOutBack"><a
-                                                href="{{$slide['url']}}"
-                                                class="btn btn-md btn-skew themeColorBtn">Detaylar</a>@endisset
-                                        </div>
+                                @endisset
+                                @isset($slide['url'])
+                                    <div class="caption larger-text tp-resizeme witTxt" data-x="center" data-y="300"
+                                         data-speed="700" data-start="2300" data-easing="easeOutBack"><a
+                                            href="{{$slide['url']}}"
+                                            class="btn btn-md btn-skew themeColorBtn">Detaylar</a>
+                                    </div>
+                                @endisset
+                            @endif
+
                         </li>
 
                     @endforeach
@@ -128,15 +159,15 @@
                         <h3 class="center block-head"><span class="main-color">E-İhracat Türkiye'ye Hoş Geldiniz!
                         </h3>
                         @isset ($about['homePageDesc'])
-                        <p class="margin-bottom-0">
-                            {{ substr(strip_tags($about['homePageDesc']),0,25)}}
+                        <p class="margin-bottom-20">
+                            {{ strip_tags($about['homePageDesc'])}}
 
                         </p>
                         @endisset
-                        <a class="btn btn-md btn-skew themeColorBtn mb-15" href="#">
+                        <a class="btn btn-md btn-skew themeColorBtn mb-15" href="/about-us">
                             <span><i class="fa fa-chevron-right selected"></i>Hakkımızda Daha Fazla</span>
                         </a>
-                        <a class="btn btn-md btn-skew themeColorBtn mb-15" href="#">
+                        <a class="btn btn-md btn-skew themeColorBtn mb-15" href="/panel/register">
                             <span><i class="fa fa-chevron-right selected"></i>Şimdi Kayıt Olun!</span>
                         </a> <br>
                         @isset ($about['url'])
@@ -186,9 +217,11 @@
                         <div class="form-input">
                             <label>Almak İstediğiniz Hizmet<span class="red"> *</span></label>
                             <select name="service" id="fastBookService">
-                                @isset($QuickServiceList) @foreach ($QuickServiceList as $key => $item)
-                                    <option value="{{$key}}">{{$item['key']}}</option>
-                                @endforeach @endisset
+
+                                @foreach ($findServiceswithoutId as $key => $service)
+                                <option value="{{$key}}">{{$service->title}}</option>
+                            @endforeach
+                               
                             </select>
                         </div>
                     </div>
@@ -219,10 +252,12 @@
                     <div class="cell-3 service-box-1 fx" data-animate="fadeInUp" data-animation-delay="200">
                         <div class="box-top">
                             <img src="{{$service->thumbnail}}">
-                            <h3>{{substr($service->title,0,15)}}</h3>
+                            <h3>{{($service->title)}}</h3>
+                            <p>
                             @php
-                                echo substr(strip_tags($service->content),0,50);
+                                echo substr(strip_tags($service->content),0,250);
                             @endphp
+                            </p>
                             <a class="more-btn bold" href="{{route('service.find',$service->slug)}}">Hizmet
                                 Detayları</a>
                         </div>
@@ -240,13 +275,13 @@
         <div class="container">
             <div class="row">
                 <div class="cell-3">
-                    <h3 class="block-head side-heading">{{__('homepage.latest')}} <span>{{__('homepage.news')}}</span>
+                    <h3 class="block-head side-heading">{{__('lang.latest')}} <span>{{__('lang.news')}}</span>
                     </h3>
                     <p class="portfolio-lft-txt">
-                        {{__('homepage.look_all_news_desc')}}
+                        {{__('lang.look_all_news_desc')}}
                     </p>
                     <div class="viewAll-home">
-                        <a class="btn themeColorBtn mb-15" href="blog">{{__('homepage.look_all_news')}}</a>
+                        <a class="btn themeColorBtn mb-15" href="blog">{{__('lang.look_all_news')}}</a>
                     </div>
                 </div>
                 <div class="cell-9">
@@ -280,7 +315,7 @@
     <!-- Portfolio Staff -->
     <div class="sectionWrapper gry-bg">
         <div class="container">
-            <h3 class="center block-head"><span class="main-color">{{__('homepage.partners')}}</span>
+            <h3 class="center block-head"><span class="main-color">{{__('lang.partners')}}</span>
             </h3>
 
             <div class="portfolioGallery portfolio">
@@ -310,7 +345,7 @@
             <div class="clearfix"></div>
 
             <div class="view-all-projects"><a class="btn main-bg btn-3d btn-lg"
-                                              href="/partner-list">{{__('homepage.all_partners')}}</a></div>
+                                              href="/partner-list">{{__('lang.all_partners')}}</a></div>
         </div>
     </div>
 
@@ -320,7 +355,7 @@
             <!-- staff item start -->
             <div class="cell-2 fx" data-animate="fadeInDown" data-animation-delay="200">
                 <div class="fun-number">@isset($fourBox['allusers']){{$fourBox['allusers']}}+ @endisset</div>
-                <div class="fun-text main-bg">{{__('homepage.total_members')}}</div>
+                <div class="fun-text main-bg">{{__('lang.total_members')}}</div>
                 <div class="fun-icon"><i class="fa fa-leaf"></i></div>
             </div>
             <!-- staff item end -->
@@ -328,18 +363,18 @@
             <!-- staff item start -->
             <div class="cell-2 fx" data-animate="fadeInDown" data-animation-delay="400">
                 <div class="fun-number">@isset($fourBox['allusers']){{$fourBox['providers']}}+ @endisset</div>
-                <div class="fun-text main-bg">{{__('homepage.total_providers')}}</div>
+                <div class="fun-text main-bg">{{__('lang.total_providers')}}</div>
                 <div class="fun-icon"><i class="fa fa-clock-o"></i></div>
             </div>
             <!-- staff item end -->
 
             <!-- staff item start -->
             <div class="cell-4 fx" data-animate="fadeInDown">
-                <div class="fun-title bold"><span>{{__('homepage.our_mission')}} </span></div>
+                <div class="fun-title bold"><span>{{__('lang.our_mission')}} </span></div>
             </div>
             <div class="cell-2 fx" data-animate="fadeInDown" data-animation-delay="600">
                 <div class="fun-number">@isset($fourBox['allusers']){{$fourBox['employments']}}+ @endisset</div>
-                <div class="fun-text main-bg">{{__('homepage.employments')}}</div>
+                <div class="fun-text main-bg">{{__('lang.employments')}}</div>
                 <div class="fun-icon"><i class="fa fa-group"></i></div>
             </div>
             <!-- staff item end -->
@@ -347,7 +382,7 @@
             <!-- staff item start -->
             <div class="cell-2 fx" data-animate="fadeInDown" data-animation-delay="800">
                 <div class="fun-number">@isset($fourBox['allusers']) {{$fourBox['exportvolume']}} + @endisset</div>
-                <div class="fun-text main-bg">{{__('homepage.e_export_volume')}}</div>
+                <div class="fun-text main-bg">{{__('lang.e_export_volume')}}</div>
                 <div class="fun-icon"><i class="fa fa-bell"></i></div>
             </div>
             <!-- staff item end -->

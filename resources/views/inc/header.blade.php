@@ -50,7 +50,7 @@
                 <div class="row">
                     <div class="logo cell-2">
                         <a href="/">
-                            <img src="{{asset('theme/images/logos/logo.png')}}" alt="eihracat-logo">
+                            <img src="@isset($setting['logo']) {{ $setting['logo']->value }} @endisset" alt="eihracat-logo">
                         </a>
                     </div>
                     <div class="cell-10 top-menu">

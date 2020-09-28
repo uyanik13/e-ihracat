@@ -64,6 +64,44 @@ class Helper
 
   }
 
+  public static function siteImageHelper($url, $image, $path)
+  {
+    if (strlen($image) < 255) {
+      return $image;
+    }
+
+
+    $extension = explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];   // .jpg .png .pdf
+
+    $replace = substr($image, 0, strpos($image, ',') + 1);
+
+
+    $imageConvert = str_replace($replace, '', $image);
+
+    $imageConvert = str_replace(' ', '+', $imageConvert);
+
+    $imageName = $url . '_' . time() . '.' . $extension;
+
+    $destinationPath = public_path('/images/' . $path . '/');
+
+    $img = Image::make($image);
+
+
+    File::exists($destinationPath) or File::makeDirectory($destinationPath, 0777, true, true);
+
+    $img->resize(1920, 520, function ($constraint) {
+        $constraint->aspectRatio();
+    })->save($destinationPath.'/'.$imageName);
+
+
+    $imageUrl =  '/images/' . $path . '/' . $imageName;
+
+
+
+    return $imageUrl;
+
+  }
+
 
 
   public static function PostVideoHelper($url, $video, $path)

@@ -8694,3 +8694,8 @@ i.icon {
 .product-specs a.btn {
 	text-shadow: none;
 }
+
+#contentWrapper {
+	position: relative;
+    top: -17px;
+}

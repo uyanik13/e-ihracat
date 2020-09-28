@@ -433,9 +433,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 
@@ -464,7 +461,7 @@ __webpack_require__.r(__webpack_exports__);
       return 0;
     },
     blogPosts: function blogPosts() {
-      return this.$store.state.post.services;
+      return this.$store.state.post.myServices;
     },
     categoryList: function categoryList() {
       return this.$store.state.post.categories;
@@ -1451,7 +1448,7 @@ var render = function() {
               )
             ]
           ),
-          _vm._v("\n\n" + _vm._s(_vm.blogPosts) + "\n\n\n      "),
+          _vm._v(" "),
           _c(
             "template",
             { slot: "thead" },

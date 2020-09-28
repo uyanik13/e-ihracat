@@ -11,7 +11,7 @@
 						<div class="cell-12">
 							<h1 class="fx" data-animate="fadeInLeft">Haberler </h1>
 							<div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
-								<span class="bold">Buradasdsdssınız:</span><a href="#">Anasayfa</a><span
+								<span class="bold">Buradasınız:</span><a href="#">Anasayfa</a><span
 									class="line-separate">/</span><a href="#">Blog</a>
 							</div>
 						</div>
@@ -25,7 +25,7 @@
 						<div class="cell-9 masonry">
 							<div class="blog-posts">
                             @forelse($allPosts as $post)
-								<div class="post-item" >
+								<div class="post-item" style="margin-bottom: 45px" >
 									<div class="post-image">
 										<a href="{{route('post.find',$post->slug)}}">
 											<div class="mask"></div>
@@ -42,7 +42,7 @@
 												<h2><a class="main-color" href="{{route('post.find',$post->slug)}}">{{$post->title}}</a></h2>
 											</div>
 										</div>
-											{!! substr($post->content,0,100) !!}
+											{!! substr($post->content,0,250) !!}
 									</article>
 									<a class="btn btn-md btn-3d main-bg fx animated fadeInUp readMoreBtn" href="{{route('post.find',$post->slug)}}"
 										data-animate="fadeInUp" data-animation-delay="100"

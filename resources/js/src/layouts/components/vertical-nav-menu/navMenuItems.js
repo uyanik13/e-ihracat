@@ -98,19 +98,20 @@ export default [
       }
     ]
   },
+  //admin
   {
-    url: '/panel/blog-posts',
-    name: 'blog-posts',
+    url: '/panel/pages',
+    name: 'pages',
     icon: 'FileIcon',
     i18n: 'Content',
     submenu:[
-      {
-        url:'/panel/pages',
-        slug: '/panel/pages',
-        name: 'pages',
-        icon: 'FileIcon',
-        i18n: 'Pages'
-      },
+      // {
+      //   url:'/panel/pages',
+      //   slug: '/panel/pages',
+      //   name: 'pages',
+      //   icon: 'FileIcon',
+      //   i18n: 'Pages'
+      // },
       {
         url:'/panel/posts',
         slug: '/panel/posts',
@@ -118,13 +119,7 @@ export default [
         icon: 'FileTextIcon',
         i18n: 'Posts'
       },
-      {
-        url:'/panel/blog-posts',
-        slug: '/panel/blog-posts',
-        name: 'blog-posts',
-        icon: 'FileTextIcon',
-        i18n: 'Posts'
-      },
+     
       {
         url:'/panel/services',
         slug: '/panel/services',
@@ -146,6 +141,24 @@ export default [
         icon: 'PauseIcon',
         i18n: 'Forms'
       }
+    ]
+  },
+    //user
+  {
+    url: '/panel/blog-posts',
+    name: 'blog-posts',
+    icon: 'FileIcon',
+    i18n: 'Content',
+    submenu:[
+      
+      
+      {
+        url:'/panel/blog-posts',
+        slug: '/panel/blog-posts',
+        name: 'blog-posts',
+        icon: 'FileTextIcon',
+        i18n: 'Posts'
+      },
     ]
   },
   {

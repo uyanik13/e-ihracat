@@ -35,9 +35,10 @@ export default {
         return new Promise((resolve, reject) => {
           axios.get('/api/post')
             .then((response) => {
-              //console.log('POST ACTION - POSTS:', response.data.myServices.data)
+              console.log('POST ACTION - POSTS:', response.data.services)
               commit('SET_PAGES', response.data.pages)
               commit('SET_ITEM', response.data.posts)
+              commit('SET_MyServices', response.data.services)
               commit('SET_MyPosts', response.data.myPosts)
 
               commit('SET_CATEGORIES', response.data.categories)

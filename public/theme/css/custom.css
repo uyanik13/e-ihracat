@@ -1095,3 +1095,18 @@
     #appMenu .appMenuContainer .appMenuItem img {
         width: 30px;
     }
+}
+    #search_result_post .search_result_a {
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #eeeeee;
+        font-weight: bold;
+        border-bottom: 1px solid #9700015e;
+    }
+
+    #search_result_post .search_result_a:hover {
+        background: #970001;
+        color: #fff;
+    }

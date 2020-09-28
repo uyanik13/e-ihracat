@@ -18,15 +18,12 @@
 
             <div class="flex flex-wrap-reverse items-center data-list-btn-container">
 
-            <!-- ADD NEW -->
                 <div class="btn-add-new p-3 mb-4 mr-4 rounded-lg cursor-pointer flex items-center justify-center text-lg font-medium text-base text-primary border border-solid border-primary" @click="addNewData">
                     <feather-icon icon="PlusIcon" svgClasses="h-4 w-4" />
                     <span class="ml-2 text-base text-primary">{{$t('addPost')}}</span>
                 </div>
             </div>
         </div>
-
-{{blogPosts}}
 
 
       <template slot="thead">
@@ -109,7 +106,7 @@ export default {
       return 0
     },
     blogPosts () {
-      return this.$store.state.post.services
+      return this.$store.state.post.myServices
     },
     categoryList () {
       return this.$store.state.post.categories

@@ -8881,27 +8881,23 @@ __webpack_require__.r(__webpack_exports__);
     icon: 'UploadIcon',
     i18n: 'FileList'
   }]
-}, {
-  url: '/panel/blog-posts',
-  name: 'blog-posts',
+}, //admin
+{
+  url: '/panel/pages',
+  name: 'pages',
   icon: 'FileIcon',
   i18n: 'Content',
-  submenu: [{
-    url: '/panel/pages',
-    slug: '/panel/pages',
-    name: 'pages',
-    icon: 'FileIcon',
-    i18n: 'Pages'
-  }, {
+  submenu: [// {
+  //   url:'/panel/pages',
+  //   slug: '/panel/pages',
+  //   name: 'pages',
+  //   icon: 'FileIcon',
+  //   i18n: 'Pages'
+  // },
+  {
     url: '/panel/posts',
     slug: '/panel/posts',
     name: 'posts',
-    icon: 'FileTextIcon',
-    i18n: 'Posts'
-  }, {
-    url: '/panel/blog-posts',
-    slug: '/panel/blog-posts',
-    name: 'blog-posts',
     icon: 'FileTextIcon',
     i18n: 'Posts'
   }, {
@@ -8922,6 +8918,19 @@ __webpack_require__.r(__webpack_exports__);
     name: 'Forms',
     icon: 'PauseIcon',
     i18n: 'Forms'
+  }]
+}, //user
+{
+  url: '/panel/blog-posts',
+  name: 'blog-posts',
+  icon: 'FileIcon',
+  i18n: 'Content',
+  submenu: [{
+    url: '/panel/blog-posts',
+    slug: '/panel/blog-posts',
+    name: 'blog-posts',
+    icon: 'FileTextIcon',
+    i18n: 'Posts'
   }]
 }, {
   url: '/panel/front-side-language',
