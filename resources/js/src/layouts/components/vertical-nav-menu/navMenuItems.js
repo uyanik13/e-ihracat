@@ -105,13 +105,13 @@ export default [
     icon: 'FileIcon',
     i18n: 'Content',
     submenu:[
-      // {
-      //   url:'/panel/pages',
-      //   slug: '/panel/pages',
-      //   name: 'pages',
-      //   icon: 'FileIcon',
-      //   i18n: 'Pages'
-      // },
+      {
+        url:'/panel/pages',
+        slug: '/panel/pages',
+        name: 'pages',
+        icon: 'FileIcon',
+        i18n: 'Pages'
+      },
       {
         url:'/panel/posts',
         slug: '/panel/posts',
@@ -119,7 +119,7 @@ export default [
         icon: 'FileTextIcon',
         i18n: 'Posts'
       },
-     
+
       {
         url:'/panel/services',
         slug: '/panel/services',
@@ -127,13 +127,13 @@ export default [
         icon: 'FileTextIcon',
         i18n: 'services'
       },
-      {
-        url:'/panel/categories',
-        slug: '/panel/categories',
-        name: 'Categories',
-        icon: 'PauseIcon',
-        i18n: 'Categories'
-      },
+    //   {
+    //     url:'/panel/categories',
+    //     slug: '/panel/categories',
+    //     name: 'Categories',
+    //     icon: 'PauseIcon',
+    //     i18n: 'Categories'
+    //   },
       {
         url:'/panel/forms',
         slug: '/panel/forms',
@@ -150,8 +150,8 @@ export default [
     icon: 'FileIcon',
     i18n: 'Content',
     submenu:[
-      
-      
+
+
       {
         url:'/panel/blog-posts',
         slug: '/panel/blog-posts',

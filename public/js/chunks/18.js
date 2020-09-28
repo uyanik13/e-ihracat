@@ -22,6 +22,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_quill_editor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-quill-editor */ "./node_modules/vue-quill-editor/dist/vue-quill-editor.js");
 /* harmony import */ var vue_quill_editor__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(vue_quill_editor__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _i18n_i18n__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/i18n/i18n */ "./resources/js/src/i18n/i18n.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
+/* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_7__);
 
 //
 //
@@ -120,6 +122,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -163,6 +173,7 @@ __webpack_require__.r(__webpack_exports__);
         this.status = status;
         this.thumbnail = thumbnail;
         this.category_id = _babel_runtime_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_0___default()(this.data.data.category.id);
+        this.relevantServices = JSON.parse(this.data.data.options).relevantServices;
       } // Object.entries(this.data).length === 0 ? this.initValues() : { this.dataId, this.dataName, this.dataCategory, this.dataOrder_status, this.dataUsage_amount } = JSON.parse(JSON.stringify(this.data))
 
     }
@@ -172,6 +183,7 @@ __webpack_require__.r(__webpack_exports__);
       type: 'service',
       thumbnail: null,
       id: null,
+      search: '',
       title: '',
       content: '',
       seo_title: '',
@@ -180,6 +192,7 @@ __webpack_require__.r(__webpack_exports__);
       category_id: '',
       category: '',
       categories: [],
+      relevantServices: [],
       status_choices: [{
         text: _i18n_i18n__WEBPACK_IMPORTED_MODULE_6__["default"].t('active'),
         value: 1
@@ -208,6 +221,13 @@ __webpack_require__.r(__webpack_exports__);
       },
       categories: function categories() {
         return this.$store.state.post.categories;
+      },
+      filtered: function filtered() {
+        var _this = this;
+
+        return this.data.services.filter(function (service) {
+          return service.includes(_this.search);
+        });
       }
     },
     isFormValid: function isFormValid() {
@@ -245,28 +265,31 @@ __webpack_require__.r(__webpack_exports__);
       this.category_id = 3;
     },
     submitData: function submitData() {
-      var _this = this;
+      var _this2 = this;
 
       this.$vs.loading();
       this.$validator.validateAll().then(function (result) {
         if (result) {
           var obj = {
-            id: _this.id,
-            title: _this.title,
-            category_id: _this.category_id,
-            content: _this.content,
-            seo_title: _this.seo_title,
-            seo_description: _this.seo_description,
-            thumbnail: _this.thumbnail,
-            status: _this.status,
-            type: _this.type
+            id: _this2.id,
+            title: _this2.title,
+            category_id: _this2.category_id,
+            content: _this2.content,
+            options: {
+              relevantServices: _this2.relevantServices
+            },
+            seo_title: _this2.seo_title,
+            seo_description: _this2.seo_description,
+            thumbnail: _this2.thumbnail,
+            status: _this2.status,
+            type: _this2.type
           };
 
-          if (_this.id !== null && _this.id >= 0) {
-            _this.$store.dispatch('post/updateItem', obj).then(function (response) {
-              _this.$vs.loading.close();
+          if (_this2.id !== null && _this2.id >= 0) {
+            _this2.$store.dispatch('post/updateItem', obj).then(function (response) {
+              _this2.$vs.loading.close();
 
-              _this.$vs.notify({
+              _this2.$vs.notify({
                 title: _i18n_i18n__WEBPACK_IMPORTED_MODULE_6__["default"].t('success'),
                 text: _i18n_i18n__WEBPACK_IMPORTED_MODULE_6__["default"].t('SuccessfullyUpdated'),
                 iconPack: 'feather',
@@ -276,9 +299,9 @@ __webpack_require__.r(__webpack_exports__);
             }).catch(function (error) {
               console.log(error);
 
-              _this.$vs.loading.close();
+              _this2.$vs.loading.close();
 
-              _this.$vs.notify({
+              _this2.$vs.notify({
                 title: _i18n_i18n__WEBPACK_IMPORTED_MODULE_6__["default"].t('error'),
                 text: _i18n_i18n__WEBPACK_IMPORTED_MODULE_6__["default"].t('CouldntUpdated'),
                 iconPack: 'feather',
@@ -289,10 +312,10 @@ __webpack_require__.r(__webpack_exports__);
           } else {
             delete obj.id;
 
-            _this.$store.dispatch('post/addItem', obj).then(function (response) {
-              _this.$vs.loading.close();
+            _this2.$store.dispatch('post/addItem', obj).then(function (response) {
+              _this2.$vs.loading.close();
 
-              _this.$vs.notify({
+              _this2.$vs.notify({
                 title: _i18n_i18n__WEBPACK_IMPORTED_MODULE_6__["default"].t('success'),
                 text: _i18n_i18n__WEBPACK_IMPORTED_MODULE_6__["default"].t('SuccessfullyAdded'),
                 iconPack: 'feather',
@@ -302,9 +325,9 @@ __webpack_require__.r(__webpack_exports__);
             }).catch(function (error) {
               console.log(error);
 
-              _this.$vs.loading.close();
+              _this2.$vs.loading.close();
 
-              _this.$vs.notify({
+              _this2.$vs.notify({
                 title: _i18n_i18n__WEBPACK_IMPORTED_MODULE_6__["default"].t('error'),
                 text: _i18n_i18n__WEBPACK_IMPORTED_MODULE_6__["default"].t('CouldntAdd'),
                 iconPack: 'feather',
@@ -314,20 +337,20 @@ __webpack_require__.r(__webpack_exports__);
             });
           }
 
-          _this.$emit('closeSidebar');
+          _this2.$emit('closeSidebar');
 
-          _this.initValues();
+          _this2.initValues();
         }
       });
     },
     update_avatar: function update_avatar(input) {
-      var _this2 = this;
+      var _this3 = this;
 
       if (input.target.files && input.target.files[0]) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-          _this2.thumbnail = e.target.result;
+          _this3.thumbnail = e.target.result;
           console.log('IMAGEURL', e.target.result);
         };
 
@@ -337,7 +360,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {
     VuePerfectScrollbar: vue_perfect_scrollbar__WEBPACK_IMPORTED_MODULE_1___default.a,
-    quillEditor: vue_quill_editor__WEBPACK_IMPORTED_MODULE_5__["quillEditor"]
+    quillEditor: vue_quill_editor__WEBPACK_IMPORTED_MODULE_5__["quillEditor"],
+    'v-select': vue_select__WEBPACK_IMPORTED_MODULE_7___default.a
   }
 });
 
@@ -474,6 +498,7 @@ __webpack_require__.r(__webpack_exports__);
     addNewData: function addNewData() {
       this.sidebarData = {
         newData: true,
+        services: this.blogPosts,
         categories: this.categoryList
       };
       this.toggleDataSidebar(true);
@@ -518,6 +543,7 @@ __webpack_require__.r(__webpack_exports__);
     editData: function editData(data) {
       this.sidebarData = {
         newData: false,
+        services: this.blogPosts,
         categories: this.categoryList,
         data: data
       };
@@ -848,64 +874,32 @@ var render = function() {
                                     1
                                   ),
                                   _vm._v(" "),
-                                  _c(
-                                    "vs-select",
-                                    {
-                                      staticClass: "mt-5 w-full",
-                                      attrs: {
-                                        label: _vm.$t("category"),
-                                        name: "category_id"
+                                  _c("span", [
+                                    _vm._v(_vm._s(_vm.$t("relevantServices")))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("v-select", {
+                                    attrs: {
+                                      multiple: "",
+                                      options: _vm.data.services,
+                                      getOptionLabel: function(option) {
+                                        return option.title
                                       },
-                                      model: {
-                                        value: _vm.category_id,
-                                        callback: function($$v) {
-                                          _vm.category_id = $$v
-                                        },
-                                        expression: "category_id"
+                                      filterable: true
+                                    },
+                                    on: {
+                                      search: function(query) {
+                                        return (_vm.search = query)
                                       }
                                     },
-                                    [
-                                      _vm._l(_vm.data.categories, function(
-                                        category
-                                      ) {
-                                        return _c("vs-select-item", {
-                                          key: category.id,
-                                          attrs: {
-                                            value: category.id,
-                                            text: category.title
-                                          }
-                                        })
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          directives: [
-                                            {
-                                              name: "show",
-                                              rawName: "v-show",
-                                              value: _vm.errors.has(
-                                                "category_id"
-                                              ),
-                                              expression:
-                                                "errors.has('category_id')"
-                                            }
-                                          ],
-                                          staticClass: "text-danger text-sm"
-                                        },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              _vm.errors.first("category_id")
-                                                ? _vm.$t("categoryRequired")
-                                                : ""
-                                            )
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    2
-                                  ),
+                                    model: {
+                                      value: _vm.relevantServices,
+                                      callback: function($$v) {
+                                        _vm.relevantServices = $$v
+                                      },
+                                      expression: "relevantServices"
+                                    }
+                                  }),
                                   _vm._v(" "),
                                   _c(
                                     "vs-select",
@@ -1439,7 +1433,7 @@ var render = function() {
                       _c(
                         "span",
                         { staticClass: "ml-2 text-base text-primary" },
-                        [_vm._v(_vm._s(_vm.$t("addPost")))]
+                        [_vm._v(_vm._s(_vm.$t("addService")))]
                       )
                     ],
                     1

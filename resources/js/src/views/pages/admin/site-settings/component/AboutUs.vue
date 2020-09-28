@@ -1,9 +1,30 @@
 <template>
   <div class="vx-col w-full md:w-12/12 mb-base">
 
-             <vs-input :label="'Yönetim Kurulu Üyelerimiz Title'"  v-model="title" class="mt-5 w-full"  />
 
-           <vx-card v-for="(option,index)  in AboutUSMembers" :key="index" class="mb-5 ml-2 mr-5 mt-5" >
+             <vx-card >
+               <div class="flex flex-wrap items-center mb-5 mt-5 ml-5 h-full">
+                      <span>{{$t('Content')}}</span>
+                      <quill-editor v-model="aboutUsPage.content" :label="$t('Content')" height="600" />
+                      <span class="text-danger text-sm" v-show="errors.has('aboutUsPage.Content')">{{ errors.first('Content') ? $t('Content') : ''}}</span>
+               </div>
+               <div class="flex flex-wrap items-center mb-5 mt-10 ml-5 h-full">
+                      <span>{{$t('mission')}}</span>
+                      <quill-editor v-model="aboutUsPage.mission" :label="$t('mission')" height="600" />
+                      <span class="text-danger text-sm" v-show="errors.has('aboutUsPage.mission')">{{ errors.first('mission') ? $t('mission') : ''}}</span>
+               </div>
+               <div class="flex flex-wrap items-center mb-5 mt-10 ml-5 h-full">
+                      <span>{{$t('vision')}}</span>
+                      <quill-editor v-model="aboutUsPage.vision" :label="$t('vision')" height="600" />
+                      <span class="text-danger text-sm" v-show="errors.has('aboutUsPage.vision')">{{ errors.first('vision') ? $t('vision') : ''}}</span>
+               </div>
+            </vx-card>
+           <vs-button class="ml-auto mt-2" @click="SaveData('aboutUsPage')">{{$t('save')}}</vs-button>
+
+
+        
+
+            <vx-card v-for="(option,index)  in AboutUSMembers" :key="index" class="mb-5 ml-2 mr-5 mt-5" >
                     <div class="vx-row">
 
                         <div class="vx-col sm:w-1/2 lg:w-1/1 mb-2">
@@ -49,10 +70,15 @@
 import flatPickr from 'vue-flatpickr-component'
 import 'flatpickr/dist/flatpickr.css'
 import vSelect from 'vue-select'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+import { quillEditor } from 'vue-quill-editor'
 export default {
   components: {
     flatPickr,
-    vSelect
+    vSelect,
+    quillEditor
   },
   data () {
     return {
@@ -66,6 +92,11 @@ export default {
                 url: ''
                 }
             ],
+            aboutUsPage:{
+                content : '',
+                mission : '',
+                vision : ''
+              }
     }
   },
   methods:{

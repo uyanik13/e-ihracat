@@ -1,6 +1,6 @@
 ﻿@php
     $allPosts = Helper:: all_posts();
-    $recentPosts = \App\utils\Helpers\Helper::recentPosts(3);
+    $recentPosts = Helper::recentPosts(3);
 @endphp
 
 <!-- Content Start -->
