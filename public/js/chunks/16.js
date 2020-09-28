@@ -225,6 +225,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -312,7 +323,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".chat-card-log {\n  height: 400px;\n}\n[dir] .chat-card-log .chat-sent-msg {\n  background-color: #f2f4f7 !important;\n}", ""]);
+exports.push([module.i, "#dashboard-analytics .greet-user {\n  position: relative;\n}\n#dashboard-analytics .greet-user .decore-left {\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n#dashboard-analytics .greet-user .decore-right {\n  position: absolute;\n  right: 0;\n  top: 0;\n}\n@media (max-width: 576px) {\n#dashboard-analytics .decore-left, #dashboard-analytics .decore-right {\n    width: 140px;\n}\n}", ""]);
 
 // exports
 
@@ -545,19 +556,84 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { attrs: { id: "dashboard-analytics" } }, [
+    _c("div", { staticClass: "vx-row" }, [
+      _c(
+        "div",
+        { staticClass: "vx-col w-full lg:w-1/1 mb-base" },
+        [
+          _c(
+            "vx-card",
+            {
+              staticClass: "text-center bg-primary-gradient greet-user",
+              attrs: { slot: "no-body" },
+              slot: "no-body"
+            },
+            [
+              _c("img", {
+                staticClass: "decore-left",
+                attrs: {
+                  src: __webpack_require__(/*! @assets/images/elements/decore-left.png */ "./resources/assets/images/elements/decore-left.png"),
+                  alt: "Decore Left",
+                  width: "200"
+                }
+              }),
+              _vm._v(" "),
+              _c("img", {
+                staticClass: "decore-right",
+                attrs: {
+                  src: __webpack_require__(/*! @assets/images/elements/decore-right.png */ "./resources/assets/images/elements/decore-right.png"),
+                  alt: "Decore Right",
+                  width: "175"
+                }
+              }),
+              _vm._v(" "),
+              _c("feather-icon", {
+                staticClass:
+                  "p-6 mb-8 bg-primary inline-flex rounded-full text-white shadow",
+                attrs: { icon: "AwardIcon", svgClasses: "h-8 w-8" }
+              }),
+              _vm._v(" "),
+              _c("h1", { staticClass: "mb-6 text-white" }, [
+                _vm._v(
+                  _vm._s(_vm.$t("Welcome")) + " " + _vm._s(_vm.activeUser.name)
+                )
+              ])
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ])
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [_c("div", { staticClass: "vx-row" })])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./resources/assets/images/elements/decore-left.png":
+/*!**********************************************************!*\
+  !*** ./resources/assets/images/elements/decore-left.png ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/decore-left.png?2d9d23e097d9118c0aa4cc074b6c5b22";
+
+/***/ }),
+
+/***/ "./resources/assets/images/elements/decore-right.png":
+/*!***********************************************************!*\
+  !*** ./resources/assets/images/elements/decore-right.png ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/decore-right.png?da0ab5cda39e974268cbe4da64f597b6";
 
 /***/ }),
 
