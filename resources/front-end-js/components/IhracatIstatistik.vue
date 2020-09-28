@@ -100,7 +100,6 @@ ECharts.registerTheme('blue', theme)
         components: {
             ECharts
         },
-<<<<<<< Updated upstream
         computed: {
 
         },
@@ -159,24 +158,8 @@ ECharts.registerTheme('blue', theme)
                     data: []
                      }
                   ]
-=======
-        data: () => ({
-             options: {
-            legend: {},
-            tooltip: {},
-            dataset: {
-            // Provide data.
-            source: [
-                this.getData0()
-            ]
->>>>>>> Stashed changes
-            },
-            importDetails : [],
-            data0 : [],
-            data1 : [],
-            topImporters : [],
 
-            //new datas
+       
 
         }),
         methods : {
