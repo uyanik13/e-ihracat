@@ -28,6 +28,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(flatpickr_dist_flatpickr_css__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-select */ "./node_modules/vue-select/dist/vue-select.js");
 /* harmony import */ var vue_select__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_select__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var quill_dist_quill_core_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! quill/dist/quill.core.css */ "./node_modules/quill/dist/quill.core.css");
+/* harmony import */ var quill_dist_quill_core_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(quill_dist_quill_core_css__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! quill/dist/quill.snow.css */ "./node_modules/quill/dist/quill.snow.css");
+/* harmony import */ var quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(quill_dist_quill_snow_css__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var quill_dist_quill_bubble_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! quill/dist/quill.bubble.css */ "./node_modules/quill/dist/quill.bubble.css");
+/* harmony import */ var quill_dist_quill_bubble_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(quill_dist_quill_bubble_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var vue_quill_editor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-quill-editor */ "./node_modules/vue-quill-editor/dist/vue-quill-editor.js");
+/* harmony import */ var vue_quill_editor__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(vue_quill_editor__WEBPACK_IMPORTED_MODULE_7__);
 
 
 function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_core_js_object_define_property__WEBPACK_IMPORTED_MODULE_0___default()(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -79,13 +87,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     flatPickr: vue_flatpickr_component__WEBPACK_IMPORTED_MODULE_1___default.a,
-    vSelect: vue_select__WEBPACK_IMPORTED_MODULE_3___default.a
+    vSelect: vue_select__WEBPACK_IMPORTED_MODULE_3___default.a,
+    quillEditor: vue_quill_editor__WEBPACK_IMPORTED_MODULE_7__["quillEditor"]
   },
   data: function data() {
     return {
@@ -95,7 +129,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
         position: '',
         image: '',
         url: ''
-      }]
+      }],
+      aboutUsPage: {
+        content: '',
+        mission: '',
+        vision: ''
+      }
     };
   },
   methods: {
@@ -1278,17 +1317,140 @@ var render = function() {
     "div",
     { staticClass: "vx-col w-full md:w-12/12 mb-base" },
     [
-      _c("vs-input", {
-        staticClass: "mt-5 w-full",
-        attrs: { label: "Yönetim Kurulu Üyelerimiz Title" },
-        model: {
-          value: _vm.title,
-          callback: function($$v) {
-            _vm.title = $$v
-          },
-          expression: "title"
-        }
-      }),
+      _c("vx-card", [
+        _c(
+          "div",
+          { staticClass: "flex flex-wrap items-center mb-5 mt-5 ml-5 h-full" },
+          [
+            _c("span", [_vm._v(_vm._s(_vm.$t("Content")))]),
+            _vm._v(" "),
+            _c("quill-editor", {
+              attrs: { label: _vm.$t("Content"), height: "600" },
+              model: {
+                value: _vm.aboutUsPage.content,
+                callback: function($$v) {
+                  _vm.$set(_vm.aboutUsPage, "content", $$v)
+                },
+                expression: "aboutUsPage.content"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.errors.has("aboutUsPage.Content"),
+                    expression: "errors.has('aboutUsPage.Content')"
+                  }
+                ],
+                staticClass: "text-danger text-sm"
+              },
+              [
+                _vm._v(
+                  _vm._s(_vm.errors.first("Content") ? _vm.$t("Content") : "")
+                )
+              ]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "flex flex-wrap items-center mb-5 mt-10 ml-5 h-full" },
+          [
+            _c("span", [_vm._v(_vm._s(_vm.$t("mission")))]),
+            _vm._v(" "),
+            _c("quill-editor", {
+              attrs: { label: _vm.$t("mission"), height: "600" },
+              model: {
+                value: _vm.aboutUsPage.mission,
+                callback: function($$v) {
+                  _vm.$set(_vm.aboutUsPage, "mission", $$v)
+                },
+                expression: "aboutUsPage.mission"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.errors.has("aboutUsPage.mission"),
+                    expression: "errors.has('aboutUsPage.mission')"
+                  }
+                ],
+                staticClass: "text-danger text-sm"
+              },
+              [
+                _vm._v(
+                  _vm._s(_vm.errors.first("mission") ? _vm.$t("mission") : "")
+                )
+              ]
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "flex flex-wrap items-center mb-5 mt-10 ml-5 h-full" },
+          [
+            _c("span", [_vm._v(_vm._s(_vm.$t("vision")))]),
+            _vm._v(" "),
+            _c("quill-editor", {
+              attrs: { label: _vm.$t("vision"), height: "600" },
+              model: {
+                value: _vm.aboutUsPage.vision,
+                callback: function($$v) {
+                  _vm.$set(_vm.aboutUsPage, "vision", $$v)
+                },
+                expression: "aboutUsPage.vision"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "span",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.errors.has("aboutUsPage.vision"),
+                    expression: "errors.has('aboutUsPage.vision')"
+                  }
+                ],
+                staticClass: "text-danger text-sm"
+              },
+              [
+                _vm._v(
+                  _vm._s(_vm.errors.first("vision") ? _vm.$t("vision") : "")
+                )
+              ]
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "vs-button",
+        {
+          staticClass: "ml-auto mt-2",
+          on: {
+            click: function($event) {
+              return _vm.SaveData("aboutUsPage")
+            }
+          }
+        },
+        [_vm._v(_vm._s(_vm.$t("save")))]
+      ),
       _vm._v(" "),
       _vm._l(_vm.AboutUSMembers, function(option, index) {
         return _c(
@@ -2960,14 +3122,15 @@ module.exports = "/images/slider-to-here.png?0134ef01948dfe4a7e9a5ec29ff3c880";
 /*!********************************************************************************!*\
   !*** ./resources/js/src/views/pages/admin/site-settings/component/AboutUs.vue ***!
   \********************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AboutUs_vue_vue_type_template_id_b4320964___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AboutUs.vue?vue&type=template&id=b4320964& */ "./resources/js/src/views/pages/admin/site-settings/component/AboutUs.vue?vue&type=template&id=b4320964&");
 /* harmony import */ var _AboutUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AboutUs.vue?vue&type=script&lang=js& */ "./resources/js/src/views/pages/admin/site-settings/component/AboutUs.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _AboutUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _AboutUs_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -2997,7 +3160,7 @@ component.options.__file = "resources/js/src/views/pages/admin/site-settings/com
 /*!*********************************************************************************************************!*\
   !*** ./resources/js/src/views/pages/admin/site-settings/component/AboutUs.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

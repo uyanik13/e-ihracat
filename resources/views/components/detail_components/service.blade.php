@@ -1,7 +1,9 @@
 ﻿@php
     $findServiceswithoutId5 = Helper::findServiceswithoutId5();
-$QuickServiceList = Helper::findCustomData('QuickServiceList');
+    $QuickServiceList = Helper::findCustomData('QuickServiceList');
 @endphp
+
+
 		<!-- Content Start -->
 		<div id="contentWrapper">
 			<div class="page-title title-1">
@@ -40,15 +42,27 @@ $QuickServiceList = Helper::findCustomData('QuickServiceList');
 										<ul>
 											<li>
 												<ul id="accordion2" class="accordion">
-                                                  @forelse($findServiceswithoutId5 as $service)
-													<li>
-														<h3><a href="{{route('service.find',$service->slug)}}"><span class="bold"
-                                                                                                      class="skew25">{{substr($service->title,0,15)}}</span></a>
-														</h3>
-														<div class="accordion-panel active">
-															<a href="{{route('service.find',$service->slug)}}">{{ substr(strip_tags($service->content),0,20)}}</a>
-														</div>
-													</li>
+                                                  @forelse($findServiceswithoutId5 as $key => $service)
+                                                  @php
+                                                        $relevantServices = Helper::jsonToArray($service->options);
+                                                  @endphp
+                                                    <li>
+                                                        <h3><a href="partner-details.html"><span class="bold"
+                                                        class="skew25">{{ substr($service->title,0,25)}}</span></a>
+                                                        </h3>
+                                                        @isset($relevantServices['relevantServices'])
+                                                        @php
+                                                        $relevantServices =$relevantServices['relevantServices'];
+
+                                                        @endphp
+                                                        <div class="accordion-panel {{$key == 0 ? 'active' : ''}}">
+                                                        @foreach ($relevantServices as $key => $relevantService)
+                                                            <a href="">{{$relevantService['title']}}</a>
+                                                        @endforeach
+                                                         </div>
+                                                         @endisset
+
+                                                    </li>
                                                       @empty
                                                     @endforelse
 												</ul>

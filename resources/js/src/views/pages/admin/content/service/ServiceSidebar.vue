@@ -36,11 +36,18 @@
                       <quill-editor  :label="$t('postContent')" name="dataDescription" v-model="content"></quill-editor>
                       <span class="text-danger text-sm" v-show="errors.has('content')">{{ errors.first('content') ? $t('descriptionRequired') : ''}}</span>
                     </div>
-                    <!--  CATEGORY -->
-                    <vs-select v-model="category_id" :label="$t('category')"  name="category_id" class="mt-5 w-full">
-                      <vs-select-item :key="category.id" :value="category.id" :text="category.title" v-for="category in data.categories" />
-                      <span class="text-danger text-sm" v-show="errors.has('category_id')">{{ errors.first('category_id') ? $t('categoryRequired') : '' }}</span>
-                    </vs-select>
+
+
+
+                      <span>{{$t('relevantServices')}}</span>
+                     <v-select
+                             multiple
+                            v-model="relevantServices"
+                            :options="data.services"
+                            @search="query => search = query"
+                            :getOptionLabel="option => option.title"
+                            :filterable="true"/>
+
 
 
                     <!--  STATUS -->
@@ -102,6 +109,7 @@ import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
 import { quillEditor } from 'vue-quill-editor'
 import i18n from '@/i18n/i18n'
+  import vSelect from 'vue-select'
 
 export default {
   props: {
@@ -131,6 +139,7 @@ export default {
         this.status = status
         this.thumbnail = thumbnail
         this.category_id = JSON.stringify(this.data.data.category.id)
+        this.relevantServices = JSON.parse(this.data.data.options).relevantServices
 
       }
       // Object.entries(this.data).length === 0 ? this.initValues() : { this.dataId, this.dataName, this.dataCategory, this.dataOrder_status, this.dataUsage_amount } = JSON.parse(JSON.stringify(this.data))
@@ -141,6 +150,7 @@ export default {
       type: 'service',
       thumbnail :null,
       id: null,
+      search:'',
       title:'',
       content: '',
       seo_title: '',
@@ -149,6 +159,7 @@ export default {
       category_id: '',
       category:'',
       categories:[],
+      relevantServices:[],
       status_choices: [
         {text:i18n.t('active'), value:1},
         {text:i18n.t('deActive'), value:0}
@@ -173,7 +184,10 @@ export default {
       },
       categories () {
         return this.$store.state.post.categories
-      }
+      },
+       filtered () {
+            return this.data.services.filter(service => service.includes(this.search))
+            },
 
     },
     isFormValid () {
@@ -225,6 +239,7 @@ export default {
             title: this.title,
             category_id: this.category_id,
             content:this.content,
+            options:{relevantServices:this.relevantServices},
             seo_title:this.seo_title,
             seo_description:this.seo_description,
             thumbnail: this.thumbnail,
@@ -296,7 +311,8 @@ export default {
   },
   components: {
     VuePerfectScrollbar,
-    quillEditor
+    quillEditor,
+     'v-select': vSelect,
   }
 }
 </script>

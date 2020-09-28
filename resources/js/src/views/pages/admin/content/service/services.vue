@@ -20,7 +20,7 @@
 
                 <div class="btn-add-new p-3 mb-4 mr-4 rounded-lg cursor-pointer flex items-center justify-center text-lg font-medium text-base text-primary border border-solid border-primary" @click="addNewData">
                     <feather-icon icon="PlusIcon" svgClasses="h-4 w-4" />
-                    <span class="ml-2 text-base text-primary">{{$t('addPost')}}</span>
+                    <span class="ml-2 text-base text-primary">{{$t('addService')}}</span>
                 </div>
             </div>
         </div>
@@ -120,6 +120,7 @@ export default {
     addNewData () {
       this.sidebarData = {
         newData:true,
+        services:this.blogPosts,
         categories:this.categoryList
       }
       this.toggleDataSidebar(true)
@@ -164,6 +165,7 @@ export default {
     editData (data) {
       this.sidebarData = {
         newData:false,
+        services:this.blogPosts,
         categories:this.categoryList,
         data
       }

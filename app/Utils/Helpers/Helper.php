@@ -267,7 +267,7 @@ class Helper
        return $data;
     }
     public static function all_posts(){
-      $data = Post::where('type','post')->get();
+      $data = Post::where('type','post')->orderBy('created_at','desc')->get();
       return $data;
     }
 
@@ -585,5 +585,5 @@ class Helper
         return User::where('role','user')->withCount('comments')->orderBy('comments_count', 'desc')->get();
     }
 
-    
+
 }

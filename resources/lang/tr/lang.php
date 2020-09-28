@@ -18,7 +18,7 @@ return [
     'view_order_status' => 'View order status',
     'your_order_status_changed' => 'Your Order Status Changed',
     'new_status' => 'New Status',
-    'SUMMARY' => 'SUMMARY', 
+    'SUMMARY' => 'SUMMARY',
     'SHIPPING_ADDRESS' => 'SHIPPING ADDRESS',
     'order' => 'Order',
     'order_date' => 'Order Date',
@@ -58,7 +58,17 @@ return [
     'you_can_payment' => 'Now you can payment',
     'please_login_with_credentials_you_created' => 'Please login with your created credentials',
     'logout_successfully' => 'Logout Successfully',
-    
+    'about_us' => 'About Us',
+    'you_are_here' => 'you_are_here',
+    'homepage' => 'homepage',
+    'our_services' => 'our_services',
+    'become_a_partner' => 'become_a_partner',
+    'our_mission' => 'our_mission',
+    'our_vision' => 'our_vision',
+    'our_team_title' => 'Yönetim Kurulu Üyelerimiz',
+    'our_team_desc' => 'Birbirinden deneyimli, alanında uzman yönetim kurulu üyelerimiz ile Türkiye’nin e-ihracatına katkı sağlıyoruz.',
+    'become_a_partner' => 'become_a_partner',
+
 
 
 
