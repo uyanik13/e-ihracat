@@ -1,0 +1,5 @@
+﻿
+		<!-- Content Start -->
+		<div id="contentWrapper">
+			<iframe frameborder="0" scrolling="auto" height="195" width="555" allowtransparency="true" marginwidth="0" marginheight="0" src="https://sslfxrates.forexprostools.com/index_exchange.php?params&inner-border-color=%23CBCBCB&border-color=%23cbcbcb&bg1=%23F6F6F6&bg2=%23ffffff&inner-text-color=%23000000&currency-name-color=%23000000&header-text-color=%23FFFFFF&force_lang=10" align="center"></iframe><br /><div style="width:540px"><a href="http://tr.investing.com" target="_blank"><img src="https://wmt-invdn-com.akamaized.net/forexpros_tr_logo.png" alt="Investing.com" title="Investing.com" style="float:left" /></a><span style="float:right"><span style="font-size: 11px;color: #333333;text-decoration: none;">Döviz Kurları <a href="https://tr.investing.com/" rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;" class="underline_link">Investing.com Türkiye</a> tarafından sağlanmaktadır.</span></span></div>
+		</div>

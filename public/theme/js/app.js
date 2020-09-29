@@ -2143,13 +2143,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    'v-select': vue_select__WEBPACK_IMPORTED_MODULE_2___default.a
+    "v-select": vue_select__WEBPACK_IMPORTED_MODULE_2___default.a
   },
   data: function data() {
     return {
       show: false,
       countries: [],
-      country: ''
+      country: ""
     };
   },
   computed: {
@@ -2177,7 +2177,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     goToNextPage: function goToNextPage() {
       this.$router.push({
-        path: '/ihracat-ulke-detayi',
+        path: "/ihracat-ulke-detayi",
         query: {
           country: this.country.name
         }
@@ -4682,8 +4682,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#myCountry {\n  width: 60%;\n}\r\n\r\n\r\n", ""]);
-<<<<<<< Updated upstream
+exports.push([module.i, "#myCountry {\n  width: 60%;\n}\ntable tbody tr {\n  font-weight: bold;\n}\n[dir] .exportCountrySearch table tbody tr:nth-child(odd) {\n  background: red;\n}\r\n", ""]);
 
 // exports
 
@@ -4703,8 +4702,6 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "#myCountry {\n  width: 60%;\n}\r\n\r\n\r\n", ""]);
-=======
->>>>>>> Stashed changes
 
 // exports
 
@@ -37379,11 +37376,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/ihracat-istatistik',
       name: 'ihracat-istatistik',
       component: function component() {
-<<<<<<< Updated upstream
         return Promise.all(/*! import() */[__webpack_require__.e(3), __webpack_require__.e(25)]).then(__webpack_require__.bind(null, /*! ./components/IhracatIstatistik.vue */ "./resources/front-end-js/components/IhracatIstatistik.vue"));
-=======
-        return Promise.all(/*! import() */[__webpack_require__.e(7), __webpack_require__.e(32)]).then(__webpack_require__.bind(null, /*! ./components/IhracatIstatistik.vue */ "./resources/front-end-js/components/IhracatIstatistik.vue"));
->>>>>>> Stashed changes
       },
       params: true
     }, {
@@ -37421,7 +37414,7 @@ router.afterEach(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Recep\Desktop\projects\e-ihracat\resources\front-end-js\app.js */"./resources/front-end-js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\ylmzb\Desktop\e-ihracat\resources\front-end-js\app.js */"./resources/front-end-js/app.js");
 
 
 /***/ })

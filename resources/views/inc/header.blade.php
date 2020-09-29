@@ -116,14 +116,18 @@
                             <a href="#"><span class="fa fa-search"></span></a>
                             <div class="search-box">
                                 <div class="input-box left">
-                                    <input type="text" name="t" id="t-search" class="txt-box"
+                                    <input type="text" name="t" onkeyup="live_user_search()"  id="search_input_user" class="txt-box"
                                            placeHolder="Anahtar kelime girin..." />
                                 </div>
                                 <div class="left">
                                     <input type="submit" id="b-search" class="btn main-bg" value="Ara" />
                                 </div>
                             </div>
+                            <div id="search_result_user" class="bg-info">
+                        
+                            </div>
                         </div>
+
                         <!-- top search end -->
                     </div>
                 </div>

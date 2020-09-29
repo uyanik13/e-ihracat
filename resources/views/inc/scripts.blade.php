@@ -50,7 +50,7 @@
 <!-- general script file -->
 <script type="text/javascript" src="{{asset('theme/js/script.js')}}"></script>
 
-<script src="{{asset('assets/js/custom.js')}}"></script>
+<script src="{{asset('theme/assets/js/custom.js')}}"></script>
 
 
 

@@ -161,7 +161,7 @@ ECharts.registerTheme('blue', theme)
 
        
 
-        }),
+          } }),
         methods : {
         getImportDetails() {
           return new Promise((resolve, reject) => {

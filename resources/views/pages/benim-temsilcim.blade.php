@@ -1,13 +1,13 @@
 ﻿
-@if ($category === 'benim-temsilcim')
+{{-- @if ($category === 'benim-temsilcim')
 <link rel="stylesheet" href="{{asset('theme/css/app.css')}}">
-@endif
+@endif --}}
 
 
 		<!-- Content Start -->
-		<div id="contentWrapper">
+		<div id="contentWrapper" style="top: 0">
 
-            <div id="exportCountry" style="background: url({{asset('theme/images/export-bg.jpg')}}) center center no-repeat; background-color: #d7d7d7d6; background-blend-mode: overlay;">
+            <div id="exportCountry" style="background: url({{asset('theme/images/export-bg.jpg')}}) center center no-repeat; background-color: #d7d7d7d6; background-size: cover; background-blend-mode: overlay;">
 
 
                 <bilgi-bankasi-layout></bilgi-bankasi-layout>

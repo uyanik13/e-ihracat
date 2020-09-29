@@ -9,7 +9,7 @@
       <vs-avatar :src="logo"  size="120px" class="mr-4 mb-4" />
       <div>
         <input type="file" class="hidden" ref="updateImgInput" @change="update_avatar" accept="image/*">
-        <vs-button class="mr-4 sm:mb-0 mb-2" @click="$refs.updateImgInput.click()">Logo Yükle</vs-button>
+        <vs-button class="mr-4 sm:mb-0 mb-2" @click="$refs.updateImgInput.click()">{{$t('uploadLogo')}}</vs-button>
       </div>
     </div>
     <vs-input class="w-full mb-base" name="facebook" icon-pack="feather" icon="icon-facebook"  :label-placeholder="$t('Facebook')" v-model="facebook"></vs-input>
@@ -32,7 +32,7 @@
 
     <!-- Save & Reset Button -->
     <div class="flex flex-wrap items-center justify-end">
-      <vs-button class="ml-auto mt-2" @click="save_changes">Kaydet</vs-button>
+      <vs-button class="ml-auto mt-2" @click="save_changes">{{$t('save')}}</vs-button>
 <!--      <vs-button class="ml-4 mt-2" type="border" color="warning">Reset</vs-button>-->
     </div>
   </vx-card>

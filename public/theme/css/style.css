@@ -95,6 +95,7 @@ body {
 	padding: 0;
 	color: #222;
 	font-size: 13px;
+	background-color: #fff;
     line-height: 1.428571429;
 	font-family: "Open Sans", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -8698,4 +8699,828 @@ i.icon {
 #contentWrapper {
 	position: relative;
     top: -17px;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+[dir] ul, [dir] ol {
+  margin: 0;
+  padding: 0;
+}
+
+[dir] .layout--full-page .bg-img {
+  background-image: url("/images/pages/vuexy-login-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+[dir] .layout--full-page .full-page-bg-color {
+  background-color: #eff2f7;
+}
+
+.single-counter {
+  display: inline-block;
+  position: relative;
+  width: 105px;
+}
+
+[dir] .single-counter {
+  padding: 18px 10px 10px;
+}
+
+.single-counter span {
+  display: block;
+}
+
+[dir] .single-counter span {
+  text-align: center;
+}
+
+.single-counter .timer {
+  font-size: 3rem;
+}
+
+.chat-card-log {
+  height: 240px;
+}
+
+.vjs-poster {
+  width: 100% !important;
+}
+
+[dir] .vjs-poster {
+  background-size: cover !important;
+}
+
+@-webkit-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+i.feather {
+  font-weight: 100;
+}
+
+.feather.feather-menu {
+  z-index: 9;
+}
+
+.scroll-area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+[dir] .scroll-area {
+  margin: auto;
+}
+
+.scroll-area:not(.ps) {
+  overflow-y: auto;
+}
+
+/*=========================================================================================
+  File Name: _extraComponents.scss
+  Description: partial - imports extra components styles
+  ----------------------------------------------------------------------------------------
+  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+  Author: Pixinvent
+  Author URL: http://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+
+/*=========================================================================================
+  File Name: _awesomeSwiper.scss
+  Description: Styles for awesome swiper plugin
+  ----------------------------------------------------------------------------------------
+  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+    Author: Pixinvent
+  Author URL: http://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+
+[dir] .swiper-pagination-bullet-active {
+  background: rgba(var(--vs-primary), 1) !important;
+}
+
+[dir] .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+  background: rgba(var(--vs-primary), 1) !important;
+}
+
+/*=========================================================================================
+  File Name: _formWizard.scss
+  Description: Styles for form wizard externsion.
+  ----------------------------------------------------------------------------------------
+  Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+    Author: Pixinvent
+  Author URL: http://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+
+.vue-form-wizard.md .wizard-navigation .wizard-progress-with-circle {
+  top: 33px !important;
+}
+
+.vue-form-wizard.md .wizard-navigation .wizard-nav .wizard-icon-circle {
+  width: 55px;
+  height: 55px;
+}
+
+[dir] .vue-form-wizard.md .wizard-navigation .wizard-nav .wizard-icon-circle {
+  border: 3px solid #cccccc;
+}
+
+.vue-form-wizard.md .wizard-navigation .wizard-nav .wizard-icon-circle .wizard-icon {
+  font-size: 1.5rem;
+}
+
+.vue-form-wizard.md .wizard-navigation .wizard-nav .stepTitle {
+  color: #626262;
+}
+
+i.wizard-icon {
+  font-style: inherit;
+}
+
+[dir] .stepTitle {
+  margin-top: 0.5rem;
+}
+
+[dir] .select-large input.vs-select--input {
+  padding: 11px;
+}
+
+/*=========================================================================================
+    File Name: _vueSelect.scss
+    Description: vue-select component style.
+    ----------------------------------------------------------------------------------------
+    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+      Author: Pixinvent
+    Author URL: http://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+
+/*=========================================================================================
+    File Name: _variables.scss
+    Description: partial- SCSS varibales
+    ----------------------------------------------------------------------------------------
+    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+      Author: Pixinvent
+    Author URL: http://www.themeforest.net/user/pixinvent
+==========================================================================================*/
+
+/*========================================================
+        SPACING
+=========================================================*/
+
+/*========================================================
+        COLORS
+=========================================================*/
+
+/*========================================================
+        TYPOGRAPHY
+=========================================================*/
+
+/*========================================================
+        TYPOGRAPHY
+=========================================================*/
+
+/*========================================================
+        DARK THEME
+=========================================================*/
+
+.v-select:not(.vs--single) .vs__selected {
+  font-size: 0.9rem;
+}
+
+[dir] .v-select .vs__dropdown-toggle {
+  padding: 0.59px 0 4px 0;
+}
+
+.v-select .vs__dropdown-toggle .vs__search {
+  color: #626262;
+}
+
+.v-select .vs__dropdown-toggle .vs__deselect svg {
+  stroke: #626262;
+  opacity: 0.5;
+}
+
+[dir] .v-select .vs__dropdown-toggle .vs__deselect svg {
+  margin-top: 0 !important;
+}
+
+.v-select .vs__dropdown-toggle .vs__actions .vs__clear {
+  color: #626262;
+}
+
+.v-select .vs__dropdown-menu .vs__dropdown-option--highlight {
+  color: #fff !important;
+}
+
+.v-select .vs__dropdown-menu .vs__dropdown-option {
+  color: #626262;
+}
+
+.v-select .vs__selected {
+  color: #626262;
+}
+
+[dir] .theme-dark .v-select .vs__dropdown-toggle {
+  background: #262c49;
+}
+
+.theme-dark .v-select .vs__dropdown-toggle .vs__clear svg {
+  stroke: #b8c2cc;
+}
+
+.theme-dark .v-select .vs__dropdown-toggle .vs__deselect svg {
+  stroke: #b8c2cc;
+  opacity: 0.7;
+}
+
+[dir] .theme-dark .v-select:not(.vs--single) .vs__selected {
+  background: #10163a;
+  border: none;
+}
+
+.theme-dark .v-select .vs__selected {
+  color: #fff;
+}
+
+.theme-dark .v-select .vs__open-indicator {
+  fill: #b8c2cc;
+}
+
+[dir] .theme-dark .v-select .vs__dropdown-menu {
+  background: #262c49;
+}
+
+.theme-dark .v-select .vs__dropdown-menu .vs__dropdown-option {
+  color: #c2c6dc;
+}
+
+.v-select {
+  position: relative;
+  font-family: inherit;
+}
+
+.v-select,
+.v-select * {
+  box-sizing: border-box;
+}
+
+/* KeyFrames */
+
+@-webkit-keyframes vSelectSpinner-ltr {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes vSelectSpinner-ltr {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes vSelectSpinner-rtl {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes vSelectSpinner-rtl {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Dropdown Default Transition */
+
+.vs__fade-enter-active,
+.vs__fade-leave-active {
+  pointer-events: none;
+  transition: opacity 0.15s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.vs__fade-enter,
+.vs__fade-leave-to {
+  opacity: 0;
+}
+
+/** Component States */
+
+/*
+ * Disabled
+ *
+ * When the component is disabled, all interaction
+ * should be prevented. Here we modify the bg color,
+ * and change the cursor displayed on the interactive
+ * components.
+ */
+
+[dir] .vs--disabled .vs__dropdown-toggle, [dir] .vs--disabled .vs__clear, [dir] .vs--disabled .vs__search, [dir] .vs--disabled .vs__selected, [dir] .vs--disabled .vs__open-indicator {
+  cursor: not-allowed;
+  background-color: #f8f8f8;
+}
+
+/*
+ *  RTL - Right to Left Support
+ *
+ *  Because we're using a flexbox layout, the `dir="rtl"`
+ *  HTML attribute does most of the work for us by
+ *  rearranging the child elements visually.
+ */
+
+.v-select[dir=rtl] .vs__actions {
+  padding: 0 3px 0 6px;
+}
+
+.v-select[dir=rtl] .vs__clear {
+  margin-left: 6px;
+  margin-right: 0;
+}
+
+.v-select[dir=rtl] .vs__deselect {
+  margin-left: 0;
+  margin-right: 2px;
+}
+
+.v-select[dir=rtl] .vs__dropdown-menu {
+  text-align: right;
+}
+
+/**
+    Dropdown Toggle
+
+    The dropdown toggle is the primary wrapper of the component. It
+    has two direct descendants: .vs__selected-options, and .vs__actions.
+
+    .vs__selected-options holds the .vs__selected's as well as the
+    main search input.
+
+    .vs__actions holds the clear button and dropdown toggle.
+ */
+
+.vs__dropdown-toggle {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: flex;
+  white-space: normal;
+}
+
+[dir] .vs__dropdown-toggle {
+  padding: 0 0 4px 0;
+  background: none;
+  border: 1px solid rgba(60, 60, 60, 0.26);
+  border-radius: 4px;
+}
+
+.vs__selected-options {
+  display: flex;
+  flex-basis: 100%;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+[dir] .vs__selected-options {
+  padding: 0 2px;
+}
+
+.vs__actions {
+  display: flex;
+  align-items: center;
+}
+
+[dir=ltr] .vs__actions {
+  padding: 4px 6px 0 3px;
+}
+
+[dir=rtl] .vs__actions {
+  padding: 4px 3px 0 6px;
+}
+
+/* Dropdown Toggle States */
+
+[dir] .vs--searchable .vs__dropdown-toggle {
+  cursor: text;
+}
+
+[dir] .vs--unsearchable .vs__dropdown-toggle {
+  cursor: pointer;
+}
+
+[dir] .vs--open .vs__dropdown-toggle {
+  border-bottom-color: transparent;
+}
+
+[dir=ltr] .vs--open .vs__dropdown-toggle {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+[dir=rtl] .vs--open .vs__dropdown-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.vs__open-indicator {
+  fill: rgba(60, 60, 60, 0.5);
+  transition: transform 150ms cubic-bezier(1, -0.115, 0.975, 0.855);
+}
+
+[dir] .vs__open-indicator {
+  transform: scale(1);
+  transition-timing-function: cubic-bezier(1, -0.115, 0.975, 0.855);
+}
+
+[dir=ltr] .vs--open .vs__open-indicator {
+  transform: rotate(180deg) scale(1);
+}
+
+[dir=rtl] .vs--open .vs__open-indicator {
+  transform: rotate(-180deg) scale(1);
+}
+
+.vs--loading .vs__open-indicator {
+  opacity: 0;
+}
+
+/* Clear Button */
+
+.vs__clear {
+  fill: rgba(60, 60, 60, 0.5);
+}
+
+[dir] .vs__clear {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+[dir=ltr] .vs__clear {
+  margin-right: 8px;
+}
+
+[dir=rtl] .vs__clear {
+  margin-left: 8px;
+}
+
+/* Dropdown Menu */
+
+.vs__dropdown-menu {
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  top: calc(100% - 1px);
+  z-index: 1000;
+  width: 100%;
+  max-height: 350px;
+  min-width: 160px;
+  overflow-y: auto;
+  list-style: none;
+}
+
+[dir] .vs__dropdown-menu {
+  padding: 5px 0;
+  margin: 0;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(60, 60, 60, 0.26);
+  border-top-style: none;
+  border-radius: 0 0 4px 4px;
+  background: #fff;
+}
+
+[dir=ltr] .vs__dropdown-menu {
+  left: 0;
+  text-align: left;
+}
+
+[dir=rtl] .vs__dropdown-menu {
+  right: 0;
+  text-align: right;
+}
+
+[dir] .vs__no-options {
+  text-align: center;
+}
+
+/* List Items */
+
+.vs__dropdown-option {
+  line-height: 1.42857143;
+  /* Normalize line height */
+  display: block;
+  color: #333;
+  /* Overrides most CSS frameworks */
+  white-space: nowrap;
+}
+
+[dir] .vs__dropdown-option {
+  padding: 3px 20px;
+  clear: both;
+}
+
+[dir] .vs__dropdown-option:hover {
+  cursor: pointer;
+}
+
+.vs__dropdown-option--highlight {
+  color: #fff;
+}
+
+[dir] .vs__dropdown-option--highlight {
+  background: rgba(var(--vs-primary), 1);
+}
+
+.vs__dropdown-option--disabled {
+  color: rgba(60, 60, 60, 0.5);
+}
+
+[dir] .vs__dropdown-option--disabled {
+  background: inherit;
+}
+
+[dir] .vs__dropdown-option--disabled:hover {
+  cursor: inherit;
+}
+
+/* Selected Tags */
+
+.vs__selected {
+  display: flex;
+  align-items: center;
+  color: #333;
+  line-height: 1.8;
+  z-index: 0;
+}
+
+[dir] .vs__selected {
+  background-color: #f0f0f0;
+  border: 1px solid rgba(60, 60, 60, 0.26);
+  border-radius: 4px;
+  margin: 4px 2px 0px 2px;
+  padding: 0 0.25em;
+}
+
+.vs__deselect {
+  display: inline-flex;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  fill: rgba(60, 60, 60, 0.5);
+}
+
+[dir] .vs__deselect {
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: none;
+  text-shadow: 0 1px 0 #fff;
+}
+
+[dir=ltr] .vs__deselect {
+  margin-left: 4px;
+}
+
+[dir=rtl] .vs__deselect {
+  margin-right: 4px;
+}
+
+.exportRepresentiveInfos {
+    padding: 60px 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.exportRepresentiveInfos .blockHeader {
+    font-weight: 700;
+    text-align: center;
+}
+
+.exportRepresentiveInfos .representiveArea {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.representiveCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 35px;
+}
+
+.representiveCard .representiveHeader {
+    width: 100%;
+    background: #970001;
+    color: #fff;
+    padding: 15px
+}
+.representiveCard .representiveHeader h4 {
+    text-decoration: underline;
+}
+.representiveHeader {
+    font-weight: bold;
+}
+.representiveContact {
+    width: 100%;
+}
+.representiveContact ul {
+    width: 100%;
+}
+.representiveContact ul li {
+    display: block;
+    padding: 15px;
+    font-weight: 600;
+    position: relative;
+}
+.representiveContact ul li span {
+    display: block;
+    color: #970001;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+.representiveContact ul li .rightIcon {
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -50%);
+    background: #970001;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.representiveContact ul li .rightIcon .fa {
+    color: #fff;
+    font-size: 20px;
+    line-height: 30px;
+    margin-left: 1px;
+}
+.representiveContact ul li:nth-child(even) {
+    background-color: #f3f3f3;
+}
+.representiveContact ul li:nth-child(odd) {
+    background-color: #fff;
+}
+
+@media (max-width: 767px) {
+    .exportRepresentiveInfos .representiveArea {
+        width: 100%;
+    }
+
+    .representiveContact ul li {
+        padding-right: 55px;
+    }
+}
+
+/* exportCountry
+*****************/ .exportDetailsTable {
+    padding: 60px 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.exportDetailsTable table thead tr th:nth-child(2) {
+	min-width: 230px;
+}
+
+ .exportDetailsTable h1 {
+    font-weight: 800;
+}
+ .exportDetailsTable .gtip {
+    text-align: center;
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+}
+ .exportDetailsTable .gtipNumber {
+    display: block;
+    font-weight: 800;
+    font-size: 14px;
+}
+ .exportDetailsTable .gtipDescription {
+    color: #222;
+}
+ .exportDetailsTable .exportValue {
+    display: block;
+    font-weight: 800;
+    font-size: 20px;
+}
+ .exportDetailsTable .exportCurrency {
+    display: block;
+    font-weight: 700;
+    font-size: 12px;
+}
+ .exportDetailsTable .exportDescription {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+ .exportDetailsTable .exportCountryRate {
+    text-align: center;
+    margin-bottom: 20px;
+}
+ .exportDetailsTable table {
+    max-width: 800px;
+}
+ .exportDetailsTable table th {
+    background: #970001;
+    color: #fff;
+}
+ .exportDetailsTable table tr {
+    transition: all .3s linear;
+}
+ .exportDetailsTable table tr:hover {
+    background-color: #fff;
+}
+ .exportDetailsTable table td {
+    padding: 0;
+    background-color: #ffffff6b;
+}
+ .exportDetailsTable table td a{
+    display: block;
+    padding: 10px;
+}
+ .exportDetailsTable table tr td:nth-child(2) {
+    text-align: center;
+    position: relative;
+}
+ .exportDetailsTable table tr td:nth-child(2)::after {
+    content: '\f101';
+    font-family: FontAwesome;
+    display: block;
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    color: #970001;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+ .exportDetailsTable table tr td:nth-child(2)::after {
+        display: none;
+    }
+}
+
+#vs1__listbox {
+}
+
+#vs1__listbox li {
+	color: #970001;
+	font-weight: bold;
+}
+
+#vs1__listbox li:hover {
+	background-color: #970001;
 }

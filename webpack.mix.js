@@ -64,4 +64,4 @@ mix.webpackConfig({
   }
 });
 
- // mix.js('resources/front-end-js/app.js', 'public/theme/js');
+ mix.js('resources/front-end-js/app.js', 'public/theme/js');

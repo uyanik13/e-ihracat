@@ -2,7 +2,7 @@
 
 
       <vs-tabs position="left" color="danger">
-        <vs-tab label="Anasayfa Menu Alti Slider" class="mb-5 ml-5 mt-5 sm:w-11/12">
+        <vs-tab :label="$t('homepageSliderArea')" class="mb-5 ml-5 mt-5 sm:w-11/12">
 
                 <vx-card v-for="(option,index)  in HomeUnderMenuSlider" :key="index" class="mb-5 ml-2 mr-5 mt-5" >
                     <div class="vx-row">
@@ -42,7 +42,7 @@
         </vs-tab>
 
 
-        <vs-tab label="Anasayfa About Us Yazisi" class="mb-5 ml-5 mt-5 sm:w-11/12" >
+        <vs-tab :label="$t('homepageaboutArea')" class="mb-5 ml-5 mt-5 sm:w-11/12" >
           <vx-card  >
                <div class="flex flex-wrap items-center mb-5 mt-5 ml-5 h-full">
                       <span>{{$t('Content')}}</span>
@@ -70,7 +70,7 @@
         </vs-tab> -->
 
 
-        <vs-tab label="4Lu Box Sayilari" class="mb-5 ml-5 mt-5 sm:w-11/12">
+        <vs-tab :label="$t('statisticAreaNumbers')" class="mb-5 ml-5 mt-5 sm:w-11/12">
           <vx-card >
               <vs-input :label="'Toplam Uyeler'"  v-model="fourBox.allusers" class="mt-5 w-full"  />
                  <vs-divider></vs-divider>

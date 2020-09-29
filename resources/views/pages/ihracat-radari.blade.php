@@ -1,7 +1,6 @@
 ﻿
 
-			<div id="exportRadar">
-				<video id="exportBg" src="{{asset('theme/images/earthAnimation05.mp4')}}" autoplay loop muted></video>
+			<div id="exportRadar" style="background: url({{asset('theme/images/export-bg.jpg')}}) center center no-repeat; background-color: #d7d7d7d6; background-size: cover; background-blend-mode: overlay; top: -17px">
 				<div class="container">
 					<div class="row">
 						<div class="radarMainMenu">

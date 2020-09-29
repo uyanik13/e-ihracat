@@ -1,5 +1,6 @@
 ﻿@php
     $findServiceswithoutId = Helper::findServiceswithoutId();
+    $childServices = json_decode($findServiceswithoutId[1]->options,true)['relevantServices'];
 @endphp
 <!-- Content Start -->
 <div id="contentWrapper">
@@ -41,25 +42,23 @@
                             <label>{{__('lang.requested_services')}}<span class="red">*</span></label>
                             <select id="serviceCategorySelect" name="appServiceSelect" id="appServiceSelect">
                                 <option value="default">Hizmet Seçin</option>
-                                <option value="appService1">Hukuk & Lojistik</option>
-                                <option value="appService2">Ulusal Pazaryerleri</option>
-                                <option value="appService3">Uluslararası Pazaryerleri </option>
+                                @foreach ($findServiceswithoutId as $key=> $service)
+                            <option value="default{{$key}}">{{$service->title}}</option>
+                                @endforeach
+                            
                             </select>
-                            <select id="hukuklojistik" name="detailservices">
-                                <option value="hukuk1">Hukuk 1. Hizmet</option>
-                                <option value="hukuk2">Hukuk 2. Hizmet</option>
-                                <option value="hukuk3">Hukuk 3. Hizmet</option>
+                            @foreach ($findServiceswithoutId as $key1=> $service)
+                            @php
+                            $collection = json_decode($findServiceswithoutId[$key]->options,true)['relevantServices'];
+                            @endphp
+                            @foreach ($collection as $key=>$item)
+                                <select id="default{{$key1}}" name="detailservices">
+                                <option value="hukuk1">{{$item->title}}</option>
                             </select>
-                            <select id="ulusal" name="detailservices">
-                                <option value="ulusal1">Ulusal 1. Hizmet</option>
-                                <option value="ulusal2">Ulusal 2. Hizmet</option>
-                                <option value="ulusal3">Ulusal 3. Hizmet</option>
-                            </select>
-                            <select id="uluslararası" name="detailservices">
-                                <option value="uluslararası1">Uluslararası 1. Hizmet</option>
-                                <option value="uluslararası2">Uluslararası 2. Hizmet</option>
-                                <option value="uluslararası3">Uluslararası 3. Hizmet</option>
-                            </select>
+                            @endforeach
+                            @endforeach
+                            
+                            
                         </div>
                         <div class="form-input">
                             <label>{{__('lang.appointment_date')}}</label>
