@@ -40,6 +40,7 @@ return [
     'in_process' => 'In Process',
     'shipped' => 'Shipped',
     'completed' => 'Completed',
+    /*******************************/
     'latest' => 'SON',
     'news' => 'HABERLER',
     'partners' => 'E-İhracat İş Ortakları',
@@ -51,7 +52,6 @@ return [
     'e_export_volume' => 'E-İhracat Hacmi',
     'look_all_news_desc' => 'Türkiye\'de ve Dünya\'daki tüm yenilikleri haberlerimiz arasından takip edebilirsiniz. Son eklenen haberleri bu alanda görüntüleyebilir, tüm haberlere için aşağıdaki linkten ulaşabilirsiniz.',
     'look_all_news' => 'TÜM HABERLERE GÖZ ATIN',
-    'completed' => 'Completed',
     'completed' => 'Completed',
     'your_messsage_has_been_sent' => 'Your Message Has Been Sent',
     'you_can_now_go_to_payment' => 'Now you can go to payment',
@@ -186,10 +186,6 @@ return [
     'check_our_services' => 'Hizmetlerimize Göz Atın',
     'can_ask_us' => ' Herhangi bir yardıma ihtiyacınız olursa canlı
     destek, whatsapp ya da e-posta üzerinden bizden yardım alabilirsiniz.',
-    'aaaaa' => 'aaaaaa',
-    'aaaaa' => 'aaaaaa',
-    'aaaaa' => 'aaaaaa',
-    'aaaaa' => 'aaaaaa',
 
 
 
