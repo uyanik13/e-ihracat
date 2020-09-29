@@ -1,5 +1,5 @@
 <li class="widget blog-cat-w fx" data-animate="fadeInLeft">
-    <h3 class="widget-head">Bizimle İletişime Geçebilirsiniz</h3>
+    <h3 class="widget-head">{{__('lang.can_contact_withus')}}</h3>
     <div class="widget-content">
         <ul class="sidebarCallLocation">
             <li><a title="Whatsapp Destek Hattı" href="https://wa.me/@isset($setting['phone']){{$setting['phone']->value }} @endisset"><i

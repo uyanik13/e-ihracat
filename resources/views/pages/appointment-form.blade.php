@@ -7,10 +7,10 @@
         <div class="container">
             <div class="row">
                 <div class="cell-12">
-                    <h1 class="fx" data-animate="fadeInLeft">Online <span>Randevu</span></h1>
+                    <h1 class="fx" data-animate="fadeInLeft">{{__('lang.online_appointment')}}</h1>
                     <div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
-                        <span class="bold">Buradasınız:</span><a href="#">Anasayfa</a><span
-                            class="line-separate">/</span><a href="#">Randevu </a>
+                        <span class="bold">{{__('lang.you_are_here')}}:</span><a href="#">{{__('lang.homepage')}}</a><span
+                            class="line-separate">/</span><a href="#">{{__('lang.nav_appointment')}} </a>
                     </div>
                 </div>
             </div>
@@ -21,24 +21,24 @@
         <div class="container">
             <div class="row">
                 <div class="cell-7 contact-form fx appointmentFormInput" data-animate="fadeInLeft" id="contact">
-                    <h3 class="block-head">Randevu Formu</h3>
+                    <h3 class="block-head">{{__('lang.appointment_form')}}</h3>
                     <mark id="message"></mark>
                     <form class="form-signin cform" method="post" action="php/contact.php" id="cform"
                         autocomplete="on">
                         <div class="form-input">
-                            <label>Ad Soyad<span class="red">*</span></label>
+                            <label>{{__('lang.fullname')}}<span class="red">*</span></label>
                             <input type="text" required="required" name="appFullName" id="appFullName">
                         </div>
                         <div class="form-input">
-                            <label>E-Posta Adresi<span class="red">*</span></label>
+                            <label>{{__('lang.email_adress')}}<span class="red">*</span></label>
                             <input name="appEmail" type="email" id="appEmail" required="required">
                         </div>
                         <div class="form-input">
-                            <label>Telefon Numarası</label>
+                            <label>{{__('lang.phone_number')}}</label>
                             <input name="appPhoneNumber" type="text" id="appPhoneNumber">
                         </div>
                         <div class="form-input">
-                            <label>Almak İstediğiniz Hizmet<span class="red">*</span></label>
+                            <label>{{__('lang.requested_services')}}<span class="red">*</span></label>
                             <select id="serviceCategorySelect" name="appServiceSelect" id="appServiceSelect">
                                 <option value="default">Hizmet Seçin</option>
                                 <option value="appService1">Hukuk & Lojistik</option>
@@ -62,12 +62,12 @@
                             </select>
                         </div>
                         <div class="form-input">
-                            <label>Randevu Tarihi</label>
+                            <label>{{__('lang.appointment_date')}}</label>
                             <input placeholder="Tarih Seçiniz" class="textbox-n" type="text"
                                 onfocus="(this.type='date')" onblur="(this.type='text')" id="appDate" />
                         </div>
                         <div class="form-input">
-                            <label>Randevu Saati</label>
+                            <label>{{__('lang.appointment_date_hour')}}</label>
                             <select name="appSetHour" id="appSetHour">
                                 <option value="appSetHour1">10:00 - 11:00</option>
                                 <option value="appSetHour2">11:00 - 12:00</option>
@@ -78,7 +78,7 @@
                             </select>
                         </div>
                         <div class="form-input">
-                            <label>Eklemek İstedikleriniz</label>
+                            <label>{{__('lang.extra_notes')}}</label>
                             <textarea required="required" name="message" cols="40" rows="7" id="messageTxt"
                                 spellcheck="true"></textarea>
                         </div>
@@ -89,13 +89,11 @@
                     </form>
                 </div>
                 <div class="cell-5 appointmentDetails">
-                    <h3 class="block-head">E-İhracat Online Randevu Sistemi</h3>
+                    <h3 class="block-head">{{__('lang.appointment_system_info')}}</h3>
                     <p class="fx" data-animate="fadeInRight">
-                        Hizmetlerimizden faydalanmak ve faaliyetlerimiz hakkında detaylı bilgi almak için
-                        randevu oluşturabilirsiniz. Randevu oluşturulduğunda, randevu bilgileriniz barındıran
-                        bir e-posta ile bilgilendirileceksiniz.
+                        {{__('lang.appointment_system_info_desc')}}
                     </p>
-                    <h3 class="block-head">Hizmetlerimize Göz Atın</h3>
+                    <h3 class="block-head">{{__('lang.check_our_services')}}</h3>
                     <ul id="accordion" class="accordion">
                                 @foreach ($findServiceswithoutId as $service)
                                    <li>
@@ -114,14 +112,13 @@
                     <div class="padding-vertical">
                         <div class="fx appointSupportArea" data-animate="fadeInRight">
                             <h4 class="main-color bold">
-                                İletişim Bilgileri
+                                {{__('lang.foot_contact_info')}}
                             </h4>
-                            <p> Herhangi bir yardıma ihtiyacınız olursa canlı
-                                destek, whatsapp ya da e-posta üzerinden bizden yardım alabilirsiniz.</p>
-                            <h5>E-Posta:</h5>
+                            <p>{{__('lang.can_ask_us')}}</p>
+                            <h5>{{__('lang.email_adress')}}:</h5>
                             <a href="mailto:destek@eihracatturkiye.com">destek@eihracatturkiye.com</a>
                             <a href="mailto:randevu@eihracatturkiye.com">randevu@eihracatturkiye.com</a>
-                            <h5>Telefon:</h5>
+                            <h5>{{__('lang.phone_number')}}:</h5>
                             <a href="tel:+908503469956">+90 850 346 9956</a>
                             <h5>Whatsapp:</h5>
                             <a class="whatsappButton" href="https://wa.me/908503469956"><i

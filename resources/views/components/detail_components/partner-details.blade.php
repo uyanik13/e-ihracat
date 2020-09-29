@@ -8,7 +8,9 @@
     $partnerPointAvg = Helper::getPartnerPointAvarage($partner->id);
     $fullStar = (int)$partnerPointAvg;
     $emptyStar = 5-$partnerPointAvg;
-    $workAreas =json_decode( $partner->about_data,true)['tags'];
+    if (isset(json_decode( $partner->about_data,true)['tags'])) {
+        $workAreas =json_decode( $partner->about_data,true)['tags'];
+    }
 @endphp
 <!-- Content Start -->
 <div id="contentWrapper">
@@ -16,11 +18,12 @@
         <div class="container">
             <div class="row">
                 <div class="cell-12">
-                    <h1 class="fx" data-animate="fadeInLeft">Partner <span>Başlığı</span></h1>
+                    <h1 class="fx" data-animate="fadeInLeft">{{$partner->name}}</h1>
                     <div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
-                        You Are In:</span><a href="#">Anasayfa</a><span class="line-separate">/</span><a
-                            href="#">Partnerler </a><span class="line-separate">/</span><span>Partner
-									Başlığı</span>
+                        <span class="bold">{{__('lang.you_are_here')}}:</span><a href="#">{{__('lang.homepage')}}</a><span
+                            class="line-separate">/</span><a
+                            href="#">{{__('lang.partners')}} </a><span
+                            class="line-separate">/</span><a href="#">{{$partner->name}}</a>
                     </div>
                 </div>
             </div>
@@ -40,32 +43,32 @@
                         <div class="partnerShortInfo">
                             <h1 class="block-head  margin-bottom-40 fx animated fadeInUp"
                                 data-animate="fadeInUp">
-                                <span>Partner Ünvanı</span>
+                                <span>{{$partner->name}}</span>
                             </h1>
                             <ul class="list-details">
                                 <li>
-                                    <i class="fa fa-map-marker"></i> <span class="main-color">Lokasyon:</span>
+                                    <i class="fa fa-map-marker"></i> <span class="main-color">{{__('lang.partner_location')}}:</span>
                                     İstanbul
                                 </li>
                                 <li>
-                                    <i class="fa fa-book"></i> <span class="main-color">Açık Adres:</span>
+                                    <i class="fa fa-book"></i> <span class="main-color">{{__('lang.partner_fulladress')}}:</span>
                                     {{$partner->address}}
                                 </li>
                                 <li>
-                                    <i class="fa fa-phone"></i> <span class="main-color">Telefon:</span> 0555
+                                    <i class="fa fa-phone"></i> <span class="main-color">{{__('lang.partner_telephone')}}:</span>
                                     {{$partner->phone}}
                                 </li>
                                 <li>
-                                    <i class="fa fa-send-o"></i> <span class="main-color">E-Posta:</span>
+                                    <i class="fa fa-send-o"></i> <span class="main-color">{{__('lang.partner_email')}}:</span>
                                     {{$partner->email}}
                                 </li>
                                 <li>
-                                    <i class="fa fa-calendar"></i> <span class="main-color">Kayıt Tarihi:</span>
+                                    <i class="fa fa-calendar"></i> <span class="main-color">{{__('lang.partner_register_date')}}:</span>
                                     {{$partnerDate}}
                                 </li>
 
                                 <li>
-                                    <i class="fa fa-check"></i> <span class="main-color">Derecelendirme:</span>
+                                    <i class="fa fa-check"></i> <span class="main-color">{{__('lang.partner_star_rate')}}:</span>
                                     @for($i = 0; $i<$fullStar; $i++)
                                         <i class="fa fa-star"></i>
                                     @endfor
@@ -78,7 +81,7 @@
                                     $webSite = json_decode($partner->about_data,true);
                                 @endphp
                                 @isset($webSite['website'])<li>
-                                    <i class="fa fa-globe"></i> <span class="main-color">Web Site:</span> <a
+                                    <i class="fa fa-globe"></i> <span class="main-color">{{__('lang.partner_detail_website')}}:</span> <a
                                         href="https://{{$webSite['website']}}">{{$webSite['website']}}</a>
                                 </li>@endisset
                             </ul>
@@ -87,14 +90,14 @@
 
                     <div class="partnerIntroduction">
                         <h2 class="block-head  margin-bottom-40 fx animated fadeInUp" data-animate="fadeInUp">
-                            <span>Partner Tanıtım Alanı</span>
+                            <span>{{__('lang.partner_description')}}</span>
                         </h2>
                         {!! json_decode($partner->about_data,true)['bio'] !!}
                     </div>
 
                     <!-- Recent Portfolio projects -->
                     <div class="sectionWrapper">
-                        <h3 class="block-head">Partner Blog</h3>
+                        <h3 class="block-head">{{__('lang.partner_blog')}}</h3>
                         <div class="portfolioGallery portfolio">
                             @isset($blogsBelognsToPartner)
                                 @foreach($blogsBelognsToPartner as $post)
@@ -123,7 +126,7 @@
                     </div>
 
                     <div class="comments">
-                        <h3 class="block-head">Yorumlar</h3>
+                        <h3 class="block-head">{{__('lang.blog_comments')}}</h3>
                         <ul class="comment-list">
                             <li>
                                 @isset($comments)
@@ -139,7 +142,7 @@
                                                     <span class="author-name skew25">{{$comment->user->name}}</span>
                                                     <a href="#commentForm" onclick="setToWhomComment({{$comment->id}})"
                                                        class="comment-reply main-bg"><span class="skew25"><i
-                                                                class="fa fa-comment"></i>cevapla</span></a>
+                                                                class="fa fa-comment"></i>{{__('lang.blog_comment_answer')}}</span></a>
                                                     <span
                                                         class="comment-date skew25">{{Helper::getDateForHuman($comment->created_at)}}</span>
                                                 </h5>
@@ -164,7 +167,7 @@
                                                                        onclick="setToWhomComment({{$comment->id}})"
                                                                        class="comment-reply main-bg"><span
                                                                             class="skew25"><i
-                                                                                class="fa fa-comment"></i>cevapla</span></a>
+                                                                                class="fa fa-comment"></i>{{__('lang.blog_comment_answer')}}</span></a>
                                                                     <span
                                                                         class="comment-date skew25">{{Helper::getDateForHuman($child->created_at)}}</span>
                                                                 </h5>
@@ -183,16 +186,15 @@
                         </ul><!-- End .comment-list -->
                     </div>
                     @guest
-                        Yorum yapmak için
-                        <a href="/panel/login" class="btn btn-danger"> Giriş Yapınız</a>
+                    {{__('lang.comment_login')}}
+                        <a href="/panel/login" class="btn btn-danger"> {{__('lang.please_login')}}</a>
                     @endguest
                     @auth
                         <form action="{{route('add_comment_to_product',$partner->id)}}" method="post"
                               class="leave-comment contact-form" id="commentForm">
                             @csrf
-                            <h3 class="block-head">Yorum Yap</h3>
-                            <p>Aşağıdaki gerekli alanları doldurarak sizde bu haber hakkındaki fikirlerinizi
-                                paylaşabilirsiniz.</p>
+                            <h3 class="block-head">{{__('lang.do_comment')}}</h3>
+                            <p>{{__('lang.comment_description')}}</p>
                             <div class="row">
 
                                 {{--<div class="cell-6">
@@ -208,7 +210,7 @@
                                 @if($canVote)
                                     <div class="cell-12" id="ratingField">
                                         <div class="form-input rating">
-                                            <span class="bold">Derecelendirmeniz: </span>
+                                            <span class="bold">{{__('lang.your_rating')}}: </span>
                                             <span>1<input value="1" class="divideThis" type="radio" name="point"></span>
                                             <span>2<input value="2" class="divideThis" type="radio" name="point"></span>
                                             <span>3<input value="3" class="divideThis" type="radio" name="point"></span>
@@ -242,7 +244,7 @@
                         @include('pages.partials.partner_search')
 
                         <li class="widget blog-cat-w fx" data-animate="fadeInRight">
-                            <h3 class="widget-head">Çalışma Alanları</h3>
+                            <h3 class="widget-head">{{__('lang.work_areas')}}</h3>
                             <div class="widget-content">
                                 <ul class="list list-ok alt">
                                     @if(isset($workAreas))
@@ -256,7 +258,7 @@
                         </li>
 
                         <li class="widget r-posts-w fx" data-animate="fadeInRight">
-                            <h3 class="widget-head">İletişim Formu</h3>
+                            <h3 class="widget-head">{{__('lang.partner_contact_form')}}</h3>
                             <div class="widget-content">
                                 <div class="cell-12 contact-form fx" data-animate="fadeInLeft" id="contact">
                                     <mark id="message"></mark>
@@ -265,19 +267,19 @@
                                           autocomplete="on">
                                         @csrf
                                         <div class="form-input">
-                                            <label>Ad Soyad<span class="red">*</span></label>
+                                            <label>{{__('lang.fullname')}}<span class="red">*</span></label>
                                             <input type="text" required="required" name="name" id="name">
                                         </div>
                                         <div class="form-input">
-                                            <label>E-Posta<span class="red">*</span></label>
+                                            <label>{{__('lang.email_adress')}}<span class="red">*</span></label>
                                             <input name="email" type="email" id="email" required="required">
                                         </div>
                                         <div class="form-input">
-                                            <label>Telefon</label>
+                                            <label>{{__('lang.phone_number')}}</label>
                                             <input name="phone" type="text" id="phone">
                                         </div>
                                         <div class="form-input">
-                                            <label>Mesaj<span class="red">*</span></label>
+                                            <label>{{__('lang.message')}}<span class="red">*</span></label>
                                             <textarea required="required" name="message" cols="40" rows="7"
                                                       id="messageTxt" spellcheck="true"></textarea>
                                         </div>

@@ -26,17 +26,17 @@
                     <div class="cell-5">
                         <ul>
                             <li><a href="#"><i class="fa fa-envelope"></i>@isset($setting['email']) {{ $setting['email']->value }} @endisset</a></li>
-                            <li><span><i class="fa fa-phone"></i> Bizi Arayın: @isset($setting['phone']) {{ $setting['phone']->value }} @endisset</span></li>
+                            <li><span><i class="fa fa-phone"></i>{{__('lang.call_us')}}@isset($setting['phone']) {{ $setting['phone']->value }} @endisset</span></li>
                         </ul>
                     </div>
                     <div class="cell-7 right-bar">
                         <ul class="right">
-                            <li><a href="javascript:void(0);"><i class="fa fa-clock-o"></i>Çalışma Saatlerimiz:
-                                    Pazartesi – Cuma: 09:00 /
-                                    18:00</a></li>
-                            <li><a href="/panel/register"><i class="fa fa-user"></i>Kayıt Ol</a></li>
-                            <li><a href="/panel/login" class=""><i class="fa fa-unlock-alt"></i> Giriş Yap</a></li>
-                            <li><a href="#" class="multiLanguage"><i class="fa fa-globe"></i> EN</a></li>
+                            <li><a href="javascript:void(0);"><i class="fa fa-clock-o"></i>
+                                {{__('lang.our_works_hours')}}    
+                                </a></li>
+                            <li><a href="/panel/register"><i class="fa fa-user"></i>{{__('lang.site_register')}}</a></li>
+                            <li><a href="/panel/login" class=""><i class="fa fa-unlock-alt"></i>{{__('lang.site_login')}} </a></li>
+                            <li><a href="#" class="multiLanguage"><i class="fa fa-globe"></i>{{__('lang.multi_lang_btn')}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -59,17 +59,17 @@
                         <nav class="top-nav mega-menu">
                             <ul>
                                 <li @if($category == 'anasayfa' ) class="selected"@endif>
-                                    <a href="/"><i class="fa fa-home"></i><span>Anasayfa</span></a>
+                                    <a href="/"><i class="fa fa-home"></i><span>{{__('lang.nav_homepage')}}</span></a>
                                 </li>
 
                                 <li @if( $category == 'about-us' )class="selected" @endif>
                                     <a href="/about-us"><i
-                                            class="fa fa-building-o"></i><span>Hakkımızda</span></a>
+                                            class="fa fa-building-o"></i><span>{{__('lang.nav_about')}}</span></a>
                                 </li >
 
                                 <li @if( $category == 'our-services' )class="selected" @endif>
                                     <a href="javascript:void(0);"><i
-                                            class="fa fa-gift"></i><span>Hizmetler</span></a>
+                                            class="fa fa-gift"></i><span>{{__('lang.nav_services')}}</span></a>
                                     <ul>
                                         @foreach ($findServiceswithoutId5 as $service)
                                     <li><a href="{{route('service.find',$service->slug)}}">{{$service->title}}</a></li>
@@ -80,33 +80,32 @@
                                 </li>
 
                                 <li @if( $category == 'partner-list' )class="selected" @endif >
-                                    <a href="/partner-list"><i class="fa fa-copy"></i><span>Partner</span></a>
+                                    <a href="/partner-list"><i class="fa fa-copy"></i><span>{{__('lang.nav_partner')}}</span></a>
                                 </li >
 
                                 <li @if( $category == 'references' )class="selected" @endif>
-                                    <a href="/references"><i class="fa fa-book"></i><span>Referanslar</span></a>
+                                    <a href="/references"><i class="fa fa-book"></i><span>{{__('lang.nav_referances')}}</span></a>
                                 </li>
 
                                 <li @if( $category == 'blog' )class="selected" @endif>
-                                    <a href="/blog"><i class="fa fa-newspaper-o"></i><span>Blog
-												<b class="menu-hint success">Yeni</b></span></a>
+                                    <a href="/blog"><i class="fa fa-newspaper-o"></i><span>{{__('lang.nav_blog')}}
+												<b class="menu-hint success">{{__('lang.nav_blog_new')}}</b></span></a>
                                 </li>
 
-                                <li @if( $category == 'ihracat-radari' )class="selected" @endif><a href="javascript:void(0);"><i class="fa fa-question"></i><span>Bilgi
-												Bankası</span></a>
+                                <li @if( $category == 'ihracat-radari' )class="selected" @endif><a href="javascript:void(0);"><i class="fa fa-question"></i><span>{{__('lang.nav_info_bank')}}</span></a>
                                     <ul>
-                                        <li><a href="/ihracat-radari">İhracat Radarı</a></li>
-                                        <li><a href="/devlet-tesvikleri">Devlet Teşvikleri</a></li>
-                                        <li><a href="/doviz-radari">Döviz Radarı</a></li>
-                                        <li><a href="/faq">S.S.S</a></li>
+                                        <li><a href="/ihracat-radari">{{__('lang.nav_export_radar')}}</a></li>
+                                        <li><a href="/devlet-tesvikleri">{{__('lang.nav_government_helps')}}</a></li>
+                                        <li><a href="/doviz-radari">{{__('lang.nav_foreign_money')}}</a></li>
+                                        <li><a href="/faq">{{__('lang.nav_faq')}}</a></li>
                                     </ul>
                                 </li>
 
-                                <li @if( $category == 'contact' )class="selected" @endif><a href="/contact"><i class="fa fa-phone"></i><span>İletişim</span></a>
+                                <li @if( $category == 'contact' )class="selected" @endif><a href="/contact"><i class="fa fa-phone"></i><span>{{__('lang.nav_contact')}}</span></a>
                                 </li>
 
                                 <li @if( $category == 'appointment-form' )class="selected" @endif><a href="/appointment-form"><i
-                                            class="fa fa-calendar-check-o"></i><span>Randevu</span></a>
+                                            class="fa fa-calendar-check-o"></i><span>{{__('lang.nav_appointment')}}</span></a>
                                 </li>
                             </ul>
                         </nav>

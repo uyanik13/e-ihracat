@@ -22,9 +22,9 @@
     <div class="sectionWrapper">
         <div class="container">
             <div class="fx" data-animate="fadeInUp">
-                <h3 class="block-head">E-İhracat Gelecektir!</h3>
+                <h3 class="block-head">{{__('lang.export_future')}}</h3>
                 <div class="cell-6">
-
+                    @isset($aboutUsPage['content'])  
                     {!! $aboutUsPage['content'] !!}
                     <div class="aboutBtnArea">
                         <a class="btn btn-md btn-skew btn-3d main-bg" href="our-services">
@@ -34,6 +34,7 @@
                             <span><i class="fa fa-user-secret selectedI"></i>{{__('lang.become_a_partner')}}</span>
                         </a>
                     </div>
+                    @endisset
                 </div>
                 <div class="cell-6">
                     <figure>
@@ -49,7 +50,11 @@
                     <div class="row">
                         <div>
                         <h3 class="block-head">{{__('lang.our_mission')}}</h3>
+                        @isset($aboutUsPage['mission'])
+                            
+                        
                             {!! $aboutUsPage['mission'] !!}
+                            @endisset
                         </div>
                     </div>
                 </div>
@@ -57,8 +62,10 @@
                 <div class="cell-5 fx" data-animate="fadeInRight" style="padding-left: 10px;">
                     <div class="row">
                         <div>
+                            @isset($aboutUsPage['vision'])
                             <h3 class="block-head">{{__('lang.our_vision')}}</h3>
                             {!! $aboutUsPage['vision'] !!}
+                            @endisset
                         </div>
                     </div>
                 </div>
@@ -133,7 +140,7 @@
 
             <!-- staff item start -->
             <div class="cell-4 fx" data-animate="fadeInDown">
-                <div class="fun-title bold"><span>{{__('lang.our_mission')}} </span></div>
+                <div class="fun-title bold"><span>{{__('lang.our_missions')}} </span></div>
             </div>
             <div class="cell-2 fx" data-animate="fadeInDown" data-animation-delay="600">
                 <div class="fun-number">@isset($fourBox['allusers']){{$fourBox['employments']}}+ @endisset</div>

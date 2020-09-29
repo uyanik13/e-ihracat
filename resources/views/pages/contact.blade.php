@@ -5,10 +5,10 @@
 				<div class="container">
 					<div class="row">
 						<div class="cell-12">
-							<h1 class="fx" data-animate="fadeInLeft">İletişim</h1>
+							<h1 class="fx" data-animate="fadeInLeft">{{__('lang.nav_contact')}}</h1>
 							<div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
-								<span class="bold">You Are In:</span><a href="#">Anasayfa</a><span
-									class="line-separate">/</span><a href="#">İletişim </a>
+								<span class="bold">{{__('lang.you_are_here')}}:</span><a href="#">{{__('lang.homepage')}}</a><span
+									class="line-separate">/</span><a href="#">{{__('lang.nav_contact')}} </a>
 							</div>
 						</div>
 					</div>
@@ -56,7 +56,7 @@
 							<div class="clearfix"></div>
 							<div class="padding-vertical contactPageElements">
 								<div class="cell-12 fx" data-animate="fadeInRight">
-									<h4 class="main-color bold">Merkez: İstanbul</h4>
+									<h4 class="main-color bold">{{__('lang.center_place')}}: İstanbul</h4>
 									<h5 class="bold">{{__('contact.address')}}</h5>
 									<p>@isset($setting['address']) {{ $setting['address']->value }} @endisset</p>
 									<h5 class="bold">{{__('contact.email')}}:</h5>

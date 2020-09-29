@@ -7,10 +7,10 @@
         <div class="container">
             <div class="row">
                 <div class="cell-12">
-                    <h1 class="fx" data-animate="fadeInLeft">Referanslarımız</h1>
+                    <h1 class="fx" data-animate="fadeInLeft">{{__('lang.our_referances')}}</h1>
                     <div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
-                        <span class="bold">Buradasınız:</span><a href="#">Anasayfa</a><span
-                            class="line-separate">/</span><a href="#">Referanslar </a>
+                        <span class="bold">{{__('lang.you_are_here')}}:</span><a href="#">{{__('lang.homepage')}}</a><span
+                            class="line-separate">/</span><a href="#">{{__('lang.nav_referances')}} </a>
                     </div>
                 </div>
             </div>

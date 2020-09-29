@@ -46,15 +46,15 @@
                                 @isset($slide['h1'])
 
                                     <div class="caption slide-head tp-resizeme witTxt doItWhite"  style="width: 150px;word-wrap: break-word" data-x="0"
-                                         data-y="150"
+                                         data-y="center"
                                          data-speed="500" data-start="1700"
                                          data-easing="easeOutBack">{{$slide['h1']}}
 
                                     </div>
                                 @endisset
                                 @isset($slide['h2'])
-                                    <div class="caption slide-head tp-resizeme witTxt doItWhite" data-x="0"
-                                         data-y="200" data-speed="700" data-start="1900"
+                                    <div class="caption slide-head tp-resizeme witTxt doItWhite" style="width: 150px;word-wrap: break-word" data-x="0"
+                                         data-y="280" data-speed="700" data-start="1900"
                                          data-easing="easeOutBack">{{$slide['h2']}}
                                     </div>
                                 @endisset
@@ -62,7 +62,7 @@
                                     <div class="caption larger-text tp-resizeme witTxt" data-x="0" data-y="300"
                                          data-speed="700" data-start="2300" data-easing="easeOutBack"><a
                                             href="{{$slide['url']}}"
-                                            class="btn btn-md btn-skew themeColorBtn">Detaylar</a>
+                                            class="btn btn-md btn-skew themeColorBtn">{{__('lang.details')}}</a>
                                     </div>
                                 @endisset
                             @else
@@ -84,7 +84,7 @@
                                     <div class="caption larger-text tp-resizeme witTxt" data-x="center" data-y="300"
                                          data-speed="700" data-start="2300" data-easing="easeOutBack"><a
                                             href="{{$slide['url']}}"
-                                            class="btn btn-md btn-skew themeColorBtn">Detaylar</a>
+                                            class="btn btn-md btn-skew themeColorBtn">{{__('lang.details')}}</a>
                                     </div>
                                 @endisset
                             @endif
@@ -111,7 +111,7 @@
                                 <img src='{{asset('theme/images/banners/1.jpg')}}'/>
                                 <div class='banner-pattern'></div>
                                 <div class='shine'></div>
-                                <div class="bounce_in_animation">İhracat Radarı</div>
+                                <div class="bounce_in_animation">{{__('lang.nav_export_radar')}}</div>
                             </a>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                                 <img src="{{asset('theme/images/banners/2.jpg')}}"/>
                                 <div class='banner-pattern'></div>
                                 <div class='shine'></div>
-                                <div class="bounce_in_animation">Devlet Teşvikleri</div>
+                                <div class="bounce_in_animation">{{__('lang.nav_government_helps')}}</div>
                             </a>
                         </div>
                     </div>
@@ -133,7 +133,7 @@
                                 <img src="{{asset('theme/images/banners/3.jpg')}}"/>
                                 <div class='banner-pattern'></div>
                                 <div class='shine'></div>
-                                <div class="bounce_in_animation">Döviz Radarı</div>
+                                <div class="bounce_in_animation">{{__('lang.nav_foreign_money')}}</div>
                             </a>
                         </div>
                     </div>
@@ -144,7 +144,7 @@
                                 <img src='{{asset('theme/images/banners/4.jpg')}}'/>
                                 <div class='banner-pattern'></div>
                                 <div class='shine'></div>
-                                <div class="bounce_in_animation">Haberler</div>
+                                <div class="bounce_in_animation">{{__('lang.news')}}</div>
                             </a>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
             <div class="cell-8">
                 <div class="row">
                     <div class="block fx aboutTextArea margin-top-50" data-animate="fadeInLeft">
-                        <h3 class="center block-head"><span class="main-color">E-İhracat Türkiye'ye Hoş Geldiniz!
+                        <h3 class="center block-head"><span class="main-color">{{__('lang.welcome_message')}}
                         </h3>
                         @isset ($about['homePageDesc'])
                         <p class="margin-bottom-20">
@@ -165,16 +165,16 @@
                         </p>
                         @endisset
                         <a class="btn btn-md btn-skew themeColorBtn mb-15" href="/about-us">
-                            <span><i class="fa fa-chevron-right selected"></i>Hakkımızda Daha Fazla</span>
+                            <span><i class="fa fa-chevron-right selected"></i>{{__('lang.about_more')}}</span>
                         </a>
                         <a class="btn btn-md btn-skew themeColorBtn mb-15" href="/panel/register">
-                            <span><i class="fa fa-chevron-right selected"></i>Şimdi Kayıt Olun!</span>
+                            <span><i class="fa fa-chevron-right selected"></i>{{__('lang.register_now')}}</span>
                         </a> <br>
                         @isset ($about['url'])
                         <a style="display: inline-block; margin-top: 15px;"
                            class="btn btn-md btn-3d btn-mulled_wine fx animated fadeInUp mb-15" href="{{$about['url']}}"
                            data-animate="fadeInUp" data-animation-delay="700" style="animation-delay: 700ms;">
-                            <span>Hizmet Kataloğumuzu İndirin <i class="fa fa-file-pdf-o"></i></span>
+                            <span>{{__('lang.download_catalog')}} <i class="fa fa-file-pdf-o"></i></span>
                         </a>
                         @endisset
                     </div>
@@ -197,25 +197,25 @@
             <div class="container">
                 <h3 class="center block-head">
 						<span class="main-color">
-							Hızlı Randevu
+							{{__('lang.quick_apointment')}}
 						</span>
                 </h3>
                 <div class="row">
                     <div class="cell-3">
                         <div class="form-input">
-                            <label for="fastBookName">Ad Soyad<span class="red"> *</span></label>
+                            <label for="fastBookName">{{__('lang.fullname')}}<span class="red"> *</span></label>
                             <input type="text" id="fastBookName" name="name">
                         </div>
                     </div>
                     <div class="cell-3">
                         <div class="form-input">
-                            <label for="fastBookEmail">E-Posta<span class="red"> *</span></label>
+                            <label for="fastBookEmail">{{__('lang.email_adress')}}<span class="red"> *</span></label>
                             <input type="email" id="fastBookEmail" name="email">
                         </div>
                     </div>
                     <div class="cell-3">
                         <div class="form-input">
-                            <label>Almak İstediğiniz Hizmet<span class="red"> *</span></label>
+                            <label>{{__('lang.requested_services')}}<span class="red"> *</span></label>
                             <select name="service" id="fastBookService">
 
                                 @foreach ($findServiceswithoutId as $key => $service)
@@ -227,7 +227,7 @@
                     </div>
                     <div class="cell-3">
                         <div class="form-input">
-                            <label for="fastBookDate">Tarih<span class="red"> *</span></label>
+                            <label for="fastBookDate">{{__('lang.requested_date')}}<span class="red"> *</span></label>
                             <input type="date" name="date" id="fastBookDate">
                         </div>
                     </div>
@@ -235,7 +235,7 @@
                     <div class="cell-12" style="text-align: center;">
                         <a class="btn btn-md btn-skew themeColorBtn mb-15"
                            onclick="document.getElementById('myform').submit()">
-                            <span><i class="fa fa-calendar selected"></i>Randevu Al</span>
+                            <span><i class="fa fa-calendar selected"></i>{{__('lang.get_appointment')}}</span>
                         </a>
                     </div>
                 </div>
@@ -258,8 +258,7 @@
                                 echo substr(strip_tags($service->content),0,250);
                             @endphp
                             </p>
-                            <a class="more-btn bold" href="{{route('service.find',$service->slug)}}">Hizmet
-                                Detayları</a>
+                            <a class="more-btn bold" href="{{route('service.find',$service->slug)}}">{{__('lang.services_details')}}</a>
                         </div>
                     </div>
                 @endforeach
@@ -370,7 +369,7 @@
 
             <!-- staff item start -->
             <div class="cell-4 fx" data-animate="fadeInDown">
-                <div class="fun-title bold"><span>{{__('lang.our_mission')}} </span></div>
+                <div class="fun-title bold"><span>{{__('lang.our_missions')}} </span></div>
             </div>
             <div class="cell-2 fx" data-animate="fadeInDown" data-animation-delay="600">
                 <div class="fun-number">@isset($fourBox['allusers']){{$fourBox['employments']}}+ @endisset</div>
@@ -395,7 +394,7 @@
         <div class="container">
             <div class="row">
                 <div class="cell-6 fx" data-animate="fadeInLeft">
-                    <h3 class="block-head">Sıkça Sorulan Sorular</h3>
+                    <h3 class="block-head">{{__('lang.faq')}}</h3>
                     <ul id="accordion" class="accordion">
 
 

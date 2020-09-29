@@ -15,11 +15,11 @@
         <div class="container">
             <div class="row">
                 <div class="cell-12">
-                    <h1 class="fx" data-animate="fadeInLeft">Blog <span>Başlığı</span></h1>
+                    <h1 class="fx" data-animate="fadeInLeft">{{__('lang.blog_details')}}</h1>
                     <div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
-                        <span class="bold">Buradasınız:</span><a href="#">Anasayfa</a><span
-                            class="line-separate">/</span><a href="#">Blog</a><span
-                            class="line-separate">/</span><span>Blog Detayı</span>
+                        <span class="bold">{{__('lang.you_are_here')}}:</span><a href="#">{{__('lang.homepage')}}</a><span
+                            class="line-separate">/</span><a href="#">{{__('lang.nav_blog')}}</a><span
+                            class="line-separate">/</span><span>{{__('lang.blog_details')}}</span>
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                                 {!! $post->content !!}
 
                                 <div class="post-tags">
-                                    <i class="fa fa-tags"></i><span>Etiketler: </span>
+                                    <i class="fa fa-tags"></i><span>{{__('lang.blog_tags')}}: </span>
                                     @isset($tags)
                                         @foreach ($tags as $key1 => $tag)
                                             @isset($tag)
@@ -60,13 +60,13 @@
 
 
                                     <div class="share-post">
-                                        <span class="sh">Gönderiyi Paylaş:</span>
+                                        <span class="sh">{{__('lang.blog_details_share')}}:</span>
                                         <div id="shareme" data-text="Share this post"></div>
                                     </div>
                             </article>
                         </div>
                         <div class="comments">
-                            <h3 class="block-head">Yorumlar</h3>
+                            <h3 class="block-head">{{__('lang.blog_comments')}}</h3>
                             <ul class="comment-list">
                                 <li>
                                     @isset($comments)
@@ -84,7 +84,7 @@
                                                            onclick="setToWhomComment({{$comment->id}})"
                                                            class="comment-reply main-bg"><span
                                                                 class="skew25"><i
-                                                                    class="fa fa-comment"></i>cevapla</span></a>
+                                                                    class="fa fa-comment"></i>{{__('lang.blog_comment_answer')}}</span></a>
                                                         <span
                                                             class="comment-date skew25">{{Helper::getDateForHuman($comment->created_at)}}</span>
                                                     </h5>
@@ -109,7 +109,7 @@
                                                                            onclick="setToWhomComment({{$comment->id}})"
                                                                            class="comment-reply main-bg"><span
                                                                                 class="skew25"><i
-                                                                                    class="fa fa-comment"></i>cevapla</span></a>
+                                                                                    class="fa fa-comment"></i>{{__('lang.blog_comment_answer')}}</span></a>
                                                                         <span
                                                                             class="comment-date skew25">{{Helper::getDateForHuman($child->created_at)}}</span>
                                                                     </h5>
@@ -128,16 +128,15 @@
                             </ul><!-- End .comment-list -->
                         </div>
                         @guest
-                            Yorum yapmak için
-                            <a href="/panel/login" class="btn btn-danger"> Giriş Yapınız</a>
+                        {{__('lang.comment_login')}}
+                            <a href="/panel/login" class="btn btn-danger"> {{__('lang.please_login')}}</a>
                         @endguest
                         @auth
                             <form action="{{route('add_comment_to_post',$post->id)}}" method="post"
                                   class="leave-comment contact-form" id="commentForm">
                                 @csrf
-                                <h3 class="block-head">Yorum Yap</h3>
-                                <p>Aşağıdaki gerekli alanları doldurarak sizde bu haber hakkındaki fikirlerinizi
-                                    paylaşabilirsiniz.</p>
+                                <h3 class="block-head">{{__('lang.do_comment')}}</h3>
+                                <p>{{__('lang.comment_description')}}</p>
                                 <div class="row">
 
                                     {{--<div class="cell-6">
@@ -153,7 +152,7 @@
                                     @if($canVote)
                                         <div class="cell-12">
                                             <div class="form-input rating">
-                                                <span class="bold">Derecelendirmeniz: </span>
+                                                <span class="bold">{{__('lang.your_rating')}}: </span>
                                                 <span>1<input value="1" class="divideThis" type="radio"
                                                               name="point"></span>
                                                 <span>2<input value="2" class="divideThis" type="radio"

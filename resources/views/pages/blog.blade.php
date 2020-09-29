@@ -9,10 +9,10 @@
 				<div class="container">
 					<div class="row">
 						<div class="cell-12">
-							<h1 class="fx" data-animate="fadeInLeft">Haberler </h1>
+							<h1 class="fx" data-animate="fadeInLeft">{{__('lang.blog_news')}} </h1>
 							<div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
-								<span class="bold">Buradasınız:</span><a href="#">Anasayfa</a><span
-									class="line-separate">/</span><a href="#">Blog</a>
+								<span class="bold">{{__('lang.you_are_here')}}:</span><a href="#">{{__('lang.homepage')}}</a><span
+									class="line-separate">/</span><a href="#">{{__('lang.nav_blog')}}</a>
 							</div>
 						</div>
 					</div>
@@ -47,7 +47,7 @@
 									<a class="btn btn-md btn-3d main-bg fx animated fadeInUp readMoreBtn" href="{{route('post.find',$post->slug)}}"
 										data-animate="fadeInUp" data-animation-delay="100"
 										style="animation-delay: 100ms;">
-										<span><i class="fa fa-search-plus selectedI"></i>Devamını Oku</span>
+										<span><i class="fa fa-search-plus selectedI"></i>{{__('lang.read_more')}}</span>
 									</a>
 								</div>
                             @empty

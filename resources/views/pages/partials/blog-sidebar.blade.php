@@ -5,7 +5,7 @@
 <aside class="cell-3 right-sidebar">
     <ul class="sidebar_widgets">
         <li class="widget search-w fx" data-animate="fadeInRight">
-            <h3 class="widget-head">Arama</h3>
+            <h3 class="widget-head">{{__('lang.blog_search')}}</h3>
             <div class="widget-content">
                 <form action="#" method="get">
                     <input type="text" name="t" onkeyup="live_post_search()" id="search_input_post"
@@ -21,7 +21,7 @@
         </li>
 
         <li class="widget r-posts-w fx" data-animate="fadeInRight">
-            <h3 class="widget-head">Yeni Gönderiler</h3>
+            <h3 class="widget-head">{{__('lang.blog_new_posts')}}</h3>
             <div class="widget-content">
                 <ul>
                     @isset($recentPosts)
