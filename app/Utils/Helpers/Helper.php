@@ -181,7 +181,12 @@ class Helper
     }
 
     public static function findServiceswithoutId () {
-        $services = Post::where('type','service')->get();
+        $services = Post::where('type','service')->where('options','LIKE','%relevantServices":[]%')->get();
+        return $services;
+    }
+    public static function childServices ($serviceId) {
+
+        $services = Post::where('options' , 'LIKE','%{"id":'.$serviceId.'%')->get();
         return $services;
     }
 

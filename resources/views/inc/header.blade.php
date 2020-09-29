@@ -1,5 +1,5 @@
 @php
-    $findServiceswithoutId5 = Helper::findServiceswithoutId5();
+    $findServiceswithoutId = Helper::findServiceswithoutId();
 @endphp
 </head>
 <body>
@@ -32,7 +32,7 @@
                     <div class="cell-7 right-bar">
                         <ul class="right">
                             <li><a href="javascript:void(0);"><i class="fa fa-clock-o"></i>
-                                {{__('lang.our_works_hours')}}    
+                                {{__('lang.our_works_hours')}}
                                 </a></li>
                             <li><a href="/panel/register"><i class="fa fa-user"></i>{{__('lang.site_register')}}</a></li>
                             <li><a href="/panel/login" class=""><i class="fa fa-unlock-alt"></i>{{__('lang.site_login')}} </a></li>
@@ -71,10 +71,11 @@
                                     <a href="javascript:void(0);"><i
                                             class="fa fa-gift"></i><span>{{__('lang.nav_services')}}</span></a>
                                     <ul>
-                                        @foreach ($findServiceswithoutId5 as $service)
+                                        @isset($findServiceswithoutId)
+                                        @foreach ($findServiceswithoutId as $service)
                                     <li><a href="{{route('service.find',$service->slug)}}">{{$service->title}}</a></li>
                                         @endforeach
-
+                                        @endisset
 
                                     </ul>
                                 </li>
@@ -116,23 +117,57 @@
                             <a href="#"><span class="fa fa-search"></span></a>
                             <div class="search-box">
                                 <div class="input-box left">
-                                    <input type="text" name="t" onkeyup="live_user_search()"  id="search_input_user" class="txt-box"
+                                    <input type="text" name="t" onkeyup="searchHeader()" id="t-search" class="txt-box"
                                            placeHolder="Anahtar kelime girin..." />
                                 </div>
                                 <div class="left">
                                     <input type="submit" id="b-search" class="btn main-bg" value="Ara" />
                                 </div>
+
                             </div>
-                            <div id="search_result_user" class="bg-info">
-                        
-                            </div>
+
                         </div>
 
+                        <script>
+                            function searchHeader () {
+                                const element = document.getElementById('t-search-result')
+
+                                if (document.getElementById('t-search').value == '') {
+                                    element.style.display = 'none'
+                                } else {
+                                    element.style.display = 'block'
+                                    element.innerHTML = ''
+                                    element.innerText = 'Loading...'
+                                    $.ajax({
+                                        url: '/search/header-search',
+                                        method: 'get',
+                                        data: {'search_text': document.getElementById('t-search').value},
+                                        success (resp) {
+                                            var element = document.getElementById('t-search-result')
+                                            element.innerHTML = '';
+                                            if (resp.data.length < 1) {
+                                                var new_result = '<li ><h5 class="text-danger text-center search_result_a" style="height: 35px" >Partner not found</h5></li>'
+                                                element.innerHTML += new_result
+                                            }
+                                            console.log(resp.data[0])
+                                            for (let i = 0; i < resp.data.length; i++) {
+                                                var new_result = `<a class="search_result_a" href="/blog-single/${  resp.data[i].slug  }"><li class="search_result_li"  > <img style="height: 35px" src=${  resp.data[i].thumbnail  } >${  resp.data[i].title.substring(0, 18)  }...</li></a><hr>`
+                                                element.innerHTML += new_result
+                                            }
+                                            console.log(element)
+                                        }
+                                    })
+                                }
+                            }
+                        </script>
                         <!-- top search end -->
                     </div>
                 </div>
             </div>
         </header>
+        <div  id="t-search-result">
+
+        </div>
         <!-- Logo, Global navigation menu and search end -->
 
     </div>

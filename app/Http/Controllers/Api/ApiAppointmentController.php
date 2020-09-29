@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Post;
 use App\Models\Setting;
 use App\Mail\ShortEmail;
 use App\Models\Appointment;
@@ -176,5 +177,10 @@ class ApiAppointmentController extends ApiController
       } catch (Exception $e) {
         return $this->responseServerError('Error deleting resource.');
       }
+    }
+
+    public function ajaxService(Request $request){
+        $data = Post::where('options' , 'LIKE','%{"id":'.$request->id.'%')->get();
+        return response()->json(['data'=>$data]);
     }
 }

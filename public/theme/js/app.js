@@ -37414,7 +37414,7 @@ router.afterEach(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\ylmzb\Desktop\e-ihracat\resources\front-end-js\app.js */"./resources/front-end-js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Recep\Desktop\projects\e-ihracat\resources\front-end-js\app.js */"./resources/front-end-js/app.js");
 
 
 /***/ })

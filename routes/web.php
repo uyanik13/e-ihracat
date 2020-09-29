@@ -41,6 +41,7 @@ Route::any('panel/{path}', function () {
 
     Route::get('/search/product',[PageController::class, 'search_product'])->name('search_product');
     Route::get('/search/post',[PageController::class, 'search_product'])->name('search_post');
+    Route::get('/search/header-search',[PageController::class, 'headerSearch'])->name('header-search');
     Route::get('/search/user',[PageController::class, 'search_user'])->name('search_user');
     Route::post('/add_comment/{user_id}', [CommentController::class, 'store'])->name('add_comment_to_product');
     Route::post('/add_comment_post/{post_id}', [CommentController::class, 'storePostComment'])->name('add_comment_to_post');
@@ -51,6 +52,7 @@ Route::any('panel/{path}', function () {
     Route::get('/basket/add_new', [PageController::class, 'add_to_basket'] )->name('render_basket');
     Route::post('/basket/delete', [PageController::class, 'delete_from_basket'] )->name('render_basket');
     Route::post('/ajax/contact-form', [ApiAppointmentController::class, 'store'])->name('contact.form');
+    Route::get('/ajax/get-service', [ApiAppointmentController::class, 'ajaxService'])->name('contact.ajaxService');
 
     Route::post('/wish/update', [PageController::class, 'update_wish'] )->name('update_wish');
     Route::post('/wish/delete', [PageController::class, 'delete_wish'])->name('update_wish');

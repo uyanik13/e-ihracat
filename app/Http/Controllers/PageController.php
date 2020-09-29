@@ -409,6 +409,10 @@ public  function setLocale (Request $request) {
     $request->session()->put('language', $request->language);
     return  response()->json(session('language'));
 }
+public  function headerSearch (Request $request) {
+    $post1 = Post::where('type','post')->where('title','LIKE','%'.$request->search_text.'%')->limit(5)->get();
+    return response()->json(['message'=>200, 'data'=>$post1]);
+}
 
 
 

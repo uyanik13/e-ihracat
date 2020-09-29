@@ -4,7 +4,6 @@
     $partnerDate = Helper::getDateForHuman($partner->created_at);
     $blogsBelognsToPartner = Helper::blogsBelognsToPartner($partner->id);
     $comments = Helper::getComments($partner->id,1);
-    $canVote = Helper::canVotePartner($partner->id);
     $partnerPointAvg = Helper::getPartnerPointAvarage($partner->id);
     $fullStar = (int)$partnerPointAvg;
     $emptyStar = 5-$partnerPointAvg;
@@ -190,6 +189,7 @@
                         <a href="/panel/login" class="btn btn-danger"> {{__('lang.please_login')}}</a>
                     @endguest
                     @auth
+                        @php($canVote = Helper::canVotePartner($partner->id))
                         <form action="{{route('add_comment_to_product',$partner->id)}}" method="post"
                               class="leave-comment contact-form" id="commentForm">
                             @csrf
