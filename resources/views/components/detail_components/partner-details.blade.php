@@ -19,7 +19,8 @@
                 <div class="cell-12">
                     <h1 class="fx" data-animate="fadeInLeft">{{$partner->name}}</h1>
                     <div class="breadcrumbs main-bg fx" data-animate="fadeInUp">
-                        <span class="bold">{{__('lang.you_are_here')}}:</span><a href="#">{{__('lang.homepage')}}</a><span
+                        <span class="bold">{{__('lang.you_are_here')}}:</span><a
+                            href="#">{{__('lang.homepage')}}</a><span
                             class="line-separate">/</span><a
                             href="#">{{__('lang.partners')}} </a><span
                             class="line-separate">/</span><a href="#">{{$partner->name}}</a>
@@ -58,7 +59,8 @@
                                     {{$partner->phone}}
                                 </li>
                                 <li>
-                                    <i class="fa fa-send-o"></i> <span class="main-color">{{__('lang.partner_email')}}:</span>
+                                    <i class="fa fa-send-o"></i> <span
+                                        class="main-color">{{__('lang.partner_email')}}:</span>
                                     {{$partner->email}}
                                 </li>
                                 <li>
@@ -79,10 +81,12 @@
                                 @php
                                     $webSite = json_decode($partner->about_data,true);
                                 @endphp
-                                @isset($webSite['website'])<li>
-                                    <i class="fa fa-globe"></i> <span class="main-color">{{__('lang.partner_detail_website')}}:</span> <a
-                                        href="https://{{$webSite['website']}}">{{$webSite['website']}}</a>
-                                </li>@endisset
+                                @isset($webSite['website'])
+                                    <li>
+                                        <i class="fa fa-globe"></i> <span class="main-color">{{__('lang.partner_detail_website')}}:</span>
+                                        <a
+                                            href="https://{{$webSite['website']}}">{{$webSite['website']}}</a>
+                                    </li>@endisset
                             </ul>
                         </div>
                     </div>
@@ -91,7 +95,9 @@
                         <h2 class="block-head  margin-bottom-40 fx animated fadeInUp" data-animate="fadeInUp">
                             <span>{{__('lang.partner_description')}}</span>
                         </h2>
-                        {!! json_decode($partner->about_data,true)['bio'] !!}
+                        @isset(json_decode($partner->about_data,true)['bio'])
+                            {!! json_decode($partner->about_data,true)['bio'] !!}
+                        @endisset
                     </div>
 
                     <!-- Recent Portfolio projects -->
@@ -185,7 +191,7 @@
                         </ul><!-- End .comment-list -->
                     </div>
                     @guest
-                    {{__('lang.comment_login')}}
+                        {{__('lang.comment_login')}}
                         <a href="/panel/login" class="btn btn-danger"> {{__('lang.please_login')}}</a>
                     @endguest
                     @auth

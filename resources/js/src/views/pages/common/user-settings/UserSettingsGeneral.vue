@@ -17,7 +17,7 @@
 <!--    <vs-input class="w-full mb-base" name="username" disabled="" label-placeholder="Username" v-model="currentUserData.username"></vs-input>-->
     <vs-input class="w-full mb-base" name="name" :label-placeholder="$t('name')" v-model="currentUserData.name"></vs-input>
     <vs-input class="w-full" :label-placeholder="$t('email')" disabled="" name="email" v-model="currentUserData.email"></vs-input>
-    <vs-input class="w-full" :label-placeholder="$t('phone')" disabled="" name="phone" v-model="currentUserData.phone"></vs-input>
+    <vs-input class="w-full" :label-placeholder="$t('phone')"  name="phone" v-model="currentUserData.phone"></vs-input>
 
 <!--    <vs-alert icon-pack="feather" icon="icon-info" class="h-full my-4" color="warning" v-show="!currentUserData.email_verified_at">-->
 <!--      <span>Hesabınız Onaylı Değil. <a href="#" @click="emailVerify" class="hover:underline">Onay Emaili Gönder</a></span>-->
@@ -59,6 +59,7 @@ export default {
         id: this.currentUserData.id,
         name: this.currentUserData.name,
         address: this.currentUserData.address,
+          phone:this.currentUserData.phone,
         avatar: this.avatar
       }
       this.$store.dispatch('user/updateUser', payload)

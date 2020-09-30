@@ -34,7 +34,7 @@ class PageController extends ApiController
       }
       $this->category = Category::where('slug',$this->url[0])->first();
       $this->pages = Post::where('type','page')->take(20)->get();
-      $this->posts = Post::getFilteredPosts($request->input())->where('type','post')->paginate(15);
+      $this->posts = Post::getFilteredPosts($request->input())->where('type','post')->where('status',1)->paginate(15);
       $this->setting = Helper::namedSettings(Setting::all());//DONE
       $this->page = Post::where('slug', $pageUrl)->first();//DONE
       $this->post = Post::where('slug', $this->url[1] ?? false)->first();
@@ -58,8 +58,8 @@ class PageController extends ApiController
         $this->wishlist_products = "";
     }
 
-    $this->posts_for_blog_page = Post::where('type','post')->orderBy('created_at','desc')->paginate(4);
-    $this->recent_post_blog_page = Post::where('type','post')->orderBy('created_at','desc')->limit(5)->get();
+    $this->posts_for_blog_page = Post::where('type','post')->where('status',1)->orderBy('created_at','desc')->paginate(4);
+    $this->recent_post_blog_page = Post::where('type','post')->where('status',1)->orderBy('created_at','desc')->limit(5)->get();
 
   }
 
@@ -106,8 +106,8 @@ class PageController extends ApiController
   public function search_product(Request $request)
   {
       if($this->url[1]=="post"){
-          $post1 = Post::where('type','post')->where('title','LIKE','%'.$request->search_text.'%')->limit(4)->get();
-          $post2 = Post::where('type','post')->where('content','LIKE','%'.$request->search_text.'%')->limit(2)->get();
+          $post1 = Post::where('type','post')->where('status',1)->where('title','LIKE','%'.$request->search_text.'%')->limit(4)->get();
+          $post2 = Post::where('type','post')->where('status',1)->where('content','LIKE','%'.$request->search_text.'%')->limit(2)->get();
           $post = $post1->merge($post2);
           return response()->json(['message',$post]);
       }elseif($this->url[1] == "product"){
@@ -410,7 +410,7 @@ public  function setLocale (Request $request) {
     return  response()->json(session('language'));
 }
 public  function headerSearch (Request $request) {
-    $post1 = Post::where('type','post')->where('title','LIKE','%'.$request->search_text.'%')->limit(5)->get();
+    $post1 = Post::where('type','post')->where('status',1)->where('title','LIKE','%'.$request->search_text.'%')->limit(5)->get();
     return response()->json(['message'=>200, 'data'=>$post1]);
 }
 

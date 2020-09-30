@@ -203,7 +203,7 @@ class Helper
     }
 
     public static function findPosts ($id) {
-        $posts = Post::where('user_id', $id)->where('type','post')->get();
+        $posts = Post::where('user_id', $id)->where('type','post')->where('status',1)->get();
         return $posts;
     }
 
@@ -212,7 +212,7 @@ class Helper
         return $orders;
     }
     public static function findBlog ($url) {
-        $posts = Post::where('slug', $url)->where('type','post')->first();
+        $posts = Post::where('slug', $url)->where('type','post')->where('status',1)->first();
         return $posts;
     }
 
@@ -268,11 +268,11 @@ class Helper
     }
     public static function related_post($post_id){
       $current_post = Post::find($post_id);
-       $data =  Post::where('type','post')->where('title','LIKE','%'.$current_post->title[0].'%')->where('content','like','%'.$current_post->title[0].'%')->orWhere('type','post')->limit(3)->get();
+       $data =  Post::where('type','post')->where('status',1)->where('title','LIKE','%'.$current_post->title[0].'%')->where('content','like','%'.$current_post->title[0].'%')->orwhere('type','post')->where('status',1)->limit(3)->get();
        return $data;
     }
     public static function all_posts(){
-      $data = Post::where('type','post')->orderBy('created_at','desc')->get();
+      $data = Post::where('type','post')->where('status',1)->orderBy('created_at','desc')->get();
       return $data;
     }
 
@@ -519,7 +519,7 @@ class Helper
         return  Custom::all();
     }
     public static function recentPosts($limit){
-        return Post::wherE('type','post')->orderBy('created_at','desc')->limit($limit)->get();
+        return Post::where('type','post')->where('status',1)->orderBy('created_at','desc')->limit($limit)->get();
     }
     public static  function getCurrentUrl() {
         $data =  (explode('/', url()->current()));
@@ -530,7 +530,7 @@ class Helper
     }
 
     public static function getAllBlogs(){
-        return Post::where('type','post')->get();
+        return Post::where('type','post')->where('status',1)->get();
     }
     public static function getDateForHuman($postDate,$makeArray = 0){
         $dateFull = Carbon::parse($postDate)->format('d F Y');
@@ -541,7 +541,7 @@ class Helper
         return $dateFull;
     }
     public static function blogsBelognsToPartner($partner_id){
-        return Post::where('type','post')->where('user_id',$partner_id)->get();
+        return Post::where('type','post')->where('status',1)->where('user_id',$partner_id)->get();
     }
     public static  function getComments($id,$isPartnerPage){
         if ($isPartnerPage){
@@ -570,15 +570,19 @@ class Helper
     }
     public static function canVotePartner($partnerId){
         $data = Comment::where('user_id',\auth()->user())->where('partner_id',$partnerId)->first();
-        if (\auth()->user()->id === $partnerId or $data==null){
-            return false;
+        if (!Auth::guest()){
+            if (\auth()->user()->id === $partnerId or $data==null){
+                return false;
+            }
         }
         return true;
     }
     public static function canVotePost($postId){
         $data = Comment::where('user_id',\auth()->user())->where('post_id',$postId)->first();
-        if (\auth()->user()->id === $postId or $data==null){
-            return false;
+        if (!Auth::guest()){
+            if (\auth()->user()->id === $postId or $data==null){
+                return false;
+            }
         }
         return true;
     }

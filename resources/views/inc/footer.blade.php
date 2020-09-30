@@ -127,12 +127,16 @@
                         <li class="footer-contact newsletterArea">
 									<span style="text-align: text-center">
 										<h5>{{__('lang.foot_newsletter')}} </h5>
-										<input class="newsletterInput" type="email" placeholder="E-Posta Adresiniz">
+                                        <form action="{{route('contact.form')}}" method="post" id="subscribeForm">
+                                            @csrf
+                                            <input type="hidden" name="message" value="New Subscript">
+										<input class="newsletterInput" name="email" type="email" placeholder="E-Posta Adresiniz">
 										<a style="display: block; margin-top: 15px; animation-delay: 700ms;"
-                                           class="btn btn-md btn-3d main-bg fx animated fadeInUp mb-15" href="#"
+                                           class="btn btn-md btn-3d main-bg fx animated fadeInUp mb-15" onclick="document.getElementById('subscribeForm').submit()"
                                            data-animate="fadeInUp" data-animation-delay="700">
 											<span style="display: block; text-align: center;">{{__('lang.foot_newsletter_submit')}}</span>
 										</a>
+                                            </form>
 									</span>
                         </li>
                     </ul>
