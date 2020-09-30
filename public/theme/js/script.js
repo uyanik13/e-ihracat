@@ -49,7 +49,7 @@
 	if($('.top-nav').length > 0){
 	if (!$('body').hasClass('one-page')){
 		var men = $('.top-nav > ul').html();	
-		$('<a href="#" class="menuBtn"><i class="fa fa-bars"></i></a><div class="responsive-nav"></div>').prependTo('body');
+		$('<div class="responsive-nav"></div>').prependTo('body');
 		$('.responsive-nav').html('<h3>E-İhracat Menü</h3><ul>'+men+'</ul>');
 		if($('html').css('direction') == 'rtl'){
 			$('.responsive-nav h3').text('');
@@ -1115,3 +1115,10 @@
 	});
 
 })(jQuery);
+
+var clickedItem = document.querySelector('.bottomMenu');
+var menu = document.querySelector('.responsive-nav');
+clickedItem.addEventListener('click', function(e){
+	e.preventDefault();
+	menu.classList.toggle("toDoLeft");
+})

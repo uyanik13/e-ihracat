@@ -182,7 +182,10 @@ return [
     You can create an appointment. When the appointment is created, it contains your appointment information.
     You will be notified by e-mail.',
     'check_our_services' => 'Check Out Our Services',
+    'turkish' => 'TR',
+    'english' => 'EN',
     'can_ask_us' => 'Live if you need any help
     You can get help from us via support, whatsapp or e-mail.',
+    
 
 ];

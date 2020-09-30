@@ -2,7 +2,7 @@
 
 return [
 
-        'title' => 'This is the title of sss page',
+        'title' => '',
         'description' => 'Title^s description',
         'description' => '',
 

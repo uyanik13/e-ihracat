@@ -13,12 +13,8 @@
         @include('components/detail_components/'.$category)
         @break
     @endif
-
-
-
     @default
     @include('components/page')
-
 @endswitch
 </div>
 

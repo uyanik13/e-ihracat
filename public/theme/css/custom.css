@@ -358,6 +358,10 @@
     .staff-1 .fun-title span {
         font-size: 18px;
     }
+    
+    #contactWp {
+        display: none;
+    }
 }
 
 /* fastBooking
@@ -1109,4 +1113,8 @@
     #search_result_post .search_result_a:hover {
         background: #970001;
         color: #fff;
+    }
+
+    .toDoLeft {
+        left: 0px !important;
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Cookie;
 
 class SetLocale
 {
@@ -15,10 +16,23 @@ class SetLocale
      */
     public function handle($request, Closure $next)
     {
-        if ($locale = $this->parseLocale($request)) {
-            app()->setLocale($locale);
+
+
+        if ($request->session()->exists('language')) {
+            app()->setLocale(session('language'));
+        } else  {
+            $locale = $this->parseLocale($request);
+            if($locale){
+                app()->setLocale($locale);
+            }else{
+                //app()->setLocale('tr');
+                app()->setLocale('en');
+            }
+
+
         }
 
+        //dd(app()->getLocale());
         return $next($request);
     }
 
@@ -33,12 +47,15 @@ class SetLocale
         $locale = $request->server('HTTP_ACCEPT_LANGUAGE');
         $locale = substr($locale, 0, strpos($locale, ',') ?: strlen($locale));
 
+
+
         if (array_key_exists($locale, $locales)) {
             return $locale;
         }
 
         $locale = substr($locale, 0, 2);
         if (array_key_exists($locale, $locales)) {
+            $request->session()->put('language', $locale);
             return $locale;
         }
     }

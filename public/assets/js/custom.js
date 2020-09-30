@@ -112,35 +112,7 @@ function live_user_search () {
         })
     }
 }
-function searchHeader () {
-    const element = document.getElementById('t-search-result')
 
-    if (document.getElementById('search_input_user').value == '') {
-        element.style.display = 'none'
-    } else {
-        element.style.display = 'block'
-        element.innerHTML = ''
-        element.innerText = 'Loading...'
-        $.ajax({
-            url: '/search/header-search',
-            method: 'get',
-            data: {'search_text': document.getElementById('t-search').value},
-            success (resp) {
-                var element = document.getElementById('search_result_user')
-                element.innerHTML = ''
-                var element = document.getElementById('search_result_user')
-                if (resp[1].length < 1) {
-                    var new_result = '<li ><h5 class="text-danger text-center search_result_a" style="height: 35px" >Partner not found</h5></li>'
-                    element.innerHTML += new_result
-                }
-                for (let i = 0; i < resp[1].length; i++) {
-                    var new_result = `<li class="search_result_li"  > <a class="search_result_a" href="/partner-details/${  resp[1][i].name  }"><img style="height: 35px" src=${  resp[1][i].avatar  } >${  resp[1][i].name.substring(0, 18)  }...</a></li><hr>`
-                    element.innerHTML += new_result
-                }
-            }
-        })
-    }
-}
 function setToWhomComment(id) {
     document.getElementById('formCommentHidden').value = id;
     document.getElementById('ratingField').style.display = "none";

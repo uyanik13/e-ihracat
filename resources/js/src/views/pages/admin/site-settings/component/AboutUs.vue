@@ -106,6 +106,19 @@ export default {
     removeThis (index, type) {
       this[type].splice(index, 1)
     },
+     sliderUpload (input,index,type) {
+        //console.log(input.target.files[0])
+      if (input.target.files && input.target.files[0]) {
+        const reader = new FileReader()
+        reader.onload = e => {
+         return this[type][index].image = e.target.result
+        }
+        reader.readAsDataURL(input.target.files[0])
+      }
+    },
+    openFileInput (type) {
+      return this.$refs[type][0].click()
+    },
     SaveData (dataType) {
       const obj = {
         [dataType]: this[dataType],

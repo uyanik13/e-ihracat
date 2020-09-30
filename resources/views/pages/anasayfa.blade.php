@@ -118,18 +118,18 @@
 
                     <div class="cell-3">
                         <div class='banner-card'>
-                            <a href="">
+                            <a href="/partner-list">
                                 <img src="{{asset('theme/images/banners/2.jpg')}}"/>
                                 <div class='banner-pattern'></div>
                                 <div class='shine'></div>
-                                <div class="bounce_in_animation">{{__('lang.nav_government_helps')}}</div>
+                                <div class="bounce_in_animation">{{__('lang.partners')}}</div>
                             </a>
                         </div>
                     </div>
 
                     <div class="cell-3">
                         <div class='banner-card'>
-                            <a href="#">
+                            <a href="/doviz-radari">
                                 <img src="{{asset('theme/images/banners/3.jpg')}}"/>
                                 <div class='banner-pattern'></div>
                                 <div class='shine'></div>

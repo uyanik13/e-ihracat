@@ -183,6 +183,8 @@ return [
     'appointment_system_info_desc' => '                        Hizmetlerimizden faydalanmak ve faaliyetlerimiz hakkında detaylı bilgi almak için
     randevu oluşturabilirsiniz. Randevu oluşturulduğunda, randevu bilgileriniz barındıran
     bir e-posta ile bilgilendirileceksiniz.',
+    'turkish' => 'TR',
+    'english' => 'EN',
     'check_our_services' => 'Hizmetlerimize Göz Atın',
     'can_ask_us' => ' Herhangi bir yardıma ihtiyacınız olursa canlı
     destek, whatsapp ya da e-posta üzerinden bizden yardım alabilirsiniz.',

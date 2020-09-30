@@ -36,7 +36,27 @@
                                 </a></li>
                             <li><a href="/panel/register"><i class="fa fa-user"></i>{{__('lang.site_register')}}</a></li>
                             <li><a href="/panel/login" class=""><i class="fa fa-unlock-alt"></i>{{__('lang.site_login')}} </a></li>
-                            <li><a href="#" class="multiLanguage"><i class="fa fa-globe"></i>{{__('lang.multi_lang_btn')}}</a></li>
+                          
+                            <li  onclick="setLocale('en');" class="flag-item">
+                                <a class="multiLanguage" href="#"> <i class="fa fa-globe"></i> {{__('lang.english')}}</a>
+                             </li>
+                            
+                             <li onclick="setLocale('tr');" class="flag-item">
+                                <a class="multiLanguage" href="#">  <i class="fa fa-globe"></i>{{__('lang.turkish')}}</a>
+                             </li>
+                             <script>
+                                 function setLocale (language) {
+                                    $.ajax({
+                                        url: '/lang/setLocale',
+                                        method: 'get',
+                                        data:{ language}
+                                    }).done(function (response) {
+                                        location.reload()
+                                        //console.log(response)
+                                    })
+
+                                    }
+                             </script>
                         </ul>
                     </div>
                 </div>
@@ -96,7 +116,7 @@
                                 <li @if( $category == 'ihracat-radari' )class="selected" @endif><a href="javascript:void(0);"><i class="fa fa-question"></i><span>{{__('lang.nav_info_bank')}}</span></a>
                                     <ul>
                                         <li><a href="/ihracat-radari">{{__('lang.nav_export_radar')}}</a></li>
-                                        <li><a href="/devlet-tesvikleri">{{__('lang.nav_government_helps')}}</a></li>
+                                        {{-- <li><a href="/devlet-tesvikleri">{{__('lang.nav_government_helps')}}</a></li> --}}
                                         <li><a href="/doviz-radari">{{__('lang.nav_foreign_money')}}</a></li>
                                         <li><a href="/faq">{{__('lang.nav_faq')}}</a></li>
                                     </ul>
@@ -132,9 +152,7 @@
                             function searchHeader () {
                                 const element = document.getElementById('t-search-result')
 
-                                if (document.getElementById('t-search').value == '') {
-                                    element.style.display = 'none'
-                                } else {
+                                element.style.display = 'none'
                                     element.style.display = 'block'
                                     element.innerHTML = ''
                                     element.innerText = 'Loading...'
@@ -157,7 +175,7 @@
                                             console.log(element)
                                         }
                                     })
-                                }
+                                
                             }
                         </script>
                         <!-- top search end -->
@@ -170,4 +188,28 @@
         </div>
         <!-- Logo, Global navigation menu and search end -->
 
+    </div>
+
+    <div id="appMenu">
+        <div class="container">
+            <div class="row">
+                <div class="appMenuContainer">
+                    <div class="appMenuItem">
+                        <a href="#" class="bottomMenu"><img src="theme/images/appMenu/1.png" alt=""></a>
+                    </div>
+                    <div class="appMenuItem">
+                        <a href="/ihracat-radari"><img src="theme/images/appMenu/2.png" alt=""></a>
+                    </div>
+                    <div class="appMenuItem">
+                        <a href="https://wa.me/908503469956"><img src="theme/images/appMenu/5.png" alt=""></a>
+                    </div>
+                    <div class="appMenuItem">
+                        <a href="/blog"><img src="theme/images/appMenu/3.png" alt=""></a>
+                    </div>
+                    <div class="appMenuItem">
+                        <a href="/appointment-form"><img src="theme/images/appMenu/4.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>

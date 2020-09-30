@@ -270,7 +270,8 @@
 		clear:none
 	}
 	header.top-head .logo a{
-		margin:auto
+		margin:auto;
+		max-width: 250px;
 	}
 	.portfolio-img-slick{
 		margin-bottom:20px
@@ -332,8 +333,8 @@
 		overflow:auto;
 		left:-60%;
 		top:0px;
-		height:100%;
-		z-index:9999;
+		height:calc(100% - 66px);
+		z-index:100;
 		display:block;
 		transition: all 0.4s ease;
 		-webkit-transition: all 0.4s ease;

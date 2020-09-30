@@ -52,6 +52,30 @@
 
 <script src="{{asset('assets/js/custom.js')}}"></script>
 
+<script type="text/javascript" src="https://paracevirici.com/servis/widget/widget.js"></script>
+
+<script type="text/javascript">
+
+    $(function(){
+    typeof $.fn.paraceviriciWidget == "function" && 
+    $("#W3179").paraceviriciWidget({
+        widget:"list",
+        wData:{
+            category:0,
+            currency:"USD-EUR-GBP-CHF-CNY-JPY-SAR-NOK-DKK-AUD-CAD-SEK-KWD-IRR-RUB-AFN-AOA-ARS-ALL-AWG"
+        },
+        wSize:{
+            wWidth:600,
+            wHeight:300
+        },
+        wContent: {
+            cFlag: 2
+        }
+    });
+    });
+    
+    </script>
+
 
 
 
