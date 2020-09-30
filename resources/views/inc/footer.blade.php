@@ -85,7 +85,7 @@
                                         </h4>
                                         <div class="meta">
                                             <a href="{{route('post.find',$recent->slug)}}">
-                                                <span><i class="fa fa-clock-o"></i>{{Helper::getDateForHuman($recent->id)}}</span>
+                                                <span><i class="fa fa-clock-o"></i>{{\Carbon\Carbon::parse($recent->created_at)->diffForHumans()}}</span>
                                             </a>
                                         </div>
                                     </div>

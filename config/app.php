@@ -93,12 +93,10 @@ return [
     |
     */
 
-    'locale' => 'tr',
-
     'locales' => [
         'en' => 'en',
         'tr' => 'tr',
-        'de' => 'de',
+        //'de' => 'de',
     ],
 
     /*
