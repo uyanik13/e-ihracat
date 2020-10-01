@@ -502,7 +502,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
       this.content = _i18n_i18n__WEBPACK_IMPORTED_MODULE_9__["default"].t('content');
       this.seo_title = _i18n_i18n__WEBPACK_IMPORTED_MODULE_9__["default"].t('seo_title');
       this.seo_description = _i18n_i18n__WEBPACK_IMPORTED_MODULE_9__["default"].t('seo_description');
-      this.status = 1;
+      this.status = 0;
       this.category_id = 2;
     },
     submitData: function submitData() {
@@ -521,7 +521,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { _babel_runtime_cor
               tags: _this.tags
             },
             thumbnail: _this.thumbnail,
-            status: _this.status,
+            status: 0,
             type: _this.type
           };
 
@@ -1213,63 +1213,7 @@ var render = function() {
                                       expression: "tags"
                                     }
                                   }),
-                                  _c("br"),
-                                  _vm._v(" "),
-                                  _c(
-                                    "vs-select",
-                                    {
-                                      staticClass: "mt-5 w-full",
-                                      attrs: {
-                                        label: _vm.$t("status"),
-                                        name: "status"
-                                      },
-                                      model: {
-                                        value: _vm.status,
-                                        callback: function($$v) {
-                                          _vm.status = $$v
-                                        },
-                                        expression: "status"
-                                      }
-                                    },
-                                    [
-                                      _vm._l(_vm.status_choices, function(
-                                        status
-                                      ) {
-                                        return _c("vs-select-item", {
-                                          key: status.value,
-                                          attrs: {
-                                            value: status.value,
-                                            text: status.text
-                                          }
-                                        })
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "span",
-                                        {
-                                          directives: [
-                                            {
-                                              name: "show",
-                                              rawName: "v-show",
-                                              value: _vm.errors.has("status"),
-                                              expression: "errors.has('status')"
-                                            }
-                                          ],
-                                          staticClass: "text-danger text-sm"
-                                        },
-                                        [
-                                          _vm._v(
-                                            _vm._s(
-                                              _vm.errors.first("status")
-                                                ? _vm.$t("statusRequired")
-                                                : ""
-                                            )
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    2
-                                  )
+                                  _c("br")
                                 ],
                                 1
                               )

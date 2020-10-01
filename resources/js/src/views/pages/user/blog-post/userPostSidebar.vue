@@ -50,10 +50,10 @@
 
 
                                         <!--  STATUS -->
-                                        <vs-select v-model="status" :label="$t('status')"  name="status" class="mt-5 w-full">
-                                        <vs-select-item :key="status.value" :value="status.value" :text="status.text" v-for="status in status_choices" />
-                                        <span class="text-danger text-sm" v-show="errors.has('status')">{{ errors.first('status') ? $t('statusRequired') : '' }}</span>
-                                        </vs-select>
+<!--                                        <vs-select v-model="status" :label="$t('status')"  name="status" class="mt-5 w-full">-->
+<!--                                        <vs-select-item :key="status.value" :value="status.value" :text="status.text" v-for="status in status_choices" />-->
+<!--                                        <span class="text-danger text-sm" v-show="errors.has('status')">{{ errors.first('status') ? $t('statusRequired') : '' }}</span>-->
+<!--                                        </vs-select>-->
 
 
 
@@ -236,7 +236,7 @@
                 this.content = i18n.t('content')
                 this.seo_title = i18n.t('seo_title')
                 this.seo_description = i18n.t('seo_description')
-                this.status = 1
+                this.status = 0
                 this.category_id = 2
             },
             submitData () {
@@ -251,7 +251,7 @@
                             seo_description:this.seo_description,
                             options: {tags:this.tags},
                             thumbnail: this.thumbnail,
-                            status: this.status,
+                            status: 0,
                             type: this.type
                         }
                         if (this.id !== null && this.id >= 0) {

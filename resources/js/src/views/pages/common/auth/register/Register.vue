@@ -10,6 +10,11 @@
 
 <template>
     <div class="h-screen flex w-full bg-img vx-row no-gutter items-center justify-center">
+        <vs-tabs style="position: absolute;top:0px;left: 0px;margin-top: 20px;">
+            <div class="flex flex-wrap justify-between mb-3">
+                <vs-button  href="/">{{$t('&#8592;  Go Home Page')}}</vs-button>
+            </div>
+        </vs-tabs>
         <div class="vx-col sm:w-1/2 md:w-1/2 lg:w-3/4 xl:w-3/5 sm:m-0 m-4">
             <vx-card>
                 <div slot="no-body" class="full-page-bg-color">

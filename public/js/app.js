@@ -94886,7 +94886,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     // =============================================================================
     path: '',
     component: function component() {
-      return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(10), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./layouts/main/Main.vue */ "./resources/js/src/layouts/main/Main.vue"));
+      return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(10), __webpack_require__.e(5)]).then(__webpack_require__.bind(null, /*! ./layouts/main/Main.vue */ "./resources/js/src/layouts/main/Main.vue"));
     },
     children: [// =============================================================================
     // Theme Routes
@@ -94907,7 +94907,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/admin-dashboard',
       name: 'admin-dashboard',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(41), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./views/AdminDashboard.vue */ "./resources/js/src/views/AdminDashboard.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(41), __webpack_require__.e(16)]).then(__webpack_require__.bind(null, /*! ./views/AdminDashboard.vue */ "./resources/js/src/views/AdminDashboard.vue"));
       },
       meta: {
         rule: 'admin'
@@ -94993,7 +94993,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/pages',
       name: 'pages',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/page/list/pageList.vue */ "./resources/js/src/views/pages/admin/content/page/list/pageList.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(1), __webpack_require__.e(13)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/page/list/pageList.vue */ "./resources/js/src/views/pages/admin/content/page/list/pageList.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -95012,7 +95012,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/posts',
       name: 'posts',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(15)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/post/list/postList.vue */ "./resources/js/src/views/pages/admin/content/post/list/postList.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(1), __webpack_require__.e(15), __webpack_require__.e(45)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/post/list/postList.vue */ "./resources/js/src/views/pages/admin/content/post/list/postList.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -95027,12 +95027,31 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
         pageTitle: 'Posts',
         rule: 'admin'
       }
+    }, {
+      path: '/panel/pending-posts',
+      name: 'pending.posts',
+      component: function component() {
+        return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(1), __webpack_require__.e(15), __webpack_require__.e(46)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/post/list/pendingPostsList.vue */ "./resources/js/src/views/pages/admin/content/post/list/pendingPostsList.vue"));
+      },
+      meta: {
+        breadcrumb: [{
+          title: 'Anasayfa',
+          url: '/'
+        }, {
+          title: 'pendingPosts'
+        }, {
+          title: 'List',
+          active: true
+        }],
+        pageTitle: 'pendingPosts',
+        rule: 'admin'
+      }
     }, // FOR USERS & ADMIN
     {
       path: '/panel/blog-posts',
       name: 'blog-posts',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! @/views/pages/user/blog-post/postList.vue */ "./resources/js/src/views/pages/user/blog-post/postList.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(1), __webpack_require__.e(11)]).then(__webpack_require__.bind(null, /*! @/views/pages/user/blog-post/postList.vue */ "./resources/js/src/views/pages/user/blog-post/postList.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -95052,7 +95071,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/services',
       name: 'services',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/service/services.vue */ "./resources/js/src/views/pages/admin/content/service/services.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(1), __webpack_require__.e(18)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/service/services.vue */ "./resources/js/src/views/pages/admin/content/service/services.vue"));
       },
       meta: {
         pageTitle: 'services',
@@ -95062,7 +95081,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/categories',
       name: 'categories',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/category/list/categoryList.vue */ "./resources/js/src/views/pages/admin/content/category/list/categoryList.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(1), __webpack_require__.e(12)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/category/list/categoryList.vue */ "./resources/js/src/views/pages/admin/content/category/list/categoryList.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -95081,7 +95100,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/forms',
       name: 'Forms',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(4), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/form/list/formList.vue */ "./resources/js/src/views/pages/admin/content/form/list/formList.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(1), __webpack_require__.e(4), __webpack_require__.e(17)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/content/form/list/formList.vue */ "./resources/js/src/views/pages/admin/content/form/list/formList.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -95115,7 +95134,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/products',
       name: 'products',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/e-commerce/product/productList.vue */ "./resources/js/src/views/pages/admin/e-commerce/product/productList.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(1), __webpack_require__.e(19)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/e-commerce/product/productList.vue */ "./resources/js/src/views/pages/admin/e-commerce/product/productList.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -95134,7 +95153,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/orders',
       name: 'orders',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(1), __webpack_require__.e(43), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/e-commerce/order/orderList.vue */ "./resources/js/src/views/pages/admin/e-commerce/order/orderList.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(1), __webpack_require__.e(43), __webpack_require__.e(9)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/e-commerce/order/orderList.vue */ "./resources/js/src/views/pages/admin/e-commerce/order/orderList.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -95188,7 +95207,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/users',
       name: 'users',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(3), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/users/user-list/UserList.vue */ "./resources/js/src/views/pages/admin/users/user-list/UserList.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(3), __webpack_require__.e(8)]).then(__webpack_require__.bind(null, /*! @/views/pages/admin/users/user-list/UserList.vue */ "./resources/js/src/views/pages/admin/users/user-list/UserList.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -95249,7 +95268,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: '/panel/profile',
       name: 'user-settings',
       component: function component() {
-        return Promise.all(/*! import() */[__webpack_require__.e(0), __webpack_require__.e(2), __webpack_require__.e(39), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! @/views/pages/common/user-settings/UserSettings.vue */ "./resources/js/src/views/pages/common/user-settings/UserSettings.vue"));
+        return Promise.all(/*! import() */[__webpack_require__.e(44), __webpack_require__.e(2), __webpack_require__.e(39), __webpack_require__.e(6)]).then(__webpack_require__.bind(null, /*! @/views/pages/common/user-settings/UserSettings.vue */ "./resources/js/src/views/pages/common/user-settings/UserSettings.vue"));
       },
       meta: {
         breadcrumb: [{
@@ -95911,9 +95930,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   logout: function logout() {
     return new _babel_runtime_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a(function (resolve, reject) {
-      _plugins_api_js__WEBPACK_IMPORTED_MODULE_1__["default"].post('/api/logout').then(function (response) {
-        _plugins_api_js__WEBPACK_IMPORTED_MODULE_1__["default"].clearCreds();
-      }).catch(function (error) {
+      // Api.post('/api/logout').then(response => {
+      //  Api.clearCreds()
+      // })
+      _plugins_api_js__WEBPACK_IMPORTED_MODULE_1__["default"].clearCreds().catch(function (error) {
         reject(error);
       });
     });
@@ -97171,6 +97191,11 @@ __webpack_require__.r(__webpack_exports__);
   openCases: function openCases(state) {
     return state.services.filter(function (service) {
       return service.status === 1;
+    });
+  },
+  pendingPosts: function pendingPosts(state) {
+    return state.posts.filter(function (post) {
+      return post.status === 0;
     });
   },
   myCases: function myCases(state) {

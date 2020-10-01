@@ -50,9 +50,10 @@ export default {
 
   logout () {
     return new Promise((resolve, reject) => {
-        Api.post('/api/logout').then(response => {
-         Api.clearCreds()
-        })
+        // Api.post('/api/logout').then(response => {
+        //  Api.clearCreds()
+        // })
+        Api.clearCreds()
         .catch(error => { reject(error) })
     })
   },

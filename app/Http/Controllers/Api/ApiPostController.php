@@ -36,9 +36,8 @@ class ApiPostController extends ApiController
     if (!$this->user) {
       return $this->responseUnauthorized();
     }
-    $pages = DB::table('posts')->where('status', 1)->where('type','page')->orderBy('created_at', 'desc')->get();
-    $posts = Post::where('status', 1)
-    ->where('type','post')
+    $pages = DB::table('posts')->where('type','page')->orderBy('created_at', 'desc')->get();
+    $posts = Post::where('type','post')
     ->orderBy('created_at', 'desc')
     ->get();
     $services = Post::where('status', 1)
@@ -46,7 +45,7 @@ class ApiPostController extends ApiController
     ->orderBy('created_at', 'desc')
     ->get();
 
-    $myPosts = Post::where('user_id',$this->user->id)->where('status', 1)->where('type','post')->orderBy('created_at', 'desc')->get();
+    $myPosts = Post::where('user_id',$this->user->id)->where('type','post')->orderBy('created_at', 'desc')->get();
 
 
 

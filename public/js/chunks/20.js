@@ -58,6 +58,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -263,6 +271,30 @@ var render = function() {
     },
     [
       _c(
+        "vs-tabs",
+        {
+          staticStyle: {
+            position: "absolute",
+            top: "0px",
+            left: "0px",
+            "margin-top": "20px"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "flex flex-wrap justify-between mb-3" },
+            [
+              _c("vs-button", { attrs: { href: "/" } }, [
+                _vm._v(_vm._s(_vm.$t("←  Go Home Page")))
+              ])
+            ],
+            1
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
         "div",
         {
           staticClass: "vx-col sm:w-1/2 md:w-1/2 lg:w-3/4 xl:w-3/5 sm:m-0 m-4"
@@ -341,7 +373,8 @@ var render = function() {
         ],
         1
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []

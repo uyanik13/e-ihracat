@@ -167,7 +167,23 @@ const router = new Router({
             pageTitle: 'Posts',
             rule: 'admin'
           }
-        }, // FOR USERS & ADMIN
+        },
+
+          {
+              path: '/panel/pending-posts',
+              name: 'pending.posts',
+              component: () => import('@/views/pages/admin/content/post/list/pendingPostsList.vue'),
+              meta: {
+                  breadcrumb: [
+                      {title: 'Anasayfa', url: '/'},
+                      {title: 'pendingPosts'},
+                      {title: 'List', active: true}
+                  ],
+                  pageTitle: 'pendingPosts',
+                  rule: 'admin'
+              }
+          },
+          // FOR USERS & ADMIN
         {
             path: '/panel/blog-posts',
             name: 'blog-posts',

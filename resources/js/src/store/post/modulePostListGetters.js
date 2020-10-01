@@ -12,7 +12,7 @@ export default {
   // getItem: state => (productId) => state.products.find((product) => product.id == productId),
 
   openCases: (state) => state.services.filter((service) => service.status === 1),
-
+    pendingPosts: (state) => state.posts.filter((post) => post.status === 0),
   myCases: (state) =>   state.myServices,
 
   parentCategories: (state) =>   state.categories.flatMap(({ id, title }) => Object.assign({ id, title })),

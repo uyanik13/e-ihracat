@@ -8900,6 +8900,12 @@ __webpack_require__.r(__webpack_exports__);
     icon: 'FileTextIcon',
     i18n: 'Posts'
   }, {
+    url: '/panel/pending-posts',
+    slug: '/panel/pending-posts',
+    name: 'pending.posts',
+    icon: 'FileTextIcon',
+    i18n: 'pendingPosts'
+  }, {
     url: '/panel/services',
     slug: '/panel/services',
     name: 'services',
