@@ -40,7 +40,14 @@
 									<label>{{__('contact.message')}}<span class="red">*</span></label>
 									<textarea required="required" name="message" cols="40" rows="7" id="messageTxt"
 										spellcheck="true"></textarea>
-								</div>
+                                </div>
+								<div class="form-input">
+									<label>{{__('lang.recaptcha')}}<span class="red">*</span></label>
+									 <div class="g-recaptcha" name="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
+                                </div>
+
+
+
 								<div class="form-input">
 									<input type="submit" class="btn btn-large main-bg" value="{{__('contact.send')}}">&nbsp;&nbsp;<input
 										type="reset" class="btn btn-large" value="{{__('contact.reset')}}" id="reset">
