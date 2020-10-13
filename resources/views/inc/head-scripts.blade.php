@@ -12,3 +12,4 @@
 <link rel="stylesheet" href="{{asset('theme/css/custom.css')}}">
 <link rel="stylesheet" href="{{asset('theme/css/responsive.css')}}">
 <link rel="stylesheet" href="{{asset('theme/css/skins/defaultskin.css')}}">
+@include('sweetalert::alert')

@@ -1,6 +1,6 @@
 
 
-@include('sweetalert::alert')
+
 
 @stack('inline-scripts')
 
@@ -54,10 +54,14 @@
 
 <script type="text/javascript" src="https://paracevirici.com/servis/widget/widget.js"></script>
 
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+
+
 <script type="text/javascript">
 
     $(function(){
-    typeof $.fn.paraceviriciWidget == "function" && 
+    typeof $.fn.paraceviriciWidget == "function" &&
     $("#W3179").paraceviriciWidget({
         widget:"list",
         wData:{
@@ -73,7 +77,7 @@
         }
     });
     });
-    
+
     </script>
 
 

@@ -90,7 +90,7 @@ return [
     'nav_faq' => 'S.S.S.',
     'nav_contact' => 'İletişim',
     'nav_appointment' => 'Randevu',
-    /* Footer */ 
+    /* Footer */
     'foot_eihracat' => 'E-İHRACAT TÜRKİYE',
     'foot_become_partner' => 'Partner Olun!',
     'foot_desc' => 'Türkiye’nin sürdürülebilir ekonomik kalkınmasını desteklemek bizim en büyük
@@ -188,6 +188,7 @@ return [
     'check_our_services' => 'Hizmetlerimize Göz Atın',
     'can_ask_us' => ' Herhangi bir yardıma ihtiyacınız olursa canlı
     destek, whatsapp ya da e-posta üzerinden bizden yardım alabilirsiniz.',
+    'recaptcha' => 'Google Recaptcha',
 
 
 

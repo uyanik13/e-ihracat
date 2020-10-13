@@ -63,12 +63,16 @@ class ApiAppointmentController extends ApiController
       //===========================================
       $validator = Validator::make($request->all(), [
         'name' => 'string|max:80',
+        'g-recaptcha-response' => 'required',
         'email' => 'email',
         //'phone' => 'required|integer|min:10|max:13',
       ]);
+
       if ($validator->fails()) {
-        return $this->responseUnprocessable($validator->errors());
-      }
+         $validator->getTranslator()->setLocale(app()->getLocale());
+        return back()->with('errors', $validator->messages()->all()[0])->withInput();
+        }
+
 
       function namedSettings($settings){
         $named_settings = [];

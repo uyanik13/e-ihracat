@@ -235,6 +235,10 @@
                                         <input type="hidden" name="reply_to" id="formCommentHidden">
                                     </div>
                                 </div>
+                                <div class="form-input">
+									<label>{{__('lang.recaptcha')}}<span class="red">*</span></label>
+									 <div class="g-recaptcha" name="g-recaptcha" data-sitekey="{{env('GOOGLE_RECAPTCHA_KEY')}}"></div>
+                                </div>
                                 <div class="cell-12">
                                     <input type="submit" class="btn btn-large main-bg" value="Yorum Yap">
                                 </div>

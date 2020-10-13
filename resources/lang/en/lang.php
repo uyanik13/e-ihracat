@@ -89,7 +89,7 @@ return [
     'nav_faq' => 'FAQ',
     'nav_contact' => 'Contact',
     'nav_appointment' => 'Appointment',
-    /* Footer */ 
+    /* Footer */
     'foot_eihracat' => 'E-İHRACAT TÜRKİYE',
     'foot_become_partner' => 'Become a Partner!',
     'foot_desc' => 'Turkey\'s sustainable economic development of our biggest support
@@ -184,8 +184,8 @@ return [
     'check_our_services' => 'Check Out Our Services',
     'turkish' => 'TR',
     'english' => 'EN',
-    'can_ask_us' => 'Live if you need any help
-    You can get help from us via support, whatsapp or e-mail.',
-    
+    'can_ask_us' => 'Live if you need any help You can get help from us via support, whatsapp or e-mail.',
+    'recaptcha' => 'Google Recaptcha',
+
 
 ];
